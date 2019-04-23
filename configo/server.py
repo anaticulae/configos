@@ -6,30 +6,46 @@
 # use or distribution is an offensive act against international law and may
 # be prosecuted under federal law. Its content is company confidential.
 #==============================================================================
+import os
 
 from utila import FAILURE
 from utila import logging_error
 
+HELPY_URL = 'HELPY_URL'
+
+HELPY_INT_PORT = 'HELPY_INT_PORT'
+HELPY_EXT_PORT = 'HELPY_EXT_PORT'
+
+HELPY_INT_DIRECT = 'HELPY_INT_DIRECT'
+HELPY_EXT_DIRECT = 'HELPY_EXT_DIRECT'
+
 
 def package_configuration():
+    """Return tuple with adress, internal package port and external package
+    port of the package repository"""
+
     try:
-        adress = environ['HELPY_URL']
-        internal = int(environ['HELPY_INT_PORT'])
-        external = int(environ['HELPY_EXT_PORT'])
+        adress = os.environ[HELPY_URL]
+        internal = os.environ[HELPY_INT_PORT]
+        external = os.environ[HELPY_EXT_PORT]
+        internal, external = int(internal), int(external)
         return (adress, internal, external)
     except KeyError as error:
         handle_error(error)
 
 
 def package_address():
+    """Return tuple of direct addresses to internal and external package
+    repository"""
+
     try:
-        internal = environ['HELPY_INT_DIRECT']
-        external = environ['HELPY_EXT_DIRECT']
+        internal = os.environ[HELPY_INT_DIRECT]
+        external = os.environ[HELPY_EXT_DIRECT]
         return (internal, external)
     except KeyError as error:
         handle_error(error)
 
 
-def handle_error(error: Exception):
+def handle_error(error: KeyError):
     logging_error('Missing global var: %s' % error)
     exit(FAILURE)

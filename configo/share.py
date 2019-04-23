@@ -77,7 +77,7 @@ def _path_from_env(env: str, check: bool = False):
             exit(FAILURE)
         return path
     except KeyError:
-        logging_error('MISSING environment var `%s`' % env)
+        logging_error('Missing environment var `%s`' % env)
         exit(FAILURE)
 
 
