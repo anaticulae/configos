@@ -10,8 +10,14 @@
 import os
 
 # Public API:
+# Server
 from configo.server import package_address
 from configo.server import package_configuration
+# Share
+from configo.share import check_startup
+from configo.share import ready
+from configo.share import share
+from configo.share import todo
 
 __version__ = '0.1.0'
 
