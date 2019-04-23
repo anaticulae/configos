@@ -40,10 +40,10 @@ def test_wrong_todo(monkeypatch):
             })
 
         with raises(SystemExit):
-            todo()
+            todo(check=True)
 
         with raises(SystemExit):
-            ready()
+            ready(check=True)
 
 
 def test_startup():
