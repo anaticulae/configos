@@ -15,6 +15,7 @@ from re import search
 from setuptools import setup
 
 ROOT = dirname(__file__)
+
 with open(join(ROOT, 'README.md'), 'rt', encoding='utf8') as fp:
     README = fp.read()
 
@@ -23,24 +24,22 @@ with open(join(ROOT, 'configo/__init__.py'), 'rt', encoding='utf8') as fp:
 
 if __name__ == "__main__":
     setup(
-        name='configo',
-        version=VERSION,
         author='Helmut Konrad Fahrendholz',
-        author_email='kiwi@derspanier.de',
+        author_email='dev@checkitweg.de',
         description='configo',
-        long_description=README,
-        packages=[
-            'configo',
-        ],
         include_package_data=True,
-        zip_safe=False,  # create 'zip'-file if True. Don't do it!
+        long_description=README,
+        name='configo',
         platforms='any',
-        install_requires=[],
-        setup_requires=[],
-        tests_require=[],
+        url='https://packages.checkitweg.de/configo',
+        version=VERSION,
+        zip_safe=False,  # create 'zip'-file if True. Don't do it!
         classifiers=[
             'Programming Language :: Python :: 3.6',
             'Programming Language :: Python :: 3.7',
             'Programming Language :: Python :: 3.8',
+        ],
+        packages=[
+            'configo',
         ],
     )
