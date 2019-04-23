@@ -39,8 +39,9 @@ def test_wrong_todo(monkeypatch):
     with monkeypatch.context() as context:
         context.setattr(
             os, 'environ', {
-                'SHARED_TODO': 'ThisPathDoesNotExist',
-                'SHARED_READY': 'ThisPathDoesNotExist'
+                TODO: 'ThisPathDoesNotExist',
+                READY: 'ThisPathDoesNotExist',
+                COMMON: 'ThisPathDoesNotExist',
             })
 
         with raises(SystemExit):

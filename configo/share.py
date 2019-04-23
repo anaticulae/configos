@@ -22,7 +22,7 @@ from utila import logging_error
 
 TODO = 'SHARED_TODO'
 READY = 'SHARED_READY'
-COMMON = 'SHARED_COMMON'
+COMMON = 'SHARED_SPACE'
 
 
 def ready(check: bool = False):
