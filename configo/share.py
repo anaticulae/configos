@@ -20,6 +20,10 @@ import os
 from utila import FAILURE
 from utila import logging_error
 
+TODO = 'SHARED_TODO'
+READY = 'SHARED_READY'
+COMMON = 'SHARED_COMMON'
+
 
 def ready(check: bool = False):
     """Return path to finished jobs
@@ -27,12 +31,12 @@ def ready(check: bool = False):
     Args:
         check(bool): check existence of path
     Returns:
-        path in global variable
+        path from global variable
     Raises:
         SystemExit if check is True and path does not exists
         SystemExit if global env var does not exist
     """
-    return _path_from_env('SHARED_READY', check=check)
+    return _path_from_env(READY, check=check)
 
 
 def todo(check: bool = False):
@@ -41,12 +45,12 @@ def todo(check: bool = False):
     Args:
         check(bool): check existence of path
     Returns:
-        path in global variable
+        path from global variable
     Raises:
         SystemExit if check is True and path does not exists
         SystemExit if global env var does not exist
     """
-    return _path_from_env('SHARED_TODO', check=check)
+    return _path_from_env(TODO, check=check)
 
 
 def share(check: bool = False):
@@ -55,12 +59,12 @@ def share(check: bool = False):
     Args:
         check(bool): check existence of path
     Returns:
-        path in global variable
+        path from global variable
     Raises:
         SystemExit if check is True and path does not exists
         SystemExit if global env var does not exist
     """
-    return _path_from_env('SHARED_SPACE', check=check)
+    return _path_from_env(COMMON, check=check)
 
 
 def _path_from_env(env: str, check: bool = False):

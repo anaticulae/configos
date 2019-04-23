@@ -8,12 +8,16 @@
 # =============================================================================
 
 import os
-
-from pytest import raises
+from os import makedirs
+from os.path import join
 
 from configo import check_startup
 from configo import ready
 from configo import todo
+from configo.share import COMMON
+from configo.share import READY
+from configo.share import TODO
+from pytest import raises
 
 
 def test_missing_environment(monkeypatch):
@@ -46,5 +50,14 @@ def test_wrong_todo(monkeypatch):
             ready(check=True)
 
 
-def test_startup():
-    check_startup()
+def test_startup(tmpdir, monkeypatch):
+    makedirs(join(tmpdir, 'todo'))
+    makedirs(join(tmpdir, 'ready'))
+    with monkeypatch.context() as context:
+        context.setattr(
+            os, 'environ', {
+                TODO: join(tmpdir, 'todo'),
+                READY: join(tmpdir, 'ready'),
+                COMMON: tmpdir
+            })
+        check_startup()
