@@ -15,6 +15,8 @@ from configo.server import package_address
 from configo.server import package_configuration
 # Share
 from configo.share import check_startup
+from configo.share import environment
+from configo.share import export
 from configo.share import ready
 from configo.share import share
 from configo.share import todo

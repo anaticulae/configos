@@ -67,6 +67,22 @@ def share(check: bool = False):
     return _path_from_env(COMMON, check=check)
 
 
+def export(common: str, todo: str, ready: str):
+    """Set environment variables"""
+    os.environ[COMMON] = str(common)
+    os.environ[TODO] = str(todo)
+    os.environ[READY] = str(ready)
+
+
+def environment(check: bool = False):
+    """Return `SHARED_TODO` and `SHARED_READY` folder"""
+    todo_ = todo(check=check)
+    ready_ = ready(check=check)
+    common = share(check=check)
+
+    return common, todo_, ready_
+
+
 def _path_from_env(env: str, check: bool = False):
     """Access global env variable"""
     assert env
