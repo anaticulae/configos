@@ -2,6 +2,16 @@
 
 Every noteable change is logged here.
 
+## v0.1.3
+
+### Feature
+
+* add export and import from viewo project (b67dcde7116b)
+
+### Fix
+
+* fix location to shared space (6ec668800b5b)
+
 ## v0.1.2
 
 ## v0.1.1
