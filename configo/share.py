@@ -67,7 +67,7 @@ def share(check: bool = False):
     return _path_from_env(COMMON, check=check)
 
 
-def export(common: str, todo: str, ready: str):
+def export(common: str, todo: str, ready: str):  # pylint:disable=W0621
     """Set environment variables"""
     os.environ[COMMON] = str(common)
     os.environ[TODO] = str(todo)

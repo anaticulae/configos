@@ -74,8 +74,8 @@ def test_export_import(tmpdir, monkeypatch):
         # Remove all environment vars
         context.setattr(os, 'environ', {})
 
-        todo = join(tmpdir, 'todo')
-        ready = join(tmpdir, 'ready')
+        todo = join(tmpdir, 'todo')  #pylint:disable=W0621
+        ready = join(tmpdir, 'ready')  #pylint:disable=W0621
         common = join(tmpdir, 'common')
 
         for item in [todo, ready, common]:
@@ -83,7 +83,6 @@ def test_export_import(tmpdir, monkeypatch):
 
         export(common, todo, ready)
         common_, todo_, ready_, = environment(True)
-        print(todo)
 
         assert todo_ == todo
         assert ready_ == ready
