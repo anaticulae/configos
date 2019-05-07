@@ -10,6 +10,10 @@
 import os
 
 # Public API:
+#
+# Document
+from configo.document import OneSideDINA4
+from configo.document import OneSideDINA5
 # Server
 from configo.server import package_address
 from configo.server import package_configuration
