@@ -2,6 +2,12 @@
 
 Every noteable change is logged here.
 
+## v0.1.5
+
+### Feature
+
+* add basic configuration for DINA4 and DINA5 pages (e932a0e7710f)
+
 ## v0.1.4
 
 ## v0.1.3
