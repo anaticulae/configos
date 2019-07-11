@@ -11,6 +11,10 @@ import os
 
 # Public API:
 #
+# Cache
+from configo.cache import CACHE_LARGE
+from configo.cache import CACHE_MEDIUM
+from configo.cache import CACHE_SMALL
 # Document
 from configo.document import OneSideDINA4
 from configo.document import OneSideDINA5
