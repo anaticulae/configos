@@ -2,6 +2,16 @@
 
 Every noteable change is logged here.
 
+## v0.1.6
+
+### Feature
+
+* add global cache size (b3cbfa49636a)
+
+### Documentation
+
+* extend basic readme documentation (e4e3cff7fcc0)
+
 ## v0.1.5
 
 ### Feature
