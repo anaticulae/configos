@@ -9,7 +9,7 @@
 import os
 
 from utila import FAILURE
-from utila import logging_error
+from utila import error
 
 HELPY_URL = 'HELPY_URL'
 
@@ -30,8 +30,8 @@ def package_configuration():
         external = os.environ[HELPY_EXT_PORT]
         internal, external = int(internal), int(external)
         return (adress, internal, external)
-    except KeyError as error:
-        handle_error(error)
+    except KeyError as msg:
+        handle_error(msg)
 
 
 def package_address():
@@ -42,10 +42,10 @@ def package_address():
         internal = os.environ[HELPY_INT_DIRECT]
         external = os.environ[HELPY_EXT_DIRECT]
         return (internal, external)
-    except KeyError as error:
-        handle_error(error)
+    except KeyError as msg:
+        handle_error(msg)
 
 
-def handle_error(error: KeyError):
-    logging_error('Missing global var: %s' % error)
+def handle_error(msg: KeyError):
+    error('Missing global var: %s' % msg)
     exit(FAILURE)

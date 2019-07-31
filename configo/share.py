@@ -18,7 +18,7 @@ The structure of these loations is:
 import os
 
 from utila import FAILURE
-from utila import logging_error
+from utila import error
 
 TODO = 'SHARED_TODO'
 READY = 'SHARED_READY'
@@ -89,11 +89,11 @@ def _path_from_env(env: str, check: bool = False):
     try:
         path = os.environ[env]
         if check and not os.path.exists(path):
-            logging_error('Path does not exists: %s' % path)
+            error('Path does not exists: %s' % path)
             exit(FAILURE)
         return path
     except KeyError:
-        logging_error('Missing environment var `%s`' % env)
+        error('Missing environment var `%s`' % env)
         exit(FAILURE)
 
 
