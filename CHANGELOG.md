@@ -2,6 +2,12 @@
 
 Every noteable change is logged here.
 
+## v0.1.16
+
+### Feature
+
+* add method to determine shared_tmp (1781a9c37633)
+
 ## v0.1.15
 
 ## v0.1.14
