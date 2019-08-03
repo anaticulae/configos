@@ -23,6 +23,7 @@ from utila import error
 TODO = 'SHARED_TODO'
 READY = 'SHARED_READY'
 COMMON = 'SHARED_SPACE'
+TMP = 'SHARED_TMP'
 
 
 def ready(check: bool = False):
@@ -65,6 +66,20 @@ def share(check: bool = False):
         SystemExit if global env var does not exist
     """
     return _path_from_env(COMMON, check=check)
+
+
+def tmp(check: bool = False):
+    """Return path to tmp folder
+
+    Args:
+        check(bool): check existence of path
+    Returns:
+        path from global variable
+    Raises:
+        SystemExit if check is True and path does not exists
+        SystemExit if global env var does not exist
+    """
+    return _path_from_env(TMP, check=check)
 
 
 def export(common: str, todo: str, ready: str):  # pylint:disable=W0621
