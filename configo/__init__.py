@@ -29,6 +29,6 @@ from configo.share import ready
 from configo.share import share
 from configo.share import todo
 
-__version__ = '0.1.18'
+__version__ = '0.1.19'
 
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
