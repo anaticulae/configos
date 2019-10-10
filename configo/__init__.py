@@ -18,6 +18,14 @@ from configo.cache import CACHE_SMALL
 # Document
 from configo.document import OneSideDINA4
 from configo.document import OneSideDINA5
+# Holy
+from configo.holyvalue import DataType
+from configo.holyvalue import InvalidHolyValue
+from configo.holyvalue import MissingHolyValue
+from configo.holyvalue import generate
+from configo.holyvalue import holyvalue as HV
+from configo.holyvalue import init
+from configo.holyvalue import load
 # Server
 from configo.server import package_address
 from configo.server import package_configuration

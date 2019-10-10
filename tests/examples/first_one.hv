@@ -1,0 +1,15 @@
+[groupme.footer.header]
+# description: this is a variable which describe the distance between
+# header and footer.
+# unit:meter
+# data:int_plus
+# limit:500
+DISTANCE = 50022
+
+# description: this is an example str
+# type:str
+# unit:message
+HELLO_WORD = 'hello world'
+
+[groupme.footer.footer]
+ALLOW_EMPTY = True
