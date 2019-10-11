@@ -131,6 +131,10 @@ def test_holyvalue_generate_configuration():
         # TODO: replace with utila.raw
         assert f'{key} = ' in config, print(config)
 
+    variables = ['default', 'limit', 'datatype', 'comment']
+    for variable in variables:
+        assert f'# {variable}:' in config, print(config)
+
     assert config.count('#') >= 5, print(config)
 
 
