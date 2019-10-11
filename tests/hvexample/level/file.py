@@ -9,4 +9,6 @@
 
 import configo
 
+# I am an
+# example docstring
 CONFIGURATION = configo.HV(variable='Helmut', limit=1000)

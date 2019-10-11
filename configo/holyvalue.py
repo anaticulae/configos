@@ -276,13 +276,7 @@ def holyvalue_from_file(sourcecode: str):
     """
     lines = codelines(sourcecode)
     result = {}
-    lines = set()
-    for item in token(code):
-        if item.type != 1:
-            # skip comments etc.
-            continue
-        lines.add(item.line.strip())
-    for line in lines:
+    for line, comment in lines.items():
         # TODO: THINK ABOUT USING TOKEN
         pattern = r'\b(?P<variable>[\w\d_]+) = configo\.HV\((?P<config>.*)\)'
         matched = re.match(pattern, line, re.MULTILINE)
@@ -295,10 +289,39 @@ def holyvalue_from_file(sourcecode: str):
             config = {item[0]: item[1] for item in config}
         else:
             config = {}
+        if comment.strip():
+            config['comment'] = comment
         result[variable] = config
     return result
 
 
+def codelines(sourcecode: str):
+    """Remove comments etc. out of `sourcecode`"""
+    lines = {}
+    tokenized = list(token(sourcecode))
+
+    for index, item in enumerate(tokenized):
+        print(item)
+        if item.type != 1:
+            # skip comments etc.
+            continue
+        stripped = item.line.strip()
+        holycomment = ''
+        if index > 0:
+            # TODO: SUPPORT MULTILINE COMMENT
+            # look one line back to check if holy value has a holy comment
+            if tokenized[index - 1].type == 56:  # comment
+                holycomment = tokenized[index - 1].line
+                holycomment = holycomment.replace('#', '', 1)
+                holycomment = holycomment.strip()
+        if lines.get(stripped, None):
+            # do not overwrite holy comments
+            continue
+        lines[stripped] = holycomment
+    return lines
+
+
 def token(code: str):
-    source = tokenize.tokenize(io.BytesIO(code.encode('utf-8')).readline)
+    buffer = io.BytesIO(code.encode(utila.UTF8)).readline
+    source = tokenize.tokenize(buffer)
     return source
