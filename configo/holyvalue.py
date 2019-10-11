@@ -9,12 +9,17 @@
 import configparser
 import dataclasses
 import enum
+import glob
 import inspect
+import io
 import os
 import re
+import tokenize
 import typing
 
 import utila
+
+import configo.utils
 
 EXT = 'hv'
 
@@ -221,10 +226,79 @@ class DataSet:
     data: typing.Dict[str, Group] = dataclasses.field(default_factory=dict)
 
 
-def generate(path: str):
-    """Iterate thrue python files
+def generate(path: str) -> str:
+    """Iterate thrue python files and extract config with holyvalues
+    constructs out of project structure.
 
     Args:
-        path(str):
+        path(str): project root path
+    Returns:
+        project configuration file
     """
     assert os.path.exists(path), f'path does not exists: {path}'
+    result = {}
+    with configo.utils.chdir(path):
+        files = list(glob.glob(os.path.join(path, '**/*.py'), recursive=True))
+        for item in files:
+            relative = utila.make_relative(item, path)
+            # TODO: REPLACE WITH MAKE_PACKAGE
+            relative = relative.replace('.py', '')
+            relative = relative.replace('/', '.')
+            code = utila.file_read(item)
+            parsed = holyvalue_from_file(code)
+            if parsed:
+                result[relative] = parsed
+    rootpackage = os.path.split(path)[1]
+
+    raw = []
+    for package in sorted(result.keys()):
+        raw.append(f'[{rootpackage}.{package}]')
+        for variable, values in result[package].items():
+            for item, value in values.items():
+                raw.append(f'# {item}:{value}')
+            variable = values.get('variable', variable)
+            variable = variable.replace("'", '').upper()
+            default = values.get('default', 'None')
+            raw.append(f"{variable} = {default}")
+            raw.append('')
+        raw.append('')
+    return utila.NEWLINE.join(raw)
+
+
+def holyvalue_from_file(sourcecode: str):
+    """Parse holyvalues from `sourcecode`
+
+    Args:
+        sourcecode(str): python source code file
+    Returns:
+        dictonary with holyvalues and further configuration parameter,
+        eg. limit, variable, group etc.
+    """
+    lines = codelines(sourcecode)
+    result = {}
+    lines = set()
+    for item in token(code):
+        if item.type != 1:
+            # skip comments etc.
+            continue
+        lines.add(item.line.strip())
+    for line in lines:
+        # TODO: THINK ABOUT USING TOKEN
+        pattern = r'\b(?P<variable>[\w\d_]+) = configo\.HV\((?P<config>.*)\)'
+        matched = re.match(pattern, line, re.MULTILINE)
+        if not matched:
+            continue
+        variable = matched['variable']
+        config = matched['config']
+        if config:
+            config = [item.split('=', 1) for item in config.split(', ')]
+            config = {item[0]: item[1] for item in config}
+        else:
+            config = {}
+        result[variable] = config
+    return result
+
+
+def token(code: str):
+    source = tokenize.tokenize(io.BytesIO(code.encode('utf-8')).readline)
+    return source
