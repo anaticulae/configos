@@ -200,7 +200,7 @@ class DataType(enum.Enum):
     PERCENT_PLUS = enum.auto()
 
 
-@dataclasses.dataclass
+@dataclasses.dataclass  # pylint:disable=R0903
 class Datum:
     name: str = None
     value: object = None
@@ -210,14 +210,14 @@ class Datum:
     unit: str = None
 
 
-@dataclasses.dataclass
+@dataclasses.dataclass  # pylint:disable=R0903
 class Group:
 
     name: str = None
     data: typing.Dict[str, Datum] = dataclasses.field(default_factory=dict)
 
 
-@dataclasses.dataclass
+@dataclasses.dataclass  # pylint:disable=R0903
 class DataSet:
 
     name: str = None
