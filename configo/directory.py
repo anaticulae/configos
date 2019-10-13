@@ -115,5 +115,6 @@ def _path_from_env(env: str, check: bool = False):
 def check_startup():
     """Check that global environments are set"""
     ready(check=True)
-    todo(check=True)
     share(check=True)
+    tmp(check=True)
+    todo(check=True)

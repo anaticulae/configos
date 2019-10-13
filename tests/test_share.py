@@ -8,19 +8,11 @@
 # =============================================================================
 
 import os
-from os import makedirs
-from os.path import join
 
-from pytest import raises
+import pytest
 
-from configo import check_startup
-from configo import ready
-from configo import todo
-from configo.share import COMMON
-from configo.share import READY
-from configo.share import TODO
-from configo.share import environment
-from configo.share import export
+import configo
+import configo.directory
 
 
 def test_missing_environment(monkeypatch):
@@ -30,43 +22,49 @@ def test_missing_environment(monkeypatch):
         # Remove all environment vars
         context.setattr(os, 'environ', {})
 
-        with raises(SystemExit):
-            check_startup()
+        with pytest.raises(SystemExit):
+            configo.check_startup()
 
-        with raises(SystemExit):
-            todo()
+        with pytest.raises(SystemExit):
+            configo.todo()
 
-        with raises(SystemExit):
-            ready()
+        with pytest.raises(SystemExit):
+            configo.ready()
 
 
 def test_wrong_todo(monkeypatch):
     with monkeypatch.context() as context:
         context.setattr(
             os, 'environ', {
-                TODO: 'ThisPathDoesNotExist',
-                READY: 'ThisPathDoesNotExist',
-                COMMON: 'ThisPathDoesNotExist',
+                configo.directory.TODO: 'ThisPathDoesNotExist',
+                configo.directory.READY: 'ThisPathDoesNotExist',
+                configo.directory.COMMON: 'ThisPathDoesNotExist',
             })
 
-        with raises(SystemExit):
-            todo(check=True)
+        with pytest.raises(SystemExit):
+            configo.todo(check=True)
 
-        with raises(SystemExit):
-            ready(check=True)
+        with pytest.raises(SystemExit):
+            configo.ready(check=True)
 
 
-def test_startup(tmpdir, monkeypatch):
-    makedirs(join(tmpdir, 'todo'))
-    makedirs(join(tmpdir, 'ready'))
+def test_startup(testdir, monkeypatch):
+    root = str(testdir)
+    ready = os.path.join(root, 'ready')
+    tmp = os.path.join(root, 'tmp')
+    todo = os.path.join(root, 'todo')
+    for item in [ready, tmp, todo]:
+        os.makedirs(item)
+
     with monkeypatch.context() as context:
         context.setattr(
             os, 'environ', {
-                TODO: join(tmpdir, 'todo'),
-                READY: join(tmpdir, 'ready'),
-                COMMON: tmpdir
+                configo.directory.TODO: todo,
+                configo.directory.READY: ready,
+                configo.directory.TMP: tmp,
+                configo.directory.COMMON: root
             })
-        check_startup()
+        configo.check_startup()
 
 
 def test_export_import(tmpdir, monkeypatch):
@@ -74,15 +72,15 @@ def test_export_import(tmpdir, monkeypatch):
         # Remove all environment vars
         context.setattr(os, 'environ', {})
 
-        todo = join(tmpdir, 'todo')  #pylint:disable=W0621
-        ready = join(tmpdir, 'ready')  #pylint:disable=W0621
-        common = join(tmpdir, 'common')
+        todo = os.path.join(tmpdir, 'todo')  #pylint:disable=W0621
+        ready = os.path.join(tmpdir, 'ready')  #pylint:disable=W0621
+        common = os.path.join(tmpdir, 'common')
 
         for item in [todo, ready, common]:
-            makedirs(item)
+            os.makedirs(item)
 
-        export(common, todo, ready)
-        common_, todo_, ready_, = environment(True)
+        configo.export(common, todo, ready)
+        common_, todo_, ready_, = configo.environment(True)
 
         assert todo_ == todo
         assert ready_ == ready
@@ -95,8 +93,8 @@ def test_without_folder_configuration(monkeypatch):
         # Remove all environment vars
         context.setattr(os, 'environ', {})
 
-        with raises(SystemExit):
-            environment()
+        with pytest.raises(SystemExit):
+            configo.environment()
 
 
 def test_with_wrong_folder_configuration(monkeypatch):
@@ -112,5 +110,5 @@ def test_with_wrong_folder_configuration(monkeypatch):
                 'SHARED_READY': 'NO_PATH',
             })
 
-        with raises(SystemExit):
-            environment(check=True)
+        with pytest.raises(SystemExit):
+            configo.environment(check=True)

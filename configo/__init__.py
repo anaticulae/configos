@@ -15,6 +15,14 @@ import os
 from configo.cache import CACHE_LARGE
 from configo.cache import CACHE_MEDIUM
 from configo.cache import CACHE_SMALL
+# directory
+from configo.directory import check_startup
+from configo.directory import environment
+from configo.directory import export
+from configo.directory import ready
+from configo.directory import share
+from configo.directory import tmp
+from configo.directory import todo
 # Document
 from configo.document import OneSideDINA4
 from configo.document import OneSideDINA5
@@ -29,13 +37,6 @@ from configo.holyvalue import load
 # Server
 from configo.server import package_address
 from configo.server import package_configuration
-# Share
-from configo.share import check_startup
-from configo.share import environment
-from configo.share import export
-from configo.share import ready
-from configo.share import share
-from configo.share import todo
 
 __version__ = '0.2.2'
 
