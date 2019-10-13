@@ -296,20 +296,18 @@ def codelines(sourcecode: str):
     lines = {}
     tokenized = list(token(sourcecode))
 
-    for index, item in enumerate(tokenized):
-        print(item)
+    for index, item in enumerate(tokenized[1:], start=1):
         if item.type != 1:
             # skip comments etc.
             continue
         stripped = item.line.strip()
         holycomment = ''
-        if index > 0:
-            # TODO: SUPPORT MULTILINE COMMENT
-            # look one line back to check if holy value has a holy comment
-            if tokenized[index - 1].type == 56:  # comment
-                holycomment = tokenized[index - 1].line
-                holycomment = holycomment.replace('#', '', 1)
-                holycomment = holycomment.strip()
+        # TODO: SUPPORT MULTILINE COMMENT
+        # look one line back to check if holy value has a holy comment
+        if tokenized[index - 1].type == 56:  # comment
+            holycomment = tokenized[index - 1].line
+            holycomment = holycomment.replace('#', '', 1)
+            holycomment = holycomment.strip()
         if lines.get(stripped, None):
             # do not overwrite holy comments
             continue
