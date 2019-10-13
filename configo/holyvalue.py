@@ -19,8 +19,6 @@ import typing
 
 import utila
 
-import configo.utils
-
 EXT = 'hv'
 
 DATABASE = None
@@ -237,13 +235,11 @@ def generate(path: str) -> str:
     """
     assert os.path.exists(path), f'path does not exists: {path}'
     result = {}
-    with configo.utils.chdir(path):
+    with utila.chdir(path):
         files = list(glob.glob(os.path.join(path, '**/*.py'), recursive=True))
         for item in files:
             relative = utila.make_relative(item, path)
-            # TODO: REPLACE WITH MAKE_PACKAGE
-            relative = relative.replace('.py', '')
-            relative = relative.replace('/', '.')
+            relative = utila.make_package(relative)
             code = utila.file_read(item)
             parsed = holyvalue_from_file(code)
             if parsed:

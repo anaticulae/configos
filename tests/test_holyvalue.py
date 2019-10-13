@@ -121,21 +121,19 @@ def test_holyvalue_invalid_limit(datatype):
 
 
 def test_holyvalue_generate_configuration():
-    # NOTE: very weak unit test
     config = configo.generate(HVEXAMPLE)
     assert config is not None
     assert len(config) > 200, 'no enough content'
 
     keys = ['FIRST', 'SECOND', 'THIRD', 'LEVEL_UP', 'HELMUT']
     for key in keys:
-        # TODO: replace with utila.raw
-        assert f'{key} = ' in config, print(config)
+        assert f'{key} = ' in config, utila.log_raw(config)
 
     variables = ['default', 'limit', 'datatype', 'comment']
     for variable in variables:
         assert f'# {variable}:' in config, print(config)
 
-    assert config.count('#') >= 5, print(config)
+    assert config.count('#') >= 5, utila.log_raw(config)
 
 
 def test_holyvalue_generate_and_load(testdir):

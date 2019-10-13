@@ -7,22 +7,4 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-import contextlib
-import os
-
-
-@contextlib.contextmanager
-def chdir(path: str):
-    # TODO: MOVE TO UTILA
-    assert os.path.exists(path)
-
-    before = os.getcwd()
-
-    os.chdir(path)
-    try:
-        yield
-    except Exception:
-        os.chdir(before)
-        raise
-    else:
-        os.chdir(before)
+# NOTE: PUT EXPERIMENTAL CODE HERE
