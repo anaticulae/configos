@@ -38,6 +38,6 @@ from configo.holyvalue import load
 from configo.server import package_address
 from configo.server import package_configuration
 
-__version__ = '0.3.0'
+__version__ = '0.3.1'
 
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
