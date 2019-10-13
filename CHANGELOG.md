@@ -2,6 +2,18 @@
 
 Every noteable change is logged here.
 
+## v0.3.0
+
+### Feature
+
+* add single line comment to configuration generator (2375e843f034)
+* add method to generate configuration out of source (b1956694ce49)
+* add first holy value concept (9c63596d980f)
+
+### Documentation
+
+* add release plan for increments 0.3 and 0.4 (7634978ce8f9)
+
 ## v0.2.2
 
 ## v0.2.1
