@@ -145,3 +145,14 @@ def test_holyvalue_generate_and_load(testdir):
 
     parsed = configo.holyvalue.parse(root, 'config')
     assert parsed
+
+
+@pytest.mark.xfail(reason='convertion of limit is not supported yet')
+@pytest.mark.usefixtures('default_one')  # TODO: REMOVE AFTER HAVING DEFAULT ONE
+def test_holyvalue_evaluate_percent_plus():
+    with pytest.raises(AssertionError):
+        hv = configo.HV(
+            default=15,
+            limit=10,
+            datatype=configo.DataType.PERCENT_PLUS,
+        )
