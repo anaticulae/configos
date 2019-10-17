@@ -6,14 +6,15 @@
 # use or distribution is an offensive act against international law and may
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
-"""Access location of global share:
+"""Access path's of global data share. These locations are stored in
+global environment variables:
 
-The structure of these loations is:
++ SHARED_READY
++ SHARED_SPACE
++ SHARED_TMP
++ SHARED_TODO
 
-    +common
-    +--todo
-    +--ready
-
+Use `configo.export()` to change these variables.
 """
 import os
 
