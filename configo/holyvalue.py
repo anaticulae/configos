@@ -71,6 +71,7 @@ def holyvalue(
         # avoid that default is higher than limit
         assert default <= limit, f'default: {default} higher than limit: {limit}'
 
+    assert database(), 'could not access database'
     data = database().get(group=group, variable=name, default=default)
 
     data = convert(data, datatype=datatype)
@@ -338,3 +339,5 @@ HV_FLOAT_PLUS = functools.partial(holyvalue, datatype=DataType.FLOAT_PLUS)
 
 HV_PERCENT = functools.partial(holyvalue, datatype=DataType.PERCENT)
 HV_PERCENT_PLUS = functools.partial(holyvalue, datatype=DataType.PERCENT_PLUS)
+
+DATABASE = DataBase(path=None, current=DataSet())
