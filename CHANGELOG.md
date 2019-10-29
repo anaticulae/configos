@@ -2,6 +2,24 @@
 
 Every noteable change is logged here.
 
+## v0.4.0
+
+### Feature
+
+* ensure to detect correct group and hv name (614e4b90c913)
+* extend information of invalid holyvalue exception (7cb33c49de9e)
+* validate holy value at runtime (dbfbb632f171)
+* use default database to avoid loading default database (1688970ced90)
+* extend API to make calls less verbose/to write fewer code (b91844d90a0d)
+
+### Fix
+
+* ensure that default value is lower equal than limit (e0e08dd68a78)
+
+### Documentation
+
+* describe how to use this exception (264c806d0879)
+
 ## v0.3.3
 
 ### Documentation
