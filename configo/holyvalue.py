@@ -10,6 +10,7 @@ import configparser
 import contextlib
 import dataclasses
 import enum
+import functools
 import glob
 import inspect
 import io
@@ -63,7 +64,8 @@ def holyvalue(
         # determine variable out of code
         levelup = inspect.stack(context=10)[1].code_context
         code = utila.NEWLINE.join(levelup)
-        matched = re.search(r'(?P<variable>[\w\d_]+) = configo\.HV\(', code)
+        pattern = r'(?P<variable>[\w\d_]+) = configo\.HV[\w\d_]*\('
+        matched = re.search(pattern, code)
         name = str(matched['variable']).strip().upper()
 
     if group is None:
@@ -282,7 +284,9 @@ def holyvalue_from_file(sourcecode: str):
     result = {}
     for line, comment in lines.items():
         # TODO: THINK ABOUT USING TOKEN
-        pattern = r'\b(?P<variable>[\w\d_]+) = configo\.HV\((?P<config>.*)\)'
+        # TODO: UNIT REGEX PATTERN
+        pattern = (r'\b(?P<variable>[\w\d_]+) = '
+                   r'configo\.HV[\w\d_]*\((?P<config>.*)\)')
         matched = re.match(pattern, line, re.MULTILINE)
         if not matched:
             continue
@@ -327,3 +331,15 @@ def token(code: str):
     buffer = io.BytesIO(code.encode(utila.UTF8)).readline
     source = tokenize.tokenize(buffer)
     return source
+
+
+HV = holyvalue
+
+HV_INT = functools.partial(holyvalue, datatype=DataType.INT)
+HV_INT_PLUS = functools.partial(holyvalue, datatype=DataType.INT_PLUS)
+
+HV_FLOAT = functools.partial(holyvalue, datatype=DataType.FLOAT)
+HV_FLOAT_PLUS = functools.partial(holyvalue, datatype=DataType.FLOAT_PLUS)
+
+HV_PERCENT = functools.partial(holyvalue, datatype=DataType.PERCENT)
+HV_PERCENT_PLUS = functools.partial(holyvalue, datatype=DataType.PERCENT_PLUS)

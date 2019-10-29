@@ -156,3 +156,8 @@ def test_holyvalue_evaluate_percent_plus():
             limit=10,
             datatype=configo.DataType.PERCENT_PLUS,
         )
+
+
+@pytest.mark.usefixtures('default_one')  # TODO: REMOVE AFTER HAVING DEFAULT ONE
+def test_holyvalue_less_verbose_api():
+    _ = configo.HV_INT_PLUS(default=5)
