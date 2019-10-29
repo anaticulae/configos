@@ -161,10 +161,12 @@ def test_holyvalue_default_database():
     hello = configo.HV_INT_PLUS(default=5).value  # pylint:disable=W0612
 
 
-def test_holyvalue_right_hand_evaluation():
-    configo.HV(
+def test_holyvalue_right_hand_evaluation_name_and_group():
+    abc = configo.HV(
         name='alpha',
         default=15,
         limit=120,
         datatype=configo.DataType.PERCENT_PLUS,
     )
+    assert abc.name == 'alpha'
+    assert abc.group == 'tests.test_holyvalue'

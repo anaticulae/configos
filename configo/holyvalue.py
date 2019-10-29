@@ -53,7 +53,6 @@ def holyvalue(
 
     TODO: MAKE method update able/facade/callable
     """
-    frame = inspect.currentframe()
     if name is None:
         # TODO: NOT VERY STABLE/ DIRTY
         # determine variable out of code
@@ -65,7 +64,11 @@ def holyvalue(
 
     if group is None:
         # determine call package
-        group = inspect.getmodule(frame).__name__
+        frame = inspect.currentframe()
+        parent = frame.f_back  # get invoker
+        group = inspect.getmodule(parent).__name__
+
+    hvname, hvgroup = name, group
 
     class HolyValue:
 
@@ -88,6 +91,14 @@ def holyvalue(
                 default=default,
                 limit=limit,
             )
+
+        @property
+        def name(self):
+            return hvname
+
+        @property
+        def group(self):
+            return hvgroup
 
         @property
         def _data(self):
