@@ -74,8 +74,9 @@ def holyvalue(
             assert database(), 'could not access database'
             data = self._data
             if not self.valid:
-                msg = (f'invalid holyvalue {data}; default:{default};'
-                       f' limit:{limit}; datatype: {datatype}')
+                msg = (f'invalid holyvalue: {group}:{name};\n'
+                       f'value:{data}; default:{default};\n'
+                       f'limit:{limit}; datatype:{datatype}')
                 raise InvalidHolyValue(msg)
             return data
 
