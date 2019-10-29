@@ -11,4 +11,4 @@ import configo
 
 # I am an
 # example docstring
-CONFIGURATION = configo.HV(variable='Helmut', limit=1000)
+CONFIGURATION = configo.HV(name='Helmut', limit=1000)

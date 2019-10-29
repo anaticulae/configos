@@ -38,7 +38,7 @@ def test_holyvalue_load_databas():
 
 @pytest.mark.usefixtures('default_one')
 def test_holyvalue_hv():
-    distance = configo.HV(group='groupme.footer.header', variable='DISTANCE')
+    distance = configo.HV(group='groupme.footer.header', name='DISTANCE')
     # No convertion is done, cause of not defining `datatype`
     assert distance == '50022', distance
 
@@ -93,14 +93,14 @@ def test_holyvalue_invalid_variable():
     with pytest.raises(configo.MissingHolyValue):
         configo.HV(
             group='groupme.footer.header',
-            variable='does_not_exists',
+            name='does_not_exists',
         )
 
     # use default value instead of throwing MissingHolyValue-Exception
     default = 100
     got = configo.HV(
         group='groupme.footer.header',
-        variable='does_not_exists',
+        name='does_not_exists',
         default=100,
     )
     assert got == default
@@ -114,13 +114,14 @@ def test_holyvalue_invalid_limit(datatype):
     with pytest.raises(configo.InvalidHolyValue):
         configo.HV(
             group='groupme.footer.header',
-            variable='distance',
+            name='distance',
             datatype=datatype,
             limit=100,
         )
 
 
 def test_holyvalue_generate_configuration():
+    """If this test fails, check holyvalue() signature and config generator"""
     config = configo.generate(HVEXAMPLE)
     assert config is not None
     assert len(config) > 200, 'no enough content'

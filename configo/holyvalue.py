@@ -33,7 +33,7 @@ class MissingHolyValue(ValueError):
 
 
 def holyvalue(
-        variable: str = None,
+        name: str = None,
         group: str = None,
         default=None,
         limit=None,
@@ -57,19 +57,19 @@ def holyvalue(
     TODO: MAKE method update able/facade/callable
     """
     frame = inspect.currentframe()
-    if variable is None:
+    if name is None:
         # TODO: NOT VERY STABLE/ DIRTY
         # determine variable out of code
         levelup = inspect.stack(context=10)[1].code_context
         code = utila.NEWLINE.join(levelup)
         matched = re.search(r'(?P<variable>[\w\d_]+) = configo\.HV\(', code)
-        variable = str(matched['variable']).strip().upper()
+        name = str(matched['variable']).strip().upper()
 
     if group is None:
         # determine call package
         group = inspect.getmodule(frame).__name__
 
-    data = database().get(group=group, variable=variable, default=default)
+    data = database().get(group=group, variable=name, default=default)
 
     data = convert(data, datatype=datatype)
 
@@ -245,6 +245,7 @@ def generate(path: str) -> str:
             if parsed:
                 result[relative] = parsed
     rootpackage = os.path.split(path)[1]
+    signature = list(inspect.signature(holyvalue).parameters)
 
     raw = []
     for package in sorted(result.keys()):
@@ -252,8 +253,10 @@ def generate(path: str) -> str:
         for variable, values in result[package].items():
             for item, value in values.items():
                 raw.append(f'# {item}:{value}')
-            variable = values.get('variable', variable)
+            assert 'name' in signature, 'require name'
+            variable = values.get('name', variable)
             variable = variable.replace("'", '').upper()
+            assert 'default' in signature, 'require default'
             default = values.get('default', 'None')
             raw.append(f"{variable} = {default}")
             raw.append('')
