@@ -2,6 +2,13 @@
 
 Every noteable change is logged here.
 
+## v0.3.3
+
+### Documentation
+
+* update directory documentation (f4c817452652)
+* add idea of default dataset (abcc494d0134)
+
 ## v0.3.2
 
 ## v0.3.1
