@@ -7,6 +7,7 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 import configparser
+import contextlib
 import dataclasses
 import enum
 import glob
@@ -68,6 +69,10 @@ def holyvalue(
     if group is None:
         # determine call package
         group = inspect.getmodule(frame).__name__
+
+    with contextlib.suppress(TypeError):
+        # avoid that default is higher than limit
+        assert default <= limit, f'default: {default} higher than limit: {limit}'
 
     data = database().get(group=group, variable=name, default=default)
 
