@@ -13,4 +13,4 @@ class InvalidHolyValue(ValueError):
 
 
 class MissingHolyValue(ValueError):
-    pass
+    """Definine missing holy value name"""
