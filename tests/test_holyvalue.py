@@ -159,3 +159,12 @@ def test_holyvalue_less_verbose_api():
 
 def test_holyvalue_default_database():
     hello = configo.HV_INT_PLUS(default=5).value  # pylint:disable=W0612
+
+
+def test_holyvalue_right_hand_evaluation():
+    configo.HV(
+        name='alpha',
+        default=15,
+        limit=120,
+        datatype=configo.DataType.PERCENT_PLUS,
+    )
