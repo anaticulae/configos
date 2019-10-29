@@ -64,12 +64,10 @@ def test_holyvalue_hv_group_from_module(monkeypatch):
     assert distance == 50022, distance
 
 
-@pytest.mark.usefixtures('default_one')
 def test_holyvalue_hv_use_default(monkeypatch, capsys):
     """Test returning `default` value for non defined variables and
     inform developer about this."""
     default = 'Helm'
-
     with monkeypatch.context() as context:
         context.setattr(utila.logger, 'LEVEL', utila.Level.DEBUG)
         result = configo.HV(default=default)
@@ -80,13 +78,11 @@ def test_holyvalue_hv_use_default(monkeypatch, capsys):
     assert 'invalid' in out, out
 
 
-@pytest.mark.usefixtures('default_one')
 def test_holyvalue_hv_use_no_default():
-    with pytest.raises(ValueError):
+    with pytest.raises(configo.MissingHolyValue):
         _ = configo.HV()
 
 
-@pytest.mark.usefixtures('default_one')
 def test_holyvalue_invalid_variable():
     """Test that variable not exists"""
 
@@ -116,7 +112,7 @@ def test_holyvalue_invalid_limit(datatype):
             group='groupme.footer.header',
             name='distance',
             datatype=datatype,
-            limit=100,
+            limit=100,  # LIMIT IS HIGHER THAN DEFINED 50022 in first_one.hv
         )
 
 
@@ -148,7 +144,6 @@ def test_holyvalue_generate_and_load(testdir):
     assert parsed
 
 
-@pytest.mark.usefixtures('default_one')  # TODO: REMOVE AFTER HAVING DEFAULT ONE
 def test_holyvalue_evaluate_percent_plus():
     with pytest.raises(AssertionError):
         hello = configo.HV(  # pylint:disable=unused-variable
@@ -158,10 +153,9 @@ def test_holyvalue_evaluate_percent_plus():
         )
 
 
-@pytest.mark.usefixtures('default_one')  # TODO: REMOVE AFTER HAVING DEFAULT ONE
 def test_holyvalue_less_verbose_api():
     _ = configo.HV_INT_PLUS(default=5)
 
 
 def testholyvalue_default_database():
-    hello = configo.HV_INT_PLUS(default=5)
+    hello = configo.HV_INT_PLUS(default=5)  # pylint:disable=unused-variable
