@@ -48,11 +48,8 @@ def test_holyvalue_hv_group_from_module(monkeypatch):
     """Test to determine variable out of module and variable assignment"""
 
     def getmodule(__=None, _=None):  # pylint:disable=W0613
-        # TODO: realy bad mock
-        class Back:  # pylint:disable=R0903
-            __name__ = 'groupme.footer.header'
-
-        return Back()
+        # patch object.__name__
+        return type('groupme.footer.header', (tuple,), {})
 
     with monkeypatch.context() as context:
         context.setattr(inspect, 'getmodule', getmodule)
