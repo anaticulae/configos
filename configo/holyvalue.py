@@ -21,17 +21,12 @@ import typing
 
 import utila
 
+from configo.exception import InvalidHolyValue
+from configo.exception import MissingHolyValue
+
 EXT = 'hv'
 
 DATABASE = None
-
-
-class InvalidHolyValue(ValueError):
-    pass
-
-
-class MissingHolyValue(ValueError):
-    pass
 
 
 def holyvalue(

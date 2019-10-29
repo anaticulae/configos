@@ -26,6 +26,9 @@ from configo.directory import todo
 # Document
 from configo.document import OneSideDINA4
 from configo.document import OneSideDINA5
+# Exception
+from configo.exception import InvalidHolyValue
+from configo.exception import MissingHolyValue
 # Holy
 from configo.holyvalue import HV
 from configo.holyvalue import HV_FLOAT
@@ -35,8 +38,6 @@ from configo.holyvalue import HV_INT_PLUS
 from configo.holyvalue import HV_PERCENT
 from configo.holyvalue import HV_PERCENT_PLUS
 from configo.holyvalue import DataType
-from configo.holyvalue import InvalidHolyValue
-from configo.holyvalue import MissingHolyValue
 from configo.holyvalue import generate
 from configo.holyvalue import init
 from configo.holyvalue import load
