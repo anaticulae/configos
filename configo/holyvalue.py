@@ -67,20 +67,38 @@ def holyvalue(
         # determine call package
         group = inspect.getmodule(frame).__name__
 
-    with contextlib.suppress(TypeError):
-        # avoid that default is higher than limit
-        assert default <= limit, f'default: {default} higher than limit: {limit}'
+    class HolyValue:
 
-    assert database(), 'could not access database'
-    data = database().get(group=group, variable=name, default=default)
+        @property
+        def value(self):
+            assert database(), 'could not access database'
+            data = self._data
+            if not self.valid:
+                msg = (f'invalid holyvalue {data}; default:{default};'
+                       f' limit:{limit}; datatype: {datatype}')
+                raise InvalidHolyValue(msg)
+            return data
 
-    data = convert(data, datatype=datatype)
+        @property
+        def valid(self):
+            return validate(
+                self._data,
+                datatype=datatype,
+                default=default,
+                limit=limit,
+            )
 
-    if not validate(data, datatype=datatype, limit=limit):
-        msg = f'invalid holyvalue {data}; limit: {limit}; datatype: {datatype}'
-        raise InvalidHolyValue(msg)
+        @property
+        def _data(self):
+            data = database().get(
+                group=group,
+                variable=name,
+                default=default,
+            )
+            data = convert(data, datatype=datatype)
+            return data
 
-    return data
+    return HolyValue()
 
 
 def init(path: str):
@@ -95,7 +113,11 @@ def load(name: str):
     database().load(name)
 
 
-def validate(data, datatype=None, limit=None):
+def validate(data, datatype=None, default=None, limit=None):
+    with contextlib.suppress(TypeError):
+        # avoid that default is higher than limit
+        if default > limit:
+            return False
     datatype = str(datatype)
     if 'PLUS' in datatype:
         if data < 0.0:

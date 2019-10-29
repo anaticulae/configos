@@ -38,7 +38,7 @@ def test_holyvalue_load_databas():
 
 @pytest.mark.usefixtures('default_one')
 def test_holyvalue_hv():
-    distance = configo.HV(group='groupme.footer.header', name='DISTANCE')
+    distance = configo.HV(group='groupme.footer.header', name='DISTANCE').value
     # No convertion is done, cause of not defining `datatype`
     assert distance == '50022', distance
 
@@ -59,7 +59,7 @@ def test_holyvalue_hv_group_from_module(monkeypatch):
         distance = configo.HV(
             datatype=configo.holyvalue.DataType.INT_PLUS,
             limit=60000,
-        )
+        ).value
 
     assert distance == 50022, distance
 
@@ -70,7 +70,7 @@ def test_holyvalue_hv_use_default(monkeypatch, capsys):
     default = 'Helm'
     with monkeypatch.context() as context:
         context.setattr(utila.logger, 'LEVEL', utila.Level.DEBUG)
-        result = configo.HV(default=default)
+        result = configo.HV(default=default).value
     assert result == default
 
     # ensure to log warning
@@ -80,7 +80,7 @@ def test_holyvalue_hv_use_default(monkeypatch, capsys):
 
 def test_holyvalue_hv_use_no_default():
     with pytest.raises(configo.MissingHolyValue):
-        _ = configo.HV()
+        _ = configo.HV().value
 
 
 def test_holyvalue_invalid_variable():
@@ -90,7 +90,7 @@ def test_holyvalue_invalid_variable():
         configo.HV(
             group='groupme.footer.header',
             name='does_not_exists',
-        )
+        ).value
 
     # use default value instead of throwing MissingHolyValue-Exception
     default = 100
@@ -98,7 +98,7 @@ def test_holyvalue_invalid_variable():
         group='groupme.footer.header',
         name='does_not_exists',
         default=100,
-    )
+    ).value
     assert got == default
 
 
@@ -113,7 +113,7 @@ def test_holyvalue_invalid_limit(datatype):
             name='distance',
             datatype=datatype,
             limit=100,  # LIMIT IS HIGHER THAN DEFINED 50022 in first_one.hv
-        )
+        ).value
 
 
 def test_holyvalue_generate_configuration():
@@ -145,17 +145,17 @@ def test_holyvalue_generate_and_load(testdir):
 
 
 def test_holyvalue_evaluate_percent_plus():
-    with pytest.raises(AssertionError):
+    with pytest.raises(configo.InvalidHolyValue):
         hello = configo.HV(  # pylint:disable=unused-variable
             default=15,
             limit=10,
             datatype=configo.DataType.PERCENT_PLUS,
-        )
+        ).value
 
 
 def test_holyvalue_less_verbose_api():
-    _ = configo.HV_INT_PLUS(default=5)
+    access = configo.HV_INT_PLUS(default=5).value  # pylint:disable=W0612
 
 
-def testholyvalue_default_database():
-    hello = configo.HV_INT_PLUS(default=5)  # pylint:disable=unused-variable
+def test_holyvalue_default_database():
+    hello = configo.HV_INT_PLUS(default=5).value  # pylint:disable=W0612
