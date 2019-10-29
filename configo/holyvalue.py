@@ -170,7 +170,42 @@ class DataBase:
         return _var.value
 
 
-def parse(path, name: str = None):
+class DataType(enum.Enum):
+    INT = enum.auto()
+    INT_PLUS = enum.auto()
+
+    FLOAT = enum.auto()
+    FLOAT_PLUS = enum.auto()
+
+    PERCENT = enum.auto()
+    PERCENT_PLUS = enum.auto()
+
+
+@dataclasses.dataclass
+class Datum:
+    name: str = None
+    value: object = None
+    description: str = None
+    datatype: DataType = None
+    limit = None
+    unit: str = None
+
+
+@dataclasses.dataclass
+class Group:
+
+    name: str = None
+    data: typing.Dict[str, Datum] = dataclasses.field(default_factory=dict)
+
+
+@dataclasses.dataclass
+class DataSet:
+
+    name: str = None
+    data: typing.Dict[str, Group] = dataclasses.field(default_factory=dict)
+
+
+def parse(path, name: str = None) -> DataSet:
     assert os.path.exists(path), f'path does not exists: {path}'
     datapath = os.path.join(path, f'{name}.{EXT}')
     assert os.path.exists(datapath), f'dataset: {name} does not exists'
@@ -190,41 +225,6 @@ def parse(path, name: str = None):
             group.data[datakey] = datum  # pylint:disable=E1137
         dataset.data[groupname] = group  # pylint:disable=E1137
     return dataset
-
-
-class DataType(enum.Enum):
-    INT = enum.auto()
-    INT_PLUS = enum.auto()
-
-    FLOAT = enum.auto()
-    FLOAT_PLUS = enum.auto()
-
-    PERCENT = enum.auto()
-    PERCENT_PLUS = enum.auto()
-
-
-@dataclasses.dataclass  # pylint:disable=R0903
-class Datum:
-    name: str = None
-    value: object = None
-    description: str = None
-    datatype: DataType = None
-    limit = None
-    unit: str = None
-
-
-@dataclasses.dataclass  # pylint:disable=R0903
-class Group:
-
-    name: str = None
-    data: typing.Dict[str, Datum] = dataclasses.field(default_factory=dict)
-
-
-@dataclasses.dataclass  # pylint:disable=R0903
-class DataSet:
-
-    name: str = None
-    data: typing.Dict[str, Group] = dataclasses.field(default_factory=dict)
 
 
 def generate(path: str) -> str:
