@@ -17,3 +17,5 @@ Store upcomming features here.
 * [ ] update generated configuration file
 
 * [ ] console application to generate and validate configuration
+
+* [ ] add holy table to have a more complex holy value
