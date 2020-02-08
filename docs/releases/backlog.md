@@ -19,3 +19,5 @@ Store upcomming features here.
 * [ ] console application to generate and validate configuration
 
 * [ ] add holy table to have a more complex holy value
+
+* support __lmul__, etc. to simplify using `HV.value * 10.6` to `HV * 10.6`
