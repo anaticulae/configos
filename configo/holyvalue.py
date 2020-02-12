@@ -51,7 +51,7 @@ def holyvalue(
         InvalidHolyValue: if value of configuration file hits requirements
         MissingHolyValue: if value is not defined and no default one is defined
     Returns:
-        Defined holyvalue in `config_name.hv` or `default` one.
+        Defined HolyValue in `config_name.hv` or `default` one.
 
     TODO: MAKE method update able/facade/callable
     """
@@ -311,14 +311,14 @@ def generate(path: str) -> str:
     return utila.NEWLINE.join(raw)
 
 
-def holyvalue_from_file(sourcecode: str):
-    """Parse holyvalues from `sourcecode`
+def holyvalue_from_file(sourcecode: str) -> dict:
+    """Parse holyvalues from `sourcecode`.
 
     Args:
         sourcecode(str): python source code file
     Returns:
-        dictonary with holyvalues and further configuration parameter,
-        eg. limit, variable, group etc.
+        Dictionary with holyvalues and further configuration parameter,
+        e.g. limit, variable, group etc.
     """
     lines = codelines(sourcecode)
     result = {}
@@ -344,7 +344,7 @@ def holyvalue_from_file(sourcecode: str):
 
 
 def codelines(sourcecode: str):
-    """Remove comments etc. out of `sourcecode`"""
+    """Remove comments etc. out of `sourcecode`."""
     lines = {}
     tokenized = list(token(sourcecode))
 
