@@ -2,6 +2,19 @@
 
 Every noteable change is logged here.
 
+## v0.5.0
+
+### Feature
+
+* add dunder methods to ease using of HolyValues (703ffe3b068a)
+* ensure that holyvalue interface is used in a correct way (51c93626a57e)
+
+### Documentation
+
+* extend interface documentation (9aee69d38824)
+* add general doc structure (1124d95e29ea)
+* extend interface documentation (51050a59f084)
+
 ## v0.4.4
 
 ## v0.4.3
