@@ -72,49 +72,55 @@ def holyvalue(
         parent = frame.f_back  # get invoker
         group = inspect.getmodule(parent).__name__
 
-    hvname, hvgroup = name, group
+    result = HolyValue(name, group, datatype, default, limit)
+    return result
 
-    class HolyValue:
 
-        @property
-        def value(self):
-            assert database(), 'could not access database'
-            data = self._data
-            if not self.valid:
-                msg = (f'invalid holyvalue: {group}:{name};\n'
-                       f'value:{data}; default:{default};\n'
-                       f'limit:{limit}; datatype:{datatype}')
-                raise InvalidHolyValue(msg)
-            return data
+class HolyValue:
 
-        @property
-        def valid(self):
-            return validate(
-                self._data,
-                datatype=datatype,
-                default=default,
-                limit=limit,
-            )
+    def __init__(self, name, group, datatype, default, limit):
+        self.hvname = name
+        self.hvgroup = group
+        self.datatype = datatype
+        self.default = default
+        self.limit = limit
 
-        @property
-        def name(self):
-            return hvname
+    @property
+    def value(self):
+        assert database(), 'could not access database'
+        if not self.valid:
+            msg = (f'invalid holyvalue: {self.group}:{self.name};\n'
+                   f'value:{self.data}; default:{self.default};\n'
+                   f'limit:{self.limit}; datatype:{self.datatype}')
+            raise InvalidHolyValue(msg)
+        return self.data
 
-        @property
-        def group(self):
-            return hvgroup
+    @property
+    def valid(self):
+        return validate(
+            self.data,
+            datatype=self.datatype,
+            default=self.default,
+            limit=self.limit,
+        )
 
-        @property
-        def _data(self):
-            data = database().get(
-                group=group,
-                variable=name,
-                default=default,
-            )
-            data = convert(data, datatype=datatype)
-            return data
+    @property
+    def name(self):
+        return self.hvname
 
-    return HolyValue()
+    @property
+    def group(self):
+        return self.hvgroup
+
+    @property
+    def data(self):
+        result = database().get(
+            group=self.group,
+            variable=self.name,
+            default=self.default,
+        )
+        result = convert(result, datatype=self.datatype)
+        return result
 
 
 def init(path: str):
