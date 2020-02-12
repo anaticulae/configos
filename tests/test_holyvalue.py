@@ -167,3 +167,52 @@ def test_holyvalue_right_hand_evaluation_name_and_group():
     )
     assert abc.name == 'alpha'
     assert abc.group == 'tests.test_holyvalue'
+
+
+def test_holyvalue_operation():
+    smaller = configo.HV(
+        default=5,
+        name='smaller',
+        datatype=configo.DataType.INT,
+    )
+    value = configo.HV(
+        default=15,
+        name='alpha',
+        datatype=configo.DataType.INT,
+    )
+    string = configo.HV(
+        default='string',
+        name='alpha',
+        datatype='string',
+    )
+    assert value + 15 == 30
+    assert value + value == 30
+
+    assert value - 15 == 0
+    assert value - value == 0
+
+    assert value * 15 == 15 * 15
+    assert value * value == 15 * 15
+
+    assert value / 15 == 1
+    assert value / value == 1
+
+    assert value % 2 == 1
+    assert value % value == 0
+
+    assert value >= (value * 0.5)
+    assert smaller <= value  # pylint:disable=comparison-with-itself
+
+    assert value == value  # pylint:disable=comparison-with-itself
+
+    assert value > (value * 0.5)
+    assert smaller < (value * 2)
+
+    assert (value * 2) > value
+    assert (value * 2) >= value
+
+    assert value != (value * 2)
+    assert value
+    assert value is value  # pylint:disable=comparison-with-itself
+
+    assert string == string  # pylint:disable=comparison-with-itself

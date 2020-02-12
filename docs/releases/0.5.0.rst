@@ -11,7 +11,7 @@ Docs
 Usage
 -----
 
-* [ ] support __lmul__, etc. to simplify using `HV.value * 10.6` to `HV * 10.6`
+* [x] support __lmul__, etc. to simplify using `HV.value * 10.6` to `HV * 10.6`
 
 Maintenance
 ---------

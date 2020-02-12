@@ -122,6 +122,48 @@ class HolyValue:
         result = convert(result, datatype=self.datatype)
         return result
 
+    # TODO: REDUCE THIS AMOUT OF CODE
+
+    def __add__(self, other):
+        with contextlib.suppress(TypeError):
+            return self.value + other
+        return self.value + other.value
+
+    def __sub__(self, other):
+        with contextlib.suppress(TypeError):
+            return self.value - other
+        return self.value - other.value
+
+    def __mul__(self, other):
+        with contextlib.suppress(TypeError):
+            return self.value * other
+        return self.value * other.value
+
+    def __truediv__(self, other):
+        with contextlib.suppress(TypeError):
+            return self.value / other
+        return self.value / other.value
+
+    def __mod__(self, other):
+        with contextlib.suppress(TypeError):
+            return self.value % other
+        return self.value % other.value
+
+    def __lt__(self, other):
+        return self.value < other
+
+    def __le__(self, other):
+        return self.value <= other
+
+    def __gt__(self, other):
+        return self.value > other
+
+    def __ge__(self, other):
+        return self.value >= other
+
+    def __eq__(self, other):
+        return self.value == other
+
 
 def init(path: str):
     """Init `DATABASE` with configuration `path`."""
