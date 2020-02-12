@@ -27,8 +27,8 @@ COMMON = 'SHARED_SPACE'
 TMP = 'SHARED_TMP'
 
 
-def ready(check: bool = False):
-    """Return path to finished jobs
+def ready(check: bool = False) -> str:
+    """Return path to finished jobs.
 
     Args:
         check(bool): check existence of path
@@ -41,8 +41,8 @@ def ready(check: bool = False):
     return _path_from_env(READY, check=check)
 
 
-def todo(check: bool = False):
-    """Return path todo with jobs to work
+def todo(check: bool = False) -> str:
+    """Return path todo with jobs to work.
 
     Args:
         check(bool): check existence of path
@@ -55,8 +55,8 @@ def todo(check: bool = False):
     return _path_from_env(TODO, check=check)
 
 
-def share(check: bool = False):
-    """Return path to shared folder
+def share(check: bool = False) -> str:
+    """Return path to shared folder.
 
     Args:
         check(bool): check existence of path
@@ -69,8 +69,8 @@ def share(check: bool = False):
     return _path_from_env(COMMON, check=check)
 
 
-def tmp(check: bool = False):
-    """Return path to tmp folder
+def tmp(check: bool = False) -> str:
+    """Return path to tmp folder.
 
     Args:
         check(bool): check existence of path
@@ -91,7 +91,7 @@ def export(common: str, todo: str, ready: str):  # pylint:disable=W0621
 
 
 def environment(check: bool = False):
-    """Return `SHARED_TODO` and `SHARED_READY` folder"""
+    """Return `SHARED_TODO` and `SHARED_READY` folder."""
     todo_ = todo(check=check)
     ready_ = ready(check=check)
     common = share(check=check)
@@ -100,7 +100,7 @@ def environment(check: bool = False):
 
 
 def _path_from_env(env: str, check: bool = False):
-    """Access global env variable"""
+    """Access global env variable."""
     assert env
     try:
         path = os.environ[env]
@@ -114,7 +114,7 @@ def _path_from_env(env: str, check: bool = False):
 
 
 def check_startup():
-    """Check that global environments are set"""
+    """Check that global environments are set."""
     ready(check=True)
     share(check=True)
     tmp(check=True)
