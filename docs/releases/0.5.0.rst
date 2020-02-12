@@ -3,19 +3,29 @@
 RP 0.5.0
 =========
 
-docs
+Docs
 ----
 
 * [x] create general doc structure
 
-code quality
+Usage
+-----
+
+* [ ] support __lmul__, etc. to simplify using `HV.value * 10.6` to `HV * 10.6`
+
+Maintenance
+---------
+
+* [ ] fix `HolyValue Definition` bug
+
+Code Quality
 ------------
 
-before
+Before
 ~~~~~~
 
 * Your code has been rated at 9.71/10
 * Total coverage: 97.83%
 
-after
+After
 ~~~~~
