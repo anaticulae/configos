@@ -30,29 +30,33 @@ DATABASE = None
 
 
 def holyvalue(
+        default=None,
+        *,
         name: str = None,
         group: str = None,
-        default=None,
         limit=None,
         datatype: 'DataType' = None,
-):
+) -> 'HolyValue':
     """Access `holyvalue` via `variable` and `group`.
 
     Args:
-        variable(str): variable name
+        default(DataType): define default variable for non defined
+                           variable to avoid updating configration to
+                           often.
+        name(str): name of holy value
         group(str): module where `var` is located
-        default: define default variable for non defined variable to
-                 avoid updating configration to often.
-        limit: limit to validate configuration file
-        datatype: convert str-based configuration file
-    Returns:
-        defined holyvalue in `config_name.hv` or `default` one
+        limit(DataType): limit to validate configuration file
+        datatype(DataType): convert str-based configuration file
     Raises:
         InvalidHolyValue: if value of configuration file hits requirements
         MissingHolyValue: if value is not defined and no default one is defined
+    Returns:
+        Defined holyvalue in `config_name.hv` or `default` one.
 
     TODO: MAKE method update able/facade/callable
     """
+    assert name is None or isinstance(name, str), f'invalid name {name}'
+    assert group is None or isinstance(group, str), f'invalid name: {group}'
     if name is None:
         # TODO: NOT VERY STABLE/ DIRTY
         # determine variable out of code

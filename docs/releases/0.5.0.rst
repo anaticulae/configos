@@ -16,7 +16,7 @@ Usage
 Maintenance
 ---------
 
-* [ ] fix `HolyValue Definition` bug
+* [x] fix `HolyValue Definition` bug
 
 Code Quality
 ------------
