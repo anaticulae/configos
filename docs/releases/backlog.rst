@@ -1,8 +1,12 @@
-# backlog
+.. _backlog:
+
+backlog
+=======
 
 Store upcomming features here.
 
-## next release
+next release
+------------
 
 * [ ] support different version of configuration files
 
@@ -10,7 +14,8 @@ Store upcomming features here.
 
 * [ ] use global configuration folder
 
-## other
+other
+-----
 
 * [ ] live updates while running application with configuration
 

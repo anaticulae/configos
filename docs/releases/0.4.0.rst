@@ -1,50 +1,55 @@
-# PR 0.4.0
+.. _0_4_0:
 
-## HolyValue
+RP 0.4.0
+=========
+
+HolyValue
+---------
 
 * [x] use default dataset to avoid initialization
 
-    ```[python]
-        configo.holyvalue.DATABASE = configo.holyvalue.DataBase(
-            __file__,
-            current=configo.holyvalue.DataSet(),
-        )
-    ```
+  .. code-block:: python
+
+    configo.holyvalue.DATABASE = configo.holyvalue.DataBase(
+        __file__,
+        current=configo.holyvalue.DataSet(),
+    )
 
 * [x] make code less verbose, covert;
 
-    ```[python]
+  .. code-block:: python
+
     MAX_FOOTERHEADER_AREA_COUNT = configo.HV(
         default=5,
         datatype=configo.DataType.INT_PLUS,
     )
-    ```
 
-    ```[python]
+  .. code-block:: python
+
     MAX_FOOTERHEADER_AREA_COUNT = configo.HV_INT_PLUS(default=5)
-    ```
 
 * [x] think about evaluating the limits on runtime, if not pytest for example
-will not start, or returnvalue of executables will be ?ambigous?.
+  will not start, or returnvalue of executables will be ?ambigous?.
 
-## FIX
+Fix
+---
 
 * [x] fix check of percent convertion. Current=15; Limit=10
 
-    ```[python]
+  .. code-block:: python
+
     HEADER_MAX_SIZE = configo.HV(
         default=15,
         limit=10,
         datatype=configo.DataType.PERCENT_PLUS,
     )
-    ```
 
 * [x] fix to detect auto generated name
 
-    ```[python]
+  .. code-block:: python
+
     configo.HV(
         default=15,
         limit=120,
         datatype=configo.DataType.PERCENT_PLUS,
     )
-    ```

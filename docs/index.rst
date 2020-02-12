@@ -1,25 +1,32 @@
-Welcome to configo
-=================================
+Welcome To Configo
+==================
+
+General
+-------
 
 .. toctree::
   :maxdepth: 1
 
-  pages/readme
+  bugs
 
+Progress
+--------
+
+.. toctree::
+  :maxdepth: 1
+
+  releases/releases
+  releases/backlog
   pages/changelog
-
-  pages/bugs
-
-  pages/todo
 
 Modules
 --------------------
 .. toctree::
-   :maxdepth: 5
+   :maxdepth: 4
 
    .tmp/modules
 
-Indices and tables
+Indices And Tables
 ==================
 
 * :ref:`genindex`

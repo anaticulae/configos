@@ -1,0 +1,66 @@
+.. _0_3_0:
+
+RP 0.3.0
+=========
+
+The current increment must deliver a running HolyValue concept.
+
+HolyValue
+---------
+
+* [x] load holyvalue out of .ini-file(.hv)
+
+* [x] generate configuration file out of source code
+
+* [x] define limits for configuration file
+
+* [x] use project configuration folder
+
+Concept
+-------
+
+Usage
+~~~~~
+
+.. code-block:: python
+
+    import configo
+    MAX_USER_COUNT = configo.HOLY('MAX_USER_COUNT', INT_PLUS, limit=100)
+
+.. code-block:: python
+
+    # set configuration base
+    configo.init('/c/project/configuration')
+
+.. code-block:: python
+
+    configo.load('groupme_minimal_v1.1.1')
+
+.. code-block:: python
+
+    configo.validate('groupme_minimal_v1.1.1')
+    configo.validate_all()
+
+Configuration
+~~~~~~~~~~~~~
+
+.. code-block:: ini
+
+    groupme.footer.fixed.MAX_FOOTER_SIZE = 100 # in pixel
+
+    [groupme.footer.fixed]
+    # support comments for every variable
+    # add units to generated .conf file, percent, pixel, mm
+    MAX_FOOTER_SIZE = 10
+
+Generation
+~~~~~~~~~~
+
+.. code-block:: python
+
+    configo.generate()
+    configo.generate('groupme_minimal_v1.1.1')
+
+.. code-block:: python
+
+    configo.list()

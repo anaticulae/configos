@@ -1,0 +1,21 @@
+.. _0_5_0:
+
+RP 0.5.0
+=========
+
+docs
+----
+
+* [x] create general doc structure
+
+code quality
+------------
+
+before
+~~~~~~
+
+* Your code has been rated at 9.71/10
+* Total coverage: 97.83%
+
+after
+~~~~~
