@@ -152,9 +152,9 @@ def convert(data, datatype=None):
     datatype = str(datatype)
     if 'INT' in datatype:
         data = int(data)
-    if 'FLOAT' in datatype:
+    elif 'FLOAT' in datatype:
         data = float(data)
-    if 'PERCENT' in datatype:
+    elif 'PERCENT' in datatype:
         data = float(data)
         data = data * 0.01
     return data
