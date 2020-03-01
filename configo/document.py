@@ -6,8 +6,10 @@
 # use or distribution is an offensive act against international law and may
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
-"""
-This class provides about the `correct` parameter of the
+"""Document Constants
+==================
+
+This class provides information about the `expected` parameter of the
 layout-checker-configuration.
 
 For the first approach, DinA4 is enough, DinA5 is included to keep supporting

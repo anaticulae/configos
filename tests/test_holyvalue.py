@@ -84,7 +84,7 @@ def test_holyvalue_invalid_variable():
     """Test that variable not exists"""
 
     with pytest.raises(configo.MissingHolyValue):
-        configo.HV(
+        _ = _ = configo.HV(
             group='groupme.footer.header',
             name='does_not_exists',
         ).value
@@ -105,7 +105,7 @@ def test_holyvalue_invalid_limit(datatype):
     """Test to determine variable out of module and variable assignment"""
 
     with pytest.raises(configo.InvalidHolyValue):
-        configo.HV(
+        _ = configo.HV(
             group='groupme.footer.header',
             name='distance',
             datatype=datatype,
