@@ -84,7 +84,7 @@ def test_holyvalue_invalid_variable():
     """Test that variable not exists"""
 
     with pytest.raises(configo.MissingHolyValue):
-        _ = _ = configo.HV(
+        _ = configo.HV(
             group='groupme.footer.header',
             name='does_not_exists',
         ).value
