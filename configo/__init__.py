@@ -23,6 +23,8 @@ from configo.directory import ready
 from configo.directory import share
 from configo.directory import tmp
 from configo.directory import todo
+# docs
+from configo.docs import docs_url
 # Document
 from configo.document import OneSideDINA4
 from configo.document import OneSideDINA5
