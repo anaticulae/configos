@@ -2,6 +2,12 @@
 
 Every noteable change is logged here.
 
+## v0.6.0
+
+### Feature
+
+* add link to generated docs (b4ac084e1c5e)
+
 ## v0.5.17
 
 ## v0.5.16
