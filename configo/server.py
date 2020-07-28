@@ -6,10 +6,10 @@
 # use or distribution is an offensive act against international law and may
 # be prosecuted under federal law. Its content is company confidential.
 #==============================================================================
+
 import os
 
-from utila import FAILURE
-from utila import error
+import utila
 
 HELPY_URL = 'HELPY_URL'
 
@@ -47,5 +47,5 @@ def package_address():
 
 
 def handle_error(msg: KeyError):
-    error('Missing global var: %s' % msg)
-    exit(FAILURE)
+    utila.error('Missing global var: %s' % msg)
+    exit(utila.FAILURE)

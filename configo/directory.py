@@ -16,10 +16,10 @@ global environment variables:
 
 Use `configo.export()` to change these variables.
 """
+
 import os
 
-from utila import FAILURE
-from utila import error
+import utila
 
 TODO = 'SHARED_TODO'
 READY = 'SHARED_READY'
@@ -105,12 +105,12 @@ def _path_from_env(env: str, check: bool = False):
     try:
         path = os.environ[env]
         if check and not os.path.exists(path):
-            error('Path does not exists: %s' % path)
-            exit(FAILURE)
+            utila.error('Path does not exists: %s' % path)
+            exit(utila.FAILURE)
         return path
     except KeyError:
-        error('Missing environment var `%s`' % env)
-        exit(FAILURE)
+        utila.error('Missing environment var `%s`' % env)
+        exit(utila.FAILURE)
 
 
 def check_startup():

@@ -16,11 +16,11 @@ For the first approach, DinA4 is enough, DinA5 is included to keep supporting
 different page formats and pageconfiguration(oneside/twoside) in mind.
 """
 
-from collections import namedtuple
-from dataclasses import dataclass
+import collections
+import dataclasses
 
-PageSize = namedtuple('PageSize', 'width height')
-PageBorder = namedtuple('PageBorder', 'left right top bottom')
+PageSize = collections.namedtuple('PageSize', 'width height')
+PageBorder = collections.namedtuple('PageBorder', 'left right top bottom')
 
 DINA4 = PageSize(210, 297)
 DINA5 = PageSize(148, 210)
@@ -32,7 +32,7 @@ BORDER_DINA4 = PageBorder(40, 20, 40, 20)
 # TODO: Make configuration readonly?
 
 
-@dataclass
+@dataclasses.dataclass
 class DocumentConfiguration:
     """Base class of all document configuration"""
     pagesize: PageSize = None

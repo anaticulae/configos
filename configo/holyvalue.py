@@ -6,6 +6,7 @@
 # use or distribution is an offensive act against international law and may
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
+
 import configparser
 import contextlib
 import dataclasses
@@ -21,8 +22,7 @@ import typing
 
 import utila
 
-from configo.exception import InvalidHolyValue
-from configo.exception import MissingHolyValue
+import configo.exception
 
 EXT = 'hv'
 
@@ -92,7 +92,7 @@ class HolyValue:
             msg = (f'invalid holyvalue: {self.group}:{self.name};\n'
                    f'value:{self.data}; default:{self.default};\n'
                    f'limit:{self.limit}; datatype:{self.datatype}')
-            raise InvalidHolyValue(msg)
+            raise configo.exception.InvalidHolyValue(msg)
         return self.data
 
     @property
@@ -243,7 +243,7 @@ class DataBase:
             if default is not None:
                 default_warning()
                 return default
-            raise MissingHolyValue(f'invalid group: {group}')
+            raise configo.exception.MissingHolyValue(f'invalid group: {group}')
 
         variable = variable.upper()
         _var = _group.data.get(variable.upper(), None)
@@ -251,7 +251,8 @@ class DataBase:
             if default is not None:
                 default_warning()
                 return default
-            raise MissingHolyValue(f'invalid variable: {group}:{variable}')
+            raise configo.exception.MissingHolyValue(
+                f'invalid variable: {group}:{variable}')
 
         return _var.value
 
