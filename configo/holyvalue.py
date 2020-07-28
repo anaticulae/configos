@@ -177,22 +177,31 @@ def load(name: str):
     database().load(name)
 
 
-def validate(data, datatype=None, default=None, limit=None):
+def validate(data, datatype=None, default=None, limit=None) -> bool:
+    """\
+    >>> validate(True, DataType.BOOL, True)
+    True
+    >>> validate(51, DataType.INT, limit=50)
+    False
+    """
     with contextlib.suppress(TypeError):
         # avoid that default is higher than limit
         if default > limit:
             return False
-    datatype = str(datatype)
-    if 'PLUS' in datatype:
+    if 'PLUS' in str(datatype):
         if data < 0.0:
             return False
-    if limit is not None:
+    if limit is not None and datatype != DataType.BOOL:
         if data > limit:
             return False
     return True
 
 
 def convert(data, datatype=None):
+    """\
+    >>> convert(1, DataType.BOOL)
+    True
+    """
     if datatype is None:
         return data
 
@@ -205,6 +214,8 @@ def convert(data, datatype=None):
     elif 'PERCENT' in datatype:
         data = float(data)
         data = data * 0.01
+    elif 'BOOL' in datatype:
+        data = utila.str2bool(data)
     return data
 
 
@@ -258,6 +269,7 @@ class DataBase:
 
 
 class DataType(enum.Enum):
+
     INT = enum.auto()
     INT_PLUS = enum.auto()
 
@@ -266,6 +278,8 @@ class DataType(enum.Enum):
 
     PERCENT = enum.auto()
     PERCENT_PLUS = enum.auto()
+
+    BOOL = enum.auto()
 
 
 @dataclasses.dataclass
@@ -417,6 +431,8 @@ def token(code: str):
 
 
 HV = holyvalue
+
+HV_BOOL = functools.partial(holyvalue, datatype=DataType.BOOL)
 
 HV_INT = functools.partial(holyvalue, datatype=DataType.INT)
 HV_INT_PLUS = functools.partial(holyvalue, datatype=DataType.INT_PLUS)

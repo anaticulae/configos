@@ -99,8 +99,12 @@ def test_holyvalue_invalid_variable():
     assert got == default
 
 
+WITHOUT_BOOL = list(configo.DataType)
+WITHOUT_BOOL.remove(configo.DataType.BOOL)
+
+
 @pytest.mark.usefixtures('default_one')
-@pytest.mark.parametrize('datatype', list(configo.DataType))
+@pytest.mark.parametrize('datatype', WITHOUT_BOOL)
 def test_holyvalue_invalid_limit(datatype):
     """Test to determine variable out of module and variable assignment"""
 
