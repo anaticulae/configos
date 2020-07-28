@@ -2,6 +2,12 @@
 
 Every noteable change is logged here.
 
+## v0.7.0
+
+### Feature
+
+* add holyvalue `BOOL` to public API (451e0af101d5)
+
 ## v0.6.18
 
 ## v0.6.17
