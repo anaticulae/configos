@@ -183,6 +183,8 @@ def validate(data, datatype=None, default=None, limit=None) -> bool:
     True
     >>> validate(51, DataType.INT, limit=50)
     False
+    >>> validate(-10, DataType.INT_PLUS)
+    False
     """
     with contextlib.suppress(TypeError):
         # avoid that default is higher than limit
