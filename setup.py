@@ -39,5 +39,6 @@ if __name__ == "__main__":
         ],
         packages=[
             'configo',
+            'configo.holyvalue',
         ],
     )
