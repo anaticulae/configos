@@ -43,6 +43,7 @@ from configo.holyvalue import DataType
 from configo.holyvalue import generate
 from configo.holyvalue import init
 from configo.holyvalue import load
+from configo.holyvalue.table import HolyTable
 # Server
 from configo.server import package_address
 from configo.server import package_configuration
