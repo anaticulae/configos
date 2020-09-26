@@ -2,6 +2,12 @@
 
 Every noteable change is logged here.
 
+## v0.8.3
+
+### Documentation
+
+* extend interface documentation (9b5f5869d570)
+
 ## v0.8.2
 
 ## v0.8.1

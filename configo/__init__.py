@@ -48,6 +48,6 @@ from configo.holyvalue.table import HolyTable
 from configo.server import package_address
 from configo.server import package_configuration
 
-__version__ = '0.8.2'
+__version__ = '0.8.3'
 
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
