@@ -22,11 +22,21 @@ class HolyTable:
 
     def __init__(
             self,
-            items=None,
+            items: list = None,
             strategy: utila.Strategy = None,
             right_outranges_none: bool = True,
             left_outranges_none: bool = True,
     ):
+        """HolyTable Looup
+
+        Args:
+            items: data points to construct lookup values
+            strategy: strategy to construct lookup values
+            left_outranges_none: return None if request value is out of
+                                 defined range
+            right_outranges_none: return None if request value is out of
+                                 defined range
+        """
         self.table = []
         self.strategy = strategy
         self.right_outranges_none = right_outranges_none
@@ -41,6 +51,9 @@ class HolyTable:
         assert utila.isascending([item[0] for item in self.table]), str(self.table) # yapf:disable
 
     def __call__(self, position):
+        """Constructed value or None if request point is out of defined
+        area a no fallback is activated.
+        """
         assert self.table, 'empty table, use add to configure'
         value = utila.lookup(
             position,
