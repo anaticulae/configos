@@ -28,6 +28,8 @@ EXT = 'hv'
 
 DATABASE = None
 
+NO_GROUP = 'NO_GROUP'
+
 
 def holyvalue(
         default=None,
@@ -57,6 +59,7 @@ def holyvalue(
     """
     assert name is None or isinstance(name, str), f'invalid name {name}'
     assert group is None or isinstance(group, str), f'invalid name: {group}'
+
     if name is None:
         # TODO: NOT VERY STABLE/ DIRTY
         # determine variable out of code
@@ -70,7 +73,12 @@ def holyvalue(
         # determine call package
         frame = inspect.currentframe()
         parent = frame.f_back  # get invoker
-        group = inspect.getmodule(parent).__name__
+        inspected = inspect.getmodule(parent)
+        if inspected:
+            group = inspect.getmodule(inspected).__name__
+        else:
+            utila.error(f'could determine holyvalue group: {parent}')
+            group = NO_GROUP
 
     result = HolyValue(name, group, datatype, default, limit)
     return result
