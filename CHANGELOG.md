@@ -2,6 +2,12 @@
 
 Every noteable change is logged here.
 
+## v0.8.7
+
+### Fix
+
+* catch invalid group determination (ac0358b4a04d)
+
 ## v0.8.6
 
 ## v0.8.5
