@@ -2,6 +2,18 @@
 
 Every noteable change is logged here.
 
+## v0.9.0
+
+### Feature
+
+* add option to manager debug state (01891100eedf)
+* introduce holyvalue base exception (204b823ecabb)
+* add methods to manage environment variables (d199d043a5cc)
+
+### Documentation
+
+* Happy New Year! (828e0dd1e3df)
+
 ## v0.8.7
 
 ### Fix
