@@ -36,6 +36,7 @@ from configo.env import env_set
 from configo.env import load as load_env
 from configo.env import unload as unload_env
 # Exception
+from configo.exception import HolyValueError
 from configo.exception import InvalidHolyValue
 from configo.exception import MissingHolyValue
 # Holy

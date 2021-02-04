@@ -8,9 +8,13 @@
 # =============================================================================
 
 
-class InvalidHolyValue(ValueError):
+class HolyValueError(ValueError):
     pass
 
 
-class MissingHolyValue(ValueError):
+class InvalidHolyValue(HolyValueError):
+    pass
+
+
+class MissingHolyValue(HolyValueError):
     """Definine missing holy value name"""
