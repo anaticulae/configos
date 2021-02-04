@@ -15,6 +15,10 @@ import os
 from configo.cache import CACHE_LARGE
 from configo.cache import CACHE_MEDIUM
 from configo.cache import CACHE_SMALL
+# debug
+from configo.debugs import debug
+from configo.debugs import debug_set
+from configo.debugs import debug_unset
 # directory
 from configo.directory import check_startup
 from configo.directory import environment
