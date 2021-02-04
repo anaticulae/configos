@@ -28,6 +28,13 @@ from configo.docs import docs_url
 # Document
 from configo.document import OneSideDINA4
 from configo.document import OneSideDINA5
+# env
+from configo.env import dump as dump_env
+from configo.env import env
+from configo.env import env_del
+from configo.env import env_set
+from configo.env import load as load_env
+from configo.env import unload as unload_env
 # Exception
 from configo.exception import InvalidHolyValue
 from configo.exception import MissingHolyValue
