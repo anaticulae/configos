@@ -12,8 +12,13 @@ import os
 import utila
 
 
-def env(name: str):
-    return os.environ[name]
+def env(name: str, default=None):
+    try:
+        return os.environ[name]
+    except KeyError as error:
+        if default is None:
+            raise error
+    return default
 
 
 def env_set(name: str, value: str):
