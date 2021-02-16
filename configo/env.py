@@ -40,8 +40,7 @@ def load(path: str):
 
 def unload(path: str):
     assert os.path.exists(path), str(path)
-    loaded = utila.file_read(path)  # TODO: REPLACE WITH UTILA CODE
-    config = utila.load_config(loaded, flat=True)
+    config = utila.load_config(path, flat=True)
     for key in config.keys():
         env_del(key)
 
