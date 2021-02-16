@@ -53,3 +53,16 @@ def test_env_load_unload(testdir):
 
     with pytest.raises(KeyError):
         configo.env('kiwi_rawmaker')
+
+
+def test_env_unload(testdir):
+    path = 'config.ini'
+    utila.file_create(path, CONFIG)
+    before = configo.dump_env()
+    configo.load_env(path)
+    after = configo.dump_env()
+    configo.unload_env(path)
+    final = configo.dump_env()
+
+    assert before != after
+    assert final == before
