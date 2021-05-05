@@ -44,17 +44,19 @@ from configo.exception import HolyValueError
 from configo.exception import InvalidHolyValue
 from configo.exception import MissingHolyValue
 # Holy
-from configo.holyvalue import HV
-from configo.holyvalue import HV_FLOAT
-from configo.holyvalue import HV_FLOAT_PLUS
-from configo.holyvalue import HV_INT
-from configo.holyvalue import HV_INT_PLUS
-from configo.holyvalue import HV_PERCENT
-from configo.holyvalue import HV_PERCENT_PLUS
-from configo.holyvalue import DataType
-from configo.holyvalue import generate
-from configo.holyvalue import init
-from configo.holyvalue import load
+from configo.holyvalue.access import HV
+from configo.holyvalue.access import HV_FLOAT
+from configo.holyvalue.access import HV_FLOAT_PLUS
+from configo.holyvalue.access import HV_INT
+from configo.holyvalue.access import HV_INT_PLUS
+from configo.holyvalue.access import HV_PERCENT
+from configo.holyvalue.access import HV_PERCENT_PLUS
+from configo.holyvalue.collect import generate
+from configo.holyvalue.data import DataType
+from configo.holyvalue.data import HolyValue
+from configo.holyvalue.store import database
+from configo.holyvalue.store import init
+from configo.holyvalue.store import load
 from configo.holyvalue.table import HolyTable
 # Server
 from configo.server import package_address
@@ -63,3 +65,5 @@ from configo.server import package_configuration
 __version__ = '0.9.0'
 
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
+
+init(None)

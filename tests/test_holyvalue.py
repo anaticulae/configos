@@ -15,6 +15,8 @@ import utila
 
 import configo
 import configo.holyvalue
+import configo.holyvalue.data
+import configo.holyvalue.store
 import tests
 
 EXAMPLE = os.path.join(tests.TEST_DATA, 'examples')
@@ -31,7 +33,7 @@ def default_one():
 
 
 def test_holyvalue_load_databas():
-    parsed = configo.holyvalue.parse(EXAMPLE, FIRST_ONE)
+    parsed = configo.holyvalue.store.parse(EXAMPLE, FIRST_ONE)
     assert parsed
     assert len(parsed.data) == 2
 
@@ -54,7 +56,7 @@ def test_holyvalue_hv_group_from_module(monkeypatch):
     with monkeypatch.context() as context:
         context.setattr(inspect, 'getmodule', getmodule)
         distance = configo.HV(
-            datatype=configo.holyvalue.DataType.INT_PLUS,
+            datatype=configo.holyvalue.data.DataType.INT_PLUS,
             limit=60000,
         ).value
 
@@ -141,7 +143,7 @@ def test_holyvalue_generate_and_load(testdir):
     config = configo.generate(HVEXAMPLE)
     utila.file_create(path, config)
 
-    parsed = configo.holyvalue.parse(root, 'config')
+    parsed = configo.holyvalue.store.parse(root, 'config')
     assert parsed
 
 
