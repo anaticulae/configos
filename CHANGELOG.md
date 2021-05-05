@@ -2,6 +2,13 @@
 
 Every noteable change is logged here.
 
+## v0.10.0
+
+### Feature
+
+* add HolyList (6a39490705e8)
+* add default key option (91ce8bd9f9d7)
+
 ## v0.9.0
 
 ### Feature
