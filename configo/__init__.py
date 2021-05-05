@@ -57,6 +57,7 @@ from configo.holyvalue.data import HolyValue
 from configo.holyvalue.store import database
 from configo.holyvalue.store import init
 from configo.holyvalue.store import load
+from configo.holyvalue.table import HolyList
 from configo.holyvalue.table import HolyTable
 # Server
 from configo.server import package_address

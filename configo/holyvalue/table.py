@@ -63,3 +63,19 @@ class HolyTable:
             self.left_outranges_none,
         )
         return value
+
+
+class HolyList:
+    """A HolyList is a list which can be configured by HolyValue-Mechanism.
+
+    Therefore a live-configuration is possible.
+
+    >>> data = HolyList((1, 3, 5))
+    >>> assert list(data) == [1, 3, 5]
+    """
+
+    def __init__(self, items):
+        self.items = items
+
+    def __getitem__(self, index):
+        return self.items[index]
