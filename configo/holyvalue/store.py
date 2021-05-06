@@ -42,7 +42,7 @@ class DataBase:
     def get(self, group: str, variable: str, default=None):
 
         def default_warning():
-            msg = f'invalid {group}:{variable}; use default: {default}'
+            msg = f'not defined in database {group}:{variable}; use default: {default}'
             utila.info(msg)
 
         _group = self.current.data.get(group, None)  # pylint:disable=E1101

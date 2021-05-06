@@ -12,6 +12,7 @@ import os
 
 import pytest
 import utila
+import utilatest
 
 import configo
 import configo.holyvalue
@@ -73,8 +74,8 @@ def test_holyvalue_hv_use_default(monkeypatch, capsys):
     assert result == default
 
     # ensure to log warning
-    out = capsys.readouterr().out
-    assert 'invalid' in out, out
+    stdout = utilatest.stdout(capsys)
+    assert 'not defined' in stdout, stdout
 
 
 def test_holyvalue_hv_use_no_default():

@@ -67,7 +67,7 @@ def holyvalue(
             group = inspect.getmodule(inspected).__name__
         else:
             # TODO: ENSURE THAT CODE IS LOADED WHEN USING DYNAMIC CODE LOADING
-            utila.error(f'could determine holyvalue group: {parent}')
+            utila.error(f'could not determine holyvalue group: {parent}')
             group = NO_GROUP
 
     result = configo.HolyValue(name, group, datatype, default, limit)
