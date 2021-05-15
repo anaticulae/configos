@@ -2,6 +2,16 @@
 
 Every noteable change is logged here.
 
+## v0.10.1
+
+### Feature
+
+* clarify error message (743b18b13574)
+
+### Fix
+
+* adjust error message (d0e3f1a81541)
+
 ## v0.10.0
 
 ### Feature
