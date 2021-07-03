@@ -21,11 +21,11 @@ import utila
 class HolyTable:
 
     def __init__(
-            self,
-            items: list = None,
-            strategy: utila.Strategy = None,
-            right_outranges_none: bool = True,
-            left_outranges_none: bool = True,
+        self,
+        items: list = None,
+        strategy: utila.Strategy = None,
+        right_outranges_none: bool = True,
+        left_outranges_none: bool = True,
     ):
         """HolyTable Looup
 

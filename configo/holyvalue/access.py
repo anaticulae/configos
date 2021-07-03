@@ -21,12 +21,12 @@ NO_GROUP = 'NO_GROUP'
 
 
 def holyvalue(
-        default=None,
-        *,
-        name: str = None,
-        group: str = None,
-        limit=None,
-        datatype: 'DataType' = None,
+    default=None,
+    *,
+    name: str = None,
+    group: str = None,
+    limit=None,
+    datatype: 'DataType' = None,
 ) -> 'HolyValue':
     """Access `holyvalue` via `variable` and `group`.
 
