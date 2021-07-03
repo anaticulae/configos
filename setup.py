@@ -8,26 +8,28 @@
 # be prosecuted under federal law. Its content is company confidential.
 #==============================================================================
 
-from os.path import dirname
-from os.path import join
-from re import search
+import os
+import re
 
-from setuptools import setup
+import setuptools
 
-ROOT = dirname(__file__)
+ROOT = os.path.dirname(__file__)
 
-with open(join(ROOT, 'README.md'), 'rt', encoding='utf8') as fp:
+with open(os.path.join(ROOT, 'README.md'), encoding='utf8') as fp:
     README = fp.read()
 
-with open(join(ROOT, 'configo/__init__.py'), 'rt', encoding='utf8') as fp:
-    VERSION = search(r'__version__ = \'(.*?)\'', fp.read()).group(1)
+with open(os.path.join(ROOT, 'configo/__init__.py'), encoding='utf8') as fp:
+    VERSION = re.search(r'__version__ = \'(.*?)\'', fp.read()).group(1)
+
+with open(os.path.join(ROOT, "requirements.txt"), encoding='utf8') as fp:
+    REQUIRES = [line for line in fp.readlines() if line and '#' not in line]
 
 if __name__ == "__main__":
-    setup(
+    setuptools.setup(
         author='Helmut Konrad Fahrendholz',
         author_email='dev@checkitweg.de',
         description='configo',
-        include_package_data=True,
+        install_requires=REQUIRES,
         long_description=README,
         name='configo',
         platforms='any',
