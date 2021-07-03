@@ -24,8 +24,8 @@ class HolyTable:
         self,
         items: list = None,
         strategy: utila.Strategy = None,
-        right_outranges_none: bool = True,
-        left_outranges_none: bool = True,
+        right_outranges_none: bool = False,
+        left_outranges_none: bool = False,
     ):
         """HolyTable Looup
 
