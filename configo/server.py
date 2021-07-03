@@ -8,6 +8,7 @@
 #==============================================================================
 
 import os
+import sys
 
 import utila
 
@@ -32,6 +33,7 @@ def package_configuration():
         return (adress, internal, external)
     except KeyError as msg:
         handle_error(msg)
+    return None
 
 
 def package_address():
@@ -44,8 +46,9 @@ def package_address():
         return (internal, external)
     except KeyError as msg:
         handle_error(msg)
+    return None
 
 
 def handle_error(msg: KeyError):
     utila.error('Missing global var: %s' % msg)
-    exit(utila.FAILURE)
+    sys.exit(utila.FAILURE)

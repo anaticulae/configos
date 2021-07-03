@@ -18,6 +18,7 @@ Use `configo.export()` to change these variables.
 """
 
 import os
+import sys
 
 import utila
 
@@ -99,18 +100,18 @@ def environment(check: bool = False):
     return common, todo_, ready_
 
 
-def _path_from_env(env: str, check: bool = False):
+def _path_from_env(env: str, check: bool = False):  # pylint:disable=R1710
     """Access global env variable."""
     assert env
     try:
         path = os.environ[env]
         if check and not os.path.exists(path):
             utila.error('Path does not exists: %s' % path)
-            exit(utila.FAILURE)
+            sys.exit(utila.FAILURE)
         return path
     except KeyError:
         utila.error('Missing environment var `%s`' % env)
-        exit(utila.FAILURE)
+        sys.exit(utila.FAILURE)
 
 
 def check_startup():
