@@ -29,6 +29,7 @@ class DataType(enum.Enum):
     PERCENT_PLUS = enum.auto()
 
     BOOL = enum.auto()
+    STR = enum.auto()
 
 
 @dataclasses.dataclass
@@ -62,7 +63,6 @@ def convert(data, datatype=None):
     """
     if datatype is None:
         return data
-
     # convert value
     datatype = str(datatype)
     if 'INT' in datatype:

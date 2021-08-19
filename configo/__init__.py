@@ -51,6 +51,7 @@ from configo.holyvalue.access import HV_INT
 from configo.holyvalue.access import HV_INT_PLUS
 from configo.holyvalue.access import HV_PERCENT
 from configo.holyvalue.access import HV_PERCENT_PLUS
+from configo.holyvalue.access import HV_STR
 from configo.holyvalue.collect import generate
 from configo.holyvalue.data import DataType
 from configo.holyvalue.data import HolyValue

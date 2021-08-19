@@ -78,6 +78,7 @@ DataType = configo.holyvalue.data.DataType
 HV = holyvalue
 
 HV_BOOL = functools.partial(holyvalue, datatype=DataType.BOOL)
+HV_STR = functools.partial(holyvalue, datatype=DataType.STR)
 
 HV_INT = functools.partial(holyvalue, datatype=DataType.INT)
 HV_INT_PLUS = functools.partial(holyvalue, datatype=DataType.INT_PLUS)
