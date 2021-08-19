@@ -2,6 +2,13 @@
 
 Every noteable change is logged here.
 
+## v0.11.0
+
+### Feature
+
+* add holy string (29e30c10d3f8)
+* change default behavior (9cd2470fc87c)
+
 ## v0.10.1
 
 ### Feature
