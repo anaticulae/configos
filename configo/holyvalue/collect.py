@@ -60,6 +60,9 @@ def generate(path: str) -> str:
     return utila.NEWLINE.join(raw)
 
 
+PATTERN = r"\b(?P<variable>[\w\d_]+) = configo\.HV[\w\d_]*\((?P<config>.*)\)"
+
+
 def holyvalue_from_file(sourcecode: str) -> dict:
     """Parse holyvalues from `sourcecode`.
 
@@ -73,10 +76,7 @@ def holyvalue_from_file(sourcecode: str) -> dict:
     result = {}
     for line, comment in lines.items():
         # TODO: THINK ABOUT USING TOKEN
-        # TODO: UNIT REGEX PATTERN
-        pattern = (r'\b(?P<variable>[\w\d_]+) = '
-                   r'configo\.HV[\w\d_]*\((?P<config>.*)\)')
-        matched = re.match(pattern, line, re.MULTILINE)
+        matched = re.match(PATTERN, line, re.MULTILINE)
         if not matched:
             continue
         variable = matched['variable']
