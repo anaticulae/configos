@@ -7,4 +7,22 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-# NOTE: PUT EXPERIMENTAL CODE HERE
+import importlib.util
+
+import utila
+
+
+def load_module(path: str):
+    """\
+    >>> load_module(__file__).__name__
+    'configo.utils'
+    """
+    item = utila.file_name(path)
+    parent = utila.file_name(utila.path_parent(path))
+    spec = importlib.util.spec_from_file_location(
+        f'{parent}.{item}',
+        path,
+    )
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module

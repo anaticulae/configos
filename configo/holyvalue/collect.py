@@ -16,6 +16,8 @@ import tokenize
 import utila
 
 import configo.holyvalue.access
+import configo.holyvalue.data
+import configo.utils
 
 
 def generate(path: str) -> str:
@@ -34,8 +36,7 @@ def generate(path: str) -> str:
         for item in files:
             relative = utila.make_relative(item, path)
             relative = utila.make_package(relative)
-            code = utila.file_read(item)
-            parsed = holyvalue_from_file(code)
+            parsed = holyvalue_from_file(item)
             if parsed:
                 result[relative] = parsed
     signature = utila.attributes(configo.holyvalue.access.holyvalue)
@@ -47,7 +48,7 @@ def generate(path: str) -> str:
             for item, value in values.items():
                 raw.append(f'# {item}:{value}')
             assert 'name' in signature, 'require name'
-            variable = values.get('name', variable)
+            variable = values.get('hvname', variable)
             variable = variable.replace("'", '').upper()
             assert 'default' in signature, 'require default'
             default = values.get('default', 'None')
@@ -64,47 +65,45 @@ def rootpackage(root: str) -> str:
     return package
 
 
-PATTERN = r"\b(?P<variable>[\w\d_]+) = configo\.HV[\w\d_]*\((?P<config>.*)\)"
-
-
-def holyvalue_from_file(sourcecode: str) -> dict:
+def holyvalue_from_file(path: str) -> dict:
     """Parse holyvalues from `sourcecode`.
 
     Args:
-        sourcecode(str): python source code file
+        path(str): python source code file
     Returns:
         Dictionary with holyvalues and further configuration parameter,
         e.g. limit, variable, group etc.
     """
-    lines = codelines(sourcecode)
+    commento = comments(utila.file_read(path))
+    module = configo.utils.load_module(path)
     result = {}
-    for line, comment in lines.items():
-        # TODO: THINK ABOUT USING TOKEN
-        matched = re.match(PATTERN, line, re.MULTILINE)
-        if not matched:
+    for key, value in vars(module).items():
+        if not isinstance(value, configo.holyvalue.data.HolyMixin):
             continue
-        config = matched['config']
-        if config:
-            config = prepare_config(config, line)
-        else:
-            config = {}
-        if comment.strip():
-            config['comment'] = comment
-        variable = matched['variable']
-        result[variable] = config
+        result[key] = dict(comment=commento[key], **vars(value))
     return result
 
 
-def prepare_config(config, line):
-    config = [item.split('=', 1) for item in config.split(', ')]
-    for item in config:
-        if len(item) == 1:
-            # no variables, see 10
-            # TABLE_MIN_LINE_COUNT = configo.HV_INT_PLUS(10)
-            utila.error(f'could not determine args value: {line}')
-    config = [item for item in config if len(item) > 1]
-    config = {item[0]: item[1] for item in config}
-    return config
+PATTERN = r"""
+    \b
+    (?P<variable>[\w\d_]+)[ ]=[ ]
+    (
+        configo\.HV[\w\d_]*?|
+        configo\.HolyTable|
+    )
+"""
+
+
+def comments(sourcecode: str) -> dict:
+    lines = codelines(sourcecode)
+    result = {}
+    for line, comment in lines.items():
+        matched = re.match(PATTERN, line, re.MULTILINE | re.VERBOSE)
+        if not matched:
+            continue
+        variable = matched['variable']
+        result[variable] = comment
+    return result
 
 
 def codelines(sourcecode: str):

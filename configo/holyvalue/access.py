@@ -50,14 +50,14 @@ def holyvalue(
     assert group is None or isinstance(group, str), f'invalid name: {group}'
 
     if name is None:
+        # TODO: REMOVE THIS HACK
         # TODO: NOT VERY STABLE/ DIRTY
         # determine variable out of code
-        levelup = inspect.stack(context=10)[1].code_context
+        levelup = inspect.stack(context=1)[1].code_context
         code = utila.NEWLINE.join(levelup)
-        pattern = r'(?P<variable>[\w\d_]+) = configo\.HV[\w\d_]*\('
+        pattern = r'(?P<variable>[\w\d_]+) = configo\.(HV[\w\d_]*|HolyTable)\('
         matched = re.search(pattern, code)
         name = str(matched['variable']).strip().upper()
-
     if group is None:
         # determine call package
         frame = inspect.currentframe()
@@ -69,7 +69,6 @@ def holyvalue(
             # is loaded later via dynamic code loader
             utila.debug(f'could not determine holyvalue group: {parent}')
             group = NO_GROUP
-
     result = configo.HolyValue(name, group, datatype, default, limit)
     return result
 
