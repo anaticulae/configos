@@ -9,12 +9,12 @@
 
 import functools
 import inspect
-import re
 
 import utila
 
 import configo
 import configo.holyvalue
+import configo.holyvalue.collect
 import configo.holyvalue.data
 
 NO_GROUP = 'NO_GROUP'
@@ -48,15 +48,13 @@ def holyvalue(
     """
     assert name is None or isinstance(name, str), f'invalid name {name}'
     assert group is None or isinstance(group, str), f'invalid name: {group}'
-
     if name is None:
         # TODO: REMOVE THIS HACK
         # TODO: NOT VERY STABLE/ DIRTY
         # determine variable out of code
         levelup = inspect.stack(context=1)[1].code_context
         code = utila.NEWLINE.join(levelup)
-        pattern = r'(?P<variable>[\w\d_]+) = configo\.(HV[\w\d_]*|HolyTable)\('
-        matched = re.search(pattern, code)
+        matched = utila.search(configo.holyvalue.collect.PATTERN, code)
         name = str(matched['variable']).strip().upper()
     if group is None:
         # determine call package
