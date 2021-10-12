@@ -7,7 +7,6 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-import glob
 import io
 import os
 import re
@@ -31,14 +30,19 @@ def generate(path: str) -> str:
     """
     assert os.path.exists(path), f'path does not exists: {path}'
     result = {}
-    with utila.chdir(path):
-        files = list(glob.glob(os.path.join(path, '**/*.py'), recursive=True))
-        for item in files:
-            relative = utila.make_relative(item, path)
-            relative = utila.make_package(relative)
-            parsed = holyvalue_from_file(item)
-            if parsed:
-                result[relative] = parsed
+    path = os.path.abspath(path)
+    files = utila.file_list(
+        path,
+        include='py',
+        absolute=True,
+        recursive=True,
+    )
+    for item in files:
+        relative = utila.make_relative(item, path)
+        relative = utila.make_package(relative)
+        parsed = holyvalue_from_file(item)
+        if parsed:
+            result[relative] = parsed
     signature = utila.attributes(configo.holyvalue.access.holyvalue)
     root = rootpackage(path)
     raw = []
