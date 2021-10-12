@@ -196,8 +196,8 @@ def test_holyvalue_operation():
     assert value + 15 == 30
     assert value + value == 30
 
-    assert value - 15 == 0
-    assert value - value == 0
+    assert value - 15 == 0  # pylint:disable=C2001
+    assert value - value == 0  # pylint:disable=C2001
 
     assert value * 15 == 15 * 15
     assert value * value == 15 * 15
@@ -206,7 +206,7 @@ def test_holyvalue_operation():
     assert value / value == 1
 
     assert value % 2 == 1
-    assert value % value == 0
+    assert value % value == 0  # pylint:disable=C2001
 
     assert value >= (value * 0.5)
     assert smaller <= value  # pylint:disable=comparison-with-itself

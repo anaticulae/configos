@@ -39,11 +39,11 @@ class DocumentConfiguration:
     pageborder: PageBorder = None
 
 
-class OneSideDINA4(DocumentConfiguration):  # pylint: disable=too-few-public-methods
+class OneSideDINA4(DocumentConfiguration):
     pagesize = DINA4
     pageborder = BORDER_DINA4
 
 
-class OneSideDINA5(DocumentConfiguration):  # pylint: disable=too-few-public-methods
+class OneSideDINA5(DocumentConfiguration):
     pagesize = DINA5
     pageborder = BORDER_DINA4  # What is a good value for DINA5?

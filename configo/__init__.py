@@ -10,7 +10,6 @@
 import os
 
 # Public API:
-#
 # Cache
 from configo.cache import CACHE_LARGE
 from configo.cache import CACHE_MEDIUM
