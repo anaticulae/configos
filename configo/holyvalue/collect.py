@@ -38,11 +38,11 @@ def generate(path: str) -> str:
             parsed = holyvalue_from_file(code)
             if parsed:
                 result[relative] = parsed
-    rootpackage = os.path.split(path)[1]
     signature = utila.attributes(configo.holyvalue.access.holyvalue)
+    root = rootpackage(path)
     raw = []
     for package in sorted(result.keys()):
-        raw.append(f'[{rootpackage}.{package}]')
+        raw.append(f'[{root}.{package}]')
         for variable, values in result[package].items():
             for item, value in values.items():
                 raw.append(f'# {item}:{value}')
@@ -55,6 +55,13 @@ def generate(path: str) -> str:
             raw.append('')
         raw.append('')
     return utila.NEWLINE.join(raw)
+
+
+def rootpackage(root: str) -> str:
+    package = os.path.split(root)[1]
+    # rawmaker-2.26.6-py3.8.egg
+    package = str(package).split('-')[0]
+    return package
 
 
 PATTERN = r"\b(?P<variable>[\w\d_]+) = configo\.HV[\w\d_]*\((?P<config>.*)\)"
@@ -76,17 +83,28 @@ def holyvalue_from_file(sourcecode: str) -> dict:
         matched = re.match(PATTERN, line, re.MULTILINE)
         if not matched:
             continue
-        variable = matched['variable']
         config = matched['config']
         if config:
-            config = [item.split('=', 1) for item in config.split(', ')]
-            config = {item[0]: item[1] for item in config}
+            config = prepare_config(config, line)
         else:
             config = {}
         if comment.strip():
             config['comment'] = comment
+        variable = matched['variable']
         result[variable] = config
     return result
+
+
+def prepare_config(config, line):
+    config = [item.split('=', 1) for item in config.split(', ')]
+    for item in config:
+        if len(item) == 1:
+            # no variables, see 10
+            # TABLE_MIN_LINE_COUNT = configo.HV_INT_PLUS(10)
+            utila.error(f'could not determine args value: {line}')
+    config = [item for item in config if len(item) > 1]
+    config = {item[0]: item[1] for item in config}
+    return config
 
 
 def codelines(sourcecode: str):
