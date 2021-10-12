@@ -17,8 +17,10 @@
 
 import utila
 
+import configo.holyvalue.data
 
-class HolyTable:
+
+class HolyTable(configo.holyvalue.data.HolyMixin):
 
     def __init__(
         self,
@@ -65,7 +67,7 @@ class HolyTable:
         return value
 
 
-class HolyList:
+class HolyList(configo.holyvalue.data.HolyMixin):
     """A HolyList is a list which can be configured by HolyValue-Mechanism.
 
     Therefore a live-configuration is possible.

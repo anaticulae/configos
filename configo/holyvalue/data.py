@@ -17,6 +17,10 @@ import utila
 import configo
 
 
+class HolyMixin:
+    pass
+
+
 class DataType(enum.Enum):
 
     INT = enum.auto()
@@ -77,7 +81,7 @@ def convert(data, datatype=None):
     return data
 
 
-class HolyValue:
+class HolyValue(HolyMixin):
 
     def __init__(self, name, group, datatype, default, limit):
         self.hvname = name
