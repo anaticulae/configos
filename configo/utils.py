@@ -23,6 +23,9 @@ def load_module(path: str):
         f'{parent}.{item}',
         path,
     )
-    module = importlib.util.module_from_spec(spec)
-    spec.loader.exec_module(module)
+    try:
+        module = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(module)
+    except Exception:  # pylint:disable=broad-except
+        return None
     return module

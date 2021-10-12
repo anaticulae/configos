@@ -80,6 +80,9 @@ def holyvalue_from_file(path: str) -> dict:
     """
     commento = comments(utila.file_read(path))
     module = configo.utils.load_module(path)
+    if not module:
+        utila.error(f'could not load: {path}')
+        return {}
     result = {}
     for key, value in vars(module).items():
         if not isinstance(value, configo.holyvalue.data.HolyMixin):
