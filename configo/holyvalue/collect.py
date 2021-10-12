@@ -8,7 +8,6 @@
 # =============================================================================
 
 import glob
-import inspect
 import io
 import os
 import re
@@ -40,9 +39,7 @@ def generate(path: str) -> str:
             if parsed:
                 result[relative] = parsed
     rootpackage = os.path.split(path)[1]
-    signature = inspect.signature(configo.holyvalue.access.holyvalue).parameters
-    signature: list = list(signature)
-
+    signature = utila.attributes(configo.holyvalue.access.holyvalue)
     raw = []
     for package in sorted(result.keys()):
         raw.append(f'[{rootpackage}.{package}]')
