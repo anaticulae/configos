@@ -43,4 +43,7 @@ if __name__ == "__main__":
             'configo',
             'configo.holyvalue',
         ],
+        entry_points={
+            'console_scripts': ['configo = configo.cli:main'],
+        },
     )
