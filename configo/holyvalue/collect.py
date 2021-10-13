@@ -46,8 +46,13 @@ def generate(path: str, skips: callable = None) -> str:
         parsed = holyvalue_from_file(item)
         if parsed:
             collected[relative] = parsed
-    signature = utila.attributes(configo.holyvalue.access.holyvalue)
     root = rootpackage(path)
+    result = dump_collected(collected, root)
+    return result
+
+
+def dump_collected(collected, root):
+    signature = utila.attributes(configo.holyvalue.access.holyvalue)
     raw = []
     for package in sorted(collected.keys()):
         raw.append(f'[{root}.{package}]')
