@@ -30,7 +30,7 @@ def generate(path: str, skips: callable = None) -> str:
         project configuration file
     """
     assert os.path.exists(path), f'path does not exists: {path}'
-    result = {}
+    collected = {}
     path = os.path.abspath(path)
     files = utila.file_list(
         path,
@@ -45,13 +45,13 @@ def generate(path: str, skips: callable = None) -> str:
         relative = utila.make_package(relative)
         parsed = holyvalue_from_file(item)
         if parsed:
-            result[relative] = parsed
+            collected[relative] = parsed
     signature = utila.attributes(configo.holyvalue.access.holyvalue)
     root = rootpackage(path)
     raw = []
-    for package in sorted(result.keys()):
+    for package in sorted(collected.keys()):
         raw.append(f'[{root}.{package}]')
-        for variable, values in result[package].items():
+        for variable, values in collected[package].items():
             for item, value in values.items():
                 raw.append(f'# {item}:{value}')
             assert 'name' in signature, 'require name'
@@ -62,7 +62,8 @@ def generate(path: str, skips: callable = None) -> str:
             raw.append(f"{variable} = {default}")
             raw.append('')
         raw.append('')
-    return utila.NEWLINE.join(raw)
+    result = utila.NEWLINE.join(raw)
+    return result
 
 
 def rootpackage(root: str) -> str:
