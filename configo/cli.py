@@ -33,10 +33,7 @@ def generate(inpath: list, noskip=False):
         collected = configo.generate(item, skips=skip)
         if not collected:
             continue
-        header = f'######    {item}    ######'
-        utila.log('#' * len(header))
-        utila.log(header)
-        utila.log('#' * len(header))
+        utila.print_banner(text=item, symbol='#')
         utila.log(collected)
 
 
