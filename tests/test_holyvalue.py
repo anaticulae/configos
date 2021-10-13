@@ -102,16 +102,10 @@ def test_holyvalue_invalid_variable():
     assert got == default
 
 
-NOMATH = list(configo.DataType)
-NOMATH.remove(configo.DataType.BOOL)
-NOMATH.remove(configo.DataType.STR)
-
-
 @pytest.mark.usefixtures('default_one')
-@pytest.mark.parametrize('datatype', NOMATH)
+@pytest.mark.parametrize('datatype', configo.NOMATH)
 def test_holyvalue_invalid_limit(datatype):
     """Test to determine variable out of module and variable assignment"""
-
     with pytest.raises(configo.InvalidHolyValue):
         _ = configo.HV(
             group='groupme.footer.header',

@@ -52,6 +52,7 @@ from configo.holyvalue.access import HV_PERCENT
 from configo.holyvalue.access import HV_PERCENT_PLUS
 from configo.holyvalue.access import HV_STR
 from configo.holyvalue.collect import generate
+from configo.holyvalue.data import NOMATH
 from configo.holyvalue.data import DataType
 from configo.holyvalue.data import HolyValue
 from configo.holyvalue.store import database

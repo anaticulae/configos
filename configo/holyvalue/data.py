@@ -36,6 +36,14 @@ class DataType(enum.Enum):
     STR = enum.auto()
 
 
+NOMATH = {
+    item for item in DataType if item not in (
+        DataType.BOOL,
+        DataType.STR,
+    )
+}
+
+
 @dataclasses.dataclass
 class Datum:
     name: str = None
