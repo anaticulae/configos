@@ -45,21 +45,22 @@ class DataBase:
             msg = f'not defined in database {group}:{variable}; use default: {default}'
             utila.info(msg)
 
+        # determine hv-group
         _group = self.current.data.get(group, None)  # pylint:disable=E1101
         if not _group:
             if default is not None:
                 default_warning()
                 return default
             raise configo.exception.MissingHolyValue(f'invalid group: {group}')
-
+        # determine hv-name
         variable = variable.upper()
         _var = _group.data.get(variable.upper(), None)
         if not _var:
             if default is not None:
                 default_warning()
                 return default
-            raise configo.exception.MissingHolyValue(f'invalid variable: {group}:{variable}') # yapf:disable
-
+            msg = f'invalid variable: {group}:{variable}'
+            raise configo.exception.MissingHolyValue(msg)
         return _var.value
 
 
