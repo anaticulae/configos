@@ -22,19 +22,26 @@ def main():
             utila.error(f'input does not exists: {path}')
             return utila.FAILURE
     if action == 'generate':
-        generate(inpath, noskip)
+        if generate(inpath, noskip):
+            return utila.FAILURE
         return utila.SUCCESS
     return utila.INVALID_COMMAND
 
 
-def generate(inpath: list, noskip=False):
+def generate(inpath: list, noskip=False) -> int:
     skip = None if noskip else skips
+    done = False
     for item in inpath:
         collected = configo.generate(item, skips=skip)
         if not collected:
             continue
         utila.print_banner(text=item, symbol='#')
         utila.log(collected)
+        done = True
+    if not done:
+        utila.error('could not locate any HolyValue')
+        return utila.FAILURE
+    return utila.SUCCESS
 
 
 def skips(item: str) -> bool:
