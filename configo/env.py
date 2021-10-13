@@ -30,7 +30,7 @@ def env_del(name: str):
     del os.environ[name]
 
 
-def load(path: str):
+def env_load(path: str):
     assert os.path.exists(path), str(path)
     loaded = utila.file_read(path)
     config = utila.load_config(loaded, flat=True)
@@ -38,14 +38,14 @@ def load(path: str):
         env_set(key, value)
 
 
-def unload(path: str):
+def env_unload(path: str):
     assert os.path.exists(path), str(path)
     config = utila.load_config(path, flat=True)
     for key in config.keys():
         env_del(key)
 
 
-def dump() -> str:
+def env_dump() -> str:
     collected = []
     for key, value in os.environ.items():
         collected.append('{:<40}{}'.format(key, value))

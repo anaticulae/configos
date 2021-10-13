@@ -14,7 +14,7 @@ import configo
 
 
 def test_env_dump(testdir):
-    dumped = configo.dump_env()
+    dumped = configo.env_dump()
     assert len(dumped) > 1000
 
 
@@ -43,13 +43,13 @@ def test_env_load_unload(testdir):
     with pytest.raises(KeyError):
         configo.env('kiwi_rawmaker')
 
-    configo.load_env('config.ini')
+    configo.env_load('config.ini')
 
     assert configo.env('kiwi_rawmaker') == '10'
     assert configo.env('kiwi_rawmaker_asd') == '15'
     assert configo.env('ciwi_detector') == 'Hier Spricht Helm'
 
-    configo.unload_env('config.ini')
+    configo.env_unload('config.ini')
 
     with pytest.raises(KeyError):
         configo.env('kiwi_rawmaker')
@@ -58,11 +58,11 @@ def test_env_load_unload(testdir):
 def test_env_unload(testdir):
     path = 'config.ini'
     utila.file_create(path, CONFIG)
-    before = configo.dump_env()
-    configo.load_env(path)
-    after = configo.dump_env()
-    configo.unload_env(path)
-    final = configo.dump_env()
+    before = configo.env_dump()
+    configo.env_load(path)
+    after = configo.env_dump()
+    configo.env_unload(path)
+    final = configo.env_dump()
 
     assert before != after
     assert final == before

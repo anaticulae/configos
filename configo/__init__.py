@@ -32,12 +32,12 @@ from configo.docs import docs_url
 from configo.document import OneSideDINA4
 from configo.document import OneSideDINA5
 # env
-from configo.env import dump as dump_env
 from configo.env import env
 from configo.env import env_del
+from configo.env import env_dump
+from configo.env import env_load
 from configo.env import env_set
-from configo.env import load as load_env
-from configo.env import unload as unload_env
+from configo.env import env_unload
 # Exception
 from configo.exception import HolyValueError
 from configo.exception import InvalidHolyValue
@@ -70,3 +70,8 @@ ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
 PROCESS = 'configo'
 
 init(None)
+
+# TODO: REMOVE LATER AND INCREASE MAJOR VERSION NUMBER
+load_env = env_load
+unload_env = env_unload
+dump_env = env_dump
