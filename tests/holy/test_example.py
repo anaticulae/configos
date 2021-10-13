@@ -7,12 +7,14 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-import rawmaker
+import utilatest
 
 import configo
 
 
+@utilatest.longrun
 def test_generate_rawmaker():
+    import rawmaker  # pylint:disable=C0415
     generated = configo.generate(rawmaker.ROOT)
     assert '[rawmaker.rawmaker.' in generated
     assert '# default:' in generated
