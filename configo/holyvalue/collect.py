@@ -53,12 +53,16 @@ def generate(path: str, skips: callable = None) -> str:
         raw.append(f'[{root}.{package}]')
         for variable, values in collected[package].items():
             for item, value in values.items():
+                if item == 'table':
+                    continue
                 raw.append(f'# {item}:{value}')
             assert 'name' in signature, 'require name'
             variable = values.get('hvname', variable)
             variable = variable.replace("'", '').upper()
             assert 'default' in signature, 'require default'
             default = values.get('default', 'None')
+            if default == 'None':
+                default = values.get('table', 'None')
             raw.append(f"{variable} = {default}")
             raw.append('')
         raw.append('')

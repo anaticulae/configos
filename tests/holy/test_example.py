@@ -20,4 +20,4 @@ def test_generate_rawmaker():
     source = os.path.join(rawmaker.ROOT, 'rawmaker')
     generated = configo.generate(source)
     assert '[rawmaker.' in generated
-    assert '# table:' in generated
+    assert 'DIFF_MAX = [' in generated
