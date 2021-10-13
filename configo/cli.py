@@ -62,8 +62,8 @@ def evaluate() -> tuple:
             waitingflag=False,
             cacheflag=False,
         ),
+        prog=configo.PROCESS,
         version=configo.__version__,
-        prog='configo',
     )
     args = utila.parse(parser)
     action = ''
