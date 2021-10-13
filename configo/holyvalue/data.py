@@ -204,10 +204,15 @@ def validate(data, datatype=None, default=None, limit=None) -> bool:
     False
     >>> validate(-10, DataType.INT_PLUS)
     False
+    >>> validate(10.0, DataType.INT_PLUS)
+    False
     """
     with contextlib.suppress(TypeError):
         # avoid that default is higher than limit
         if default > limit:
+            return False
+    if 'INT' in str(datatype):
+        if not utila.isint(data):
             return False
     if 'PLUS' in str(datatype):
         if data < 0.0:
