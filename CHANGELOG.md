@@ -2,6 +2,19 @@
 
 Every noteable change is logged here.
 
+## v0.12.0
+
+### Feature
+
+* add parameter to skip skipping files (ed7c30e1ebb3)
+* skip build and tests folder (01076461595b)
+* print banner after every collection step (86da6afbddce)
+* add cli to generate holy value configuration (4e1981b57ac7)
+* do not fail on importing error (af5f10063117)
+* add support HolyTable to config generator (1f5d6f3452e5)
+* use common mixin (1373497d15f3)
+* harden collector (f0dbd5c84312)
+
 ## v0.11.0
 
 ### Feature
