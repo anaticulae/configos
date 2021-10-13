@@ -72,6 +72,7 @@ def dump_collected(collected, root):
             raw.append('')
         raw.append('')
     result = utila.NEWLINE.join(raw)
+    result = result.strip()
     return result
 
 
