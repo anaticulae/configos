@@ -7,8 +7,21 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
+import utilatest
+
 import tests
 
 
 def test_cli(monkeypatch):
     tests.run('--help', monkeypatch=monkeypatch)
+
+
+def test_cli_generate(monkeypatch, capsys):
+    source = tests.TEST_DATA
+    tests.run(
+        f'--generate -i {source} --noskip',
+        monkeypatch=monkeypatch,
+    )
+    stdout = utilatest.stdout(capsys)
+    assert 'HELMUT = None' in stdout
+    assert len(stdout) >= 861

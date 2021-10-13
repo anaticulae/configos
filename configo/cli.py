@@ -16,20 +16,21 @@ import configo
 
 @utila.saveme
 def main():
-    inpath, action = evaluate()
+    inpath, action, noskip = evaluate()
     for path in inpath:
         if not utila.exists(path):
             utila.error(f'input does not exists: {path}')
             return utila.FAILURE
     if action == 'generate':
-        generate(inpath)
+        generate(inpath, noskip)
         return utila.SUCCESS
     return utila.INVALID_COMMAND
 
 
-def generate(inpath: list):
+def generate(inpath: list, noskip=False):
+    skip = None if noskip else skips
     for item in inpath:
-        collected = configo.generate(item, skips=skips)
+        collected = configo.generate(item, skips=skip)
         if not collected:
             continue
         header = f'######    {item}    ######'
@@ -50,6 +51,10 @@ def evaluate() -> tuple:
             utila.cli.Flag(
                 longcut='--generate',
                 message='create default config out of source',
+            ),
+            utila.cli.Flag(
+                longcut='--noskip',
+                message='do not skip any path',
             ),
         ],
         config=utila.ParserConfiguration(
@@ -75,5 +80,6 @@ def evaluate() -> tuple:
     choice = (
         args['input'],
         action,
+        args.get('noskip', False),
     )
     return choice
