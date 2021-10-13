@@ -90,8 +90,18 @@ def convert(data, datatype=None):
 
 
 class HolyValue(HolyMixin):
+    """\
+    >>> 10.0 + HolyValue(default=5.0)
+    15.0
+    >>> 10.0 - HolyValue(default=5.0)
+    5.0
+    >>> 10 / HolyValue(default=5.0)
+    2.0
+    >>> HolyValue(default=5.0) / 10
+    0.5
+    """
 
-    def __init__(self, name, group, datatype, default, limit):
+    def __init__(self, name=None, group=None, datatype=None, default=None, limit=None):  # yapf:disable
         self.hvname = name
         self.hvgroup = group
         self.datatype = datatype
@@ -135,27 +145,35 @@ class HolyValue(HolyMixin):
         result = convert(result, datatype=self.datatype)
         return result
 
-    # TODO: REDUCE THIS AMOUT OF CODE
-
     def __add__(self, other):
         with contextlib.suppress(TypeError):
             return self.value + other
         return self.value + other.value
+
+    __radd__ = __add__
 
     def __sub__(self, other):
         with contextlib.suppress(TypeError):
             return self.value - other
         return self.value - other.value
 
+    def __rsub__(self, other):
+        return other - self.value
+
     def __mul__(self, other):
         with contextlib.suppress(TypeError):
             return self.value * other
         return self.value * other.value
 
+    __rmul__ = __mul__
+
     def __truediv__(self, other):
         with contextlib.suppress(TypeError):
             return self.value / other
         return self.value / other.value
+
+    def __rtruediv__(self, other):
+        return other / self.value
 
     def __mod__(self, other):
         with contextlib.suppress(TypeError):
