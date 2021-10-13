@@ -41,7 +41,7 @@ def test_holyvalue_load_databas():
 
 @pytest.mark.usefixtures('default_one')
 def test_holyvalue_hv():
-    distance = configo.HV(group='groupme.footer.header', name='DISTANCE').value
+    distance = configo.HV(group='groupme.footer.header', name='DISTANCE')
     # No convertion is done, cause of not defining `datatype`
     assert distance == '50022', distance
 
@@ -59,7 +59,7 @@ def test_holyvalue_hv_group_from_module(monkeypatch):
         distance = configo.HV(
             datatype=configo.holyvalue.data.DataType.INT_PLUS,
             limit=60000,
-        ).value
+        )
 
     assert distance == 50022, distance
 
@@ -98,7 +98,7 @@ def test_holyvalue_invalid_variable():
         group='groupme.footer.header',
         name='does_not_exists',
         default=100,
-    ).value
+    )
     assert got == default
 
 
@@ -159,11 +159,13 @@ def test_holyvalue_evaluate_percent_plus():
 
 
 def test_holyvalue_less_verbose_api():
-    access = configo.HV_INT_PLUS(default=5).value  # pylint:disable=W0612
+    access = configo.HV_INT_PLUS(default=5)
+    assert access == 5
 
 
 def test_holyvalue_default_database():
-    hello = configo.HV_INT_PLUS(default=5).value  # pylint:disable=W0612
+    hello = configo.HV_INT_PLUS(default=5)
+    assert hello == 5
 
 
 def test_holyvalue_right_hand_evaluation_name_and_group():
