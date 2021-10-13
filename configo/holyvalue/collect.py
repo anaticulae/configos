@@ -19,12 +19,13 @@ import configo.holyvalue.data
 import configo.utils
 
 
-def generate(path: str) -> str:
+def generate(path: str, skips: callable = None) -> str:
     """Iterate thrue python files and extract config with holyvalues
     constructs out of project structure.
 
     Args:
         path(str): project root path
+        skips(callable): should we skip file
     Returns:
         project configuration file
     """
@@ -38,6 +39,8 @@ def generate(path: str) -> str:
         recursive=True,
     )
     for item in files:
+        if skips and skips(item):
+            continue
         relative = utila.make_relative(item, path)
         relative = utila.make_package(relative)
         parsed = holyvalue_from_file(item)

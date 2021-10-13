@@ -29,7 +29,7 @@ def main():
 
 def generate(inpath: list):
     for item in inpath:
-        collected = configo.generate(item)
+        collected = configo.generate(item, skips=skips)
         if not collected:
             continue
         header = f'######    {item}    ######'
@@ -37,6 +37,11 @@ def generate(inpath: list):
         utila.log(header)
         utila.log('#' * len(header))
         utila.log(collected)
+
+
+def skips(item: str) -> bool:
+    item = str(item)
+    return 'build' in item or 'tests' in item
 
 
 def evaluate() -> tuple:
