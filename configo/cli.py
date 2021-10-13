@@ -22,12 +22,21 @@ def main():
             utila.error(f'input does not exists: {path}')
             return utila.FAILURE
     if action == 'generate':
-        collected = [configo.generate(item) for item in inpath]
-        # TODO: ADD FILE SOURCE?
-        raw = utila.NEWLINE.join(collected)
-        utila.log(raw)
+        generate(inpath)
         return utila.SUCCESS
     return utila.INVALID_COMMAND
+
+
+def generate(inpath: list):
+    for item in inpath:
+        collected = configo.generate(item)
+        if not collected:
+            continue
+        header = f'######    {item}    ######'
+        utila.log('#' * len(header))
+        utila.log(header)
+        utila.log('#' * len(header))
+        utila.log(collected)
 
 
 def evaluate() -> tuple:
