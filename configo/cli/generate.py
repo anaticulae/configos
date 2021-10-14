@@ -12,12 +12,7 @@ import utila
 import configo
 
 
-def skips(item: str) -> bool:
-    item = str(item)
-    return 'build' in item or 'tests' in item
-
-
-def generate(inpath: list, noskip=False) -> int:
+def evaluate(inpath: list, noskip=False) -> int:
     skip = None if noskip else skips
     for path in inpath:
         if not utila.exists(path):
@@ -35,3 +30,8 @@ def generate(inpath: list, noskip=False) -> int:
         utila.error('could not locate any HolyValue')
         return utila.FAILURE
     return utila.SUCCESS
+
+
+def skips(item: str) -> bool:
+    item = str(item)
+    return 'build' in item or 'tests' in item

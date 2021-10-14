@@ -15,22 +15,25 @@ import configo
 import configo.cli.generate
 import configo.cli.optimization
 
-ACTION = (
-    ('generate', configo.cli.generate.generate),
-    ('optimize', configo.cli.optimization.optimization),
-)
-
 
 @utila.saveme
 def main():
     current, data = evaluate()
-    for action, method in ACTION:
+    for action, method in runner():
         if current != action:
             continue
-        if method(*data):
+        if method.evaluate(*data):
             return utila.FAILURE
         return utila.SUCCESS
     return utila.INVALID_COMMAND
+
+
+def runner():
+    runme = (
+        ('generate', configo.cli.generate),
+        ('optimize', configo.cli.optimization),
+    )
+    return runme
 
 
 def evaluate() -> tuple:
@@ -76,5 +79,5 @@ def create_parser():
         prog=configo.PROCESS,
         version=configo.__version__,
     )
-    configo.cli.optimization.create_optimize_option(result)
+    configo.cli.optimization.add_option(result)
     return result

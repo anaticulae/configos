@@ -8,14 +8,14 @@
 # =============================================================================
 
 
-def optimization(create: list, run: str, show: str):
+def evaluate(create: list, run: str, show: str):
     print(create)
     print(run)
     print(show)
     pass
 
 
-def create_optimize_option(parser):
+def add_option(parser):
     # TODO: REPLACE WITH UTILA METHOD
     sub = parser.add_subparsers(help='run optimizer to determine holy values')
     show = sub.add_parser('optimize')
