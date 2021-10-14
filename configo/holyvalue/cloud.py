@@ -22,7 +22,7 @@ HC_CLOUD_BASE = 'HC_CLOUD_BASE'
 
 def cloud_lookup(program: str, base: str = None):
     envname = holyname(program)
-    env = configo.env(envname)
+    env = configo.env(envname, default=None)
     if env is None:
         return
     if base:
