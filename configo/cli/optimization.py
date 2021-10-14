@@ -7,8 +7,6 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-import os
-
 import utila
 
 import configo
@@ -26,11 +24,7 @@ def create_plan(todo: list):
     for path in todo:
         name = utila.file_name(path)
         config = configo.generate(path)
-        # TODO: MAKE CONFIG PARSER READABLE FROM STR
-        with utila.make_tmpdir(configo.ROOT) as tmpdir:
-            tmppath = os.path.join(tmpdir, f'{name}.hv')
-            utila.file_create(tmppath, content=config)
-            parsed = configo.parse(tmpdir, name)
+        parsed = configo.parse(config, name=name)
         collected.append(parsed)
 
 

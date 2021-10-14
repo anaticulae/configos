@@ -37,6 +37,7 @@ class DataBase:
 
     def load(self, name: str, path: str = None):
         path = path if path else self.path
+        path = os.path.join(path, f'{name}.hv')
         parsed = parse(path, name)
         self.current = parsed
 
@@ -66,15 +67,12 @@ class DataBase:
 
 
 def parse(path, name: str = None) -> 'DataSet':
-    assert os.path.exists(path), f'path does not exists: {path}'
-    datapath = os.path.join(path, f'{name}.{configo.holyvalue.EXT}')
-    assert os.path.exists(datapath), f'dataset: {name} does not exists'
-
-    dataset = configo.holyvalue.data.DataSet(name=name)
-
+    # load config
+    raw = utila.from_raw_or_path(path, ftype='ini')
     parser = configparser.ConfigParser()
-    parser.read(datapath, encoding='utf8')
-
+    parser.read_string(raw)
+    # prepare data
+    dataset = configo.holyvalue.data.DataSet(name=name)
     for groupname, groupdata in parser.items():
         if groupname == 'DEFAULT':
             continue

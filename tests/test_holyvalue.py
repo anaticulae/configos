@@ -32,7 +32,10 @@ def default_one():
 
 
 def test_holyvalue_load_databas():
-    parsed = configo.holyvalue.store.parse(EXAMPLE, FIRST_ONE)
+    parsed = configo.holyvalue.store.parse(
+        os.path.join(EXAMPLE, f'{FIRST_ONE}.hv'),
+        FIRST_ONE,
+    )
     assert parsed
     assert len(parsed.data) == 2
 
@@ -136,7 +139,7 @@ def test_holyvalue_generate_and_load(testdir):
     config = configo.generate(tests.HVEXAMPLE)
     utila.file_create(path, config)
     # parse config
-    parsed = configo.holyvalue.store.parse(testdir.tmpdir, 'config')
+    parsed = configo.holyvalue.store.parse(path, 'config')
     assert parsed
 
 
