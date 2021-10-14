@@ -91,4 +91,26 @@ def create_parser():
         prog=configo.PROCESS,
         version=configo.__version__,
     )
+    create_optimize_option(result)
     return result
+
+
+def create_optimize_option(parser):
+    # TODO: REPLACE WITH UTILA METHOD
+    sub = parser.add_subparsers(help='run optimizer to determine holy values')
+    show = sub.add_parser('optimize')
+    show.add_argument(
+        '--create',
+        help='create optimization plan',
+        action='append',
+    )
+    show.add_argument(
+        '--run',
+        help='run optimization',
+        action='append',
+    )
+    show.add_argument(
+        '--show',
+        help='show optimization result',
+        action='append',
+    )
