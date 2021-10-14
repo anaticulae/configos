@@ -211,6 +211,8 @@ def validate(data, datatype=None, default=None, limit=None) -> bool:
         # avoid that default is higher than limit
         if default > limit:
             return False
+    if data is None:
+        return True
     if 'INT' in str(datatype):
         if not utila.isint(data):
             return False

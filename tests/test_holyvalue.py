@@ -148,7 +148,7 @@ def test_holyvalue_evaluate_percent_plus():
             default=15,
             limit=10,
             datatype=configo.DataType.PERCENT_PLUS,
-        ).value
+        )
 
 
 def test_holyvalue_less_verbose_api():
