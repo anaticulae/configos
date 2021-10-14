@@ -12,6 +12,7 @@ import sys
 import utila
 
 import configo
+import configo.cli.generate
 import configo.cli.optimization
 
 
@@ -19,12 +20,7 @@ import configo.cli.optimization
 def main():
     action, data = evaluate()
     if action == 'generate':
-        inpath, noskip = data
-        for path in inpath:
-            if not utila.exists(path):
-                utila.error(f'input does not exists: {path}')
-                return utila.FAILURE
-        if generate(inpath, noskip):
+        if configo.cli.generate.generate(*data):
             return utila.FAILURE
         return utila.SUCCESS
     if action == 'optimize':
@@ -32,27 +28,6 @@ def main():
             return utila.FAILURE
         return utila.SUCCESS
     return utila.INVALID_COMMAND
-
-
-def generate(inpath: list, noskip=False) -> int:
-    skip = None if noskip else skips
-    done = False
-    for item in inpath:
-        collected = configo.generate(item, skips=skip)
-        if not collected:
-            continue
-        utila.print_banner(text=item, symbol='#')
-        utila.log(collected)
-        done = True
-    if not done:
-        utila.error('could not locate any HolyValue')
-        return utila.FAILURE
-    return utila.SUCCESS
-
-
-def skips(item: str) -> bool:
-    item = str(item)
-    return 'build' in item or 'tests' in item
 
 
 def evaluate() -> tuple:
