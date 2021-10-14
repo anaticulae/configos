@@ -133,13 +133,12 @@ def test_holyvalue_generate_configuration():
 
 
 def test_holyvalue_generate_and_load(testdir):
-    root = str(testdir)
-    path = os.path.join(root, 'config.hv')
-
+    path = testdir.tmpdir.join('config.hv')
+    # create config
     config = configo.generate(HVEXAMPLE)
     utila.file_create(path, config)
-
-    parsed = configo.holyvalue.store.parse(root, 'config')
+    # parse config
+    parsed = configo.holyvalue.store.parse(testdir.tmpdir, 'config')
     assert parsed
 
 
