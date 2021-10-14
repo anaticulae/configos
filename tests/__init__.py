@@ -16,6 +16,7 @@ import configo
 import configo.cli
 
 TEST_DATA = os.path.join(configo.ROOT, 'tests')
+HVEXAMPLE = os.path.join(TEST_DATA, 'hvexample')
 
 #pylint: disable=invalid-name
 run = functools.partial(

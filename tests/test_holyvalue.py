@@ -23,8 +23,6 @@ import tests
 EXAMPLE = os.path.join(tests.TEST_DATA, 'examples')
 FIRST_ONE = 'first_one'
 
-HVEXAMPLE = os.path.join(tests.TEST_DATA, 'hvexample')
-
 
 @pytest.fixture
 def default_one():
@@ -117,7 +115,7 @@ def test_holyvalue_invalid_limit(datatype):
 
 def test_holyvalue_generate_configuration():
     """If this test fails, check holyvalue() signature and config generator"""
-    config = configo.generate(HVEXAMPLE)
+    config = configo.generate(tests.HVEXAMPLE)
     assert config is not None
     assert len(config) > 200, 'no enough content'
 
@@ -135,7 +133,7 @@ def test_holyvalue_generate_configuration():
 def test_holyvalue_generate_and_load(testdir):
     path = testdir.tmpdir.join('config.hv')
     # create config
-    config = configo.generate(HVEXAMPLE)
+    config = configo.generate(tests.HVEXAMPLE)
     utila.file_create(path, config)
     # parse config
     parsed = configo.holyvalue.store.parse(testdir.tmpdir, 'config')
