@@ -13,5 +13,5 @@ import tests
 
 def test_plan_create():
     todo = [tests.HVEXAMPLE]
-    configo.cli.optimization.create_plan(todo)
-    assert 0
+    plan = configo.cli.optimization.create_plan(todo)
+    assert 'TESTS.HVEXAMPLE.SECOND' in plan

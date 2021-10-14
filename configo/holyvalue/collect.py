@@ -30,7 +30,13 @@ def generate(path: str, skips: callable = None) -> str:
         project configuration file
     """
     assert os.path.exists(path), f'path does not exists: {path}'
-    collected = {}
+    collected = collect(path, skips=skips)
+    root = rootpackage(path)
+    result = dump_collected(collected, root)
+    return result
+
+
+def collect(path: str, skips: callable = None) -> dict:
     path = os.path.abspath(path)
     files = utila.file_list(
         path,
@@ -38,6 +44,7 @@ def generate(path: str, skips: callable = None) -> str:
         absolute=True,
         recursive=True,
     )
+    collected = {}
     for item in files:
         if skips and skips(item):
             continue
@@ -46,9 +53,7 @@ def generate(path: str, skips: callable = None) -> str:
         parsed = holyvalue_from_file(item)
         if parsed:
             collected[relative] = parsed
-    root = rootpackage(path)
-    result = dump_collected(collected, root)
-    return result
+    return collected
 
 
 def dump_collected(collected, root):
