@@ -2,6 +2,26 @@
 
 Every noteable change is logged here.
 
+## v0.13.0
+
+### Feature
+
+* use cloud base as default cloud path (5135497bd5ac)
+* introduce cloud_base to setup cloud base path (bcacee371c7f)
+* add option to return None as default value (bdc13faf81f5)
+* add option to set and unset cloud links (81aa431e34b6)
+* add cloud to load holy value table from env variables (be88b4a837e4)
+* add base option to load config from different path (c3732baa14c7)
+* strip newlines before and after collection (1c137717ca9a)
+* extend basic arithmetic support (89c542ab16b0)
+* add failure when no HolyValue is detected (d60c4c7b75f1)
+
+### Fix
+
+* verify data and limit at definition time (d8e5633c3365)
+* collect table default correctly (58d13cba2033)
+* validate float correctly (55097c0b8b2c)
+
 ## v0.12.0
 
 ### Feature
