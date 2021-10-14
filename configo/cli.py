@@ -16,13 +16,18 @@ import configo
 
 @utila.saveme
 def main():
-    inpath, action, noskip = evaluate()
-    for path in inpath:
-        if not utila.exists(path):
-            utila.error(f'input does not exists: {path}')
-            return utila.FAILURE
+    action, data = evaluate()
     if action == 'generate':
+        inpath, noskip = data
+        for path in inpath:
+            if not utila.exists(path):
+                utila.error(f'input does not exists: {path}')
+                return utila.FAILURE
         if generate(inpath, noskip):
+            return utila.FAILURE
+        return utila.SUCCESS
+    if action == 'optimize':
+        if optimization(*data):
             return utila.FAILURE
         return utila.SUCCESS
     return utila.INVALID_COMMAND
@@ -44,6 +49,13 @@ def generate(inpath: list, noskip=False) -> int:
     return utila.SUCCESS
 
 
+def optimization(create: list, run: str, show: str):
+    print(create)
+    print(run)
+    print(show)
+    pass
+
+
 def skips(item: str) -> bool:
     item = str(item)
     return 'build' in item or 'tests' in item
@@ -52,18 +64,19 @@ def skips(item: str) -> bool:
 def evaluate() -> tuple:
     parser = create_parser()
     args = utila.parse(parser)
-    action = ''
+    action, data = '', None
+    gen = (args.get('input'), args.get('noskip', False))
     if args['generate']:
         action = 'generate'
+        data = gen
+    optimize = (args.get('create'), args.get('run'), args.get('show'))
+    if any(optimize):
+        action = 'optimize'
+        data = optimize
     if not action:
         utila.error('nothing todo')
         sys.exit(utila.INVALID_COMMAND)
-    choice = (
-        args['input'],
-        action,
-        args.get('noskip', False),
-    )
-    return choice
+    return action, data
 
 
 def create_parser():
@@ -107,10 +120,12 @@ def create_optimize_option(parser):
     show.add_argument(
         '--run',
         help='run optimization',
-        action='append',
+        action='append_const',
+        const=str,
     )
     show.add_argument(
         '--show',
         help='show optimization result',
-        action='append',
+        action='append_const',
+        const=str,
     )
