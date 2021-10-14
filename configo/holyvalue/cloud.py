@@ -38,16 +38,6 @@ def cloud_lookup(program: str, base: str = None):
     configo.load(name=env)
 
 
-def holyname(program: str) -> str:
-    """\
-    >>> holyname('rawmaker')
-    'HC_RAWMAKER'
-    """
-    assert program
-    program = program.upper()
-    return f'HC_{program}'
-
-
 def cloud_set(program: str, namepath: str = None):
     if not namepath:
         namepath = program
@@ -58,3 +48,13 @@ def cloud_set(program: str, namepath: str = None):
 def cloud_unset(program: str):
     program = holyname(program)
     configo.env_del(program)
+
+
+def holyname(program: str) -> str:
+    """\
+    >>> holyname('rawmaker')
+    'HC_RAWMAKER'
+    """
+    assert program
+    program = program.upper()
+    return f'HC_{program}'
