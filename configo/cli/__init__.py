@@ -12,6 +12,7 @@ import sys
 import utila
 
 import configo
+import configo.cli.optimization
 
 
 @utila.saveme
@@ -27,7 +28,7 @@ def main():
             return utila.FAILURE
         return utila.SUCCESS
     if action == 'optimize':
-        if optimization(*data):
+        if configo.cli.optimization.optimization(*data):
             return utila.FAILURE
         return utila.SUCCESS
     return utila.INVALID_COMMAND
@@ -47,13 +48,6 @@ def generate(inpath: list, noskip=False) -> int:
         utila.error('could not locate any HolyValue')
         return utila.FAILURE
     return utila.SUCCESS
-
-
-def optimization(create: list, run: str, show: str):
-    print(create)
-    print(run)
-    print(show)
-    pass
 
 
 def skips(item: str) -> bool:
@@ -104,28 +98,5 @@ def create_parser():
         prog=configo.PROCESS,
         version=configo.__version__,
     )
-    create_optimize_option(result)
+    configo.cli.optimization.create_optimize_option(result)
     return result
-
-
-def create_optimize_option(parser):
-    # TODO: REPLACE WITH UTILA METHOD
-    sub = parser.add_subparsers(help='run optimizer to determine holy values')
-    show = sub.add_parser('optimize')
-    show.add_argument(
-        '--create',
-        help='create optimization plan',
-        action='append',
-    )
-    show.add_argument(
-        '--run',
-        help='run optimization',
-        action='append_const',
-        const=str,
-    )
-    show.add_argument(
-        '--show',
-        help='show optimization result',
-        action='append_const',
-        const=str,
-    )
