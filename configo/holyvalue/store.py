@@ -35,8 +35,9 @@ class DataBase:
         self.path = path
         self.current = current
 
-    def load(self, name: str):
-        parsed = parse(self.path, name)
+    def load(self, name: str, path: str = None):
+        path = path if path else self.path
+        parsed = parse(path, name)
         self.current = parsed
 
     def get(self, group: str, variable: str, default=None):
@@ -93,9 +94,9 @@ def init(path: str):
     DATABASE = DataBase(path)
 
 
-def load(name: str):
+def load(name: str, base: str = None):
     """Load `DATABASE` with dataset of `name`."""
-    database().load(name)
+    database().load(name=name, path=base)
 
 
 def database():
