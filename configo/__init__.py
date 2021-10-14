@@ -51,6 +51,8 @@ from configo.holyvalue.access import HV_INT_PLUS
 from configo.holyvalue.access import HV_PERCENT
 from configo.holyvalue.access import HV_PERCENT_PLUS
 from configo.holyvalue.access import HV_STR
+from configo.holyvalue.cloud import cloud_base
+from configo.holyvalue.cloud import cloud_base_set
 from configo.holyvalue.cloud import cloud_lookup
 from configo.holyvalue.cloud import cloud_set
 from configo.holyvalue.cloud import cloud_unset

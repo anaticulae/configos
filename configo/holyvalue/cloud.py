@@ -17,6 +17,8 @@ import utila
 
 import configo
 
+HC_CLOUD_BASE = 'HC_CLOUD_BASE'
+
 
 def cloud_lookup(program: str, base: str = None):
     envname = holyname(program)
@@ -48,6 +50,18 @@ def cloud_set(program: str, namepath: str = None):
 def cloud_unset(program: str):
     program = holyname(program)
     configo.env_del(program)
+
+
+def cloud_base_set(path: str):
+    if path is None:
+        configo.env_del(HC_CLOUD_BASE)
+        return
+    configo.env_set(HC_CLOUD_BASE, path)
+
+
+def cloud_base() -> str:
+    result = configo.env(HC_CLOUD_BASE, default=None)
+    return result
 
 
 def holyname(program: str) -> str:
