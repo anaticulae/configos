@@ -75,7 +75,7 @@ __version__ = '0.12.0'
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
 PROCESS = 'configo'
 
-init(None)
+init(cloud_base())
 
 # TODO: REMOVE LATER AND INCREASE MAJOR VERSION NUMBER
 load_env = env_load
