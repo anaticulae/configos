@@ -15,16 +15,19 @@ import configo
 import configo.cli.generate
 import configo.cli.optimization
 
+ACTION = (
+    ('generate', configo.cli.generate.generate),
+    ('optimize', configo.cli.optimization.optimization),
+)
+
 
 @utila.saveme
 def main():
-    action, data = evaluate()
-    if action == 'generate':
-        if configo.cli.generate.generate(*data):
-            return utila.FAILURE
-        return utila.SUCCESS
-    if action == 'optimize':
-        if configo.cli.optimization.optimization(*data):
+    current, data = evaluate()
+    for action, method in ACTION:
+        if current != action:
+            continue
+        if method(*data):
             return utila.FAILURE
         return utila.SUCCESS
     return utila.INVALID_COMMAND
