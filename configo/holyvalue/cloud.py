@@ -46,3 +46,15 @@ def holyname(program: str) -> str:
     assert program
     program = program.upper()
     return f'HC_{program}'
+
+
+def cloud_set(program: str, namepath: str = None):
+    if not namepath:
+        namepath = program
+    program = holyname(program)
+    configo.env_set(program, value=namepath)
+
+
+def cloud_unset(program: str):
+    program = holyname(program)
+    configo.env_del(program)
