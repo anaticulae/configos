@@ -9,4 +9,4 @@
 
 utilatest>=0.9.0<1.0.0
 
-rawmaker>=2.26.6<3.0.0
+rawmaker>=2.27.0<3.0.0
