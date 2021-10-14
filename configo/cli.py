@@ -50,7 +50,24 @@ def skips(item: str) -> bool:
 
 
 def evaluate() -> tuple:
-    parser = utila.cli.create_parser(
+    parser = create_parser()
+    args = utila.parse(parser)
+    action = ''
+    if args['generate']:
+        action = 'generate'
+    if not action:
+        utila.error('nothing todo')
+        sys.exit(utila.INVALID_COMMAND)
+    choice = (
+        args['input'],
+        action,
+        args.get('noskip', False),
+    )
+    return choice
+
+
+def create_parser():
+    result = utila.cli.create_parser(
         todo=[
             utila.cli.Flag(
                 longcut='--generate',
@@ -74,16 +91,4 @@ def evaluate() -> tuple:
         prog=configo.PROCESS,
         version=configo.__version__,
     )
-    args = utila.parse(parser)
-    action = ''
-    if args['generate']:
-        action = 'generate'
-    if not action:
-        utila.error('nothing todo')
-        sys.exit(utila.INVALID_COMMAND)
-    choice = (
-        args['input'],
-        action,
-        args.get('noskip', False),
-    )
-    return choice
+    return result
