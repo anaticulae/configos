@@ -41,6 +41,7 @@ if __name__ == "__main__":
         ],
         packages=[
             'configo',
+            'configo.cli',
             'configo.holyvalue',
         ],
         entry_points={
