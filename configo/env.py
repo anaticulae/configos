@@ -11,12 +11,14 @@ import os
 
 import utila
 
+NO_DEFAULT = object()
 
-def env(name: str, default=None):
+
+def env(name: str, default=NO_DEFAULT):
     try:
         return os.environ[name]
     except KeyError as error:
-        if default is None:
+        if default == NO_DEFAULT:
             raise error
     return default
 
