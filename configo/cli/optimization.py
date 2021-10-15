@@ -8,6 +8,7 @@
 # =============================================================================
 
 import collections
+import csv
 import os
 import re
 
@@ -23,6 +24,8 @@ def evaluate(create: list, run: str, show: str):  # pylint:disable=W0613
         utila.log(dump_plan(plan))
     if run:
         run_plan(run)
+    if show:
+        show_result(show)
 
 
 def create_plan(todo: list) -> dict:
@@ -73,6 +76,70 @@ def run_plan(run, reduce=100, seed=None, test_before: bool = False):
         )
         for index, step in enumerate(mapped):
             run_test(key=keys, config=step, step=index, tmpdir=tmpdir)
+
+
+def show_result(result):
+    single = result[0]
+    parsed, header, size = parse_result(single)
+    rendered = render_table(list(parsed.values()), size, header=header)
+    with utila.make_tmpdir(root=configo.ROOT) as output:
+        outpath = os.path.join(output, 'index.html')
+        utila.file_create(outpath, rendered)
+        # TODO: REPLACE WITH UTILA CODe
+        testrun = os.environ.get('PYTEST_PLUGINS', False)
+        if not testrun:
+            utila.run(f'start {outpath}')
+
+
+def parse_result(path) -> dict:
+    collected = collections.defaultdict(set)
+    with open(path, newline='') as csvfile:
+        reader = csv.reader(csvfile)
+        data = list(reader)
+    width, height = 0, 0
+    header = data[0][1:-1]
+    for row in data[1:]:
+        number, *content, failure = row  # pylint:disable=W0612
+        failure = int(failure)
+        for index, value in enumerate(content):
+            # TODO: ADD BOOL CHECKUP
+            if utila.isint(value):
+                value = int(value)
+            else:
+                value = float(value)
+            collected[index].add((value, failure))
+        width = len(content)
+        height += 1
+    result = {
+        key: sorted(value, key=lambda x: x[0], reverse=True)
+        for key, value in collected.items()
+    }
+    return result, header, (width, height)
+
+
+def render_table(data, size, header=None) -> str:
+    width = 150 * size[0]
+    result = f'<html><table width={width}>'
+    if header:
+        result += '<tr>'
+        result += ''.join([
+            f'<td style="min-width:150px;font-size:10px;overflow:hidden">{item.replace(".", " ")}</td>'
+            for item in header
+        ])
+        result += '</tr>'
+    for _ in range(size[1]):  # pylint:disable=W0612
+        result += '<tr>'
+        for pos in range(size[0]):
+            current = data[pos]
+            if current:
+                value, failure = current.pop()
+                color = 'green' if not failure else 'orange'
+                result += f'<td style="background:{color};" height=50px><center>{value} [{failure}]</center></td>'
+            else:
+                result += '<td></td>'
+        result += '</tr>'
+    result += '</table></html>'
+    return result
 
 
 def run_test(key, config, step: int, tmpdir, hcvalue='RAWMAKER'):
@@ -173,6 +240,5 @@ def add_option(parser):
     show.add_argument(
         '--show',
         help='show optimization result',
-        action='append_const',
-        const=str,
+        action='append',
     )

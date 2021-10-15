@@ -25,3 +25,11 @@ def test_cli_generate(monkeypatch, capsys):
     stdout = utilatest.stdout(capsys)
     assert 'HELMUT = None' in stdout
     assert len(stdout) >= 861
+
+
+def test_cli_result_show(monkeypatch):
+    result = tests.RESULT
+    tests.run(
+        f'optimize --show {result}',
+        monkeypatch=monkeypatch,
+    )
