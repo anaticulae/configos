@@ -43,6 +43,10 @@ class DataBase:
         self.current = parsed
 
     def get(self, group: str, variable: str, default=None):
+        if group:
+            group = group.lower()
+        if variable:
+            variable = variable.upper()
 
         def default_warning():
             msg = f'not defined in database {group}:{variable}; use default: {default}'
@@ -77,6 +81,7 @@ def parse(path, name: str = None) -> 'DataSet':
     for groupname, groupdata in parser.items():
         if groupname == 'DEFAULT':
             continue
+        groupname = groupname.lower()
         group = configo.holyvalue.data.Group(name=groupname)
         for datakey, data in groupdata.items():
             datakey = datakey.upper()
