@@ -48,22 +48,23 @@ def create_plan(todo: list) -> dict:
     return result
 
 
-def run_plan(run, reduce=999, seed=None):
+def run_plan(run, reduce=100, seed=None):
     run = os.path.abspath(run[0])
     plan = utila.yaml_load(run)
     todo = list(plan.values())
     keys = list(plan.keys())
     mapped = utila.minimal(todo)
     utila.log(f'different steps: {len(mapped)}')
-    reduced = utila.choose_random(mapped, count=reduce, seed=seed)
-    utila.log(f'reduce values: {reduce}')
+    if len(mapped) > reduce:
+        utila.log(f'reduce values: {reduce}')
+        mapped = utila.choose_random(mapped, count=reduce, seed=seed)
     # verify code without hv-modification
     utila.log('test project')
     # utila.run('baw test')
     # utila.log(utila.from_tuple(keys, ';'))
     with utila.make_tmpdir(configo.ROOT) as tmpdir:
         utila.log(tmpdir)
-        for index, step in enumerate(reduced):
+        for index, step in enumerate(mapped):
             run_test(key=keys, config=step, step=index, tmpdir=tmpdir)
 
 
