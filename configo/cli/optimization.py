@@ -56,7 +56,7 @@ def run_plan(run, reduce=100, seed=None, test_before: bool = False):
     plan = utila.yaml_load(run)
     todo = list(plan.values())
     keys = list(plan.keys())
-    mapped = utila.minimal(todo)
+    mapped = first_one(todo)
     utila.log(f'different steps: {len(mapped)}')
     if len(mapped) > reduce:
         utila.log(f'reduce values: {reduce}')
@@ -110,11 +110,16 @@ def parse_result(path) -> dict:
             collected[index].add((value, failure))
         width = len(content)
         height += 1
-    result = {
-        key: sorted(value, key=lambda x: x[0], reverse=True)
-        for key, value in collected.items()
-    }
+    result = {key: prepare(value) for key, value in collected.items()}
     return result, header, (width, height)
+
+
+def prepare(value):
+    grouped = utila.groupby_x(value, selector=lambda x: x[0])
+    result = []
+    for group in grouped:
+        result.append((group[0][0], min([item[1] for item in group])))
+    return sorted(result, key=lambda x: x[0], reverse=True)
 
 
 def render_table(data, size, header=None) -> str:
@@ -194,23 +199,51 @@ def create_config(keys, configs) -> str:
     return result
 
 
-STEPS = (0.3, 0.5, 0.9, 1.0, 1.2, 1.8, 2.2)
-
-
-def ranges(default, limit=None, datatype: configo.DataType = None) -> tuple:
+def first_one(items) -> list:
     """\
-    >>> ranges(50, 300, configo.DataType.INT_PLUS)
-    (15, 25, 45, 50, 60, 90, 110)
-    >>> ranges(1.2, 3.0, configo.DataType.FLOAT)
-    (0.36, 0.6, 1.08, 1.2, 1.44, 2.16, 2.64)
+    >>> first_one(([1,], [2,]))
+    [[1, 2]]
+    >>> first_one([[1, 2], [3,]])
+    [[1, 3], [2, 3]]
+    >>> first_one([(4, ), (1, 2, 3), (5, 6)])
+    [[4, 1, 5], [4, 2, 5], [4, 3, 5], [4, 1, 6]]
     """
+    items = [list(item) for item in items]
+    result = []
+    for index, _ in enumerate(items):
+        base = [item[0] for item in items]
+        for current in items[index]:
+            copy = list(base)
+            copy[index] = current
+            result.append(copy)
+    result = utila.make_unique(result)
+    return result
+
+
+STEPS = (1.0, 0.1, 0.3, 0.5, 0.9, 1.2, 1.8, 2.2, 2.8, 3.5)
+
+
+def ranges(
+    default,
+    limit=None,
+    datatype: configo.DataType = None,
+    steps=None,
+) -> tuple:
+    """\
+    >>> ranges(50, 300, configo.DataType.INT_PLUS, steps=((1.0, 1.5, 2.0)))
+    (50, 75, 100)
+    >>> ranges(1.2, 3.0, configo.DataType.FLOAT, steps=((1.0, 1.5, 2.0)))
+    (1.2, 1.8, 2.4)
+    """
+    if steps is None:
+        steps = STEPS
     if default is None:
         return tuple()
     if datatype and datatype == configo.DataType.STR:
         return tuple()
     if datatype == configo.DataType.BOOL:
         return (True, False)
-    data = tuple(utila.roundme(default * item) for item in STEPS)
+    data = tuple(utila.roundme(default * item) for item in steps)
     if 'INT' in str(datatype):
         data = tuple(int(item) for item in data)
     if limit is not None:
