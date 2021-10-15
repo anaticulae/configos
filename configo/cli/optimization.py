@@ -17,7 +17,7 @@ import configo
 import configo.holyvalue.collect
 
 
-def evaluate(create: list, run: str, show: str):
+def evaluate(create: list, run: str, show: str):  # pylint:disable=W0613
     if create:
         plan = create_plan(create)
         utila.log(dump_plan(plan))
