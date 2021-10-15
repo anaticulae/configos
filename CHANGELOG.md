@@ -2,6 +2,20 @@
 
 Every noteable change is logged here.
 
+## v0.15.0
+
+### Feature
+
+* introduce algorithm to change a single value (214b591f5483)
+* add option to display result (62f0215a4d84)
+* add option to run test before optimization (39bd28acc4c2)
+
+### Fix
+
+* enable hard error later (38a982ac8881)
+* add csv header and use comma (321c733c0794)
+* use random selection when generated count (90f527337f23)
+
 ## v0.14.0
 
 ### Feature
