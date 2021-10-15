@@ -94,19 +94,11 @@ Every noteable change is logged here.
 
 ## v0.8.6
 
-## v0.8.5
-
-## v0.8.4
-
 ## v0.8.3
 
 ### Documentation
 
 * extend interface documentation (9b5f5869d570)
-
-## v0.8.2
-
-## v0.8.1
 
 ## v0.8.0
 
@@ -116,10 +108,6 @@ Every noteable change is logged here.
 
 ## v0.7.3
 
-## v0.7.2
-
-## v0.7.1
-
 ## v0.7.0
 
 ### Feature
@@ -128,40 +116,6 @@ Every noteable change is logged here.
 
 ## v0.6.18
 
-## v0.6.17
-
-## v0.6.16
-
-## v0.6.15
-
-## v0.6.14
-
-## v0.6.13
-
-## v0.6.12
-
-## v0.6.11
-
-## v0.6.10
-
-## v0.6.9
-
-## v0.6.8
-
-## v0.6.7
-
-## v0.6.6
-
-## v0.6.5
-
-## v0.6.4
-
-## v0.6.3
-
-## v0.6.2
-
-## v0.6.1
-
 ## v0.6.0
 
 ### Feature
@@ -169,38 +123,6 @@ Every noteable change is logged here.
 * add link to generated docs (b4ac084e1c5e)
 
 ## v0.5.17
-
-## v0.5.16
-
-## v0.5.15
-
-## v0.5.14
-
-## v0.5.13
-
-## v0.5.12
-
-## v0.5.11
-
-## v0.5.10
-
-## v0.5.9
-
-## v0.5.8
-
-## v0.5.7
-
-## v0.5.6
-
-## v0.5.5
-
-## v0.5.4
-
-## v0.5.3
-
-## v0.5.2
-
-## v0.5.1
 
 ## v0.5.0
 
@@ -216,10 +138,6 @@ Every noteable change is logged here.
 * extend interface documentation (51050a59f084)
 
 ## v0.4.4
-
-## v0.4.3
-
-## v0.4.2
 
 ## v0.4.1
 
@@ -254,8 +172,6 @@ Every noteable change is logged here.
 
 ## v0.3.2
 
-## v0.3.1
-
 ## v0.3.0
 
 ### Feature
@@ -270,61 +186,13 @@ Every noteable change is logged here.
 
 ## v0.2.2
 
-## v0.2.1
-
-## v0.2.0
-
 ## v0.1.30
-
-## v0.1.29
-
-## v0.1.28
-
-## v0.1.27
-
-## v0.1.26
-
-## v0.1.25
-
-## v0.1.24
-
-## v0.1.23
-
-## v0.1.22
-
-## v0.1.21
-
-## v0.1.20
-
-## v0.1.19
-
-## v0.1.18
-
-## v0.1.17
 
 ## v0.1.16
 
 ### Feature
 
 * add method to determine shared_tmp (1781a9c37633)
-
-## v0.1.15
-
-## v0.1.14
-
-## v0.1.13
-
-## v0.1.12
-
-## v0.1.11
-
-## v0.1.10
-
-## v0.1.9
-
-## v0.1.8
-
-## v0.1.7
 
 ## v0.1.6
 
@@ -342,8 +210,6 @@ Every noteable change is logged here.
 
 * add basic configuration for DINA4 and DINA5 pages (e932a0e7710f)
 
-## v0.1.4
-
 ## v0.1.3
 
 ### Feature
@@ -353,8 +219,6 @@ Every noteable change is logged here.
 ### Fix
 
 * fix location to shared space (6ec668800b5b)
-
-## v0.1.2
 
 ## v0.1.1
 
@@ -374,4 +238,3 @@ Every noteable change is logged here.
 * add server from baw project (246c48abe013)
 
 ## v0.0.0 Initial release
-
