@@ -38,6 +38,7 @@ class DataBase:
     def load(self, name: str, path: str = None):
         path = path if path else self.path
         path = os.path.join(path, f'{name}.hv')
+        utila.info(f'load path: {path}')
         parsed = parse(path, name)
         self.current = parsed
 
