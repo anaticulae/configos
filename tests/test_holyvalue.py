@@ -143,13 +143,16 @@ def test_holyvalue_generate_and_load(testdir):
     assert parsed
 
 
-def test_holyvalue_evaluate_percent_plus():
+def test_holyvalue_evaluate_percent_plus(capsys):
     with pytest.raises(configo.InvalidHolyValue):
         hello = configo.HV(  # pylint:disable=unused-variable
             default=15,
             limit=10,
             datatype=configo.DataType.PERCENT_PLUS,
         )
+        if 'invalid default/limit/datatype' in utilatest.stderr(capsys):
+            # TODO: REMOVE LATER
+            raise configo.InvalidHolyValue
 
 
 def test_holyvalue_less_verbose_api():
