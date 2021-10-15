@@ -65,6 +65,12 @@ def run_plan(run, reduce=100, seed=None, test_before: bool = False):
     # utila.log(utila.from_tuple(keys, ';'))
     with utila.make_tmpdir(configo.ROOT) as tmpdir:
         utila.log(tmpdir)
+        header = f"number,{utila.from_tuple(keys, separator=',')},failure\n"
+        utila.file_append(
+            os.path.join(tmpdir, 'result'),
+            header,
+            create=True,
+        )
         for index, step in enumerate(mapped):
             run_test(key=keys, config=step, step=index, tmpdir=tmpdir)
 
@@ -93,7 +99,7 @@ def run_test(key, config, step: int, tmpdir, hcvalue='RAWMAKER'):
     if completed.returncode:
         stdout = completed.stdout
         tests = FAILED.search(stdout)['failed']
-    config = f'{step};' + utila.from_tuple(config, ';') + f';{tests}\n'
+    config = f'{step},' + utila.from_tuple(config, ',') + f',{tests}\n'
     if completed.returncode:
         utila.error(config)
     # append result
