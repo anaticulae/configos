@@ -2,6 +2,21 @@
 
 Every noteable change is logged here.
 
+## v0.14.0
+
+### Feature
+
+* debug loading holy value file (f277cb84d0bc)
+* improve plan creator (b80d18d5adb0)
+* add option to load config from file (ae20b56a607a)
+* create plan from config (b233b5e4989c)
+* add optimization step (a2998dbcfb90)
+
+### Fix
+
+* ensure to have valid variable names (d6286f895c2c)
+* use None if HC is not defined (bef450dd14e8)
+
 ## v0.13.0
 
 ### Feature
