@@ -2,6 +2,12 @@
 
 Every noteable change is logged here.
 
+## v0.15.1
+
+### Feature
+
+* add caching mechanism to improve lookup time (cce7fd286e5a)
+
 ## v0.15.0
 
 ### Feature
