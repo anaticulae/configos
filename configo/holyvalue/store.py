@@ -8,6 +8,7 @@
 # =============================================================================
 
 import configparser
+import functools
 import os
 
 import utila
@@ -42,6 +43,7 @@ class DataBase:
         parsed = parse(path, name)
         self.current = parsed
 
+    @functools.lru_cache(maxsize=1024)
     def get(self, group: str, variable: str, default=None):
         if group:
             group = group.lower()

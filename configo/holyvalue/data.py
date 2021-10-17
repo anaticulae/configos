@@ -10,6 +10,7 @@
 import contextlib
 import dataclasses
 import enum
+import functools
 import typing
 
 import utila
@@ -68,6 +69,7 @@ class DataSet:
     data: typing.Dict[str, Group] = dataclasses.field(default_factory=dict)
 
 
+@functools.lru_cache(maxsize=1024)
 def convert(data, datatype=None):
     """\
     >>> convert(1, DataType.BOOL)
@@ -89,6 +91,9 @@ def convert(data, datatype=None):
     return data
 
 
+NONE = object()
+
+
 class HolyValue(HolyMixin):
     """\
     >>> 10.0 + HolyValue(default=5.0)
@@ -107,16 +112,21 @@ class HolyValue(HolyMixin):
         self.datatype = datatype
         self.default = default
         self.limit = limit
+        self._value = NONE
 
     @property
     def value(self):
+        if self._value != NONE:
+            return self._value
         assert configo.database(), 'could not access database'
         if not self.valid:
             msg = (f'invalid holyvalue: {self.group}:{self.name};\n'
                    f'value:{self.data}; default:{self.default};\n'
                    f'limit:{self.limit}; datatype:{self.datatype}')
             raise configo.exception.InvalidHolyValue(msg)
-        return self.data
+        # TODO: USE BETTER CACHING MECHANISM
+        self._value = self.data
+        return self._value
 
     @property
     def valid(self):

@@ -14,6 +14,8 @@ next release
 
 * [ ] use global configuration folder
 
+* [ ] introduce cache invalid mechanism
+
 other
 -----
 
