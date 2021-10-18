@@ -2,6 +2,13 @@
 
 Every noteable change is logged here.
 
+## v0.16.0
+
+### Feature
+
+* support slicing for holy values (ae140b4834b8)
+* add more debugging information (85c76f96d01c)
+
 ## v0.15.1
 
 ### Feature
