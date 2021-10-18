@@ -223,3 +223,16 @@ def test_holyvalue_operation():
     assert value is value  # pylint:disable=comparison-with-itself
 
     assert string == string  # pylint:disable=comparison-with-itself
+
+
+def test_hv_ranged():
+    start = configo.HV_INT_PLUS(default=10)
+    end = configo.HV_INT_PLUS(default=20)
+    assert len(utila.ranged_tuple(start, end)) == end - start
+
+
+def test_hv_slice():
+    data = [1, 2, 3, 4, 5, 6, 7]
+    start = configo.HV_INT_PLUS(default=2)
+    selected = data[start:]
+    assert selected == [3, 4, 5, 6, 7]

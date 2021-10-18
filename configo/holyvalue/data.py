@@ -205,6 +205,12 @@ class HolyValue(HolyMixin):
     def __eq__(self, other):
         return self.value == other
 
+    def __int__(self):
+        return int(self.value)
+
+    def __index__(self):
+        return int(self)
+
 
 def validate(data, datatype=None, default=None, limit=None) -> bool:
     """\
