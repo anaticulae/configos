@@ -6,6 +6,11 @@
 # use or distribution is an offensive act against international law and may
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
+"""\
+>>> STR = HV_STR('hello')
+>>> f'{STR} hier'
+'hello hier'
+"""
 
 import functools
 import inspect
