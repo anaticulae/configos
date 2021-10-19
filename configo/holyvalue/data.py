@@ -211,6 +211,13 @@ class HolyValue(HolyMixin):
     def __str__(self):
         return str(self.value)
 
+    def __repr__(self):
+        """\
+        >>> str((HolyValue(default=5.0), HolyValue(default=7.1)))
+        '(5.0, 7.1)'
+        """
+        return str(self)
+
     def __index__(self):
         return int(self)
 
