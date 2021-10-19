@@ -2,6 +2,12 @@
 
 Every noteable change is logged here.
 
+## v0.16.1
+
+### Fix
+
+* add str lookup (824d8a2e2b9f)
+
 ## v0.16.0
 
 ### Feature
