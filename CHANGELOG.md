@@ -2,6 +2,17 @@
 
 Every noteable change is logged here.
 
+## v0.16.2
+
+### Feature
+
+* add bool comparison (c9ca7339df4a)
+* add hv bool (80fa4f11eebf)
+
+### Fix
+
+* enable using holy values as tuple (c9d7ac681f9e)
+
 ## v0.16.1
 
 ### Fix
