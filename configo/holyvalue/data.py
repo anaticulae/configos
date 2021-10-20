@@ -208,6 +208,17 @@ class HolyValue(HolyMixin):
     def __int__(self):
         return int(self.value)
 
+    def __bool__(self):
+        """\
+        >>> bool(HolyValue(default=False))
+        False
+        >>> HolyValue(default=False) == False
+        True
+        >>> assert not HolyValue(default=False)
+        >>> assert HolyValue(default=True)
+        """
+        return bool(self.value)
+
     def __str__(self):
         return str(self.value)
 
