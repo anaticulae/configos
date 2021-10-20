@@ -44,6 +44,7 @@ from configo.exception import InvalidHolyValue
 from configo.exception import MissingHolyValue
 # Holy
 from configo.holyvalue.access import HV
+from configo.holyvalue.access import HV_BOOL
 from configo.holyvalue.access import HV_FLOAT
 from configo.holyvalue.access import HV_FLOAT_PLUS
 from configo.holyvalue.access import HV_INT
