@@ -91,9 +91,6 @@ def convert(data, datatype=None):
     return data
 
 
-NONE = object()
-
-
 class HolyValue(HolyMixin):
     """\
     >>> 10.0 + HolyValue(default=5.0)
@@ -112,12 +109,9 @@ class HolyValue(HolyMixin):
         self.datatype = datatype
         self.default = default
         self.limit = limit
-        self._value = NONE
 
-    @property
+    @functools.cached_property
     def value(self):
-        if self._value != NONE:
-            return self._value
         assert configo.database(), 'could not access database'
         if not self.valid:
             msg = (f'invalid holyvalue: {self.group}:{self.name};\n'
@@ -125,8 +119,7 @@ class HolyValue(HolyMixin):
                    f'limit:{self.limit}; datatype:{self.datatype}')
             raise configo.exception.InvalidHolyValue(msg)
         # TODO: USE BETTER CACHING MECHANISM
-        self._value = self.data
-        return self._value
+        return self.data
 
     @property
     def valid(self):
