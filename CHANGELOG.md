@@ -2,6 +2,12 @@
 
 Every noteable change is logged here.
 
+## v0.16.3
+
+### Feature
+
+* make holy value hash able (a17b6ece0787)
+
 ## v0.16.2
 
 ### Feature
