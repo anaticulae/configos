@@ -23,7 +23,6 @@ class HolyMixin:
 
 
 class DataType(enum.Enum):
-
     INT = enum.auto()
     INT_PLUS = enum.auto()
 
@@ -57,14 +56,12 @@ class Datum:
 
 @dataclasses.dataclass
 class Group:
-
     name: str = None
     data: typing.Dict[str, Datum] = dataclasses.field(default_factory=dict)
 
 
 @dataclasses.dataclass
 class DataSet:
-
     name: str = None
     data: typing.Dict[str, Group] = dataclasses.field(default_factory=dict)
 
@@ -224,6 +221,12 @@ class HolyValue(HolyMixin):
 
     def __index__(self):
         return int(self)
+
+    def __hash__(self):
+        """\
+        >>> assert hash(HolyValue(default=5.0))
+        """
+        return hash(repr(self))
 
 
 def validate(data, datatype=None, default=None, limit=None) -> bool:
