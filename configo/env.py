@@ -14,7 +14,9 @@ import utila
 NO_DEFAULT = object()
 
 
-def env(name: str, default=NO_DEFAULT):
+def env(name: str, default=NO_DEFAULT, group: str = None):
+    if group:
+        name = f'{group}_{name}'
     try:
         return os.environ[name]
     except KeyError as error:
@@ -23,12 +25,16 @@ def env(name: str, default=NO_DEFAULT):
     return default
 
 
-def env_set(name: str, value: str):
+def env_set(name: str, value: str, group: str = None):
+    if group:
+        name = f'{group}_{name}'
     value = str(value)
     os.environ[name] = value
 
 
-def env_del(name: str):
+def env_del(name: str, group: str = None):
+    if group:
+        name = f'{group}_{name}'
     del os.environ[name]
 
 
