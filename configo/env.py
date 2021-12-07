@@ -16,8 +16,7 @@ NO_DEFAULT = object()
 
 @utila.cacheme
 def env(name: str, default=NO_DEFAULT, group: str = None):
-    if group:
-        name = f'{group}_{name}'
+    name = groupname(name, group)
     try:
         return os.environ[name]
     except KeyError as error:
@@ -28,16 +27,14 @@ def env(name: str, default=NO_DEFAULT, group: str = None):
 
 def env_set(name: str, value: str, group: str = None):
     # TODO: MAKE THREAD SAFE?
-    if group:
-        name = f'{group}_{name}'
+    name = groupname(name, group)
     value = str(value)
     os.environ[name] = value
     utila.cache_clear()
 
 
 def env_del(name: str, group: str = None):
-    if group:
-        name = f'{group}_{name}'
+    name = groupname(name, group)
     del os.environ[name]
     utila.cache_clear()
 
@@ -65,3 +62,13 @@ def env_dump() -> str:
         collected.append('{:<40}{}'.format(key, value))
     result = utila.NEWLINE.join(collected)
     return result
+
+
+def groupname(name, group):
+    """\
+    >>> groupname('first', 'master')
+    'master_first'
+    """
+    if not group:
+        return name
+    return f'{group}_{name}'
