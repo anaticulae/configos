@@ -2,6 +2,13 @@
 
 Every noteable change is logged here.
 
+## v0.17.0
+
+### Feature
+
+* cache environment variable (0e2ac01623db)
+* make env vars group able (3b0ffa6e48f7)
+
 ## v0.16.3
 
 ### Feature
