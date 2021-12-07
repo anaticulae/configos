@@ -14,6 +14,7 @@ import utila
 NO_DEFAULT = object()
 
 
+@utila.cacheme
 def env(name: str, default=NO_DEFAULT, group: str = None):
     if group:
         name = f'{group}_{name}'
@@ -26,16 +27,19 @@ def env(name: str, default=NO_DEFAULT, group: str = None):
 
 
 def env_set(name: str, value: str, group: str = None):
+    # TODO: MAKE THREAD SAFE?
     if group:
         name = f'{group}_{name}'
     value = str(value)
     os.environ[name] = value
+    utila.cache_clear()
 
 
 def env_del(name: str, group: str = None):
     if group:
         name = f'{group}_{name}'
     del os.environ[name]
+    utila.cache_clear()
 
 
 def env_load(path: str):
@@ -44,6 +48,7 @@ def env_load(path: str):
     config = utila.load_config(loaded, flat=True)
     for key, value in config.items():
         env_set(key, value)
+    utila.cache_clear()
 
 
 def env_unload(path: str):
@@ -51,6 +56,7 @@ def env_unload(path: str):
     config = utila.load_config(path, flat=True)
     for key in config.keys():
         env_del(key)
+    utila.cache_clear()
 
 
 def env_dump() -> str:
