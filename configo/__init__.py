@@ -67,6 +67,7 @@ from configo.holyvalue.store import init
 from configo.holyvalue.store import load
 from configo.holyvalue.store import parse
 from configo.holyvalue.table import HolyList
+from configo.holyvalue.table import HolyRate
 from configo.holyvalue.table import HolyTable
 # Server
 from configo.server import package_address

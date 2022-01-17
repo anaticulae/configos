@@ -13,6 +13,12 @@
 >>> table.add(0,0)
 >>> table.add(10,10)
 >>> assert table(5.0) == 5.0, table(5.0)
+
+>>> rate = HolyRate(((1, 1), (2, 2), (5, 1), (10, 5)))
+>>> assert rate(2) == 1.0
+>>> assert rate(6) == 0.2
+>>> assert rate(10) == 0.2
+
 """
 
 import utila
@@ -65,6 +71,15 @@ class HolyTable(configo.holyvalue.data.HolyMixin):
             self.left_outranges_none,
         )
         return value
+
+
+class HolyRate(HolyTable):
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.table = [
+            (pos, value / pos if pos else 0.0) for pos, value in self.table
+        ]
 
 
 class HolyList(configo.holyvalue.data.HolyMixin):
