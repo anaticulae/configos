@@ -2,6 +2,17 @@
 
 Every noteable change is logged here.
 
+## v0.18.0
+
+### Feature
+
+* add HolyRate to create count dependent rate (841e836d79b4)
+
+### Documentation
+
+* adjust modules path (f633a80430b7)
+* Happy New Year! (9f96b13a4529)
+
 ## v0.17.0
 
 ### Feature
