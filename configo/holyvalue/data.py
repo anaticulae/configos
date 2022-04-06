@@ -71,6 +71,8 @@ def convert(data, datatype=None):
     """\
     >>> convert(1, DataType.BOOL)
     True
+    >>> convert(70, DataType.PERCENT_PLUS)
+    0.7
     """
     if datatype is None:
         return data
@@ -82,7 +84,11 @@ def convert(data, datatype=None):
         data = float(data)
     elif 'PERCENT' in datatype:
         data = float(data)
-        data = data * 0.01
+        data *= 0.01
+        data = utila.roundme(
+            data,
+            digits=3,
+        )
     elif 'BOOL' in datatype:
         data = utila.str2bool(data)
     return data
