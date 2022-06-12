@@ -14,6 +14,9 @@ import os
 from configo.cache import CACHE_LARGE
 from configo.cache import CACHE_MEDIUM
 from configo.cache import CACHE_SMALL
+from configo.cache import cache_large
+from configo.cache import cache_medium
+from configo.cache import cache_small
 # debug
 from configo.debugs import debug
 from configo.debugs import debug_set
