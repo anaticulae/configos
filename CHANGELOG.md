@@ -2,6 +2,13 @@
 
 Every noteable change is logged here.
 
+## v0.19.0
+
+### Feature
+
+* add methods to shorten caches (bee28be36430)
+* round percent to ease debugging (d046cf1c83f7)
+
 ## v0.18.0
 
 ### Feature
