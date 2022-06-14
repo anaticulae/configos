@@ -15,9 +15,9 @@
 
 import functools
 
-CACHE_SMALL = 16
-CACHE_MEDIUM = 32
-CACHE_LARGE = 64
+CACHE_SMALL = 32
+CACHE_MEDIUM = 512
+CACHE_LARGE = 4096
 
 cache_small = functools.lru_cache(maxsize=CACHE_SMALL)
 cache_medium = functools.lru_cache(maxsize=CACHE_MEDIUM)
