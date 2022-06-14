@@ -2,6 +2,12 @@
 
 Every noteable change is logged here.
 
+## v0.19.1
+
+### Feature
+
+* adjust cache size (74d6c9e27a8f)
+
 ## v0.19.0
 
 ### Feature
