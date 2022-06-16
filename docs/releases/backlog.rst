@@ -16,3 +16,5 @@ other
 * [ ] live updates while running application with configuration
 
 * [ ] update generated configuration file
+
+* [ ] introduce holy value types like: seconds, millimeter, inc, dots, minutes
