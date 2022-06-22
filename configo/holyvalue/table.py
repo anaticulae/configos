@@ -19,6 +19,9 @@
 >>> assert rate(6) == 0.2
 >>> assert rate(10) == 0.2
 
+Support both lookup styles
+>>> assert rate(10) == rate[10]
+
 """
 
 import utila
@@ -73,6 +76,9 @@ class HolyTable(configo.holyvalue.data.HolyMixin):
             self.left_outranges_none,
         )
         return value
+
+    def __getitem__(self, index):
+        return self(index)
 
 
 class HolyRate(HolyTable):
