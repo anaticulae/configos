@@ -59,8 +59,10 @@ class HolyTable(configo.holyvalue.data.HolyMixin):
         assert utila.isascending([item[0] for item in self.table]), str(self.table) # yapf:disable
 
     def __call__(self, position):
-        """Constructed value or None if request point is out of defined
-        area a no fallback is activated.
+        """Return lookup value or None.
+
+        None: If request point is out of defined area and no fallback is
+              activated.
         """
         assert self.table, 'empty table, use add to configure'
         value = utila.lookup(
