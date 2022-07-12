@@ -20,8 +20,8 @@ from configo.server import HELPY_INT_PORT
 from configo.server import HELPY_URL
 
 
-def test_missing_environment(monkeypatch):
-    with monkeypatch.context() as context:
+def test_missing_environment(mp):
+    with mp.context() as context:
         # Remove all environment vars
         context.setattr(os, 'environ', {})
 
@@ -32,8 +32,8 @@ def test_missing_environment(monkeypatch):
             package_configuration()
 
 
-def test_package_adress_and_configuration(monkeypatch):
-    with monkeypatch.context() as context:
+def test_package_adress_and_configuration(mp):
+    with mp.context() as context:
         # Remove all environment vars
         context.setattr(
             os, 'environ', {

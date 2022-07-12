@@ -12,24 +12,24 @@ import utilatest
 import tests
 
 
-def test_cli(monkeypatch):
-    tests.run('--help', monkeypatch=monkeypatch)
+def test_cli(mp):
+    tests.run('--help', mp=mp)
 
 
-def test_cli_generate(monkeypatch, capsys):
+def test_cli_generate(mp, capsys):
     source = tests.TEST_DATA
     tests.run(
         f'--generate -i {source} --noskip',
-        monkeypatch=monkeypatch,
+        mp=mp,
     )
     stdout = utilatest.stdout(capsys)
     assert 'HELMUT = None' in stdout
     assert len(stdout) >= 861
 
 
-def test_cli_result_show(monkeypatch):
+def test_cli_result_show(mp):
     result = tests.RESULT
     tests.run(
         f'optimize --show {result}',
-        monkeypatch=monkeypatch,
+        mp=mp,
     )

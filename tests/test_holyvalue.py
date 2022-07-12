@@ -48,14 +48,14 @@ def test_holyvalue_hv():
 
 
 @pytest.mark.usefixtures('default_one')
-def test_holyvalue_hv_group_from_module(monkeypatch):
+def test_holyvalue_hv_group_from_module(mp):
     """Test to determine variable out of module and variable assignment"""
 
     def getmodule(__=None, _=None):  # pylint:disable=W0613
         # patch object.__name__
         return type('groupme.footer.header', (tuple,), {})
 
-    with monkeypatch.context() as context:
+    with mp.context() as context:
         context.setattr(inspect, 'getmodule', getmodule)
         distance = configo.HV(
             datatype=configo.holyvalue.data.DataType.INT_PLUS,
@@ -65,11 +65,11 @@ def test_holyvalue_hv_group_from_module(monkeypatch):
     assert distance == 50022, distance
 
 
-def test_holyvalue_hv_use_default(monkeypatch, capsys):
+def test_holyvalue_hv_use_default(mp, capsys):
     """Test returning `default` value for non defined variables and
     inform developer about this."""
     default = 'Helm'
-    with monkeypatch.context() as context:
+    with mp.context() as context:
         context.setattr(utila.logger, 'LEVEL', utila.Level.DEBUG)
         result = configo.HV(default=default).value
     assert result == default
@@ -133,8 +133,8 @@ def test_holyvalue_generate_configuration():
     assert config.count('#') >= 5, utila.log_raw(config)
 
 
-def test_holyvalue_generate_and_load(testdir):
-    path = testdir.tmpdir.join('config.hv')
+def test_holyvalue_generate_and_load(td):
+    path = td.tmpdir.join('config.hv')
     # create config
     config = configo.generate(tests.HVEXAMPLE)
     utila.file_create(path, config)

@@ -15,10 +15,10 @@ import configo
 import configo.directory
 
 
-def test_missing_environment(monkeypatch):
+def test_missing_environment(mp):
     """The communication folder for the view and pdf-mining is defined by
     shared folder `SHARED_TODO` and `SHARED_READY`"""
-    with monkeypatch.context() as context:
+    with mp.context() as context:
         # Remove all environment vars
         context.setattr(os, 'environ', {})
 
@@ -32,8 +32,8 @@ def test_missing_environment(monkeypatch):
             configo.ready()
 
 
-def test_wrong_todo(monkeypatch):
-    with monkeypatch.context() as context:
+def test_wrong_todo(mp):
+    with mp.context() as context:
         context.setattr(
             os, 'environ', {
                 configo.directory.TODO: 'ThisPathDoesNotExist',
@@ -48,15 +48,15 @@ def test_wrong_todo(monkeypatch):
             configo.ready(check=True)
 
 
-def test_startup(testdir, monkeypatch):
-    root = str(testdir)
+def test_startup(td, mp):
+    root = str(td)
     ready = os.path.join(root, 'ready')
     tmp = os.path.join(root, 'tmp')
     todo = os.path.join(root, 'todo')
     for item in [ready, tmp, todo]:
         os.makedirs(item)
 
-    with monkeypatch.context() as context:
+    with mp.context() as context:
         context.setattr(
             os, 'environ', {
                 configo.directory.TODO: todo,
@@ -67,8 +67,8 @@ def test_startup(testdir, monkeypatch):
         configo.check_startup()
 
 
-def test_export_import(tmpdir, monkeypatch):
-    with monkeypatch.context() as context:
+def test_export_import(tmpdir, mp):
+    with mp.context() as context:
         # Remove all environment vars
         context.setattr(os, 'environ', {})
 
@@ -87,9 +87,9 @@ def test_export_import(tmpdir, monkeypatch):
         assert common_ == common
 
 
-def test_without_folder_configuration(monkeypatch):
+def test_without_folder_configuration(mp):
 
-    with monkeypatch.context() as context:
+    with mp.context() as context:
         # Remove all environment vars
         context.setattr(os, 'environ', {})
 
@@ -97,11 +97,11 @@ def test_without_folder_configuration(monkeypatch):
             configo.environment()
 
 
-def test_with_wrong_folder_configuration(monkeypatch):
+def test_with_wrong_folder_configuration(mp):
     """The communication folder for the view and pdf-mining is defined by
     shared folder `SHARED_TODO` and `SHARED_READY`"""
 
-    with monkeypatch.context() as context:
+    with mp.context() as context:
         # Remove all environment vars
         context.setattr(
             os, 'environ', {

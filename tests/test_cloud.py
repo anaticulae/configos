@@ -13,9 +13,9 @@ import configo
 import tests
 
 
-def test_cloud_config(testdir):
+def test_cloud_config(td):
     source = tests.TEST_DATA
     utila.run(f'configo --generate -i {source} --noskip >> config.hv')
-    configo.cloud_set('markers', testdir.tmpdir.join('config.hv'))
+    configo.cloud_set('markers', td.tmpdir.join('config.hv'))
     configo.cloud_lookup('markers')
     assert configo.env(configo.holyname('markers'))

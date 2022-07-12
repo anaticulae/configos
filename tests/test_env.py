@@ -13,7 +13,7 @@ import utila
 import configo
 
 
-def test_env_dump(testdir):
+def test_env_dump():
     dumped = configo.env_dump()
     assert len(dumped) > 1000
 
@@ -37,26 +37,27 @@ ciwi_detector = Hier Spricht Helm
 """
 
 
-def test_env_load_unload(testdir):
-    utila.file_create('config.ini', CONFIG)
+def test_env_load_unload(td):
+    config = td.tmpdir.join('config.ini')
+    utila.file_create(config, CONFIG)
 
     with pytest.raises(KeyError):
         configo.env('kiwi_rawmaker')
 
-    configo.env_load('config.ini')
+    configo.env_load(config)
 
     assert configo.env('kiwi_rawmaker') == '10'
     assert configo.env('kiwi_rawmaker_asd') == '15'
     assert configo.env('ciwi_detector') == 'Hier Spricht Helm'
 
-    configo.env_unload('config.ini')
+    configo.env_unload(config)
 
     with pytest.raises(KeyError):
         configo.env('kiwi_rawmaker')
 
 
-def test_env_unload(testdir):
-    path = 'config.ini'
+def test_env_unload(td):
+    path = td.tmpdir.join('config.ini')
     utila.file_create(path, CONFIG)
     before = configo.env_dump()
     configo.env_load(path)
