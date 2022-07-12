@@ -81,3 +81,20 @@ def env_path_append(path: str):
     base = f'{env("PATH")};{path}'
     env_set('PATH', base)
     utila.debug(f'PATH:{base}')
+
+
+def env_path_remove(path: str):
+    """\
+    >>> env_path_append('/d/path/not_there')
+    >>> env_path_remove('/d/path/not_there')
+    >>> env_path_remove('/d/path/not_there')
+    Traceback (most recent call last):
+    ...
+    ValueError: path does not contain: /d/path/not_there
+    """
+    base = f'{env("PATH")}'
+    remove = f';{path}'
+    if remove not in base:
+        raise ValueError(f'path does not contain: {path}')
+    base = base.replace(remove, '')
+    env_set('PATH', base)

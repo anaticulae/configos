@@ -40,6 +40,7 @@ from configo.env import env_del
 from configo.env import env_dump
 from configo.env import env_load
 from configo.env import env_path_append
+from configo.env import env_path_remove
 from configo.env import env_set
 from configo.env import env_unload
 # Exception
