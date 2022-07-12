@@ -11,8 +11,11 @@ import os
 
 
 def docs_url() -> str:
-    """Location of generated documentation which is accessible by the
-    user."""
+    """Public writers club path.
+
+    >>> docs_url()
+    'http://.../writing/'
+    """
     url = os.environ['KIWI_DOCS_MAIN']
     assert url.endswith('/'), str(url)
     return url
