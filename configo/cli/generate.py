@@ -13,6 +13,11 @@ import configo
 
 
 def evaluate(inpath: list, noskip=False) -> int:
+    """\
+    Could not locate any holy value on this file. 1 means failure.
+    >>> evaluate([__file__])
+    1
+    """
     skip = None if noskip else skips
     for path in inpath:
         if not utila.exists(path):
@@ -33,5 +38,9 @@ def evaluate(inpath: list, noskip=False) -> int:
 
 
 def skips(item: str) -> bool:
+    """\
+    >>> skips('config/tests/__init.py')
+    True
+    """
     item = str(item)
     return 'build' in item or 'tests' in item
