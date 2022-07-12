@@ -72,3 +72,12 @@ def groupname(name, group):
     if not group:
         return name
     return f'{group}_{name}'
+
+
+def env_path_append(path: str):
+    """\
+    >>> env_path_append('/d/path/append')
+    """
+    base = f'{env("PATH")};{path}'
+    env_set('PATH', base)
+    utila.debug(f'PATH:{base}')
