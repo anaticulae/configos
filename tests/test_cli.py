@@ -61,8 +61,9 @@ def test_cli_create_run_show(testdir, mp):
         )
     # determine result path out of logging
     result = buffer.getvalue().strip()
-    result = utila.join(result.splitlines()[2], 'result')
+    path = utila.search(r'outdir\:[ ](.+?)\n', result)[1]
+    path = utila.join(path, 'result')
     tests.run(
-        f'optimize --show {result}',
+        f'optimize --show {path}',
         mp=mp,
     )

@@ -67,7 +67,7 @@ def run_plan(run, reduce=100, seed=None, test_before: bool = False):
         utila.run('baw test')
     # utila.log(utila.from_tuple(keys, ';'))
     with utila.make_tmpdir(configo.ROOT) as tmpdir:
-        utila.log(tmpdir)
+        utila.log(f'outdir: {tmpdir}')
         header = f"number,{utila.from_tuple(keys, separator=',')},failure\n"
         utila.file_append(
             os.path.join(tmpdir, 'result'),
