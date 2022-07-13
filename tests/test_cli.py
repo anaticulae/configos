@@ -7,9 +7,6 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-import contextlib
-import io
-
 import utila
 import utilatest
 
@@ -44,23 +41,21 @@ def test_cli_result_show(mp):
 def test_cli_create_run_show(testdir, mp):
     root = configo.ROOT
     plan = utila.forward_slash(str(testdir.tmpdir.join('plan.hv')))
-    buffer = io.StringIO()
-    with contextlib.redirect_stdout(buffer):
+    with utila.capture_stdout() as buffer:
         tests.run(
             f'optimize --create {root}',
             mp=mp,
         )
-    plan_content = buffer.getvalue()
+    plan_content = buffer()
     utila.file_create(plan, plan_content)
     utila.run('baw init myproject "helm is here"')
-    buffer = io.StringIO()
-    with contextlib.redirect_stdout(buffer):
+    with utila.capture_stdout() as buffer:
         tests.run(
             f'optimize -r 2 --run {plan} ',
             mp=mp,
         )
     # determine result path out of logging
-    result = buffer.getvalue().strip()
+    result = buffer().strip()
     path = utila.search(r'outdir\:[ ](.+?)\n', result)[1]
     path = utila.join(path, 'result')
     tests.run(
