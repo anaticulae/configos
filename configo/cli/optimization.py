@@ -233,6 +233,8 @@ def ranges(
     (50, 75, 100)
     >>> ranges(1.2, 3.0, configo.DataType.FLOAT, steps=((1.0, 1.5, 2.0)))
     (1.2, 1.8, 2.4)
+    >>> ranges(True, datatype=configo.DataType.BOOL)
+    (True, False)
     """
     if steps is None:
         steps = STEPS
