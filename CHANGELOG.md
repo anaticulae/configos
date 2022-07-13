@@ -2,6 +2,25 @@
 
 Every noteable change is logged here.
 
+## v0.20.0
+
+### Feature
+
+* add option to change test command (25bb4f6f244a)
+* log optimization output path (e2874976709f)
+* add parameter to change reduction steps (7c84a04a1188)
+* add method to remove from global path (261de660b436)
+* add method to extend path var (1653d8446b58)
+* add brackets lookup (69ed0327f4c7)
+
+### Fix
+
+* disable cprofile (8513212b2108)
+
+### Documentation
+
+* adjust lookup information (5d821b153a0f)
+
 ## v0.19.1
 
 ### Feature
