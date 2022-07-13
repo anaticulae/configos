@@ -18,12 +18,24 @@ import configo
 import configo.holyvalue.collect
 
 
-def evaluate(create: list, run: str, show: str, reduce: int):  # pylint:disable=W0613
+def evaluate(
+    create: list,
+    run: str,
+    show: str,
+    reduce: int,
+    cmd_test: str,
+):  # pylint:disable=W0613
     if create:
         plan = create_plan(create)
         utila.log(dump_plan(plan))
     if run:
-        run_plan(run, reduce=reduce)
+        if cmd_test is None:
+            cmd_test = 'baw test -n1'
+        run_plan(
+            run,
+            reduce=reduce,
+            cmd_test=cmd_test,
+        )
     if show:
         show_result(show)
 
@@ -51,7 +63,13 @@ def create_plan(todo: list) -> dict:
     return result
 
 
-def run_plan(run, reduce=100, seed=None, test_before: bool = False):
+def run_plan(
+    run,
+    reduce=100,
+    seed=None,
+    test_before: bool = False,
+    cmd_test=None,
+):
     run = os.path.abspath(run[0])
     plan = utila.yaml_load(run)
     todo = list(plan.values())
@@ -64,7 +82,7 @@ def run_plan(run, reduce=100, seed=None, test_before: bool = False):
     # verify code without hv-modification
     if test_before:
         utila.log('test project')
-        utila.run('baw test')
+        utila.run(cmd_test)  # utila.run('baw test')
     # utila.log(utila.from_tuple(keys, ';'))
     with utila.make_tmpdir(configo.ROOT) as tmpdir:
         utila.log(f'outdir: {tmpdir}')
@@ -75,7 +93,13 @@ def run_plan(run, reduce=100, seed=None, test_before: bool = False):
             create=True,
         )
         for index, step in enumerate(mapped):
-            run_test(key=keys, config=step, step=index, tmpdir=tmpdir)
+            run_test(
+                key=keys,
+                config=step,
+                step=index,
+                tmpdir=tmpdir,
+                cmd_test=cmd_test,
+            )
 
 
 def show_result(result):
@@ -146,7 +170,14 @@ def render_table(data, size, header=None) -> str:
     return result
 
 
-def run_test(key, config, step: int, tmpdir, hcvalue='RAWMAKER'):
+def run_test(
+    key,
+    config,
+    step: int,
+    tmpdir,
+    cmd_test,
+    hcvalue='RAWMAKER',
+):
     # write hv config
     cfg = create_config(key, config)
     step = str(step).zfill(4)
@@ -156,9 +187,8 @@ def run_test(key, config, step: int, tmpdir, hcvalue='RAWMAKER'):
     # run tests
     utila.log(f'run step: {step}')
     utila.log(utila.from_tuple(config, ';'))
-    cmd = 'baw test'
     completed = utila.run(
-        cmd,
+        cmd_test,
         expect=None,
         env=dict(os.environ),
     )
@@ -281,4 +311,10 @@ def add_option(parser):
         default=100,
         type=int,
         help='number of optimization steps',
+    )
+    show.add_argument(
+        '-t',
+        default=None,
+        type=str,
+        help='run test after each holy value update (baw test -n1)',
     )

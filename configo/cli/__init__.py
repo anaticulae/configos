@@ -44,8 +44,13 @@ def evaluate() -> tuple:
     if args['generate']:
         action = 'generate'
         data = gen
-    optimize = (args.get('create'), args.get('run'), args.get('show'),
-                args.get('r'))
+    optimize = (
+        args.get('create'),
+        args.get('run'),
+        args.get('show'),
+        args.get('r'),
+        args.get('t'),
+    )
     if any(optimize):
         action = 'optimize'
         data = optimize
