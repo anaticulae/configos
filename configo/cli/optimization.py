@@ -85,8 +85,7 @@ def show_result(result):
     with utila.make_tmpdir(root=configo.ROOT) as output:
         outpath = os.path.join(output, 'index.html')
         utila.file_create(outpath, rendered)
-        # TODO: REPLACE WITH UTILA CODe
-        testrun = os.environ.get('PYTEST_PLUGINS', False)
+        testrun = utila.testing()
         if not testrun:
             utila.run(f'start {outpath}')
 
