@@ -7,29 +7,14 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-import functools
 import os
 
 import utilatest
 
 import configo
-import configo.cli
 
 TEST_DATA = os.path.join(configo.ROOT, 'tests')
 HVEXAMPLE = os.path.join(TEST_DATA, 'hvexample')
 RESULT = os.path.join(TEST_DATA, 'examples/result')
 
-#pylint: disable=invalid-name
-run = functools.partial(
-    utilatest.run_command,
-    main=configo.cli.main,
-    process=configo.PROCESS,
-    success=True,
-)
-
-failure = functools.partial(
-    utilatest.run_command,
-    main=configo.cli.main,
-    process=configo.PROCESS,
-    success=False,
-)
+run, fail = utilatest.create_cli_runner(configo)
