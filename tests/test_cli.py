@@ -7,8 +7,13 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
+import contextlib
+import io
+
+import utila
 import utilatest
 
+import configo
 import tests
 
 
@@ -29,6 +34,34 @@ def test_cli_generate(mp, capsys):
 
 def test_cli_result_show(mp):
     result = tests.RESULT
+    tests.run(
+        f'optimize --show {result}',
+        mp=mp,
+    )
+
+
+@utilatest.longrun
+def test_cli_create_run_show(testdir, mp):
+    root = configo.ROOT
+    plan = utila.forward_slash(str(testdir.tmpdir.join('plan.hv')))
+    buffer = io.StringIO()
+    with contextlib.redirect_stdout(buffer):
+        tests.run(
+            f'optimize --create {root}',
+            mp=mp,
+        )
+    plan_content = buffer.getvalue()
+    utila.file_create(plan, plan_content)
+    utila.run('baw init myproject "helm is here"')
+    buffer = io.StringIO()
+    with contextlib.redirect_stdout(buffer):
+        tests.run(
+            f'optimize -r 2 --run {plan} ',
+            mp=mp,
+        )
+    # determine result path out of logging
+    result = buffer.getvalue().strip()
+    result = utila.join(result.splitlines()[2], 'result')
     tests.run(
         f'optimize --show {result}',
         mp=mp,
