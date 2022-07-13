@@ -18,12 +18,12 @@ import configo
 import configo.holyvalue.collect
 
 
-def evaluate(create: list, run: str, show: str):  # pylint:disable=W0613
+def evaluate(create: list, run: str, show: str, reduce: int):  # pylint:disable=W0613
     if create:
         plan = create_plan(create)
         utila.log(dump_plan(plan))
     if run:
-        run_plan(run)
+        run_plan(run, reduce=reduce)
     if show:
         show_result(show)
 
@@ -274,4 +274,10 @@ def add_option(parser):
         '--show',
         help='show optimization result',
         action='append',
+    )
+    show.add_argument(
+        '-r',
+        default=100,
+        type=int,
+        help='number of optimization steps',
     )
