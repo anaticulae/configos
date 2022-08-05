@@ -2,6 +2,12 @@
 
 Every noteable change is logged here.
 
+## v0.21.0
+
+### Feature
+
+* add minus type (56ddbd364c80)
+
 ## v0.20.0
 
 ### Feature
