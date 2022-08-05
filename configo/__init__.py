@@ -51,10 +51,13 @@ from configo.exception import MissingHolyValue
 from configo.holyvalue.access import HV
 from configo.holyvalue.access import HV_BOOL
 from configo.holyvalue.access import HV_FLOAT
+from configo.holyvalue.access import HV_FLOAT_MINUS
 from configo.holyvalue.access import HV_FLOAT_PLUS
 from configo.holyvalue.access import HV_INT
+from configo.holyvalue.access import HV_INT_MINUS
 from configo.holyvalue.access import HV_INT_PLUS
 from configo.holyvalue.access import HV_PERCENT
+from configo.holyvalue.access import HV_PERCENT_MINUS
 from configo.holyvalue.access import HV_PERCENT_PLUS
 from configo.holyvalue.access import HV_STR
 from configo.holyvalue.cloud import cloud_base

@@ -190,7 +190,7 @@ def test_holyvalue_operation():
     string = configo.HV(
         default='string',
         name='alpha',
-        datatype='string',
+        datatype=configo.DataType.STR,
     )
     assert value + 15 == 30
     assert value + value == 30

@@ -87,9 +87,12 @@ HV_STR = functools.partial(holyvalue, datatype=DataType.STR)
 
 HV_INT = functools.partial(holyvalue, datatype=DataType.INT)
 HV_INT_PLUS = functools.partial(holyvalue, datatype=DataType.INT_PLUS)
+HV_INT_MINUS = functools.partial(holyvalue, datatype=DataType.INT_MINUS)
 
 HV_FLOAT = functools.partial(holyvalue, datatype=DataType.FLOAT)
 HV_FLOAT_PLUS = functools.partial(holyvalue, datatype=DataType.FLOAT_PLUS)
+HV_FLOAT_MINUS = functools.partial(holyvalue, datatype=DataType.FLOAT_MINUS)
 
 HV_PERCENT = functools.partial(holyvalue, datatype=DataType.PERCENT)
 HV_PERCENT_PLUS = functools.partial(holyvalue, datatype=DataType.PERCENT_PLUS)
+HV_PERCENT_MINUS = functools.partial(holyvalue, datatype=DataType.PERCENT_MINUS)

@@ -25,12 +25,15 @@ class HolyMixin:
 class DataType(enum.Enum):
     INT = enum.auto()
     INT_PLUS = enum.auto()
+    INT_MINUS = enum.auto()
 
     FLOAT = enum.auto()
     FLOAT_PLUS = enum.auto()
+    FLOAT_MINUS = enum.auto()
 
     PERCENT = enum.auto()
     PERCENT_PLUS = enum.auto()
+    PERCENT_MINUS = enum.auto()
 
     BOOL = enum.auto()
     STR = enum.auto()
@@ -235,7 +238,12 @@ class HolyValue(HolyMixin):
         return hash(repr(self))
 
 
-def validate(data, datatype=None, default=None, limit=None) -> bool:
+def validate(  # pylint:disable=R0911,R1260
+    data,
+    datatype: DataType = None,
+    default=None,
+    limit=None,
+) -> bool:
     """\
     >>> validate(True, DataType.BOOL, True)
     True
@@ -245,6 +253,8 @@ def validate(data, datatype=None, default=None, limit=None) -> bool:
     False
     >>> validate(10.0, DataType.INT_PLUS)
     False
+    >>> validate(10.0, DataType.FLOAT_MINUS)
+    False
     """
     with contextlib.suppress(TypeError):
         # avoid that default is higher than limit
@@ -252,12 +262,16 @@ def validate(data, datatype=None, default=None, limit=None) -> bool:
             return False
     if data is None:
         return True
-    if 'INT' in str(datatype):
-        if not utila.isint(data):
-            return False
-    if 'PLUS' in str(datatype):
-        if data < 0.0:
-            return False
+    if datatype:
+        if 'INT' in datatype.name:
+            if not utila.isint(data):
+                return False
+        if 'PLUS' in datatype.name:
+            if data < 0.0:
+                return False
+        if 'MINUS' in datatype.name:
+            if data > 0.0:
+                return False
     if limit is not None and datatype != DataType.BOOL:
         if data > limit:
             return False
