@@ -2,6 +2,18 @@
 
 Every noteable change is logged here.
 
+## v0.21.1 (2022-09-28)
+
+### Fix
+
+* add default docs path (70d557226171)
+
+### Chore
+
+* add git to generate project (2c51f8214a56)
+* add Jenkinsfile (a62c555bbe3a)
+* upgrade requirements.txt (40265ba3b871)
+
 ## v0.21.0
 
 ### Feature
