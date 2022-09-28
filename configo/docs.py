@@ -9,6 +9,8 @@
 
 import os
 
+DEFAULT_URL = 'http://www.checkitweg.de/writing/'
+
 
 def docs_url() -> str:
     """Public writers club path.
@@ -16,6 +18,9 @@ def docs_url() -> str:
     >>> docs_url()
     'http://.../writing/'
     """
-    url = os.environ['KIWI_DOCS_MAIN']
+    url = os.environ.get(
+        'CAELUM_DOCS_MAIN',
+        DEFAULT_URL,
+    )
     assert url.endswith('/'), str(url)
     return url
