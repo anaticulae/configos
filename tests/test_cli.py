@@ -38,9 +38,9 @@ def test_cli_result_show(mp):
 
 
 @utilatest.longrun
-def test_cli_create_run_show(testdir, mp):
+def test_cli_create_run_show(td, mp):
     root = configo.ROOT
-    plan = utila.forward_slash(str(testdir.tmpdir.join('plan.hv')))
+    plan = utila.forward_slash(str(td.tmpdir.join('plan.hv')))
     with utila.capture_stdout() as buffer:
         tests.run(
             f'optimize --create {root}',
