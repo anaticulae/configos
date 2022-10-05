@@ -2,6 +2,14 @@
 
 Every noteable change is logged here.
 
+## v0.21.2 (2022-10-05)
+
+### Chore
+
+* upgrade requirements.txt (fdfc4da483e0)
+* increase baw version (79a8284de027)
+* root user is not necessary (fbd13adc7f54)
+
 ## v0.21.1 (2022-09-28)
 
 ### Fix
