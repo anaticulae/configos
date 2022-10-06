@@ -2,6 +2,12 @@
 
 Every noteable change is logged here.
 
+## v0.22.0 (2022-10-07)
+
+### Feature
+
+* add method to create tmp dirs (bf8603505193)
+
 ## v0.21.2 (2022-10-05)
 
 ### Chore
