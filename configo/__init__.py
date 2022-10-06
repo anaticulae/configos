@@ -25,6 +25,7 @@ from configo.debugs import debug_unset
 from configo.directory import check_startup
 from configo.directory import environment
 from configo.directory import export
+from configo.directory import makedirs
 from configo.directory import ready
 from configo.directory import share
 from configo.directory import tmp

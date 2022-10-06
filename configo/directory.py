@@ -114,6 +114,14 @@ def _path_from_env(env: str, check: bool = False):  # pylint:disable=R1710
         sys.exit(utila.FAILURE)
 
 
+def makedirs():
+    """Ensure that all working directories are created."""
+    os.makedirs(ready(), exist_ok=True)
+    os.makedirs(share(), exist_ok=True)
+    os.makedirs(tmp(), exist_ok=True)
+    os.makedirs(todo(), exist_ok=True)
+
+
 def check_startup():
     """Check that global environments are set."""
     ready(check=True)
