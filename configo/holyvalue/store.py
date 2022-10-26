@@ -107,5 +107,4 @@ def load(name: str, base: str = None):
 
 def database():
     """Access global variable `DATABASE`"""
-    global DATABASE  # pylint:disable=global-statement
     return DATABASE

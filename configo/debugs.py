@@ -19,8 +19,8 @@ def debug() -> bool:
         current = configo.env(DEBUG)
     except KeyError:
         return False
-    current = utila.str2bool(current)
-    return current
+    result = utila.str2bool(current)
+    return result
 
 
 def debug_set():

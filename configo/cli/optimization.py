@@ -116,7 +116,7 @@ def show_result(result):
 
 def parse_result(path) -> dict:
     collected = collections.defaultdict(set)
-    with open(path, newline='') as csvfile:
+    with open(path, newline='', encoding='utf8') as csvfile:
         reader = csv.reader(csvfile)
         data = list(reader)
     width, height = 0, 0
@@ -141,7 +141,7 @@ def prepare(value):
     grouped = utila.groupby_x(value, selector=lambda x: x[0])
     result = []
     for group in grouped:
-        result.append((group[0][0], min([item[1] for item in group])))
+        result.append((group[0][0], min((item[1] for item in group))))
     return sorted(result, key=lambda x: x[0], reverse=True)
 
 

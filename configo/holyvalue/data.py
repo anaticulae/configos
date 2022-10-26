@@ -11,7 +11,6 @@ import contextlib
 import dataclasses
 import enum
 import functools
-import typing
 
 import utila
 
@@ -66,13 +65,13 @@ class Datum:
 @dataclasses.dataclass
 class Group:
     name: str = None
-    data: typing.Dict[str, Datum] = dataclasses.field(default_factory=dict)
+    data: dict[str, Datum] = dataclasses.field(default_factory=dict)
 
 
 @dataclasses.dataclass
 class DataSet:
     name: str = None
-    data: typing.Dict[str, Group] = dataclasses.field(default_factory=dict)
+    data: dict[str, Group] = dataclasses.field(default_factory=dict)
 
 
 @functools.lru_cache(maxsize=1024)

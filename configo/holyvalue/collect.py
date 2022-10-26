@@ -84,7 +84,7 @@ def dump_collected(collected, root):
 def rootpackage(root: str) -> str:
     package = os.path.split(root)[1]
     # rawmaker-2.26.6-py3.8.egg
-    package = str(package).split('-')[0]
+    package = str(package).split('-', maxsplit=1)[0]
     return package
 
 
