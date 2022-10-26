@@ -52,7 +52,7 @@ def holyvalue(
     TODO: MAKE method update able/facade/callable
     """
     assert name is None or isinstance(name, str), f'invalid name {name}'
-    assert group is None or isinstance(group, str), f'invalid name: {group}'
+    assert group is None or isinstance(group, str), f'invalid group: {group}'
     if not configo.holyvalue.data.validate(default, datatype, default, limit):
         msg = f'invalid default/limit/datatype; name: {name}; group:{group} '
         msg += f'default: {default}; limit: {limit}; type: {datatype}'
