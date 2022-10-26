@@ -53,11 +53,6 @@ def holyvalue(
     """
     assert name is None or isinstance(name, str), f'invalid name {name}'
     assert group is None or isinstance(group, str), f'invalid group: {group}'
-    if not configo.holyvalue.data.validate(default, datatype, default, limit):
-        msg = f'invalid default/limit/datatype; name: {name}; group:{group} '
-        msg += f'default: {default}; limit: {limit}; type: {datatype}'
-        utila.error(msg)
-        # raise configo.InvalidHolyValue('invalid default/limit/datatype')
     if name is None:
         # TODO: REMOVE THIS HACK
         # TODO: NOT VERY STABLE/ DIRTY
@@ -77,6 +72,11 @@ def holyvalue(
             # is loaded later via dynamic code loader
             utila.debug(f'could not determine holyvalue group: {parent}')
             group = NO_GROUP
+    if not configo.holyvalue.data.validate(default, datatype, default, limit):
+        msg = f'invalid default/limit/datatype; name: {name}; group:{group} '
+        msg += f'default: {default}; limit: {limit}; type: {datatype}'
+        utila.error(msg)
+        # raise configo.InvalidHolyValue('invalid default/limit/datatype')
     result = configo.HolyValue(name, group, datatype, default, limit)
     return result
 
