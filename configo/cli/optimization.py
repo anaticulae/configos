@@ -10,7 +10,6 @@
 import collections
 import csv
 import os
-import re
 
 import utila
 
@@ -27,56 +26,17 @@ def evaluate(
 ):  # pylint:disable=W0613
     if create:
         plan = configo.cli.plan.create(create)
-        utila.log(dump_plan(plan))
+        utila.log(configo.cli.plan.dump(plan))
     if run:
         if cmd_test is None:
             cmd_test = 'baw test -n1'
-        run_plan(
+        configo.cli.plan.run(
             run,
             reduce=reduce,
             cmd_test=cmd_test,
         )
     if show:
         show_result(show)
-
-
-def run_plan(
-    run,
-    reduce=100,
-    seed=None,
-    test_before: bool = False,
-    cmd_test=None,
-):
-    run = os.path.abspath(run[0])
-    plan = utila.yaml_load(run)
-    todo = list(plan.values())
-    keys = list(plan.keys())
-    mapped = first_one(todo)
-    utila.log(f'different steps: {len(mapped)}')
-    if len(mapped) > reduce:
-        utila.log(f'reduce values: {reduce}')
-        mapped = utila.choose_random(mapped, count=reduce, seed=seed)
-    # verify code without hv-modification
-    if test_before:
-        utila.log('test project')
-        utila.run(cmd_test)  # utila.run('baw test')
-    # utila.log(utila.from_tuple(keys, ';'))
-    with utila.make_tmpdir(configo.ROOT) as tmpdir:
-        utila.log(f'outdir: {tmpdir}')
-        header = f"number,{utila.from_tuple(keys, separator=',')},failure\n"
-        utila.file_append(
-            os.path.join(tmpdir, 'result'),
-            header,
-            create=True,
-        )
-        for index, step in enumerate(mapped):
-            run_test(
-                key=keys,
-                config=step,
-                step=index,
-                tmpdir=tmpdir,
-                cmd_test=cmd_test,
-            )
 
 
 def show_result(result):
@@ -142,90 +102,6 @@ def render_table(data, size, header=None) -> str:
         result += '</tr>'
     result += '</table></html>'
     return result
-
-
-def run_test(
-    key,
-    config,
-    step: int,
-    tmpdir,
-    cmd_test,
-    hcvalue='RAWMAKER',
-):
-    # write hv config
-    cfg = create_config(key, config)
-    step = str(step).zfill(4)
-    cfgpath = os.path.join(tmpdir, f'{step}.hv')
-    utila.file_create(cfgpath, cfg)
-    configo.cloud_set(program=hcvalue, namepath=cfgpath)
-    # run tests
-    utila.log(f'run step: {step}')
-    utila.log(utila.from_tuple(config, ';'))
-    completed = utila.run(
-        cmd_test,
-        expect=None,
-        env=dict(os.environ),
-    )
-    # cfgpath
-    logpath = os.path.join(tmpdir, f'{step}.log')
-    utila.file_create(logpath, completed.stderr)
-    utila.file_append(logpath, completed.stdout)
-    tests = 0
-    if completed.returncode:
-        stdout = completed.stdout
-        tests = FAILED.search(stdout)['failed']
-    config = f'{step},' + utila.from_tuple(config, ',') + f',{tests}\n'
-    if completed.returncode:
-        utila.error(config)
-    # append result
-    utila.file_append(
-        os.path.join(tmpdir, 'result'),
-        config,
-        create=True,
-    )
-
-
-# === 5 failed, 178 passed, 168 skipped,
-FAILED = re.compile(r'===\ (?P<failed>\d+)\ fail')
-
-
-def create_config(keys, configs) -> str:
-    grouped = collections.defaultdict(list)
-    for key, config in zip(keys, configs):
-        group, key = key.rsplit('.', 1)
-        grouped[group].append(f'{key} = {config}')
-    collected = []
-    for key, value in grouped.items():
-        collected.append('[' + key + ']')
-        collected.extend(value)
-    result = utila.NEWLINE.join(collected)
-    return result
-
-
-def first_one(items) -> list:
-    """\
-    >>> first_one(([1,], [2,]))
-    [[1, 2]]
-    >>> first_one([[1, 2], [3,]])
-    [[1, 3], [2, 3]]
-    >>> first_one([(4, ), (1, 2, 3), (5, 6)])
-    [[4, 1, 5], [4, 2, 5], [4, 3, 5], [4, 1, 6]]
-    """
-    items = [list(item) for item in items]
-    result = []
-    for index, _ in enumerate(items):
-        base = [item[0] for item in items]
-        for current in items[index]:
-            copy = list(base)
-            copy[index] = current
-            result.append(copy)
-    result = utila.make_unique(result)
-    return result
-
-
-def dump_plan(plan: dict) -> str:
-    dumped = utila.yaml_dump(plan)
-    return dumped
 
 
 def add_option(parser):
