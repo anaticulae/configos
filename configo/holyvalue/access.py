@@ -75,8 +75,7 @@ def holyvalue(
     if not configo.holyvalue.data.validate(default, datatype, default, limit):
         msg = f'invalid default/limit/datatype; name: {name}; group:{group} '
         msg += f'default: {default}; limit: {limit}; type: {datatype}'
-        utila.error(msg)
-        # raise configo.InvalidHolyValue('invalid default/limit/datatype')
+        raise configo.InvalidHolyValue(msg)
     result = configo.HolyValue(name, group, datatype, default, limit)
     return result
 
