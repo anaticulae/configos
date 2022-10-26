@@ -9,12 +9,12 @@
 
 import pytest
 
-import configo.cli.optimization
+import configo.cli.plan
 import tests
 
 
 @pytest.mark.skip(reason='investigate later')
 def test_plan_create():
     todo = [tests.HVEXAMPLE]
-    plan = configo.cli.optimization.create_plan(todo)
+    plan = configo.cli.plan.create(todo)
     assert 'TESTS.HVEXAMPLE.SECOND' in plan
