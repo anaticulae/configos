@@ -13,7 +13,7 @@ import utilatest
 import configo
 
 TEST_DATA = utila.join(configo.ROOT, 'tests')
-HVEXAMPLE = utila.join(TEST_DATA, 'hvexample')
-RESULT = utila.join(TEST_DATA, 'examples/result')
+HVEXAMPLE = utila.join(TEST_DATA, 'hvexample', exist=True)
+RESULT = utila.join(TEST_DATA, 'examples/result', exist=True)
 
 run, fail = utilatest.create_cli_runner(configo)
