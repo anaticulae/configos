@@ -103,10 +103,7 @@ def parse_result(path) -> dict:
         failure = int(failure)
         for index, value in enumerate(content):
             # TODO: ADD BOOL CHECKUP
-            if utila.isint(value):
-                value = int(value)
-            else:
-                value = float(value)
+            value = int(value) if utila.isint(value) else float(value)
             collected[index].add((value, failure))
         width = len(content)
         height += 1
