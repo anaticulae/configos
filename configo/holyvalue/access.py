@@ -97,3 +97,7 @@ HV_FLOAT_MINUS = functools.partial(holyvalue, datatype=DataType.FLOAT_MINUS)
 HV_PERCENT = functools.partial(holyvalue, datatype=DataType.PERCENT)
 HV_PERCENT_PLUS = functools.partial(holyvalue, datatype=DataType.PERCENT_PLUS)
 HV_PERCENT_MINUS = functools.partial(holyvalue, datatype=DataType.PERCENT_MINUS)
+
+HV_SECOND = functools.partial(holyvalue, datatype=DataType.SECOND)
+HV_MINUTE = functools.partial(holyvalue, datatype=DataType.MINUTE)
+HV_HOUR = functools.partial(holyvalue, datatype=DataType.HOUR)

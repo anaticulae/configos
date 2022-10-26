@@ -38,6 +38,12 @@ class DataType(enum.Enum):
     BOOL = enum.auto()
     STR = enum.auto()
 
+    SECOND = enum.auto()
+    MINUTE = enum.auto()
+    HOUR = enum.auto()
+
+
+TIME = {DataType.SECOND, DataType.MINUTE, DataType.HOUR}
 
 NOMATH = {
     item for item in DataType if item not in (
@@ -94,6 +100,8 @@ def convert(data, datatype=None):
         )
     elif 'BOOL' in datatype:
         data = utila.str2bool(data)
+    elif any(item in datatype for item in ('SECOND', 'MINUTE', 'HOUR')):
+        data = int(data)
     return data
 
 
@@ -263,10 +271,10 @@ def validate(  # pylint:disable=R0911,R1260
     if data is None:
         return True
     if datatype:
-        if 'INT' in datatype.name:
+        if 'INT' in datatype.name or datatype in TIME:
             if not utila.isint(data):
                 return False
-        if 'PLUS' in datatype.name:
+        if 'PLUS' in datatype.name or datatype in TIME:
             if data < 0.0:
                 return False
         if 'MINUS' in datatype.name:
