@@ -35,6 +35,7 @@ def create(todo: list) -> dict:
                     datatype=value.get('datatype', None),
                 )
                 if not todo:
+                    utila.debug(f'skip for optimization, no range: {variable}')
                     continue
                 result[variable] = todo
     return result
