@@ -81,26 +81,27 @@ def holyvalue(
 
 
 DataType = configo.holyvalue.data.DataType
+init = lambda datatype: functools.partial(holyvalue, datatype=datatype)
 HV = holyvalue
 
-HV_BOOL = functools.partial(holyvalue, datatype=DataType.BOOL)
-HV_STR = functools.partial(holyvalue, datatype=DataType.STR)
+HV_BOOL = init(DataType.BOOL)
+HV_STR = init(DataType.STR)
 
-HV_INT = functools.partial(holyvalue, datatype=DataType.INT)
-HV_INT_PLUS = functools.partial(holyvalue, datatype=DataType.INT_PLUS)
-HV_INT_MINUS = functools.partial(holyvalue, datatype=DataType.INT_MINUS)
+HV_INT = init(DataType.INT)
+HV_INT_PLUS = init(DataType.INT_PLUS)
+HV_INT_MINUS = init(DataType.INT_MINUS)
 
-HV_FLOAT = functools.partial(holyvalue, datatype=DataType.FLOAT)
-HV_FLOAT_PLUS = functools.partial(holyvalue, datatype=DataType.FLOAT_PLUS)
-HV_FLOAT_MINUS = functools.partial(holyvalue, datatype=DataType.FLOAT_MINUS)
+HV_FLOAT = init(DataType.FLOAT)
+HV_FLOAT_PLUS = init(DataType.FLOAT_PLUS)
+HV_FLOAT_MINUS = init(DataType.FLOAT_MINUS)
 
-HV_PERCENT = functools.partial(holyvalue, datatype=DataType.PERCENT)
-HV_PERCENT_PLUS = functools.partial(holyvalue, datatype=DataType.PERCENT_PLUS)
-HV_PERCENT_MINUS = functools.partial(holyvalue, datatype=DataType.PERCENT_MINUS)
+HV_PERCENT = init(DataType.PERCENT)
+HV_PERCENT_PLUS = init(DataType.PERCENT_PLUS)
+HV_PERCENT_MINUS = init(DataType.PERCENT_MINUS)
 
-HV_SECOND = functools.partial(holyvalue, datatype=DataType.SECOND)
-HV_MINUTE = functools.partial(holyvalue, datatype=DataType.MINUTE)
-HV_HOUR = functools.partial(holyvalue, datatype=DataType.HOUR)
+HV_SECOND = init(DataType.SECOND)
+HV_MINUTE = init(DataType.MINUTE)
+HV_HOUR = init(DataType.HOUR)
 
-HV_API = functools.partial(holyvalue, datatype=DataType.API)
-HV_SECRET = functools.partial(holyvalue, datatype=DataType.SECRET)
+HV_API = init(DataType.API)
+HV_SECRET = init(DataType.SECRET)
