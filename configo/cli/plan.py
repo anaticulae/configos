@@ -14,8 +14,8 @@ import re
 import utila
 
 import configo
-import configo.holyvalue.collect
 import configo.holyvalue.access
+import configo.holyvalue.collect
 
 
 def create(todo: list) -> dict:
