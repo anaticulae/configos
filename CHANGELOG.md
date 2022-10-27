@@ -2,6 +2,13 @@
 
 Every noteable change is logged here.
 
+## v0.24.0 (2022-10-27)
+
+### Feature
+
+* add data type kb, mb, gb (6543a443f71a)
+* add api and secret key (d47a73c49aea)
+
 ## v0.23.0 (2022-10-27)
 
 ### Feature
