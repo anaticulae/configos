@@ -15,6 +15,7 @@ import utila
 
 import configo
 import configo.holyvalue.collect
+import configo.holyvalue.access
 
 
 def create(todo: list) -> dict:
@@ -25,7 +26,7 @@ def create(todo: list) -> dict:
         for groupname, group in collected.items():
             for key, value in group.items():
                 hvgroup = value.get('hvgroup', f'{program}.{groupname}')
-                if hvgroup == 'NO_GROUP':
+                if hvgroup == configo.holyvalue.access.NO_GROUP:
                     hvgroup = f'{program}.{groupname}'
                 hvgroup = hvgroup.upper()
                 variable = f'{hvgroup}.{key}'
