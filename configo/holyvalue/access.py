@@ -105,3 +105,7 @@ HV_HOUR = init(DataType.HOUR)
 
 HV_API = init(DataType.API)
 HV_SECRET = init(DataType.SECRET)
+
+HV_KB = init(DataType.KB)
+HV_MB = init(DataType.MB)
+HV_GB = init(DataType.GB)

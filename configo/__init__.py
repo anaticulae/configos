@@ -55,10 +55,13 @@ from configo.holyvalue.access import HV_BOOL
 from configo.holyvalue.access import HV_FLOAT
 from configo.holyvalue.access import HV_FLOAT_MINUS
 from configo.holyvalue.access import HV_FLOAT_PLUS
+from configo.holyvalue.access import HV_GB
 from configo.holyvalue.access import HV_HOUR
 from configo.holyvalue.access import HV_INT
 from configo.holyvalue.access import HV_INT_MINUS
 from configo.holyvalue.access import HV_INT_PLUS
+from configo.holyvalue.access import HV_KB
+from configo.holyvalue.access import HV_MB
 from configo.holyvalue.access import HV_MINUTE
 from configo.holyvalue.access import HV_PERCENT
 from configo.holyvalue.access import HV_PERCENT_MINUS

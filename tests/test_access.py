@@ -31,3 +31,12 @@ def test_secret_key():
     value = 'iamimportant'
     secret = configo.HV_SECRET(default=value)
     assert isinstance(secret.value, bytes)
+
+
+def test_xb():
+    kb = configo.HV_KB(default=25)  # pylint:disable=C0103
+    assert kb == 25 * 1024
+    mb = configo.HV_MB(default=25)  # pylint:disable=C0103
+    assert mb == 25 * 1024 * 1024
+    gb = configo.HV_GB(default=25)  # pylint:disable=C0103
+    assert gb == 25 * 1024 * 1024 * 1024

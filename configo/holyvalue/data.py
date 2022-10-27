@@ -44,8 +44,13 @@ class DataType(enum.Enum):
     API = enum.auto()
     SECRET = enum.auto()
 
+    KB = enum.auto()
+    MB = enum.auto()
+    GB = enum.auto()
+
 
 TIME = {DataType.SECOND, DataType.MINUTE, DataType.HOUR}
+BYTES = {DataType.KB, DataType.MB, DataType.GB}
 
 NOMATH = {
     item for item in DataType if item not in (
@@ -80,7 +85,7 @@ class DataSet:
 
 
 @functools.lru_cache(maxsize=1024)
-def convert(data, datatype=None):
+def convert(data, datatype=None):  # pylint:disable=R1260
     """\
     >>> convert(1, DataType.BOOL)
     True
@@ -106,6 +111,12 @@ def convert(data, datatype=None):
         data = utila.str2bool(data)
     elif 'SECRET' in datatype and isinstance(data, str):
         data: bytes = data.encode('ascii')
+    elif 'KB' in datatype:
+        data = int(float(data) * 1024)
+    elif 'MB' in datatype:
+        data = int(float(data) * 1024 * 1024)
+    elif 'GB' in datatype:
+        data = int(float(data) * 1024 * 1024 * 1024)
     elif any(item in datatype for item in ('SECOND', 'MINUTE', 'HOUR')):
         data = int(data)
     return data
@@ -280,7 +291,7 @@ def validate(  # pylint:disable=R0911,R1260
         if 'INT' in datatype.name or datatype in TIME:
             if not utila.isint(data):
                 return False
-        if 'PLUS' in datatype.name or datatype in TIME:
+        if 'PLUS' in datatype.name or datatype in TIME or datatype in BYTES:
             if data < 0.0:
                 return False
         if 'MINUS' in datatype.name:
