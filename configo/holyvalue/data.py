@@ -41,12 +41,17 @@ class DataType(enum.Enum):
     MINUTE = enum.auto()
     HOUR = enum.auto()
 
+    API = enum.auto()
+    SECRET = enum.auto()
+
 
 TIME = {DataType.SECOND, DataType.MINUTE, DataType.HOUR}
 
 NOMATH = {
     item for item in DataType if item not in (
+        DataType.API,
         DataType.BOOL,
+        DataType.SECRET,
         DataType.STR,
     )
 }
@@ -99,6 +104,8 @@ def convert(data, datatype=None):
         )
     elif 'BOOL' in datatype:
         data = utila.str2bool(data)
+    elif 'SECRET' in datatype and isinstance(data, str):
+        data: bytes = data.encode('ascii')
     elif any(item in datatype for item in ('SECOND', 'MINUTE', 'HOUR')):
         data = int(data)
     return data

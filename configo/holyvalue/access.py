@@ -101,3 +101,6 @@ HV_PERCENT_MINUS = functools.partial(holyvalue, datatype=DataType.PERCENT_MINUS)
 HV_SECOND = functools.partial(holyvalue, datatype=DataType.SECOND)
 HV_MINUTE = functools.partial(holyvalue, datatype=DataType.MINUTE)
 HV_HOUR = functools.partial(holyvalue, datatype=DataType.HOUR)
+
+HV_API = functools.partial(holyvalue, datatype=DataType.API)
+HV_SECRET = functools.partial(holyvalue, datatype=DataType.SECRET)

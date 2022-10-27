@@ -21,3 +21,13 @@ def test_second_failure():
         _ = configo.HV_SECOND(default=-32)
     with pytest.raises(configo.InvalidHolyValue):
         _ = configo.HV_SECOND(default=16.0)
+
+
+def test_api_prefix():
+    _ = configo.HV_API(default='/api/v0')
+
+
+def test_secret_key():
+    value = 'iamimportant'
+    secret = configo.HV_SECRET(default=value)
+    assert isinstance(secret.value, bytes)
