@@ -25,9 +25,10 @@ def create(todo: list) -> dict:
         collected = configo.holyvalue.collect.collect(path)
         for groupname, group in collected.items():
             for key, value in group.items():
-                hvgroup = value.get('hvgroup', f'{program}.{groupname}')
+                progname = f'{program}.{groupname}'
+                hvgroup = value.get('hvgroup', progname)
                 if hvgroup == configo.holyvalue.access.NO_GROUP:
-                    hvgroup = f'{program}.{groupname}'
+                    hvgroup = progname
                 hvgroup = hvgroup.upper()
                 variable = f'{hvgroup}.{key}'
                 todo = ranges(
