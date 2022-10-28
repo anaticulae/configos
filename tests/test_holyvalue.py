@@ -225,7 +225,7 @@ def test_holyvalue_operation():
 def test_hv_ranged():
     start = configo.HV_INT_PLUS(default=10)
     end = configo.HV_INT_PLUS(default=20)
-    assert len(utila.ranged_tuple(start, end)) == end - start
+    assert len(utila.rtuple(start, end)) == end - start
 
 
 def test_hv_slice():

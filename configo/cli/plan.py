@@ -190,7 +190,7 @@ def first_one(items) -> list:
             copy = list(base)
             copy[index] = current
             result.append(copy)
-    result = utila.make_unique(result)
+    result = utila.unique(result)
     return result
 
 
