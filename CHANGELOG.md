@@ -2,6 +2,12 @@
 
 Every noteable change is logged here.
 
+## v0.25.0 (2022-11-02)
+
+### Feature
+
+* use utila to have central cache control (d8ddffd8b37c)
+
 ## v0.24.0 (2022-10-27)
 
 ### Feature
