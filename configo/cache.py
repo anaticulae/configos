@@ -11,14 +11,23 @@
 ... def hello():
 ...    pass
 >>> hello()
+>>> @cache_small
+... def wello():
+...    print('hello')
+>>> wello()
+hello
+>>> wello()
+>>> wello()
 """
 
 import functools
+
+import utila
 
 CACHE_SMALL = 32
 CACHE_MEDIUM = 512
 CACHE_LARGE = 4096
 
-cache_small = functools.lru_cache(maxsize=CACHE_SMALL)
-cache_medium = functools.lru_cache(maxsize=CACHE_MEDIUM)
-cache_large = functools.lru_cache(maxsize=CACHE_LARGE)
+cache_small = functools.partial(utila.cacheme, maxsize=CACHE_SMALL)
+cache_medium = functools.partial(utila.cacheme, maxsize=CACHE_MEDIUM)
+cache_large = functools.partial(utila.cacheme, maxsize=CACHE_LARGE)
