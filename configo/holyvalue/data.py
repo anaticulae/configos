@@ -74,6 +74,10 @@ class Datum:
 
 @dataclasses.dataclass
 class Group:
+    """\
+    >>> Group()
+    Group(name=None, data={})
+    """
     name: str = None
     data: dict[str, Datum] = dataclasses.field(default_factory=dict)
 
