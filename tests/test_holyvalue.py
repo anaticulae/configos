@@ -65,15 +65,13 @@ def test_holyvalue_hv_group_from_module(mp):
     assert distance == 50022, distance
 
 
-def test_holyvalue_hv_use_default(mp, capsys):
+def test_holyvalue_hv_use_default(capsys):
     """Test returning `default` value for non defined variables and
     inform developer about this."""
     default = 'Helm'
-    with mp.context() as context:
-        context.setattr(utila.logger, 'LEVEL', utila.Level.DEBUG)
+    with utila.level_tmp(utila.Level.DEBUG):
         result = configo.HV(default=default).value
     assert result == default
-
     # ensure to log warning
     stdout = utilatest.stdout(capsys)
     assert 'not defined' in stdout, stdout
