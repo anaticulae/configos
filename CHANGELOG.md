@@ -2,6 +2,14 @@
 
 Every noteable change is logged here.
 
+## v0.25.5 (2023-01-31)
+
+### Chore
+
+* upgrade requirements.txt (ceba00a901f6)
+* upgrade pipe library (d1b5df86f9ac)
+* upgrade Jenkinsfile (efa04ec96a5a)
+
 ## v0.25.4 (2023-01-09)
 
 ### Chore
