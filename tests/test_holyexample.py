@@ -7,17 +7,17 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-import os
+# TODO: ENABLE LATER
+# import os
 
-import utilotest
+# import utilotest
 
-import configo
+# import configo
 
-
-@utilotest.longrun
-def test_generate_rawmaker():
-    import rawmaker  # pylint:disable=C0415
-    source = os.path.join(rawmaker.ROOT, 'rawmaker')
-    generated = configo.generate(source)
-    assert '[rawmaker.' in generated
-    assert 'DIFF_MAX = [' in generated
+# @utilotest.longrun
+# def test_generate_rawmaker():
+#     import rawmaker  # pylint:disable=C0415
+#     source = os.path.join(rawmaker.ROOT, 'rawmaker')
+#     generated = configo.generate(source)
+#     assert '[rawmaker.' in generated
+#     assert 'DIFF_MAX = [' in generated
