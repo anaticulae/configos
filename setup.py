@@ -15,7 +15,7 @@ import setuptools
 
 ROOT = os.path.dirname(__file__)
 
-with open(os.path.join(ROOT, 'README.md'), encoding='utf8') as fp:
+with open(os.path.join(ROOT, 'README'), encoding='utf8') as fp:
     README = fp.read()
 
 with open(os.path.join(ROOT, 'configo/__init__.py'), encoding='utf8') as fp:
@@ -26,11 +26,12 @@ with open(os.path.join(ROOT, "requirements.txt"), encoding='utf8') as fp:
 
 if __name__ == "__main__":
     setuptools.setup(
-        author='Helmut Konrad Fahrendholz',
-        author_email='dev@checkitweg.de',
+        author='Helmut Konrad Schewe',
+        author_email='helmutus@outlook.com',
         description='configo',
         install_requires=REQUIRES,
         long_description=README,
+        long_description_content_type='text/markdown',
         name='configo',
         platforms='any',
         url='https://packages.checkitweg.de/configo',
