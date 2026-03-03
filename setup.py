@@ -9,43 +9,18 @@
 #==============================================================================
 
 import os
-import re
 
-import setuptools
+import utilo
 
 ROOT = os.path.dirname(__file__)
 
-with open(os.path.join(ROOT, 'README'), encoding='utf8') as fp:
-    README = fp.read()
-
-with open(os.path.join(ROOT, 'configo/__init__.py'), encoding='utf8') as fp:
-    VERSION = re.search(r'__version__ = \'(.*?)\'', fp.read()).group(1)
-
-with open(os.path.join(ROOT, "requirements.txt"), encoding='utf8') as fp:
-    REQUIRES = [line for line in fp.readlines() if line and '#' not in line]
-
+PACKAGES = [
+    'configo',
+    'configo.cli',
+    'configo.holyvalue',
+]
+ENTRY_POINTS = {
+    'console_scripts': ['configo = configo.cli:main'],
+}
 if __name__ == "__main__":
-    setuptools.setup(
-        author='Helmut Konrad Schewe',
-        author_email='helmutus@outlook.com',
-        description='configo',
-        install_requires=REQUIRES,
-        long_description=README,
-        long_description_content_type='text/markdown',
-        name='configo',
-        platforms='any',
-        url='https://packages.checkitweg.de/configo',
-        version=VERSION,
-        zip_safe=False,  # create 'zip'-file if True. Don't do it!
-        classifiers=[
-            'Programming Language :: Python :: 3.8',
-        ],
-        packages=[
-            'configo',
-            'configo.cli',
-            'configo.holyvalue',
-        ],
-        entry_points={
-            'console_scripts': ['configo = configo.cli:main'],
-        },
-    )
+    utilo.install(ROOT)
