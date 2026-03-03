@@ -82,30 +82,30 @@ def holyvalue(
 
 DataType = configo.holyvalue.data.DataType
 init = lambda datatype: functools.partial(holyvalue, datatype=datatype)
-HV = holyvalue
+HV = holyvalue  # pylint:disable=C0103
 
-HV_BOOL = init(DataType.BOOL)
-HV_STR = init(DataType.STR)
+HV_BOOL = init(DataType.BOOL)  # pylint:disable=C0103
+HV_STR = init(DataType.STR)  # pylint:disable=C0103
 
-HV_INT = init(DataType.INT)
-HV_INT_PLUS = init(DataType.INT_PLUS)
-HV_INT_MINUS = init(DataType.INT_MINUS)
+HV_INT = init(DataType.INT)  # pylint:disable=C0103
+HV_INT_PLUS = init(DataType.INT_PLUS)  # pylint:disable=C0103
+HV_INT_MINUS = init(DataType.INT_MINUS)  # pylint:disable=C0103
 
-HV_FLOAT = init(DataType.FLOAT)
-HV_FLOAT_PLUS = init(DataType.FLOAT_PLUS)
-HV_FLOAT_MINUS = init(DataType.FLOAT_MINUS)
+HV_FLOAT = init(DataType.FLOAT)  # pylint:disable=C0103
+HV_FLOAT_PLUS = init(DataType.FLOAT_PLUS)  # pylint:disable=C0103
+HV_FLOAT_MINUS = init(DataType.FLOAT_MINUS)  # pylint:disable=C0103
 
-HV_PERCENT = init(DataType.PERCENT)
-HV_PERCENT_PLUS = init(DataType.PERCENT_PLUS)
-HV_PERCENT_MINUS = init(DataType.PERCENT_MINUS)
+HV_PERCENT = init(DataType.PERCENT)  # pylint:disable=C0103
+HV_PERCENT_PLUS = init(DataType.PERCENT_PLUS)  # pylint:disable=C0103
+HV_PERCENT_MINUS = init(DataType.PERCENT_MINUS)  # pylint:disable=C0103
 
-HV_SECOND = init(DataType.SECOND)
-HV_MINUTE = init(DataType.MINUTE)
-HV_HOUR = init(DataType.HOUR)
+HV_SECOND = init(DataType.SECOND)  # pylint:disable=C0103
+HV_MINUTE = init(DataType.MINUTE)  # pylint:disable=C0103
+HV_HOUR = init(DataType.HOUR)  # pylint:disable=C0103
 
-HV_API = init(DataType.API)
-HV_SECRET = init(DataType.SECRET)
+HV_API = init(DataType.API)  # pylint:disable=C0103
+HV_SECRET = init(DataType.SECRET)  # pylint:disable=C0103
 
-HV_KB = init(DataType.KB)
-HV_MB = init(DataType.MB)
-HV_GB = init(DataType.GB)
+HV_KB = init(DataType.KB)  # pylint:disable=C0103
+HV_MB = init(DataType.MB)  # pylint:disable=C0103
+HV_GB = init(DataType.GB)  # pylint:disable=C0103

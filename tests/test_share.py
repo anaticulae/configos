@@ -53,7 +53,7 @@ def test_startup(td, mp):
     ready = os.path.join(root, 'ready')
     tmp = os.path.join(root, 'tmp')
     todo = os.path.join(root, 'todo')
-    for item in [ready, tmp, todo]:
+    for item in (ready, tmp, todo):
         os.makedirs(item)
 
     with mp.context() as context:
@@ -76,7 +76,7 @@ def test_export_import(tmpdir, mp):
         ready = os.path.join(tmpdir, 'ready')  #pylint:disable=W0621
         common = os.path.join(tmpdir, 'common')
 
-        for item in [todo, ready, common]:
+        for item in (todo, ready, common):
             os.makedirs(item)
 
         configo.export(common, todo, ready)

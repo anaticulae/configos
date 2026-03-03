@@ -106,7 +106,7 @@ def holyvalue_from_file(path: str) -> dict:
     for key, value in vars(module).items():
         if not isinstance(value, configo.holyvalue.data.HolyMixin):
             continue
-        result[key] = dict(comment=commento[key], **vars(value))
+        result[key] = {'comment': commento[key], **vars(value)}
     return result
 
 
