@@ -7,7 +7,7 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-import utila
+import utilo
 
 import configo
 
@@ -19,7 +19,7 @@ def debug() -> bool:
         current = configo.env(DEBUG)
     except KeyError:
         return False
-    result = utila.str2bool(current)
+    result = utilo.str2bool(current)
     return result
 
 

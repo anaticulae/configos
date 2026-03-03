@@ -7,8 +7,8 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-import utila
-import utilatest
+import utilo
+import utilotest
 
 import configo
 import tests
@@ -24,7 +24,7 @@ def test_cli_generate(mp, capsys):
         f'--generate -i {source} --noskip',
         mp=mp,
     )
-    stdout = utilatest.stdout(capsys)
+    stdout = utilotest.stdout(capsys)
     assert 'HELMUT = None' in stdout
     assert len(stdout) >= 861
 
@@ -37,27 +37,27 @@ def test_cli_result_show(mp):
     )
 
 
-@utilatest.longrun
+@utilotest.longrun
 def test_cli_create_run_show(td, mp):
     root = configo.ROOT
-    plan = utila.forward_slash(str(td.tmpdir.join('plan.hv')))
-    with utila.capture_stdout() as buffer:
+    plan = utilo.forward_slash(str(td.tmpdir.join('plan.hv')))
+    with utilo.capture_stdout() as buffer:
         tests.run(
             f'optimize --create {root}',
             mp=mp,
         )
     plan_content = buffer()
-    utila.file_create(plan, plan_content)
-    utila.run('baw init myproject "helm is here"')
-    with utila.capture_stdout() as buffer:
+    utilo.file_create(plan, plan_content)
+    utilo.run('baw init myproject "helm is here"')
+    with utilo.capture_stdout() as buffer:
         tests.run(
             f'optimize -r 2 --run {plan} ',
             mp=mp,
         )
     # determine result path out of logging
     result = buffer().strip()
-    path = utila.search(r'outdir\:[ ](.+?)\n', result)[1]
-    path = utila.join(path, 'result')
+    path = utilo.search(r'outdir\:[ ](.+?)\n', result)[1]
+    path = utilo.join(path, 'result')
     tests.run(
         f'optimize --show {path}',
         mp=mp,

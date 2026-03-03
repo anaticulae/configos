@@ -10,7 +10,7 @@
 import os
 import sys
 
-import utila
+import utilo
 
 HELPY_URL = 'HELPY_URL'
 
@@ -50,5 +50,5 @@ def package_address():
 
 
 def handle_error(msg: KeyError):
-    utila.error('Missing global var: %s' % msg)
-    sys.exit(utila.FAILURE)
+    utilo.error('Missing global var: %s' % msg)
+    sys.exit(utilo.FAILURE)

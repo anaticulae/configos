@@ -9,12 +9,12 @@
 
 import os
 
-import utila
+import utilo
 
 NO_DEFAULT = object()
 
 
-@utila.cacheme
+@utilo.cacheme
 def env(name: str, default=NO_DEFAULT, group: str = None):
     name = groupname(name, group)
     try:
@@ -30,37 +30,37 @@ def env_set(name: str, value: str, group: str = None):
     name = groupname(name, group)
     value = str(value)
     os.environ[name] = value
-    utila.cache_clear()
+    utilo.cache_clear()
 
 
 def env_del(name: str, group: str = None):
     name = groupname(name, group)
     del os.environ[name]
-    utila.cache_clear()
+    utilo.cache_clear()
 
 
 def env_load(path: str):
     assert os.path.exists(path), str(path)
-    loaded = utila.file_read(path)
-    config = utila.load_config(loaded, flat=True)
+    loaded = utilo.file_read(path)
+    config = utilo.load_config(loaded, flat=True)
     for key, value in config.items():
         env_set(key, value)
-    utila.cache_clear()
+    utilo.cache_clear()
 
 
 def env_unload(path: str):
     assert os.path.exists(path), str(path)
-    config = utila.load_config(path, flat=True)
+    config = utilo.load_config(path, flat=True)
     for key in config.keys():
         env_del(key)
-    utila.cache_clear()
+    utilo.cache_clear()
 
 
 def env_dump() -> str:
     collected = []
     for key, value in os.environ.items():
         collected.append('{:<40}{}'.format(key, value))
-    result = utila.NEWLINE.join(collected)
+    result = utilo.NEWLINE.join(collected)
     return result
 
 
@@ -80,7 +80,7 @@ def env_path_append(path: str):
     """
     base = f'{env("PATH")};{path}'
     env_set('PATH', base)
-    utila.debug(f'PATH:{base}')
+    utilo.debug(f'PATH:{base}')
 
 
 def env_path_remove(path: str):

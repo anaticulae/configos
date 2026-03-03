@@ -12,7 +12,7 @@ import os
 import re
 import tokenize
 
-import utila
+import utilo
 
 import configo.holyvalue.access
 import configo.holyvalue.data
@@ -38,7 +38,7 @@ def generate(path: str, skips: callable = None) -> str:
 
 def collect(path: str, skips: callable = None) -> dict:
     path = os.path.abspath(path)
-    files = utila.file_list(
+    files = utilo.file_list(
         path,
         include='py',
         absolute=True,
@@ -48,8 +48,8 @@ def collect(path: str, skips: callable = None) -> dict:
     for item in files:
         if skips and skips(item):
             continue
-        relative = utila.make_relative(item, path)
-        relative = utila.make_package(relative)
+        relative = utilo.make_relative(item, path)
+        relative = utilo.make_package(relative)
         parsed = holyvalue_from_file(item)
         if parsed:
             collected[relative] = parsed
@@ -57,7 +57,7 @@ def collect(path: str, skips: callable = None) -> dict:
 
 
 def dump_collected(collected, root):
-    signature = utila.attributes(configo.holyvalue.access.holyvalue)
+    signature = utilo.attributes(configo.holyvalue.access.holyvalue)
     raw = []
     for package in sorted(collected.keys()):
         raw.append(f'[{root}.{package}]')
@@ -76,7 +76,7 @@ def dump_collected(collected, root):
             raw.append(f"{variable} = {default}")
             raw.append('')
         raw.append('')
-    result = utila.NEWLINE.join(raw)
+    result = utilo.NEWLINE.join(raw)
     result = result.strip()
     return result
 
@@ -97,10 +97,10 @@ def holyvalue_from_file(path: str) -> dict:
         Dictionary with holyvalues and further configuration parameter,
         e.g. limit, variable, group etc.
     """
-    commento = comments(utila.file_read(path))
+    commento = comments(utilo.file_read(path))
     module = configo.utils.load_module(path)
     if not module:
-        utila.error(f'could not load: {path}')
+        utilo.error(f'could not load: {path}')
         return {}
     result = {}
     for key, value in vars(module).items():
@@ -156,6 +156,6 @@ def codelines(sourcecode: str):
 
 
 def token(code: str):
-    buffer = io.BytesIO(code.encode(utila.UTF8)).readline
+    buffer = io.BytesIO(code.encode(utilo.UTF8)).readline
     source = tokenize.tokenize(buffer)
     return source

@@ -12,7 +12,7 @@ import dataclasses
 import enum
 import functools
 
-import utila
+import utilo
 
 import configo
 
@@ -107,12 +107,12 @@ def convert(data, datatype=None):  # pylint:disable=R1260
     elif 'PERCENT' in datatype:
         data = float(data)
         data *= 0.01
-        data = utila.roundme(
+        data = utilo.roundme(
             data,
             digits=3,
         )
     elif 'BOOL' in datatype:
-        data = utila.str2bool(data)
+        data = utilo.str2bool(data)
     elif 'SECRET' in datatype and isinstance(data, str):
         data: bytes = data.encode('ascii')
     elif 'KB' in datatype:
@@ -293,7 +293,7 @@ def validate(  # pylint:disable=R0911,R1260
         return True
     if datatype:
         if 'INT' in datatype.name or datatype in TIME:
-            if not utila.isint(data):
+            if not utilo.isint(data):
                 return False
         if 'PLUS' in datatype.name or datatype in TIME or datatype in BYTES:
             if data < 0.0:

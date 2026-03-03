@@ -9,12 +9,12 @@
 
 import os
 
-import utilatest
+import utilotest
 
 import configo
 
 
-@utilatest.longrun
+@utilotest.longrun
 def test_generate_rawmaker():
     import rawmaker  # pylint:disable=C0415
     source = os.path.join(rawmaker.ROOT, 'rawmaker')

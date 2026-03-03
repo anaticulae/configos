@@ -7,7 +7,7 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-import utila
+import utilo
 
 import configo.cli.plan
 import tests.hvexample
@@ -15,7 +15,7 @@ import tests.hvexample
 
 def test_plan_create():
     """Ensure that hvexample is loaded to ensure that hv is loaded correctly."""
-    path = utila.path_parent(tests.hvexample.__file__)
+    path = utilo.path_parent(tests.hvexample.__file__)
     todo = [path]
     plan = configo.cli.plan.create(todo)
     assert 'TESTS.HVEXAMPLE.SECOND' in plan

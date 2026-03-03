@@ -7,7 +7,7 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-import utila
+import utilo
 
 import configo.cli.plan
 import configo.cli.result
@@ -22,7 +22,7 @@ def evaluate(
 ):  # pylint:disable=W0613
     if create:
         plan = configo.cli.plan.create(create)
-        utila.log(configo.cli.plan.dump(plan))
+        utilo.log(configo.cli.plan.dump(plan))
     if run:
         if cmd_test is None:
             cmd_test = 'baw test -n1'

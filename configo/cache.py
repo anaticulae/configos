@@ -22,13 +22,13 @@ hello
 
 import functools
 
-import utila
+import utilo
 
 CACHE_SMALL = 32
 CACHE_MEDIUM = 512
 CACHE_LARGE = 4096
 
 # TODO: MAY ONLY USE UTILA.CACHE???
-cache_small = functools.partial(utila.cacheme, maxsize=CACHE_SMALL)
-cache_medium = functools.partial(utila.cacheme, maxsize=CACHE_MEDIUM)
-cache_large = functools.partial(utila.cacheme, maxsize=CACHE_LARGE)
+cache_small = functools.partial(utilo.cacheme, maxsize=CACHE_SMALL)
+cache_medium = functools.partial(utilo.cacheme, maxsize=CACHE_MEDIUM)
+cache_large = functools.partial(utilo.cacheme, maxsize=CACHE_LARGE)

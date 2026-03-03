@@ -11,7 +11,7 @@ import configparser
 import functools
 import os
 
-import utila
+import utilo
 
 import configo.exception
 import configo.holyvalue
@@ -39,7 +39,7 @@ class DataBase:
     def load(self, name: str, path: str = None):
         path = path if path else self.path
         path = os.path.join(path, f'{name}.hv')
-        utila.info(f'load path: {path}')
+        utilo.info(f'load path: {path}')
         parsed = parse(path, name)
         self.current = parsed
 
@@ -52,7 +52,7 @@ class DataBase:
 
         def default_warning():
             msg = f'not defined in database {group}:{variable}; use default: {default}'
-            utila.info(msg)
+            utilo.info(msg)
 
         # determine hv-group
         _group = self.current.data.get(group, None)  # pylint:disable=E1101
@@ -75,7 +75,7 @@ class DataBase:
 
 def parse(path, name: str = None) -> 'DataSet':
     # load config
-    raw = utila.from_raw_or_path(path, ftype='ini')
+    raw = utilo.from_raw_or_path(path, ftype='ini')
     parser = configparser.ConfigParser()
     parser.read_string(raw)
     # prepare data

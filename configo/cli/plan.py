@@ -11,7 +11,7 @@ import collections
 import os
 import re
 
-import utila
+import utilo
 
 import configo
 import configo.holyvalue.access
@@ -21,7 +21,7 @@ import configo.holyvalue.collect
 def create(todo: list) -> dict:
     result = {}
     for path in todo:
-        program = utila.path_current(path)
+        program = utilo.path_current(path)
         collected = configo.holyvalue.collect.collect(path)
         for groupname, group in collected.items():
             for key, value in group.items():
@@ -37,7 +37,7 @@ def create(todo: list) -> dict:
                     datatype=value.get('datatype', None),
                 )
                 if not todo:
-                    utila.debug(f'skip for optimization, no range: {variable}')
+                    utilo.debug(f'skip for optimization, no range: {variable}')
                     continue
                 result[variable] = todo
     return result
@@ -51,23 +51,23 @@ def run(
     cmd_test=None,
 ):
     path = os.path.abspath(path[0])
-    plan = utila.yaml_load(path)
+    plan = utilo.yaml_load(path)
     todo = list(plan.values())
     keys = list(plan.keys())
     mapped = first_one(todo)
-    utila.log(f'different steps: {len(mapped)}')
+    utilo.log(f'different steps: {len(mapped)}')
     if len(mapped) > reduce:
-        utila.log(f'reduce values: {reduce}')
-        mapped = utila.choose_random(mapped, count=reduce, seed=seed)
+        utilo.log(f'reduce values: {reduce}')
+        mapped = utilo.choose_random(mapped, count=reduce, seed=seed)
     # verify code without hv-modification
     if test_before:
-        utila.log('test project')
-        utila.run(cmd_test)  # utila.run('baw test')
-    # utila.log(utila.from_tuple(keys, ';'))
-    with utila.make_tmpdir(configo.ROOT) as tmpdir:
-        utila.log(f'outdir: {tmpdir}')
-        header = f"number,{utila.from_tuple(keys, separator=',')},failure\n"
-        utila.file_append(
+        utilo.log('test project')
+        utilo.run(cmd_test)  # utilo.run('baw test')
+    # utilo.log(utilo.from_tuple(keys, ';'))
+    with utilo.make_tmpdir(configo.ROOT) as tmpdir:
+        utilo.log(f'outdir: {tmpdir}')
+        header = f"number,{utilo.from_tuple(keys, separator=',')},failure\n"
+        utilo.file_append(
             os.path.join(tmpdir, 'result'),
             header,
             create=True,
@@ -94,29 +94,29 @@ def run_test(
     cfg = create_config(key, config)
     step = str(step).zfill(4)
     cfgpath = os.path.join(tmpdir, f'{step}.hv')
-    utila.file_create(cfgpath, cfg)
+    utilo.file_create(cfgpath, cfg)
     configo.cloud_set(program=hcvalue, namepath=cfgpath)
     # run tests
-    utila.log(f'run step: {step}')
-    utila.log(utila.from_tuple(config, ';'))
-    completed = utila.run(
+    utilo.log(f'run step: {step}')
+    utilo.log(utilo.from_tuple(config, ';'))
+    completed = utilo.run(
         cmd_test,
         expect=None,
         env=dict(os.environ),
     )
     # cfgpath
     logpath = os.path.join(tmpdir, f'{step}.log')
-    utila.file_create(logpath, completed.stderr)
-    utila.file_append(logpath, completed.stdout)
+    utilo.file_create(logpath, completed.stderr)
+    utilo.file_append(logpath, completed.stdout)
     tests = 0
     if completed.returncode:
         stdout = completed.stdout
         tests = FAILED.search(stdout)['failed']
-    config = f'{step},' + utila.from_tuple(config, ',') + f',{tests}\n'
+    config = f'{step},' + utilo.from_tuple(config, ',') + f',{tests}\n'
     if completed.returncode:
-        utila.error(config)
+        utilo.error(config)
     # append result
-    utila.file_append(
+    utilo.file_append(
         os.path.join(tmpdir, 'result'),
         config,
         create=True,
@@ -151,7 +151,7 @@ def ranges(
         return tuple()
     if datatype == configo.DataType.BOOL:
         return (True, False)
-    data = tuple(utila.roundme(default * item) for item in steps)
+    data = tuple(utilo.roundme(default * item) for item in steps)
     if 'INT' in str(datatype):
         data = tuple(int(item) for item in data)
     if limit is not None:
@@ -168,7 +168,7 @@ def create_config(keys, configs) -> str:
     for key, value in grouped.items():
         collected.append('[' + key + ']')
         collected.extend(value)
-    result = utila.NEWLINE.join(collected)
+    result = utilo.NEWLINE.join(collected)
     return result
 
 
@@ -190,10 +190,10 @@ def first_one(items) -> list:
             copy = list(base)
             copy[index] = current
             result.append(copy)
-    result = utila.unique(result)
+    result = utilo.unique(result)
     return result
 
 
 def dump(plan: dict) -> str:
-    dumped = utila.yaml_dump(plan)
+    dumped = utilo.yaml_dump(plan)
     return dumped

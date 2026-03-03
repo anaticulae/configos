@@ -7,7 +7,7 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-import utila
+import utilo
 
 import configo
 
@@ -20,21 +20,21 @@ def evaluate(inpath: list, noskip=False) -> int:
     """
     skip = None if noskip else skips
     for path in inpath:
-        if not utila.exists(path):
-            utila.error(f'input does not exists: {path}')
-            return utila.FAILURE
+        if not utilo.exists(path):
+            utilo.error(f'input does not exists: {path}')
+            return utilo.FAILURE
     done = False
     for item in inpath:
         collected = configo.generate(item, skips=skip)
         if not collected:
             continue
-        utila.print_banner(text=item, symbol='#')
-        utila.log(collected)
+        utilo.print_banner(text=item, symbol='#')
+        utilo.log(collected)
         done = True
     if not done:
-        utila.error('could not locate any HolyValue')
-        return utila.FAILURE
-    return utila.SUCCESS
+        utilo.error('could not locate any HolyValue')
+        return utilo.FAILURE
+    return utilo.SUCCESS
 
 
 def skips(item: str) -> bool:

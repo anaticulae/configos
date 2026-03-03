@@ -8,7 +8,7 @@
 # =============================================================================
 
 import pytest
-import utila
+import utilo
 
 import configo
 
@@ -39,7 +39,7 @@ ciwi_detector = Hier Spricht Helm
 
 def test_env_load_unload(td):
     config = td.tmpdir.join('config.ini')
-    utila.file_create(config, CONFIG)
+    utilo.file_create(config, CONFIG)
 
     with pytest.raises(KeyError):
         configo.env('kiwi_rawmaker')
@@ -58,7 +58,7 @@ def test_env_load_unload(td):
 
 def test_env_unload(td):
     path = td.tmpdir.join('config.ini')
-    utila.file_create(path, CONFIG)
+    utilo.file_create(path, CONFIG)
     before = configo.env_dump()
     configo.env_load(path)
     after = configo.env_dump()

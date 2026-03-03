@@ -7,13 +7,13 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-import utila
-import utilatest
+import utilo
+import utilotest
 
 import configo
 
-TEST_DATA = utila.join(configo.ROOT, 'tests')
-HVEXAMPLE = utila.join(TEST_DATA, 'hvexample', exist=True)
-RESULT = utila.join(TEST_DATA, 'examples/result', exist=True)
+TEST_DATA = utilo.join(configo.ROOT, 'tests')
+HVEXAMPLE = utilo.join(TEST_DATA, 'hvexample', exist=True)
+RESULT = utilo.join(TEST_DATA, 'examples/result', exist=True)
 
-run, fail = utilatest.create_cli_runner(configo)
+run, fail = utilotest.create_cli_runner(configo)

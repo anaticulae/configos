@@ -11,8 +11,8 @@ import inspect
 import os
 
 import pytest
-import utila
-import utilatest
+import utilo
+import utilotest
 
 import configo
 import configo.holyvalue
@@ -69,11 +69,11 @@ def test_holyvalue_hv_use_default(capsys):
     """Test returning `default` value for non defined variables and
     inform developer about this."""
     default = 'Helm'
-    with utila.level_tmp(utila.Level.DEBUG):
+    with utilo.level_tmp(utilo.Level.DEBUG):
         result = configo.HV(default=default).value
     assert result == default
     # ensure to log warning
-    stdout = utilatest.stdout(capsys)
+    stdout = utilotest.stdout(capsys)
     assert 'not defined' in stdout, stdout
 
 
@@ -122,20 +122,20 @@ def test_holyvalue_generate_configuration():
 
     keys = ['FIRST', 'SECOND', 'THIRD', 'LEVEL_UP', 'HELMUT']
     for key in keys:
-        assert f'{key} = ' in config, utila.log_raw(config)
+        assert f'{key} = ' in config, utilo.log_raw(config)
 
     variables = ['default', 'limit', 'datatype', 'comment']
     for variable in variables:
         assert f'# {variable}:' in config, print(config)
 
-    assert config.count('#') >= 5, utila.log_raw(config)
+    assert config.count('#') >= 5, utilo.log_raw(config)
 
 
 def test_holyvalue_generate_and_load(td):
     path = td.tmpdir.join('config.hv')
     # create config
     config = configo.generate(tests.HVEXAMPLE)
-    utila.file_create(path, config)
+    utilo.file_create(path, config)
     # parse config
     parsed = configo.holyvalue.store.parse(path, 'config')
     assert parsed
@@ -223,7 +223,7 @@ def test_holyvalue_operation():
 def test_hv_ranged():
     start = configo.HV_INT_PLUS(default=10)
     end = configo.HV_INT_PLUS(default=20)
-    assert len(utila.rtuple(start, end)) == end - start
+    assert len(utilo.rtuple(start, end)) == end - start
 
 
 def test_hv_slice():

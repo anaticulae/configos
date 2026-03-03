@@ -13,7 +13,7 @@ Environment variables:
 >>> HC_WORDS = '/c/holyclound/words341.hv'
 """
 
-import utila
+import utilo
 
 import configo
 
@@ -27,12 +27,12 @@ def cloud_lookup(program: str, base: str = None):
         return
     if base:
         configo.init(base)
-    if utila.isfilepath(env):
-        if not utila.exists(env):
-            utila.error(f'invalid holy value path[env:{envname}]: {env}')
+    if utilo.isfilepath(env):
+        if not utilo.exists(env):
+            utilo.error(f'invalid holy value path[env:{envname}]: {env}')
             return
-        base = utila.path_parent(env)
-        name = utila.file_name(env)
+        base = utilo.path_parent(env)
+        name = utilo.file_name(env)
         # hv-file path
         configo.load(name=name, base=base)
         return

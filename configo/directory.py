@@ -20,7 +20,7 @@ Use `configo.export()` to change these variables.
 import os
 import sys
 
-import utila
+import utilo
 
 TODO = 'SHARED_TODO'
 READY = 'SHARED_READY'
@@ -106,12 +106,12 @@ def _path_from_env(env: str, check: bool = False):  # pylint:disable=R1710
     try:
         path = os.environ[env]
         if check and not os.path.exists(path):
-            utila.error('Path does not exists: %s' % path)
-            sys.exit(utila.FAILURE)
+            utilo.error('Path does not exists: %s' % path)
+            sys.exit(utilo.FAILURE)
         return path
     except KeyError:
-        utila.error('Missing environment var `%s`' % env)
-        sys.exit(utila.FAILURE)
+        utilo.error('Missing environment var `%s`' % env)
+        sys.exit(utilo.FAILURE)
 
 
 def makedirs():

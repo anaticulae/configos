@@ -15,7 +15,7 @@
 import functools
 import inspect
 
-import utila
+import utilo
 
 import configo
 import configo.holyvalue
@@ -58,8 +58,8 @@ def holyvalue(
         # TODO: NOT VERY STABLE/ DIRTY
         # determine variable out of code
         levelup = inspect.stack(context=1)[1].code_context
-        code = utila.NEWLINE.join(levelup)
-        matched = utila.search(configo.holyvalue.collect.PATTERN, code)
+        code = utilo.NEWLINE.join(levelup)
+        matched = utilo.search(configo.holyvalue.collect.PATTERN, code)
         name = str(matched['variable']).strip().upper()
     if group is None:
         # determine call package
@@ -70,7 +70,7 @@ def holyvalue(
             group = inspect.getmodule(inspected).__name__
         else:
             # is loaded later via dynamic code loader
-            utila.debug(f'could not determine holyvalue group: {parent}')
+            utilo.debug(f'could not determine holyvalue group: {parent}')
             group = NO_GROUP
     if not configo.holyvalue.data.validate(default, datatype, default, limit):
         msg = f'invalid default/limit/datatype; name: {name}; group:{group} '

@@ -9,23 +9,23 @@
 
 import sys
 
-import utila
+import utilo
 
 import configo
 import configo.cli.generate
 import configo.cli.optimization
 
 
-@utila.saveme
+@utilo.saveme
 def main():
     current, data = evaluate()
     for action, method in runner():
         if current != action:
             continue
         if method.evaluate(*data):
-            return utila.FAILURE
-        return utila.SUCCESS
-    return utila.INVALID_COMMAND
+            return utilo.FAILURE
+        return utilo.SUCCESS
+    return utilo.INVALID_COMMAND
 
 
 def runner():
@@ -38,7 +38,7 @@ def runner():
 
 def evaluate() -> tuple:
     parser = create_parser()
-    args = utila.parse(parser)
+    args = utilo.parse(parser)
     action, data = '', None
     gen = (args.get('input'), args.get('noskip', False))
     if args['generate']:
@@ -55,24 +55,24 @@ def evaluate() -> tuple:
         action = 'optimize'
         data = optimize
     if not action:
-        utila.error('nothing todo')
-        sys.exit(utila.INVALID_COMMAND)
+        utilo.error('nothing todo')
+        sys.exit(utilo.INVALID_COMMAND)
     return action, data
 
 
 def create_parser():
-    result = utila.cli.create_parser(
+    result = utilo.cli.create_parser(
         todo=[
-            utila.cli.Flag(
+            utilo.cli.Flag(
                 longcut='--generate',
                 message='create default config out of source',
             ),
-            utila.cli.Flag(
+            utilo.cli.Flag(
                 longcut='--noskip',
                 message='do not skip any path',
             ),
         ],
-        config=utila.ParserConfiguration(
+        config=utilo.ParserConfiguration(
             inputparameter=True,
             outputparameter=False,
             cacheflag=False,

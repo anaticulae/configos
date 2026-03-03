@@ -9,7 +9,7 @@
 
 import importlib.util
 
-import utila
+import utilo
 
 
 def load_module(path: str):
@@ -17,8 +17,8 @@ def load_module(path: str):
     >>> load_module(__file__).__name__
     'configo.utils'
     """
-    item = utila.file_name(path)
-    parent = utila.file_name(utila.path_parent(path))
+    item = utilo.file_name(path)
+    parent = utilo.file_name(utilo.path_parent(path))
     spec = importlib.util.spec_from_file_location(
         f'{parent}.{item}',
         path,

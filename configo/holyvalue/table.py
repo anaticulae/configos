@@ -9,7 +9,7 @@
 """HolyTable lookup
 ================
 
->>> table = HolyTable(strategy=utila.Strategy.LINEARISE)
+>>> table = HolyTable(strategy=utilo.Strategy.LINEARISE)
 >>> table.add(0,0)
 >>> table.add(10,10)
 >>> assert table(5.0) == 5.0, table(5.0)
@@ -24,7 +24,7 @@ Support both lookup styles
 
 """
 
-import utila
+import utilo
 
 import configo.holyvalue.data
 
@@ -34,7 +34,7 @@ class HolyTable(configo.holyvalue.data.HolyMixin):
     def __init__(
         self,
         items: list = None,
-        strategy: utila.Strategy = None,
+        strategy: utilo.Strategy = None,
         right_outranges_none: bool = False,
         left_outranges_none: bool = False,
     ):
@@ -59,7 +59,7 @@ class HolyTable(configo.holyvalue.data.HolyMixin):
     def add(self, position, value):
         self.table.append((position, value))
         self.table = sorted(self.table, key=lambda x: x[0])
-        assert utila.isascending([item[0] for item in self.table]), str(self.table) # yapf:disable
+        assert utilo.isascending([item[0] for item in self.table]), str(self.table) # yapf:disable
 
     def __call__(self, position):
         """Return lookup value or None.
@@ -68,7 +68,7 @@ class HolyTable(configo.holyvalue.data.HolyMixin):
               activated.
         """
         assert self.table, 'empty table, use add to configure'
-        value = utila.lookup(
+        value = utilo.lookup(
             position,
             self.table,
             self.strategy,

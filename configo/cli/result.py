@@ -11,7 +11,7 @@ import collections
 import csv
 import os
 
-import utila
+import utilo
 
 import configo
 
@@ -20,12 +20,12 @@ def show(result):
     single = result[0]
     parsed, header, size = parse_result(single)
     rendered = render_table(list(parsed.values()), size, header=header)
-    with utila.make_tmpdir(root=configo.ROOT) as output:
+    with utilo.make_tmpdir(root=configo.ROOT) as output:
         outpath = os.path.join(output, 'index.html')
-        utila.file_create(outpath, rendered)
-        testrun = utila.testing()
+        utilo.file_create(outpath, rendered)
+        testrun = utilo.testing()
         if not testrun:
-            utila.run(f'start {outpath}')
+            utilo.run(f'start {outpath}')
 
 
 def parse_result(path) -> dict:
@@ -40,7 +40,7 @@ def parse_result(path) -> dict:
         failure = int(failure)
         for index, value in enumerate(content):
             # TODO: ADD BOOL CHECKUP
-            value = int(value) if utila.isint(value) else float(value)
+            value = int(value) if utilo.isint(value) else float(value)
             collected[index].add((value, failure))
         width = len(content)
         height += 1
@@ -49,7 +49,7 @@ def parse_result(path) -> dict:
 
 
 def prepare(value):
-    grouped = utila.groupby_x(value, selector=lambda x: x[0])
+    grouped = utilo.groupby_x(value, selector=lambda x: x[0])
     result = []
     for group in grouped:
         result.append((group[0][0], min((item[1] for item in group))))
