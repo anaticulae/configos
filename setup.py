@@ -12,8 +12,6 @@ import os
 
 import utilo
 
-ROOT = os.path.dirname(__file__)
-
 PACKAGES = [
     'configo',
     'configo.cli',
@@ -23,4 +21,4 @@ ENTRY_POINTS = {
     'console_scripts': ['configo = configo.cli:main'],
 }
 if __name__ == "__main__":
-    utilo.install(ROOT)
+    utilo.install(__file__)

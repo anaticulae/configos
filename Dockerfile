@@ -1,0 +1,58 @@
+# =============================================================================
+# C O P Y R I G H T
+# -----------------------------------------------------------------------------
+# Copyright (c) 2022-2023 by Helmut Konrad Schewe. All rights reserved.
+# This file is property of Helmut Konrad Schewe. Any unauthorized copy,
+# use or distribution is an offensive act against international law and may
+# be prosecuted under federal law. Its content is company confidential.
+# =============================================================================
+
+FROM alpine:3.23.3
+
+LABEL maintainer="Helmut Konrad Schewe <helmutus@outlook.com>"
+
+# ALPINE
+RUN apk add --no-cache \
+    git \
+    python3 \
+    py3-pip \
+    python3-dev
+
+ENV BAW=/tmp/dev
+
+ENV PYLINTHOME=/tmp/pylint
+
+ENV SHARED_SPACE=/tmp/shared
+ENV SHARED_TMP=/tmp/shared/tmp
+ENV SHARED_TODO=/tmp/shared/todo
+ENV SHARED_READY=/tmp/shared/ready
+
+# Create venv
+RUN python3 -m venv /opt/venv && source /opt/venv/bin/activate
+# Use venv's pip explicitly
+ENV PATH="/opt/venv/bin:$PATH"
+
+RUN git config --global --add safe.directory /var/workdir
+# TODO: INVESTIGATE THIS HACK
+RUN mkdir -m 777 /.local /.cache /.pylint.d && chmod -R 777 /tmp
+
+# TODO: REMOVE LATER
+RUN pip install --upgrade pip &&\
+    pip install baw==1.70.2
+
+COPY /requirements.txt\
+     /requirements.dev\
+     /var/install/
+
+WORKDIR /var/install
+
+RUN baw sync all
+
+COPY . /var/install
+
+RUN python setup.py install
+
+WORKDIR /var/outdir
+WORKDIR /var/workdir
+
+ENTRYPOINT ["sh", "-c"]
