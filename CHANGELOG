@@ -1,6 +1,14 @@
 # CHANGELOG
 
 
+## v1.0.1 (2026-03-04)
+
+### Bug Fixes
+
+- **requirements**: Upgrade requirements.txt
+  ([`1863900`](https://github.com/anaticulae/configo/commit/1863900f9490e6ebbf7d5fe1f98161af927edeaa))
+
+
 ## v1.0.0 (2026-03-04)
 
 ### Chores

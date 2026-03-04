@@ -90,7 +90,7 @@ from configo.holyvalue.table import HolyTable
 from configo.server import package_address
 from configo.server import package_configuration
 
-__version__ = '1.0.0'
+__version__ = '1.0.1'
 
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
 PROCESS = 'configo'
