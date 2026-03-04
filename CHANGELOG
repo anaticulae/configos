@@ -1,426 +1,1776 @@
-# Changelog
+# CHANGELOG
 
-Every noteable change is logged here.
+
+## v1.0.0 (2026-03-04)
+
+### Chores
+
+- **github**: Add github workflow
+  ([`ea76736`](https://github.com/anaticulae/configo/commit/ea76736c464af2bad405a43af24663118bd40915))
+
+- **jenkins**: Remove Jenkinsfile
+  ([`2f4b216`](https://github.com/anaticulae/configo/commit/2f4b2163104e79b8aafaba434e4d97a7226e6ad2))
+
+- **make**: Add build environment
+  ([`92c81c8`](https://github.com/anaticulae/configo/commit/92c81c80e4d4a1d6cd4c737ba61dca3f77046f1e))
+
+- **refactor**: Adjust naming
+  ([`db0a888`](https://github.com/anaticulae/configo/commit/db0a8887a7f990c23b10cc159cffd41c34245791))
+
+- **requirements**: Upgrade requirements
+  ([`8c232c4`](https://github.com/anaticulae/configo/commit/8c232c4fddb0adccff7fc216ae462b94057e4fa8))
+
+- **setup**: Use modern approach
+  ([`e2f18b8`](https://github.com/anaticulae/configo/commit/e2f18b8ec9c522ffd41aea25259717941ee66d99))
+
+- **test**: Disable failing tests
+  ([`790a07c`](https://github.com/anaticulae/configo/commit/790a07cdd4731b9a035725c3e875b8eecf41cfc2))
+
+### Refactoring
+
+- **linter**: Solve linter warnings
+  ([`ca8bb9c`](https://github.com/anaticulae/configo/commit/ca8bb9c68327ee3f61c9f1436a1fcb2fe7d2cb2f))
+
+- **rename**: Rename package
+  ([`5e2559e`](https://github.com/anaticulae/configo/commit/5e2559e00bfb84420df5c4e4f99bfaec2f704643))
+
+### Testing
+
+- **fix**: Clarify test
+  ([`4273328`](https://github.com/anaticulae/configo/commit/4273328e507f627ffbfec49a90c72761b5be8e6f))
+
 
 ## v0.25.3 (2022-12-18)
 
-### Chore
+### Chores
 
-* upgrade Jenkinsfile (7039af6ffeef)
+- **Jenkins**: Upgrade Jenkinsfile
+  ([`7039af6`](https://github.com/anaticulae/configo/commit/7039af6ffeefc67b52dd02838e2352d315479dc9))
+
 
 ## v0.25.2 (2022-12-18)
 
-### Chore
+### Chores
 
-* add rebase step (834c20a3d58a)
-* upgrade requirements.txt (dbe1a9f64a35)
-* upgrade pipe library (ca89f1eff71a)
+- **Jenkins**: Add rebase step
+  ([`834c20a`](https://github.com/anaticulae/configo/commit/834c20a3d58ae331fc21b7a599d836a2aeed6297))
+
+- **Jenkins**: Upgrade pipe library
+  ([`ca89f1e`](https://github.com/anaticulae/configo/commit/ca89f1eff71af3d42bd86fa8aff723caad00c806))
+
+- **requirements**: Upgrade requirements.txt
+  ([`dbe1a9f`](https://github.com/anaticulae/configo/commit/dbe1a9f64a358a64df794f5b079b99a8a4338849))
+
 
 ## v0.25.1 (2022-12-14)
 
-### Chore
+### Chores
 
-* upgrade Pipeline (c93ecb793b59)
-* upgrade requirements.txt (f8efc7908c20)
+- **Jenkins**: Upgrade Pipeline
+  ([`c93ecb7`](https://github.com/anaticulae/configo/commit/c93ecb793b59961e6c2f5df3fa9855394e55e066))
+
+- **requirements**: Upgrade requirements.txt
+  ([`f8efc79`](https://github.com/anaticulae/configo/commit/f8efc7908c20ce80c59ec8d75ce9170c4945fea6))
+
+### Testing
+
+- **data**: Ensure that typing works correctly
+  ([`a5c6a30`](https://github.com/anaticulae/configo/commit/a5c6a3084418bfd12067859e19fdd767bfd54e9f))
+
 
 ## v0.25.0 (2022-11-02)
 
-### Feature
+### Features
 
-* use utila to have central cache control (d8ddffd8b37c)
+- **cache**: Use utila to have central cache control
+  ([`d8ddffd`](https://github.com/anaticulae/configo/commit/d8ddffd8b37c297122f3cbc5d0e89dc30b8de636))
+
+### Refactoring
+
+- **replace**: Automated replacement
+  ([`5273f40`](https://github.com/anaticulae/configo/commit/5273f40379912a0f5933a36ab5c400c77b7029f6))
+
 
 ## v0.24.0 (2022-10-27)
 
-### Feature
+### Code Style
 
-* add data type kb, mb, gb (6543a443f71a)
-* add api and secret key (d47a73c49aea)
+- **imports**: Organize imports
+  ([`df2ac2a`](https://github.com/anaticulae/configo/commit/df2ac2a7500c3630a4fb4e5b7dbd5c723b316fea))
+
+### Features
+
+- **data**: Add data type kb, mb, gb
+  ([`6543a44`](https://github.com/anaticulae/configo/commit/6543a443f71ae9c32cbf343819bd2b46827b299c))
+
+- **hv**: Add api and secret key
+  ([`d47a73c`](https://github.com/anaticulae/configo/commit/d47a73c49aea9d6f265313519647c6664847cfc2))
+
+### Refactoring
+
+- **access**: Shorten code
+  ([`d236440`](https://github.com/anaticulae/configo/commit/d236440f874495d3d163c77bf364eaca43c1167a))
+
 
 ## v0.23.0 (2022-10-27)
 
-### Feature
+### Bug Fixes
 
-* log variable skip (dc16e6eef5f2)
-* add second, minute and hour (f6ba3132e1d7)
-* enable holy value error (52d8dd1b3010)
-* determine names before check to ease debugging (581ca3acbce8)
-* clarify error message (bba311e82029)
+- **access**: Adjust error message
+  ([`2173069`](https://github.com/anaticulae/configo/commit/2173069d14530929c4f5bb50a1e8ac97ff917206))
 
-### Fix
+### Chores
 
-* adjust error message (2173069d1453)
+- **Jenkins**: Convert nightly to all
+  ([`be43d40`](https://github.com/anaticulae/configo/commit/be43d40f0a2edfef0817aab1ffec151aff28ada7))
 
-### Chore
+- **Jenkins**: Upgrade environment
+  ([`6e16b2b`](https://github.com/anaticulae/configo/commit/6e16b2ba6e27dd78a685e2d830a658c90da4599a))
 
-* convert nightly to all (be43d40f0a2e)
-* upgrade environment (6e16b2ba6e27)
-* upgrade requirements.txt (9f82f4c10909)
+- **requirements**: Upgrade requirements.txt
+  ([`9f82f4c`](https://github.com/anaticulae/configo/commit/9f82f4c10909a8ddc1c29583a532914dbca7c358))
+
+### Features
+
+- **access**: Clarify error message
+  ([`bba311e`](https://github.com/anaticulae/configo/commit/bba311e82029bafc6844a012bf9e31d91452b073))
+
+- **access**: Determine names before check to ease debugging
+  ([`581ca3a`](https://github.com/anaticulae/configo/commit/581ca3acbce86959ffcc13f39df7b9bebde1f533))
+
+- **access**: Enable holy value error
+  ([`52d8dd1`](https://github.com/anaticulae/configo/commit/52d8dd1b301088d3d396b008e22f7d75a975db48))
+
+- **hv**: Add second, minute and hour
+  ([`f6ba313`](https://github.com/anaticulae/configo/commit/f6ba3132e1d7ca36c6106a23210085bf960ac28d))
+
+- **plan**: Log variable skip
+  ([`dc16e6e`](https://github.com/anaticulae/configo/commit/dc16e6eef5f211f5b32824c4ddd7380d6d170638))
+
+### Refactoring
+
+- **linter**: Solve linter warning
+  ([`4f8fce0`](https://github.com/anaticulae/configo/commit/4f8fce058600ca84f898db664100f95143b56814))
+
+- **optimization**: Improve code
+  ([`88f29b2`](https://github.com/anaticulae/configo/commit/88f29b29424ccb22cbafb62404e3b52e95b53806))
+
+- **plan**: Move plan creator
+  ([`08a2838`](https://github.com/anaticulae/configo/commit/08a2838a40cd77afc0ed93c158bd37a968e6a4b5))
+
+- **plan**: Move to separate module
+  ([`7421040`](https://github.com/anaticulae/configo/commit/74210404e174aa7d6acfc403c6b6076f8b92c6fd))
+
+- **plan**: Replace with const
+  ([`8eda359`](https://github.com/anaticulae/configo/commit/8eda3592b5d49de92642b5caffacdde7decb29bb))
+
+- **plan**: Simplify code
+  ([`3787dd0`](https://github.com/anaticulae/configo/commit/3787dd055702495018f74143a3a179f8da3ef09e))
+
+- **result**: Move to separate module
+  ([`51c0f74`](https://github.com/anaticulae/configo/commit/51c0f7495f76bdae0d10d84eb6290af529dfc0ae))
+
+### Testing
+
+- **data**: Ensure that test data exists
+  ([`aa16d7c`](https://github.com/anaticulae/configo/commit/aa16d7c6f4b2900a1da34897546917e5eb9bae0f))
+
+- **plan**: Enable unit test
+  ([`5a0bf85`](https://github.com/anaticulae/configo/commit/5a0bf85ecb6bd2dcfdcb57cd4f874370d6137643))
+
+- **refactor**: Rename test file
+  ([`2249647`](https://github.com/anaticulae/configo/commit/224964780ca289926373435f839971350a6644f6))
+
 
 ## v0.22.0 (2022-10-07)
 
-### Feature
+### Features
 
-* add method to create tmp dirs (bf8603505193)
+- **dir**: Add method to create tmp dirs
+  ([`bf86035`](https://github.com/anaticulae/configo/commit/bf8603505193cb7d24adcb0d33281b02e7a571e0))
+
 
 ## v0.21.2 (2022-10-05)
 
-### Chore
+### Chores
 
-* upgrade requirements.txt (fdfc4da483e0)
-* increase baw version (79a8284de027)
-* root user is not necessary (fbd13adc7f54)
+- **Jenkinsfile**: Increase baw version
+  ([`79a8284`](https://github.com/anaticulae/configo/commit/79a8284de027d198a8174740e691a67c168c7ed1))
+
+- **Jenkinsfile**: Root user is not necessary
+  ([`fbd13ad`](https://github.com/anaticulae/configo/commit/fbd13adc7f54712acf1beb41ac2d68da22832a73))
+
+- **requirements**: Upgrade requirements.txt
+  ([`fdfc4da`](https://github.com/anaticulae/configo/commit/fdfc4da483e0568bf0256e3da167eb752ceaa645))
+
 
 ## v0.21.1 (2022-09-28)
 
-### Fix
+### Bug Fixes
 
-* add default docs path (70d557226171)
+- **docs**: Add default docs path
+  ([`70d5572`](https://github.com/anaticulae/configo/commit/70d5572261711f33cdb4b4463cecf940f22ce468))
 
-### Chore
+### Chores
 
-* add git to generate project (2c51f8214a56)
-* add Jenkinsfile (a62c555bbe3a)
-* upgrade requirements.txt (40265ba3b871)
+- **ci**: Add Jenkinsfile
+  ([`a62c555`](https://github.com/anaticulae/configo/commit/a62c555bbe3a024e5aeb736bc0d102ce5f8bf6fd))
 
-## v0.21.0
+- **Jenkinsfile**: Add git to generate project
+  ([`2c51f82`](https://github.com/anaticulae/configo/commit/2c51f8214a568056ba16a5bcb3eb5c83fc759f73))
 
-### Feature
+- **requirements**: Upgrade requirements.txt
+  ([`40265ba`](https://github.com/anaticulae/configo/commit/40265ba3b87124a3b1665b57067393ec762ae764))
 
-* add minus type (56ddbd364c80)
+### Testing
 
-## v0.20.0
+- **optimization**: Skip flaky test
+  ([`561062d`](https://github.com/anaticulae/configo/commit/561062ddcdb6d9d7f3518e6a83859964901dd8bd))
 
-### Feature
+- **refactor**: Use fixture shortcut
+  ([`2768531`](https://github.com/anaticulae/configo/commit/2768531e17f2d23a93816121426dac523e2c63cc))
 
-* add option to change test command (25bb4f6f244a)
-* log optimization output path (e2874976709f)
-* add parameter to change reduction steps (7c84a04a1188)
-* add method to remove from global path (261de660b436)
-* add method to extend path var (1653d8446b58)
-* add brackets lookup (69ed0327f4c7)
 
-### Fix
+## v0.21.0 (2022-08-05)
 
-* disable cprofile (8513212b2108)
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`c400718`](https://github.com/anaticulae/configo/commit/c400718adb2e0b2fe3b6596675ce3f09e27cb0f2))
+
+### Features
+
+- **hv**: Add minus type
+  ([`56ddbd3`](https://github.com/anaticulae/configo/commit/56ddbd364c80a81490709f346ea2f2518abf0f11))
+
+
+## v0.20.0 (2022-07-13)
+
+### Bug Fixes
+
+- **cli**: Disable cprofile
+  ([`8513212`](https://github.com/anaticulae/configo/commit/8513212b2108c35f136d9e07af53da905089c09a))
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`0528d92`](https://github.com/anaticulae/configo/commit/0528d920b587d7f543587319576c97a12a0107d7))
+
+### Code Style
+
+- **docs**: Adjust headline
+  ([`06dc3b4`](https://github.com/anaticulae/configo/commit/06dc3b4665829115fcce822ef4e679bb547e7dac))
 
 ### Documentation
 
-* adjust lookup information (5d821b153a0f)
+- **table**: Adjust lookup information
+  ([`5d821b1`](https://github.com/anaticulae/configo/commit/5d821b153a0f6518c7e7efc286e8b2c7ceea4924))
 
-## v0.19.1
+### Features
 
-### Feature
+- **cli**: Add parameter to change reduction steps
+  ([`7c84a04`](https://github.com/anaticulae/configo/commit/7c84a04a11883fcba0cf96635e11303bfea6bfa7))
 
-* adjust cache size (74d6c9e27a8f)
+- **cli**: Log optimization output path
+  ([`e287497`](https://github.com/anaticulae/configo/commit/e2874976709f0360a2fd141d275a5ab304c85440))
 
-## v0.19.0
+- **env**: Add method to extend path var
+  ([`1653d84`](https://github.com/anaticulae/configo/commit/1653d8446b58d6b48eb8751f813fdd33ba1b76a1))
 
-### Feature
+- **env**: Add method to remove from global path
+  ([`261de66`](https://github.com/anaticulae/configo/commit/261de660b436aa86218c5970fd2ed74c29db46cb))
 
-* add methods to shorten caches (bee28be36430)
-* round percent to ease debugging (d046cf1c83f7)
+- **optimization**: Add option to change test command
+  ([`25bb4f6`](https://github.com/anaticulae/configo/commit/25bb4f6f244afc98a476fa0662b7799a90affb85))
 
-## v0.18.0
+- **table**: Add brackets lookup
+  ([`69ed032`](https://github.com/anaticulae/configo/commit/69ed0327f4c72e59fc76cbea465e64aeee2a7b45))
 
-### Feature
+### Refactoring
 
-* add HolyRate to create count dependent rate (841e836d79b4)
+- **optimization**: Replace with utila code
+  ([`99a7779`](https://github.com/anaticulae/configo/commit/99a77790e98837b89c511eb90b4ba615a414731d))
 
-### Documentation
+### Testing
 
-* adjust modules path (f633a80430b7)
-* Happy New Year! (9f96b13a4529)
+- **cli**: Extend test coverage
+  ([`5636119`](https://github.com/anaticulae/configo/commit/56361196780a079380cf2f6d2e80f563fa17edab))
 
-## v0.17.0
+- **cli**: Verify optimization
+  ([`d256fba`](https://github.com/anaticulae/configo/commit/d256fbad6d5b7c558845779a459c5dbd6a1584aa))
 
-### Feature
+- **cloud**: Extend unit test
+  ([`d918bd4`](https://github.com/anaticulae/configo/commit/d918bd46034992496b0fd36b2f46e0a450511184))
 
-* cache environment variable (0e2ac01623db)
-* make env vars group able (3b0ffa6e48f7)
+- **docs**: Extend test coverage
+  ([`9918537`](https://github.com/anaticulae/configo/commit/991853773752dba45219d50609a85b1ff9b8b778))
 
-## v0.16.3
+- **fixtures**: Use mp and td fixtures
+  ([`a91f869`](https://github.com/anaticulae/configo/commit/a91f869407de2bca074f20863381f75a559d5848))
 
-### Feature
+- **optimization**: Increase test coverage
+  ([`0897208`](https://github.com/anaticulae/configo/commit/0897208e080721d6f556ebaeb6389ad5838c0155))
 
-* make holy value hash able (a17b6ece0787)
+- **refactor**: Improve code style
+  ([`56b9588`](https://github.com/anaticulae/configo/commit/56b9588ad060ec95e9a2f6540347ae632cdfe9cb))
 
-## v0.16.2
+- **refactor**: Improve code style
+  ([`5d6c805`](https://github.com/anaticulae/configo/commit/5d6c8051e2e0e8e5b14bbb311d967d52bf8fa72e))
 
-### Feature
+- **refactor**: Simplify test
+  ([`2d7be31`](https://github.com/anaticulae/configo/commit/2d7be31e8aea8e896fcd31dfd8f04349950dbcd0))
 
-* add bool comparison (c9ca7339df4a)
-* add hv bool (80fa4f11eebf)
+- **refactor**: Use modern test runner
+  ([`256ba08`](https://github.com/anaticulae/configo/commit/256ba087116a9c0424a75f08a9a451ef3bdd517e))
 
-### Fix
 
-* enable using holy values as tuple (c9d7ac681f9e)
+## v0.19.1 (2022-06-14)
 
-## v0.16.1
+### Features
 
-### Fix
+- **cache**: Adjust cache size
+  ([`74d6c9e`](https://github.com/anaticulae/configo/commit/74d6c9e27a8fe5dfcd3c9647481dae594735eacd))
 
-* add str lookup (824d8a2e2b9f)
 
-## v0.16.0
+## v0.19.0 (2022-06-12)
 
-### Feature
+### Chores
 
-* support slicing for holy values (ae140b4834b8)
-* add more debugging information (85c76f96d01c)
+- **requirements**: Upgrade requirements.txt
+  ([`ffc6447`](https://github.com/anaticulae/configo/commit/ffc6447c297d8d5a80d0841fbf864a38d8006d9e))
 
-## v0.15.1
+### Features
 
-### Feature
+- **cache**: Add methods to shorten caches
+  ([`bee28be`](https://github.com/anaticulae/configo/commit/bee28be36430d100026202b5b35c1b2ab9e39247))
 
-* add caching mechanism to improve lookup time (cce7fd286e5a)
+- **data**: Round percent to ease debugging
+  ([`d046cf1`](https://github.com/anaticulae/configo/commit/d046cf1c83f7782658d9ebb9147ad22eaf104f34))
 
-## v0.15.0
 
-### Feature
-
-* introduce algorithm to change a single value (214b591f5483)
-* add option to display result (62f0215a4d84)
-* add option to run test before optimization (39bd28acc4c2)
-
-### Fix
-
-* enable hard error later (38a982ac8881)
-* add csv header and use comma (321c733c0794)
-* use random selection when generated count (90f527337f23)
-
-## v0.14.0
-
-### Feature
-
-* debug loading holy value file (f277cb84d0bc)
-* improve plan creator (b80d18d5adb0)
-* add option to load config from file (ae20b56a607a)
-* create plan from config (b233b5e4989c)
-* add optimization step (a2998dbcfb90)
-
-### Fix
-
-* ensure to have valid variable names (d6286f895c2c)
-* use None if HC is not defined (bef450dd14e8)
-
-## v0.13.0
-
-### Feature
-
-* use cloud base as default cloud path (5135497bd5ac)
-* introduce cloud_base to setup cloud base path (bcacee371c7f)
-* add option to return None as default value (bdc13faf81f5)
-* add option to set and unset cloud links (81aa431e34b6)
-* add cloud to load holy value table from env variables (be88b4a837e4)
-* add base option to load config from different path (c3732baa14c7)
-* strip newlines before and after collection (1c137717ca9a)
-* extend basic arithmetic support (89c542ab16b0)
-* add failure when no HolyValue is detected (d60c4c7b75f1)
-
-### Fix
-
-* verify data and limit at definition time (d8e5633c3365)
-* collect table default correctly (58d13cba2033)
-* validate float correctly (55097c0b8b2c)
-
-## v0.12.0
-
-### Feature
-
-* add parameter to skip skipping files (ed7c30e1ebb3)
-* skip build and tests folder (01076461595b)
-* print banner after every collection step (86da6afbddce)
-* add cli to generate holy value configuration (4e1981b57ac7)
-* do not fail on importing error (af5f10063117)
-* add support HolyTable to config generator (1f5d6f3452e5)
-* use common mixin (1373497d15f3)
-* harden collector (f0dbd5c84312)
-
-## v0.11.0
-
-### Feature
-
-* add holy string (29e30c10d3f8)
-* change default behavior (9cd2470fc87c)
-
-## v0.10.1
-
-### Feature
-
-* clarify error message (743b18b13574)
-
-### Fix
-
-* adjust error message (d0e3f1a81541)
-
-## v0.10.0
-
-### Feature
-
-* add HolyList (6a39490705e8)
-* add default key option (91ce8bd9f9d7)
-
-## v0.9.0
-
-### Feature
-
-* add option to manager debug state (01891100eedf)
-* introduce holyvalue base exception (204b823ecabb)
-* add methods to manage environment variables (d199d043a5cc)
+## v0.18.0 (2022-01-17)
 
 ### Documentation
 
-* Happy New Year! (828e0dd1e3df)
+- **copyright**: Happy New Year!
+  ([`9f96b13`](https://github.com/anaticulae/configo/commit/9f96b13a4529663dd99cd8a453e6811f699e173d))
 
-## v0.8.7
+- **fix**: Adjust modules path
+  ([`f633a80`](https://github.com/anaticulae/configo/commit/f633a80430b7033152e5a828a6f3cbf39286ff1c))
 
-### Fix
+### Features
 
-* catch invalid group determination (ac0358b4a04d)
+- **table**: Add HolyRate to create count dependent rate
+  ([`841e836`](https://github.com/anaticulae/configo/commit/841e836d79b463b45a55de364aa164a9e41fefda))
 
-## v0.8.6
 
-## v0.8.3
+## v0.17.0 (2021-12-07)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`0020da4`](https://github.com/anaticulae/configo/commit/0020da49107f653203a772575538e3e6d7d57815))
+
+### Features
+
+- **env**: Cache environment variable
+  ([`0e2ac01`](https://github.com/anaticulae/configo/commit/0e2ac01623dbabc29f5ad52e7600bfbdc1fb69b4))
+
+- **env**: Make env vars group able
+  ([`3b0ffa6`](https://github.com/anaticulae/configo/commit/3b0ffa6e48f78f63451ec93816f13d1c02f2e316))
+
+### Refactoring
+
+- **env**: Simplify code
+  ([`5dc9531`](https://github.com/anaticulae/configo/commit/5dc9531c3e8053fead2c444c446eb6a9f2a7f772))
+
+
+## v0.16.3 (2021-11-07)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`095a4f0`](https://github.com/anaticulae/configo/commit/095a4f0aac5d9aa770eb66ccce152ea514b70a35))
+
+### Features
+
+- **data**: Make holy value hash able
+  ([`a17b6ec`](https://github.com/anaticulae/configo/commit/a17b6ece0787b4fc90fc6d90a410f5d5a489c017))
+
+### Refactoring
+
+- **data**: Replace cache with functools approach
+  ([`d1c0088`](https://github.com/anaticulae/configo/commit/d1c00888f4101cfc77e46744e80e9c525242a3f0))
+
+
+## v0.16.2 (2021-10-20)
+
+### Bug Fixes
+
+- **data**: Enable using holy values as tuple
+  ([`c9d7ac6`](https://github.com/anaticulae/configo/commit/c9d7ac681f9ee7f6b73953b95f9f3a29cc14f100))
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`032345d`](https://github.com/anaticulae/configo/commit/032345d188ae55cf26a11fea2970e7c27ccafa4f))
+
+### Features
+
+- **API**: Add hv bool
+  ([`80fa4f1`](https://github.com/anaticulae/configo/commit/80fa4f11eebfb169bdbc3edb18936a62ac3a76c3))
+
+- **data**: Add bool comparison
+  ([`c9ca733`](https://github.com/anaticulae/configo/commit/c9ca7339df4acfe0f772ecf3e0a3b1939eb8fcdc))
+
+
+## v0.16.1 (2021-10-19)
+
+### Bug Fixes
+
+- **access**: Add str lookup
+  ([`824d8a2`](https://github.com/anaticulae/configo/commit/824d8a2e2b9f68d9b7adba3f3f97e2a280e63ca0))
+
+
+## v0.16.0 (2021-10-18)
+
+### Features
+
+- **access**: Add more debugging information
+  ([`85c76f9`](https://github.com/anaticulae/configo/commit/85c76f96d01c6b5cc824102ef63ba5419f5076a4))
+
+- **data**: Support slicing for holy values
+  ([`ae140b4`](https://github.com/anaticulae/configo/commit/ae140b4834b8b4983a68af2dd5cfdebaabc68131))
+
+
+## v0.15.1 (2021-10-17)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`b8ad62e`](https://github.com/anaticulae/configo/commit/b8ad62ecbf22ca4d71d508900dadf961afa2b99a))
+
+### Features
+
+- **data**: Add caching mechanism to improve lookup time
+  ([`cce7fd2`](https://github.com/anaticulae/configo/commit/cce7fd286e5ac9e9ef163a9688f1dcd42a1b47a5))
+
+
+## v0.15.0 (2021-10-15)
+
+### Bug Fixes
+
+- **access**: Enable hard error later
+  ([`38a982a`](https://github.com/anaticulae/configo/commit/38a982ac88815549445568c81dc9d1370306437e))
+
+- **optimization**: Use random selection when generated count
+  ([`90f5273`](https://github.com/anaticulae/configo/commit/90f527337f233ad9d2d2dc6b7134ea15c6332366))
+
+- **result**: Add csv header and use comma
+  ([`321c733`](https://github.com/anaticulae/configo/commit/321c733c07949cdc46018a529fff2d1fc5eb78ad))
+
+### Code Style
+
+- **change**: Cleanup changelog
+  ([`6a6c9ca`](https://github.com/anaticulae/configo/commit/6a6c9ca20a19b7e77e10947348df4f73f15e9c49))
+
+### Features
+
+- **cli**: Add option to display result
+  ([`62f0215`](https://github.com/anaticulae/configo/commit/62f0215a4d84ad67a82d4e961daf18bd34dde602))
+
+- **optimization**: Add option to run test before optimization
+  ([`39bd28a`](https://github.com/anaticulae/configo/commit/39bd28acc4c2647bae9e9994dc2781b4db43e26e))
+
+- **optimization**: Introduce algorithm to change a single value
+  ([`214b591`](https://github.com/anaticulae/configo/commit/214b591f5483940fd6b8ad3ae8bd23c68a8b0a2e))
+
+### Testing
+
+- **fix**: Comma separated file
+  ([`335b056`](https://github.com/anaticulae/configo/commit/335b056d3c4d67efdcc92dae65c38885018291f8))
+
+
+## v0.14.0 (2021-10-15)
+
+### Bug Fixes
+
+- **cloud**: Use None if HC is not defined
+  ([`bef450d`](https://github.com/anaticulae/configo/commit/bef450dd14e8d3a9988e219c8565b520786793ce))
+
+- **store**: Ensure to have valid variable names
+  ([`d6286f8`](https://github.com/anaticulae/configo/commit/d6286f895c2c2a3cb8dc0bc4c37bfd0b8e7b38da))
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`478b5c6`](https://github.com/anaticulae/configo/commit/478b5c628854f35c503ff1ef9410b3c6a14fa247))
+
+### Features
+
+- **cli**: Add optimization step
+  ([`a2998db`](https://github.com/anaticulae/configo/commit/a2998dbcfb90385e4599d86568453bbba0b0a1b3))
+
+- **optimization**: Create plan from config
+  ([`b233b5e`](https://github.com/anaticulae/configo/commit/b233b5e4989c11396495bf88c9c9faa3201e8b7e))
+
+- **optimization**: Improve plan creator
+  ([`b80d18d`](https://github.com/anaticulae/configo/commit/b80d18d5adb049b78d3a04ebfa2324fee9c8bb3d))
+
+- **store**: Add option to load config from file
+  ([`ae20b56`](https://github.com/anaticulae/configo/commit/ae20b56a607a29167ce48a335ab5c760d33181c2))
+
+- **store**: Debug loading holy value file
+  ([`f277cb8`](https://github.com/anaticulae/configo/commit/f277cb84d0bc65de046b01ed4710208bdc2437b5))
+
+### Refactoring
+
+- **cli**: Add separate generate module
+  ([`eb4fecd`](https://github.com/anaticulae/configo/commit/eb4fecdf7bab2525594ec3a99e3d3df277f30771))
+
+- **cli**: Add separate optimization module
+  ([`8d7c180`](https://github.com/anaticulae/configo/commit/8d7c180abec4a11e64897bd004fe02a626b76745))
+
+- **cli**: Align to new standard naming
+  ([`6faead8`](https://github.com/anaticulae/configo/commit/6faead8a63c6aa44a586404b646e0e38932a9bc7))
+
+- **cli**: Clarify optimization step
+  ([`2bc711f`](https://github.com/anaticulae/configo/commit/2bc711f02899d19bbc4885a05ba360d6155bd437))
+
+- **cli**: Create parser into separate method
+  ([`55b2fa6`](https://github.com/anaticulae/configo/commit/55b2fa60a586cde8b2e2a89acbc5db4da98e3197))
+
+- **cli**: Move cli into separate package
+  ([`1412aab`](https://github.com/anaticulae/configo/commit/1412aabeaeb7149d6f6c67a0a70a33812ccff6d2))
+
+- **cli**: Simplify method invocation
+  ([`8ce38ec`](https://github.com/anaticulae/configo/commit/8ce38ec7a78278bbb65475aec18ff41b74e99c46))
+
+### Testing
+
+- **example**: Add example result
+  ([`13e7c6e`](https://github.com/anaticulae/configo/commit/13e7c6eee5c32b9ab85bb8bc7afbfe430fcbe004))
+
+- **refactor**: Move const to better location
+  ([`2f97207`](https://github.com/anaticulae/configo/commit/2f97207ce1b56c1a21693db039f4ac3cd85e9949))
+
+- **refactor**: Simplify test structure
+  ([`25101af`](https://github.com/anaticulae/configo/commit/25101af20197a3fe15d852a77db6bc9bdb8f12bf))
+
+
+## v0.13.0 (2021-10-14)
+
+### Bug Fixes
+
+- **access**: Verify data and limit at definition time
+  ([`d8e5633`](https://github.com/anaticulae/configo/commit/d8e5633c33653c0f54764d4f485606c69e97c915))
+
+- **collect**: Collect table default correctly
+  ([`58d13cb`](https://github.com/anaticulae/configo/commit/58d13cba203347a925ed658431d495314c8812e3))
+
+- **data**: Validate float correctly
+  ([`55097c0`](https://github.com/anaticulae/configo/commit/55097c0b8b2cc05b9d4a9ae046ac1cf8cf3956d6))
+
+### Code Style
+
+- **store**: Beautify code
+  ([`c0e36d7`](https://github.com/anaticulae/configo/commit/c0e36d7181a88ce2fc83d2449a2974a6b2280f1c))
+
+### Features
+
+- **cli**: Add failure when no HolyValue is detected
+  ([`d60c4c7`](https://github.com/anaticulae/configo/commit/d60c4c7b75f16e0c5ec9be5bdd119f573deaf5ed))
+
+- **cloud**: Add cloud to load holy value table from env variables
+  ([`be88b4a`](https://github.com/anaticulae/configo/commit/be88b4a837e4ef946ef406ac55b90655d0d62d2e))
+
+- **cloud**: Add option to set and unset cloud links
+  ([`81aa431`](https://github.com/anaticulae/configo/commit/81aa431e34b6f2afa6a3761becfabf6e08d00bb2))
+
+- **cloud**: Introduce cloud_base to setup cloud base path
+  ([`bcacee3`](https://github.com/anaticulae/configo/commit/bcacee371c7fc5145336343e70d3ad641f025b70))
+
+- **collect**: Strip newlines before and after collection
+  ([`1c13771`](https://github.com/anaticulae/configo/commit/1c137717ca9a273c0399875082fef9f31105e032))
+
+- **data**: Extend basic arithmetic support
+  ([`89c542a`](https://github.com/anaticulae/configo/commit/89c542ab16b0c21c64377376aa0f6e90f987a44b))
+
+- **env**: Add option to return None as default value
+  ([`bdc13fa`](https://github.com/anaticulae/configo/commit/bdc13faf81f5fd3e5bf4f3b594ccaa2b59d85ec7))
+
+- **init**: Use cloud base as default cloud path
+  ([`5135497`](https://github.com/anaticulae/configo/commit/5135497bd5ac79d787702ef08d6b3b73aaa412f9))
+
+- **store**: Add base option to load config from different path
+  ([`c3732ba`](https://github.com/anaticulae/configo/commit/c3732baa14c7bada984372d745a58cf9c9af2349))
+
+### Refactoring
+
+- **cloud**: Sort methods
+  ([`83c2720`](https://github.com/anaticulae/configo/commit/83c27201e3a25c76c5ba08fed73c30ce4b40876b))
+
+- **collect**: Reduce code complexity
+  ([`f530dde`](https://github.com/anaticulae/configo/commit/f530dde0b588a466e8bfa70d6f6edd156cc8b2bb))
+
+- **test**: Simplify test
+  ([`1cd4fb8`](https://github.com/anaticulae/configo/commit/1cd4fb8f718042ea1bf071fef5636bbf4583847f))
+
+
+## v0.12.0 (2021-10-13)
+
+### Chores
+
+- **config**: Move to new naming
+  ([`000f939`](https://github.com/anaticulae/configo/commit/000f93902d78174b1e53ccc1c37cc068a26153be))
+
+- **dev**: Keep dev build fast
+  ([`e97e07b`](https://github.com/anaticulae/configo/commit/e97e07b9aeccd1296db53d8e019d2fd5876f3a06))
+
+- **requirements**: Add example package to verify code
+  ([`395917d`](https://github.com/anaticulae/configo/commit/395917d36655b54727e20b5c38dbf8f3c30f15b0))
+
+- **requirements**: Upgrade requirements.txt
+  ([`0818f51`](https://github.com/anaticulae/configo/commit/0818f51042283cba3b48d3ac16cc67d25795b98e))
+
+- **tests**: Add conftest
+  ([`028a950`](https://github.com/anaticulae/configo/commit/028a950c27b2a7787449c1518b434f073492daff))
+
+### Features
+
+- **cli**: Add cli to generate holy value configuration
+  ([`4e1981b`](https://github.com/anaticulae/configo/commit/4e1981b57ac71b2a2f7b5293744e464829b42501))
+
+- **cli**: Add parameter to skip skipping files
+  ([`ed7c30e`](https://github.com/anaticulae/configo/commit/ed7c30e1ebb3a776cdc37d5103ba0c266fb297cb))
+
+- **cli**: Print banner after every collection step
+  ([`86da6af`](https://github.com/anaticulae/configo/commit/86da6afbddce75e5ff8dcb76b7a7981db819f3be))
+
+- **cli**: Skip build and tests folder
+  ([`0107646`](https://github.com/anaticulae/configo/commit/01076461595b93c6e9814731757d524e32c57ae2))
+
+- **collect**: Do not fail on importing error
+  ([`af5f100`](https://github.com/anaticulae/configo/commit/af5f1006311732e2e8d82162fa91ab7897870b77))
+
+- **collect**: Harden collector
+  ([`f0dbd5c`](https://github.com/anaticulae/configo/commit/f0dbd5c843125fd37f0da865c22c6288c870f347))
+
+- **hv**: Add support HolyTable to config generator
+  ([`1f5d6f3`](https://github.com/anaticulae/configo/commit/1f5d6f3452e57b222c1bf5c80765c35a5aea455e))
+
+- **hv**: Use common mixin
+  ([`1373497`](https://github.com/anaticulae/configo/commit/1373497d15f3eef4b29095a72975f91583584b87))
+
+### Refactoring
+
+- **access**: Simplify code
+  ([`2f6bbd9`](https://github.com/anaticulae/configo/commit/2f6bbd940011651263c2d60176877b622bba4676))
+
+- **cli**: Replace with const
+  ([`fc040e0`](https://github.com/anaticulae/configo/commit/fc040e01d8fc2cdfb211569d9cb94adc33b3705e))
+
+- **cli**: Replace with utila code
+  ([`56ddac7`](https://github.com/anaticulae/configo/commit/56ddac7d2f41fa961e04395939677afe3887f6da))
+
+- **collect**: Move pattern to const
+  ([`51e6e91`](https://github.com/anaticulae/configo/commit/51e6e914bc6957c84e96da3095273c4b67c8bd11))
+
+- **collect**: Replace with utila code
+  ([`5640387`](https://github.com/anaticulae/configo/commit/5640387df2f928169c43659c0681051092a5e382))
+
+- **collect**: Use improve file collector
+  ([`1d60c0b`](https://github.com/anaticulae/configo/commit/1d60c0b0606a3dacb7dbda1dcb77053de7ebe742))
+
+- **env**: Clarify naming
+  ([`faaac38`](https://github.com/anaticulae/configo/commit/faaac38fb540b673adc7b22857602bab887e24cd))
+
+- **test**: Simplify code
+  ([`d4cc59e`](https://github.com/anaticulae/configo/commit/d4cc59ef18168415b6631b71553ca4ec4819f20c))
+
+### Testing
+
+- **cli**: Run help
+  ([`1871b23`](https://github.com/anaticulae/configo/commit/1871b2315fe420e11e51ed09e869d483e699bbc9))
+
+- **example**: Adjust to smaller part of source
+  ([`cf041ab`](https://github.com/anaticulae/configo/commit/cf041abffe74416ea0679227999a2d12f92b6e82))
+
+- **example**: Verify rawmaker configo parser
+  ([`97ff158`](https://github.com/anaticulae/configo/commit/97ff158041b02d7560d0cb4832da3acce491f59c))
+
+- **simplify**: Do not access value directly
+  ([`b3082ec`](https://github.com/anaticulae/configo/commit/b3082ec598ee3491fdc3a3b81ee04f795b752dd5))
+
+
+## v0.11.0 (2021-08-19)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`e1ed438`](https://github.com/anaticulae/configo/commit/e1ed4389d980b579442eda9e9e881354639f48f8))
+
+- **requirements**: Upgrade requirements.txt
+  ([`0171229`](https://github.com/anaticulae/configo/commit/0171229c0b6ff28ebbb9f4ee416fb3e8faf227eb))
+
+- **setup**: Cleanup setup file
+  ([`13f3704`](https://github.com/anaticulae/configo/commit/13f37048f030b9fa02e9f46116decc9458e24383))
+
+### Code Style
+
+- **format**: Use improved yapf formatter
+  ([`19049a7`](https://github.com/anaticulae/configo/commit/19049a762e2dc4d59b3eecb6cf75f84b629d70c0))
+
+### Features
+
+- **hv**: Add holy string
+  ([`29e30c1`](https://github.com/anaticulae/configo/commit/29e30c10d3f8da1929e3b5006c7ac79dfbbf9a40))
+
+- **table**: Change default behavior
+  ([`9cd2470`](https://github.com/anaticulae/configo/commit/9cd2470fc87c1fd26b8297b008c83fca59050131))
+
+
+## v0.10.1 (2021-05-15)
+
+### Bug Fixes
+
+- **debug**: Adjust error message
+  ([`d0e3f1a`](https://github.com/anaticulae/configo/commit/d0e3f1a815410ad4471f28df92dee7e25f1260c8))
+
+### Chores
+
+- **requirements**: Add missing utilatest package
+  ([`7516f71`](https://github.com/anaticulae/configo/commit/7516f7106310029001e82d68ffdf429259e39057))
+
+### Features
+
+- **store**: Clarify error message
+  ([`743b18b`](https://github.com/anaticulae/configo/commit/743b18b13574ef5a851dedb8e337068e9c849f7c))
+
+
+## v0.10.0 (2021-05-05)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`b76e4a3`](https://github.com/anaticulae/configo/commit/b76e4a32c083c6f281f2ea660ca2d46785c0e07b))
+
+- **requirements**: Upgrade requirements.txt
+  ([`e420820`](https://github.com/anaticulae/configo/commit/e420820c31a7a076ed765ce8bbf80c63b21cf8f1))
+
+### Features
+
+- **env**: Add default key option
+  ([`91ce8bd`](https://github.com/anaticulae/configo/commit/91ce8bd9f9d75210c889fffe4c38799acb46025e))
+
+- **holy**: Add HolyList
+  ([`6a39490`](https://github.com/anaticulae/configo/commit/6a39490705e8db88b384afb5e194eb68eaa0c372))
+
+### Refactoring
+
+- **env**: Replace with utila code
+  ([`d82f7df`](https://github.com/anaticulae/configo/commit/d82f7dfeac12031052091b30216bf18f43721f48))
+
+- **holyvalue**: Make robust against python API changes
+  ([`071f8dd`](https://github.com/anaticulae/configo/commit/071f8dd5135374382ace0ca2a18723c878baa739))
+
+- **move**: Move holy value code to separate modules
+  ([`20efa6f`](https://github.com/anaticulae/configo/commit/20efa6f620b774e757d088b1132de739a6aae88a))
+
+### Testing
+
+- **env**: Add test to unload env config
+  ([`0463a03`](https://github.com/anaticulae/configo/commit/0463a03b3f09330ebd6f84527a76882c662d6361))
+
+
+## v0.9.0 (2021-02-04)
 
 ### Documentation
 
-* extend interface documentation (9b5f5869d570)
+- **copyright**: Happy New Year!
+  ([`828e0dd`](https://github.com/anaticulae/configo/commit/828e0dd1e3df0e1188c5cbb1441d864ccd74a655))
 
-## v0.8.0
+### Features
 
-### Feature
+- **debug**: Add option to manager debug state
+  ([`0189110`](https://github.com/anaticulae/configo/commit/01891100eedf06c130792e8ea006348e395700dd))
 
-* add holy table object (3e105571920e)
+- **env**: Add methods to manage environment variables
+  ([`d199d04`](https://github.com/anaticulae/configo/commit/d199d043a5ccb83e1d52a0e8fd503dc022de4314))
 
-## v0.7.3
+- **exception**: Introduce holyvalue base exception
+  ([`204b823`](https://github.com/anaticulae/configo/commit/204b823ecabb96d34a6ad42fde5493f19a8950a2))
 
-## v0.7.0
 
-### Feature
+## v0.8.7 (2021-02-02)
 
-* add holyvalue `BOOL` to public API (451e0af101d5)
+### Bug Fixes
 
-## v0.6.18
+- **group**: Catch invalid group determination
+  ([`ac0358b`](https://github.com/anaticulae/configo/commit/ac0358b4a04d3311b311b079bbfbfa54721590e2))
 
-## v0.6.0
+### Chores
 
-### Feature
+- **requirements**: Upgrade requirements.txt
+  ([`1853e96`](https://github.com/anaticulae/configo/commit/1853e966d7aa01078960875d07dc82248838b537))
 
-* add link to generated docs (b4ac084e1c5e)
 
-## v0.5.17
+## v0.8.6 (2020-12-04)
 
-## v0.5.0
+### Chores
 
-### Feature
+- **requirements**: Do not upgrade this package so often
+  ([`d5df707`](https://github.com/anaticulae/configo/commit/d5df707104211cfd250473dedfc1fc2d036a33f1))
 
-* add dunder methods to ease using of HolyValues (703ffe3b068a)
-* ensure that holyvalue interface is used in a correct way (51c93626a57e)
 
-### Documentation
+## v0.8.5 (2020-10-27)
 
-* extend interface documentation (9aee69d38824)
-* add general doc structure (1124d95e29ea)
-* extend interface documentation (51050a59f084)
+### Chores
 
-## v0.4.4
+- **requirements**: Upgrade requirements.txt
+  ([`fc3e5b3`](https://github.com/anaticulae/configo/commit/fc3e5b3b9fb4b262fe33451456f0b15f04fd9a4b))
 
-## v0.4.1
 
-### Documentation
+## v0.8.4 (2020-10-08)
 
-* Happy New Year! (40a3d4134ee9)
+### Chores
 
-## v0.4.0
+- **requirements**: Upgrade requirements.txt
+  ([`908e7ec`](https://github.com/anaticulae/configo/commit/908e7ec860f1c11d05dd4ae4307e92b1b58ce3b8))
 
-### Feature
 
-* ensure to detect correct group and hv name (614e4b90c913)
-* extend information of invalid holyvalue exception (7cb33c49de9e)
-* validate holy value at runtime (dbfbb632f171)
-* use default database to avoid loading default database (1688970ced90)
-* extend API to make calls less verbose/to write fewer code (b91844d90a0d)
+## v0.8.3 (2020-09-26)
 
-### Fix
+### Chores
 
-* ensure that default value is lower equal than limit (e0e08dd68a78)
+- **requirements**: Upgrade requirements.txt
+  ([`7756cca`](https://github.com/anaticulae/configo/commit/7756cca129c8459efeca73383432822c39426197))
 
 ### Documentation
 
-* describe how to use this exception (264c806d0879)
+- **table**: Extend interface documentation
+  ([`9b5f586`](https://github.com/anaticulae/configo/commit/9b5f5869d57048e3224295bd78b23a4b097b619e))
 
-## v0.3.3
+
+## v0.8.2 (2020-09-13)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`044dd03`](https://github.com/anaticulae/configo/commit/044dd0311043d96debdedf747464276ca218e845))
+
+
+## v0.8.1 (2020-09-08)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`a6f4ec9`](https://github.com/anaticulae/configo/commit/a6f4ec9f8626e499ea4c9292f77384700e976fbd))
+
+
+## v0.8.0 (2020-09-01)
+
+### Code Style
+
+- **requirements**: Add missing legal header
+  ([`fba5c5a`](https://github.com/anaticulae/configo/commit/fba5c5af67c352158aa25608784bab0369aeaab6))
+
+### Features
+
+- **table**: Add holy table object
+  ([`3e10557`](https://github.com/anaticulae/configo/commit/3e105571920ef359b2de9dee195af1180c8ceccc))
+
+### Refactoring
+
+- **move**: Holy value to separate package
+  ([`cf60463`](https://github.com/anaticulae/configo/commit/cf6046381d7bf93a6e77a4c5e187c2cf04490ae0))
+
+
+## v0.7.3 (2020-08-27)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`1053520`](https://github.com/anaticulae/configo/commit/10535200f4c4cf6d452499c44a3b217173261104))
+
+
+## v0.7.2 (2020-08-27)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`f0dc236`](https://github.com/anaticulae/configo/commit/f0dc236dcb4072f966c2f50d06b757511337c45c))
+
+
+## v0.7.1 (2020-07-28)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`0e158e9`](https://github.com/anaticulae/configo/commit/0e158e9c7df1434cf8ea836a1519d2f4005117da))
+
+
+## v0.7.0 (2020-07-28)
+
+### Code Style
+
+- **imports**: Organize imports
+  ([`4fa04d2`](https://github.com/anaticulae/configo/commit/4fa04d288d62a05ee06d825e99f9fc0f8758ebee))
+
+### Features
+
+- **API**: Add holyvalue `BOOL` to public API
+  ([`451e0af`](https://github.com/anaticulae/configo/commit/451e0af101d5da976aa5171bf2b510e36bdc4be0))
+
+### Testing
+
+- **validate**: Increase test coverage
+  ([`b925016`](https://github.com/anaticulae/configo/commit/b925016e14afd0ef8391f58db7a574ef755821c1))
+
+
+## v0.6.18 (2020-07-13)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`fe2e17b`](https://github.com/anaticulae/configo/commit/fe2e17b5da428a1a765fa05006636289a2feb7a6))
+
+
+## v0.6.17 (2020-07-02)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`3d8b273`](https://github.com/anaticulae/configo/commit/3d8b2733158ce611cdf0d1918285c682b293285b))
+
+
+## v0.6.16 (2020-07-01)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`9672d16`](https://github.com/anaticulae/configo/commit/9672d16ce9c30c419b26ef4bfe4db5d7e8b3c484))
+
+
+## v0.6.15 (2020-06-30)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`56ebbb6`](https://github.com/anaticulae/configo/commit/56ebbb6eea4ad345ad324d6e9aacf94279b0d56b))
+
+
+## v0.6.14 (2020-06-25)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`2cd32e8`](https://github.com/anaticulae/configo/commit/2cd32e80e3fc0360aed2406c17f7ffb5af887f0a))
+
+
+## v0.6.13 (2020-06-20)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`95d2f7d`](https://github.com/anaticulae/configo/commit/95d2f7d5d65366f48f1b0f11752fe682a74fd306))
+
+
+## v0.6.12 (2020-06-17)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`2da59f5`](https://github.com/anaticulae/configo/commit/2da59f53d46a1ff281cb71415dd9dd1f48f47552))
+
+
+## v0.6.11 (2020-06-17)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`033c111`](https://github.com/anaticulae/configo/commit/033c11198b343cae09d9cf1826e11cc2dbdd6e69))
+
+
+## v0.6.10 (2020-06-11)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`fe1f385`](https://github.com/anaticulae/configo/commit/fe1f38563b346a139a878503fa0c028d1680f183))
+
+
+## v0.6.9 (2020-06-06)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`9308047`](https://github.com/anaticulae/configo/commit/9308047f99f5411bbf538171fbec83d068d0cd94))
+
+
+## v0.6.8 (2020-05-31)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`c3a3db7`](https://github.com/anaticulae/configo/commit/c3a3db7e3aff1d1d66400f914ee12e4b35d5c78a))
+
+
+## v0.6.7 (2020-05-28)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`1b9eaee`](https://github.com/anaticulae/configo/commit/1b9eaeeeea3edeade5a0c29afb4b18ead150cfa8))
+
+
+## v0.6.6 (2020-05-22)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`eab0ba0`](https://github.com/anaticulae/configo/commit/eab0ba0f398a2e4b1ad61ee0c6bad6886ea946d0))
+
+
+## v0.6.5 (2020-05-18)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`01dec17`](https://github.com/anaticulae/configo/commit/01dec17d9c69d75cff6396c9ee07cfef18866f3c))
+
+
+## v0.6.4 (2020-05-06)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`3097a10`](https://github.com/anaticulae/configo/commit/3097a1000fe605faa6ab2f682f94f21b7775be8a))
+
+
+## v0.6.3 (2020-04-29)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`96d188e`](https://github.com/anaticulae/configo/commit/96d188e8c50d8d050f4e5f0766d2cb5af5dfe5d1))
+
+
+## v0.6.2 (2020-04-14)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`2282536`](https://github.com/anaticulae/configo/commit/2282536b324e2297d7431a9b84313e3211b8b953))
+
+
+## v0.6.1 (2020-04-13)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`54a43de`](https://github.com/anaticulae/configo/commit/54a43de143069ea2446abf4764d616a1ceb0af22))
+
+
+## v0.6.0 (2020-04-12)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`127397f`](https://github.com/anaticulae/configo/commit/127397f5f5dfc5072006e0f53e542d09d846e3dd))
+
+### Features
+
+- **docs**: Add link to generated docs
+  ([`b4ac084`](https://github.com/anaticulae/configo/commit/b4ac084e1c5e38d3db08dcacbb4d8ae7b5ed881c))
+
+
+## v0.5.17 (2020-04-09)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`e5e28e1`](https://github.com/anaticulae/configo/commit/e5e28e17e986ec49c79eeb3df7b02bc92d7007e7))
+
+
+## v0.5.16 (2020-04-09)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`b51e2ab`](https://github.com/anaticulae/configo/commit/b51e2ab0fbf85e3e0a56a74675016152a3dca460))
+
+
+## v0.5.15 (2020-04-07)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`07d56bf`](https://github.com/anaticulae/configo/commit/07d56bffc176daad206189d618a2a8e9ee31d9cd))
+
+
+## v0.5.14 (2020-04-06)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`27b07fa`](https://github.com/anaticulae/configo/commit/27b07fa1ec6ab6f9e516334ad6300b5ce7acbf02))
+
+
+## v0.5.13 (2020-04-05)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`6aca643`](https://github.com/anaticulae/configo/commit/6aca643d2a67b2f65e9e791e6a60a498b7055f33))
+
+
+## v0.5.12 (2020-04-03)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`bf58e3a`](https://github.com/anaticulae/configo/commit/bf58e3a1a0cf4962dc2b0debb0023e9b24cbb157))
+
+
+## v0.5.11 (2020-03-29)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`f0e8e2c`](https://github.com/anaticulae/configo/commit/f0e8e2ce7581ca2a7fa96ee1fb7275532de85991))
+
+
+## v0.5.10 (2020-03-29)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`11433cf`](https://github.com/anaticulae/configo/commit/11433cf865e28487d957a78d3f2f116b55695eef))
+
+
+## v0.5.9 (2020-03-26)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`e48c507`](https://github.com/anaticulae/configo/commit/e48c5071fcea647d499c9eb0a9f05719db3bf07f))
+
+
+## v0.5.8 (2020-03-25)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`a00626f`](https://github.com/anaticulae/configo/commit/a00626fb145cb11b0e781e389447fe01e80e754f))
+
+
+## v0.5.7 (2020-03-22)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`d7bb0fa`](https://github.com/anaticulae/configo/commit/d7bb0faf8c31bc399747fc34f57d924ba43fa43d))
+
+
+## v0.5.6 (2020-03-22)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`0aac9f8`](https://github.com/anaticulae/configo/commit/0aac9f84f08478b689e68461b40aa1956084bc30))
+
+
+## v0.5.5 (2020-03-01)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`dd6b653`](https://github.com/anaticulae/configo/commit/dd6b653e7e4a3ee572889eb3539100ade6d93df0))
+
+
+## v0.5.4 (2020-03-01)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`4c54334`](https://github.com/anaticulae/configo/commit/4c54334bb8fbb162260a88c53aba3eceba547182))
+
+### Code Style
+
+- **fix**: Fix bad assignment
+  ([`8ede914`](https://github.com/anaticulae/configo/commit/8ede914c861132abc49e362c9022f1acc08a1a0a))
+
+
+## v0.5.3 (2020-03-01)
+
+### Chores
+
+- **config**: Do not release with linter errors
+  ([`d364fa4`](https://github.com/anaticulae/configo/commit/d364fa4f4412d7ca4b12752079dc474fcdf88ce9))
+
+### Code Style
+
+- **linter**: Solve some linter problems
+  ([`8a48a75`](https://github.com/anaticulae/configo/commit/8a48a75d9f3570d761d97aa81108617321aa89b0))
+
+
+## v0.5.2 (2020-02-18)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`d74668b`](https://github.com/anaticulae/configo/commit/d74668b291dd4311cd4d5ecb310660eccad0a13e))
+
+
+## v0.5.1 (2020-02-12)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`9dded52`](https://github.com/anaticulae/configo/commit/9dded52f266a2e426cd377ca8737e0aa3fdbfcad))
+
+
+## v0.5.0 (2020-02-12)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`aa3a9ad`](https://github.com/anaticulae/configo/commit/aa3a9adfef43b9b7cffa90193dcbd58c4e851ed2))
+
+### Code Style
+
+- **linter**: Make linter happy
+  ([`0c0ce8a`](https://github.com/anaticulae/configo/commit/0c0ce8a08a584735774394623229ec1e3d0751e9))
 
 ### Documentation
 
-* update directory documentation (f4c817452652)
-* add idea of default dataset (abcc494d0134)
+- **directory**: Extend interface documentation
+  ([`51050a5`](https://github.com/anaticulae/configo/commit/51050a59f0849739716a1c813ffb146f94bf34fa))
 
-## v0.3.2
+- **general**: Add general doc structure
+  ([`1124d95`](https://github.com/anaticulae/configo/commit/1124d95e29eaa4c2c8a0f55ab3b78529de041b72))
 
-## v0.3.0
+- **holyvalue**: Extend interface documentation
+  ([`9aee69d`](https://github.com/anaticulae/configo/commit/9aee69d3882473fa70f611ce91a6ec3a801882b1))
 
-### Feature
+### Features
 
-* add single line comment to configuration generator (2375e843f034)
-* add method to generate configuration out of source (b1956694ce49)
-* add first holy value concept (9c63596d980f)
+- **holyvalue**: Add dunder methods to ease using of HolyValues
+  ([`703ffe3`](https://github.com/anaticulae/configo/commit/703ffe3b068a3d3104dbf2be5412c5209baefae7))
+
+- **holyvalue**: Ensure that holyvalue interface is used in a correct way
+  ([`51c9362`](https://github.com/anaticulae/configo/commit/51c93626a57e03318ddcfc5de87484d9b4ed7b8a))
+
+### Refactoring
+
+- **holyvalue**: Move HolyValue to separate class
+  ([`a0e1d81`](https://github.com/anaticulae/configo/commit/a0e1d815d40b0cf6dd89cb892671a24347a4fcad))
+
+
+## v0.4.4 (2020-01-13)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`20431b2`](https://github.com/anaticulae/configo/commit/20431b2f589d77a653dd2c0e2853479db6a3745d))
+
+
+## v0.4.3 (2020-01-13)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`0e05ddb`](https://github.com/anaticulae/configo/commit/0e05ddb7d4cfdf9e09473eb2dd43ca2ddadbcaf8))
+
+
+## v0.4.2 (2020-01-11)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`87abe93`](https://github.com/anaticulae/configo/commit/87abe9329ff6d6a6adac75da9334358e1f10a2ec))
+
+
+## v0.4.1 (2020-01-02)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`0943d90`](https://github.com/anaticulae/configo/commit/0943d907a2976afc95cfd8a2fd2eccc9da2f9962))
 
 ### Documentation
 
-* add release plan for increments 0.3 and 0.4 (7634978ce8f9)
+- **copyright**: Happy New Year!
+  ([`40a3d41`](https://github.com/anaticulae/configo/commit/40a3d4134ee90f847843504184db5e3e908e42d2))
 
-## v0.2.2
 
-## v0.1.30
+## v0.4.0 (2019-10-29)
 
-## v0.1.16
+### Bug Fixes
 
-### Feature
-
-* add method to determine shared_tmp (1781a9c37633)
-
-## v0.1.6
-
-### Feature
-
-* add global cache size (b3cbfa49636a)
+- **holyvalue**: Ensure that default value is lower equal than limit
+  ([`e0e08dd`](https://github.com/anaticulae/configo/commit/e0e08dd68a78db2fab0f0b07bc113900f134e9fc))
 
 ### Documentation
 
-* extend basic readme documentation (e4e3cff7fcc0)
+- **exception**: Describe how to use this exception
+  ([`264c806`](https://github.com/anaticulae/configo/commit/264c806d0879a0dada92e1c09153d6c6281ef527))
 
-## v0.1.5
+### Features
 
-### Feature
+- **API**: Extend API to make calls less verbose/to write fewer code
+  ([`b91844d`](https://github.com/anaticulae/configo/commit/b91844d90a0d203eb4407c6a3213bda185c70606))
 
-* add basic configuration for DINA4 and DINA5 pages (e932a0e7710f)
+- **database**: Use default database to avoid loading default database
+  ([`1688970`](https://github.com/anaticulae/configo/commit/1688970ced90e1a92daa603d869bef857d923f0f))
 
-## v0.1.3
+- **exception**: Extend information of invalid holyvalue exception
+  ([`7cb33c4`](https://github.com/anaticulae/configo/commit/7cb33c49de9ef0f1fcaa8d7813a0e73f43b20697))
 
-### Feature
+- **holyvalue**: Ensure to detect correct group and hv name
+  ([`614e4b9`](https://github.com/anaticulae/configo/commit/614e4b90c9139c5dad5c6f0f1f9f00a3798e4e2f))
 
-* add export and import from viewo project (b67dcde7116b)
+- **holyvalue**: Validate holy value at runtime
+  ([`dbfbb63`](https://github.com/anaticulae/configo/commit/dbfbb632f171f80a9b0f731def5df54d433effb8))
 
-### Fix
+### Refactoring
 
-* fix location to shared space (6ec668800b5b)
+- **exception**: Move Exception to separate file
+  ([`c98608b`](https://github.com/anaticulae/configo/commit/c98608bf382f3729a27c5047bcfa3a620c1cd2a0))
 
-## v0.1.1
+- **holy**: Refactor interface and ensure to avoid missing refactoring
+  ([`98495e0`](https://github.com/anaticulae/configo/commit/98495e00a9ee20e8586997847de217c50c847f26))
 
-### Feature
+- **holyvalue**: Sort classes to use return datatype
+  ([`805c8df`](https://github.com/anaticulae/configo/commit/805c8df9efa6b4c7d69f77072692c95b00706100))
 
-* make check of path existence optional (2006e910e3df)
-* add access to global folder-share environment variables (501a346a60f6)
+- **test**: Remove todo due improving creating mock
+  ([`816b9da`](https://github.com/anaticulae/configo/commit/816b9daab073c2da3223ad99b444476201a0a18a))
 
-### Fix
+- **test**: Use new default feature to reduce test initialization
+  ([`d4d9666`](https://github.com/anaticulae/configo/commit/d4d966606f459d56277cd3c32c38d50293932f6a))
 
-* add missing url to package location (21f659238feb)
+### Testing
 
-## v0.1.0
+- **holyvalue**: Ensure that right hand side holy value works
+  ([`37063a0`](https://github.com/anaticulae/configo/commit/37063a05110d8c06ca0e83a8f76c787d4d6a90b0))
 
-### Feature
 
-* add server from baw project (246c48abe013)
+## v0.3.3 (2019-10-29)
 
-## v0.0.0 Initial release
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`cc5943b`](https://github.com/anaticulae/configo/commit/cc5943b749671c7184c6d5910fb6e49fd6888b0c))
+
+### Documentation
+
+- **directory**: Update directory documentation
+  ([`f4c8174`](https://github.com/anaticulae/configo/commit/f4c8174526528c5051b7b77ffb4e5e35349afa7d))
+
+- **releases**: Add idea of default dataset
+  ([`abcc494`](https://github.com/anaticulae/configo/commit/abcc494d0134d149e4dfb2a1cf3076ad8d6e8a50))
+
+### Testing
+
+- **holy**: Add test to describe correct limit evaluation
+  ([`1b20d5c`](https://github.com/anaticulae/configo/commit/1b20d5cc1cf5f5e5a1550ea09fc8df7c17daf8e5))
+
+
+## v0.3.2 (2019-10-14)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`2e6f039`](https://github.com/anaticulae/configo/commit/2e6f039628425dbc59f2ccd4006e0e745ae4e064))
+
+
+## v0.3.1 (2019-10-13)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`789ee60`](https://github.com/anaticulae/configo/commit/789ee6046b5d7303902bdb76e9ad9035cf7df164))
+
+
+## v0.3.0 (2019-10-13)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`61aefbb`](https://github.com/anaticulae/configo/commit/61aefbb80642aad2e7ed968351b49cdc01c1db3d))
+
+### Code Style
+
+- **imports**: Organize imports
+  ([`82291d7`](https://github.com/anaticulae/configo/commit/82291d7ba5cc65b4fd955715310adc920039c842))
+
+- **linter**: Extend linter white list
+  ([`f110a35`](https://github.com/anaticulae/configo/commit/f110a353327291b1562d61c7445f772bda578b58))
+
+### Documentation
+
+- **releases**: Add release plan for increments 0.3 and 0.4
+  ([`7634978`](https://github.com/anaticulae/configo/commit/7634978ce8f9778058b298815ee216684fe82abe))
+
+### Features
+
+- **holyvalue**: Add first holy value concept
+  ([`9c63596`](https://github.com/anaticulae/configo/commit/9c63596d980f52aedbe241f9adf9fa3421f35256))
+
+- **holyvalue**: Add method to generate configuration out of source
+  ([`b195669`](https://github.com/anaticulae/configo/commit/b1956694ce4985be82b5c334932062402a76372a))
+
+- **holyvalue**: Add single line comment to configuration generator
+  ([`2375e84`](https://github.com/anaticulae/configo/commit/2375e843f0344010a94137228d873351371a1a36))
+
+### Refactoring
+
+- **style**: Replace with upgraded utila code
+  ([`4babf91`](https://github.com/anaticulae/configo/commit/4babf9139fe78a6cca1343b02d051dabc863f578))
+
+- **style**: Simplify code
+  ([`20e256c`](https://github.com/anaticulae/configo/commit/20e256c1f89f6c94c4faa2eee026c3950c373d72))
+
+### Testing
+
+- **holyvalue**: Extend unit test to ensure that variables are written to config
+  ([`eb8ed11`](https://github.com/anaticulae/configo/commit/eb8ed11235cb1f25ad1ebcec367d9bb3ade5b512))
+
+
+## v0.2.2 (2019-10-08)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`32e69c3`](https://github.com/anaticulae/configo/commit/32e69c3cb14e1720a8804f3b236a88874b7e0bec))
+
+
+## v0.2.1 (2019-10-08)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`014f548`](https://github.com/anaticulae/configo/commit/014f548344012fde66d95f257ed782807c430496))
+
+
+## v0.2.0 (2019-09-27)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`3cefeec`](https://github.com/anaticulae/configo/commit/3cefeec6d4af8e8d76eb0963b3e3ea65fd4a8663))
+
+
+## v0.1.30 (2019-09-18)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`c3f4bc4`](https://github.com/anaticulae/configo/commit/c3f4bc4054b1b46850ab3326b8e3bea72a2764c0))
+
+
+## v0.1.29 (2019-09-14)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`2d3607e`](https://github.com/anaticulae/configo/commit/2d3607e1a8cfa334f43eee03e1032268953f20fb))
+
+
+## v0.1.28 (2019-09-14)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`a87fc7a`](https://github.com/anaticulae/configo/commit/a87fc7ab996cf7e6974878c5688ec19c2a207b30))
+
+
+## v0.1.27 (2019-09-14)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`d2faea0`](https://github.com/anaticulae/configo/commit/d2faea00813e6ec106072afba86e4e458feda301))
+
+
+## v0.1.26 (2019-09-12)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`bff4650`](https://github.com/anaticulae/configo/commit/bff4650cabc9ce9625e46aa5c90fc407f8c2ec0b))
+
+- **setup**: Add conftest to gitignore
+  ([`ff6dd65`](https://github.com/anaticulae/configo/commit/ff6dd65dab2dfbaa6b340d87169e06bb64acc66a))
+
+
+## v0.1.25 (2019-09-11)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`ae44d47`](https://github.com/anaticulae/configo/commit/ae44d472969ecce26c84bde46680b6730aab32df))
+
+
+## v0.1.24 (2019-09-10)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`c59358b`](https://github.com/anaticulae/configo/commit/c59358be8b122ee5fa06ef548dbc470d56f0ae4b))
+
+
+## v0.1.23 (2019-09-07)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`5ca3494`](https://github.com/anaticulae/configo/commit/5ca3494bf0971d29e9b7bbba6bf0358ff0a3e198))
+
+
+## v0.1.22 (2019-09-07)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`e421ec7`](https://github.com/anaticulae/configo/commit/e421ec72d95d57e7848b0aec42f3448703534bf5))
+
+
+## v0.1.21 (2019-08-20)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`41dc698`](https://github.com/anaticulae/configo/commit/41dc6987494dcccfd72ca65d1b74f1c1003b4a06))
+
+
+## v0.1.20 (2019-08-14)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`318aa52`](https://github.com/anaticulae/configo/commit/318aa525c0c7b4534142e5f0bd18dfbb2c5d83a3))
+
+
+## v0.1.19 (2019-08-12)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`7396cfe`](https://github.com/anaticulae/configo/commit/7396cfe19dbcefe31975d70f7bb0c7c9e0a54d08))
+
+
+## v0.1.18 (2019-08-06)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`e1bd12f`](https://github.com/anaticulae/configo/commit/e1bd12fc583c5f1c9ab5595cb4549f1b3d60d1d4))
+
+
+## v0.1.17 (2019-08-06)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`c0fc5d6`](https://github.com/anaticulae/configo/commit/c0fc5d66f14ee814e0d03642df9aefb7a98b77bc))
+
+
+## v0.1.16 (2019-08-03)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`16ab09d`](https://github.com/anaticulae/configo/commit/16ab09d8e9d64941f0b5d6efba67f7e5c380ca0a))
+
+### Features
+
+- **tmp**: Add method to determine shared_tmp
+  ([`1781a9c`](https://github.com/anaticulae/configo/commit/1781a9c37633e6820f81607e222eba72a55979a2))
+
+
+## v0.1.15 (2019-08-02)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`b814917`](https://github.com/anaticulae/configo/commit/b8149173250ac8e52f560be1134b1d5586233884))
+
+
+## v0.1.14 (2019-08-02)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`21c5fd9`](https://github.com/anaticulae/configo/commit/21c5fd94e77c79ff8e8765b8036967f9abd04af9))
+
+
+## v0.1.13 (2019-08-01)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`53a43de`](https://github.com/anaticulae/configo/commit/53a43de0e12e54e91eec7d310282b3a9421f6dc0))
+
+
+## v0.1.12 (2019-07-31)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`e6f244f`](https://github.com/anaticulae/configo/commit/e6f244ff3bf2dfe4f70b93551dfd431835167305))
+
+
+## v0.1.11 (2019-07-31)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`1f7149e`](https://github.com/anaticulae/configo/commit/1f7149eb5b1f4565b2a8a03458eea058cee42143))
+
+
+## v0.1.10 (2019-07-29)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`cd13310`](https://github.com/anaticulae/configo/commit/cd133109aee37a2e37098d69f8a8523a835f1800))
+
+
+## v0.1.9 (2019-07-27)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`1184890`](https://github.com/anaticulae/configo/commit/118489024411468f02c25cccee79759ab5a5ae87))
+
+
+## v0.1.8 (2019-07-20)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`9e60ac1`](https://github.com/anaticulae/configo/commit/9e60ac1f530e311fe39657866f674fb69a72ac6d))
+
+
+## v0.1.7 (2019-07-15)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`a52f423`](https://github.com/anaticulae/configo/commit/a52f4238d05b54e6cc7f7688a0d1ab6bb434b948))
+
+
+## v0.1.6 (2019-07-11)
+
+### Documentation
+
+- **readme**: Extend basic readme documentation
+  ([`e4e3cff`](https://github.com/anaticulae/configo/commit/e4e3cff7fcc0b45b3509f526bfc3158057e82526))
+
+### Features
+
+- **cache**: Add global cache size
+  ([`b3cbfa4`](https://github.com/anaticulae/configo/commit/b3cbfa49636ac5e41367c99c7e4e09d0954361a2))
+
+
+## v0.1.5 (2019-06-03)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`e6b9be8`](https://github.com/anaticulae/configo/commit/e6b9be828e4cb430bc68ee75771c6bf303a697e6))
+
+- **workspace**: Remove vs-codeworkspace, use baw --ide instead
+  ([`1b58ffe`](https://github.com/anaticulae/configo/commit/1b58ffead1dbd68524dc82934a9ef0461168c2cb))
+
+### Code Style
+
+- **pylint**: Disable wrong pylint warnings and remove unused code
+  ([`10da631`](https://github.com/anaticulae/configo/commit/10da631389575165286023abfd6d423afde4c23e))
+
+- **spelling**: Fix spelling error in copyright header
+  ([`0cd41bb`](https://github.com/anaticulae/configo/commit/0cd41bb96b5355e8e5e184965d9cc9213a0b6a23))
+
+### Features
+
+- **document**: Add basic configuration for DINA4 and DINA5 pages
+  ([`e932a0e`](https://github.com/anaticulae/configo/commit/e932a0e7710f5d371a4c25ca168553c3b8db2348))
+
+
+## v0.1.4 (2019-05-06)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`e133e67`](https://github.com/anaticulae/configo/commit/e133e676d947485edb3c229ec495c17fe31be766))
+
+
+## v0.1.3 (2019-04-24)
+
+### Bug Fixes
+
+- **share**: Fix location to shared space
+  ([`6ec6688`](https://github.com/anaticulae/configo/commit/6ec668800b5b1fb5259ab54c09b29c25a88633dc))
+
+### Features
+
+- **env**: Add export and import from viewo project
+  ([`b67dcde`](https://github.com/anaticulae/configo/commit/b67dcde7116b5c0ce6edb8432a5f073bbb60454a))
+
+
+## v0.1.2 (2019-04-23)
+
+### Code Style
+
+- **server**: Use global vars and extend documentation
+  ([`bc17337`](https://github.com/anaticulae/configo/commit/bc17337f357170c82fdc333ac605f46053bca732))
+
+### Refactoring
+
+- **share**: Use global var, make test independent from dev environment
+  ([`616ed75`](https://github.com/anaticulae/configo/commit/616ed750caad21bc22e55362c0ff440d07945635))
+
+### Testing
+
+- **server**: Add test with independent global environment vars
+  ([`fc2096d`](https://github.com/anaticulae/configo/commit/fc2096d95e715fe9969ac7aed01a6527d10cc3c4))
+
+
+## v0.1.1 (2019-04-23)
+
+### Bug Fixes
+
+- **setup**: Add missing url to package location
+  ([`21f6592`](https://github.com/anaticulae/configo/commit/21f659238feb8b0cb664058aebbb41edd7a3008b))
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`aa3be2f`](https://github.com/anaticulae/configo/commit/aa3be2f74157549452f6806964c87535d2708c5d))
+
+- **requirements**: Upgrade requirements.txt
+  ([`e93629c`](https://github.com/anaticulae/configo/commit/e93629c108437fd82e52fcb31ae1e53b0eb2cc30))
+
+### Features
+
+- **share**: Add access to global folder-share environment variables
+  ([`501a346`](https://github.com/anaticulae/configo/commit/501a346a60f6410e622a8a5a400a27ab501a2ab0))
+
+- **share**: Make check of path existence optional
+  ([`2006e91`](https://github.com/anaticulae/configo/commit/2006e910e3dff8a1b48bea82bf821cbfaabbe332))
+
+
+## v0.1.0 (2019-04-04)
+
+### Features
+
+- **server**: Add server from baw project
+  ([`246c48a`](https://github.com/anaticulae/configo/commit/246c48abe01329b81818e431287016b4d35635d6))
+
+
+## v0.0.0 (2019-04-04)
+
+- Initial Release
