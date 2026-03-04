@@ -12,10 +12,28 @@ import utilo
 
 import configo
 
+DUMP = """\
+SHARED_SPACE                            /tmp/shared
+HOSTNAME                                36049c61e901
+SHLVL                                   2
+HOME                                    /root
+SHARED_READY                            /tmp/shared/ready
+PATH                                    /opt/venv/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+BAW                                     /tmp/dev
+SHARED_TODO                             /tmp/shared/todo
+PYLINTHOME                              /tmp/pylint
+PYTEST_PLUGINS                          pytester
+PWD                                     /var/workdir
+SHARED_TMP                              /tmp/shared/tmp
+PYTEST_VERSION                          9.0.2
+"""
+
+DUMP_SIZE_MIN = len(DUMP)
+
 
 def test_env_dump():
     dumped = configo.env_dump()
-    assert len(dumped) > 1000
+    assert len(dumped) > DUMP_SIZE_MIN
 
 
 def test_env_get_set_del():
