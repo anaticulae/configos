@@ -13,12 +13,12 @@ import os
 import utilo
 
 PACKAGES = [
-    'configo',
-    'configo.cli',
-    'configo.holyvalue',
+    'configos',
+    'configos.cli',
+    'configos.holyvalue',
 ]
 ENTRY_POINTS = {
-    'console_scripts': ['configo = configo.cli:main'],
+    'console_scripts': ['configos = configos.cli:main'],
 }
 if __name__ == "__main__":
     utilo.install(__file__)

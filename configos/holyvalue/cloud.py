@@ -15,18 +15,18 @@ Environment variables:
 
 import utilo
 
-import configo
+import configos
 
 HC_CLOUD_BASE = 'HC_CLOUD_BASE'
 
 
 def cloud_lookup(program: str, base: str = None):
     envname = holyname(program)
-    env = configo.env(envname, default=None)
+    env = configos.env(envname, default=None)
     if env is None:
         return
     if base:
-        configo.init(base)
+        configos.init(base)
     if utilo.isfilepath(env):
         if not utilo.exists(env):
             utilo.error(f'invalid holy value path[env:{envname}]: {env}')
@@ -34,33 +34,33 @@ def cloud_lookup(program: str, base: str = None):
         base = utilo.path_parent(env)
         name = utilo.file_name(env)
         # hv-file path
-        configo.load(name=name, base=base)
+        configos.load(name=name, base=base)
         return
     # hv-file name
-    configo.load(name=env)
+    configos.load(name=env)
 
 
 def cloud_set(program: str, namepath: str = None):
     if not namepath:
         namepath = program
     program = holyname(program)
-    configo.env_set(program, value=namepath)
+    configos.env_set(program, value=namepath)
 
 
 def cloud_unset(program: str):
     program = holyname(program)
-    configo.env_del(program)
+    configos.env_del(program)
 
 
 def cloud_base_set(path: str):
     if path is None:
-        configo.env_del(HC_CLOUD_BASE)
+        configos.env_del(HC_CLOUD_BASE)
         return
-    configo.env_set(HC_CLOUD_BASE, path)
+    configos.env_set(HC_CLOUD_BASE, path)
 
 
 def cloud_base() -> str:
-    result = configo.env(HC_CLOUD_BASE, default=None)
+    result = configos.env(HC_CLOUD_BASE, default=None)
     return result
 
 

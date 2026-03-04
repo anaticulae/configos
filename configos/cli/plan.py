@@ -13,21 +13,21 @@ import re
 
 import utilo
 
-import configo
-import configo.holyvalue.access
-import configo.holyvalue.collect
+import configos
+import configos.holyvalue.access
+import configos.holyvalue.collect
 
 
 def create(todo: list) -> dict:
     result = {}
     for path in todo:
         program = utilo.path_current(path)
-        collected = configo.holyvalue.collect.collect(path)
+        collected = configos.holyvalue.collect.collect(path)
         for groupname, group in collected.items():
             for key, value in group.items():
                 progname = f'{program}.{groupname}'
                 hvgroup = value.get('hvgroup', progname)
-                if hvgroup == configo.holyvalue.access.NO_GROUP:
+                if hvgroup == configos.holyvalue.access.NO_GROUP:
                     hvgroup = progname
                 hvgroup = hvgroup.upper()
                 variable = f'{hvgroup}.{key}'
@@ -64,7 +64,7 @@ def run(
         utilo.log('test project')
         utilo.run(cmd_test)  # utilo.run('baw test')
     # utilo.log(utilo.from_tuple(keys, ';'))
-    with utilo.make_tmpdir(configo.ROOT) as tmpdir:
+    with utilo.make_tmpdir(configos.ROOT) as tmpdir:
         utilo.log(f'outdir: {tmpdir}')
         header = f"number,{utilo.from_tuple(keys, separator=',')},failure\n"
         utilo.file_append(
@@ -95,7 +95,7 @@ def run_test(
     step = str(step).zfill(4)
     cfgpath = os.path.join(tmpdir, f'{step}.hv')
     utilo.file_create(cfgpath, cfg)
-    configo.cloud_set(program=hcvalue, namepath=cfgpath)
+    configos.cloud_set(program=hcvalue, namepath=cfgpath)
     # run tests
     utilo.log(f'run step: {step}')
     utilo.log(utilo.from_tuple(config, ';'))
@@ -132,24 +132,24 @@ STEPS = (1.0, 0.1, 0.3, 0.5, 0.9, 1.2, 1.8, 2.2, 2.8, 3.5)
 def ranges(
     default,
     limit=None,
-    datatype: configo.DataType = None,
+    datatype: configos.DataType = None,
     steps=None,
 ) -> tuple:
     """\
-    >>> ranges(50, 300, configo.DataType.INT_PLUS, steps=((1.0, 1.5, 2.0)))
+    >>> ranges(50, 300, configos.DataType.INT_PLUS, steps=((1.0, 1.5, 2.0)))
     (50, 75, 100)
-    >>> ranges(1.2, 3.0, configo.DataType.FLOAT, steps=((1.0, 1.5, 2.0)))
+    >>> ranges(1.2, 3.0, configos.DataType.FLOAT, steps=((1.0, 1.5, 2.0)))
     (1.2, 1.8, 2.4)
-    >>> ranges(True, datatype=configo.DataType.BOOL)
+    >>> ranges(True, datatype=configos.DataType.BOOL)
     (True, False)
     """
     if steps is None:
         steps = STEPS
     if default is None:
         return tuple()
-    if datatype and datatype == configo.DataType.STR:
+    if datatype and datatype == configos.DataType.STR:
         return tuple()
-    if datatype == configo.DataType.BOOL:
+    if datatype == configos.DataType.BOOL:
         return (True, False)
     data = tuple(utilo.roundme(default * item) for item in steps)
     if 'INT' in str(datatype):

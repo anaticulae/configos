@@ -14,7 +14,7 @@ import functools
 
 import utilo
 
-import configo
+import configos
 
 
 class HolyMixin:
@@ -147,12 +147,12 @@ class HolyValue(HolyMixin):
 
     @functools.cached_property
     def value(self):
-        assert configo.database(), 'could not access database'
+        assert configos.database(), 'could not access database'
         if not self.valid:
             msg = (f'invalid holyvalue: {self.group}:{self.name};\n'
                    f'value:{self.data}; default:{self.default};\n'
                    f'limit:{self.limit}; datatype:{self.datatype}')
-            raise configo.exception.InvalidHolyValue(msg)
+            raise configos.exception.InvalidHolyValue(msg)
         # TODO: USE BETTER CACHING MECHANISM
         return self.data
 
@@ -175,7 +175,7 @@ class HolyValue(HolyMixin):
 
     @property
     def data(self):
-        result = configo.database().get(
+        result = configos.database().get(
             group=self.group,
             variable=self.name,
             default=self.default,

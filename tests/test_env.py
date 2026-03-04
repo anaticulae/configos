@@ -10,7 +10,7 @@
 import pytest
 import utilo
 
-import configo
+import configos
 
 DUMP = """\
 SHARED_SPACE                            /tmp/shared
@@ -32,20 +32,20 @@ DUMP_SIZE_MIN = len(DUMP)
 
 
 def test_env_dump():
-    dumped = configo.env_dump()
+    dumped = configos.env_dump()
     assert len(dumped) > DUMP_SIZE_MIN
 
 
 def test_env_get_set_del():
     with pytest.raises(KeyError):
-        configo.env('abc')
+        configos.env('abc')
 
-    configo.env_set('abc', 10)
-    assert configo.env('abc') == '10'
+    configos.env_set('abc', 10)
+    assert configos.env('abc') == '10'
 
-    configo.env_del('abc')
+    configos.env_del('abc')
     with pytest.raises(KeyError):
-        configo.env('abc')
+        configos.env('abc')
 
 
 CONFIG = """\
@@ -60,28 +60,28 @@ def test_env_load_unload(td):
     utilo.file_create(config, CONFIG)
 
     with pytest.raises(KeyError):
-        configo.env('kiwi_rawmaker')
+        configos.env('kiwi_rawmaker')
 
-    configo.env_load(config)
+    configos.env_load(config)
 
-    assert configo.env('kiwi_rawmaker') == '10'
-    assert configo.env('kiwi_rawmaker_asd') == '15'
-    assert configo.env('ciwi_detector') == 'Hier Spricht Helm'
+    assert configos.env('kiwi_rawmaker') == '10'
+    assert configos.env('kiwi_rawmaker_asd') == '15'
+    assert configos.env('ciwi_detector') == 'Hier Spricht Helm'
 
-    configo.env_unload(config)
+    configos.env_unload(config)
 
     with pytest.raises(KeyError):
-        configo.env('kiwi_rawmaker')
+        configos.env('kiwi_rawmaker')
 
 
 def test_env_unload(td):
     path = td.tmpdir.join('config.ini')
     utilo.file_create(path, CONFIG)
-    before = configo.env_dump()
-    configo.env_load(path)
-    after = configo.env_dump()
-    configo.env_unload(path)
-    final = configo.env_dump()
+    before = configos.env_dump()
+    configos.env_load(path)
+    after = configos.env_dump()
+    configos.env_unload(path)
+    final = configos.env_dump()
 
     assert before != after
     assert final == before

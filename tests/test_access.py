@@ -9,34 +9,34 @@
 
 import pytest
 
-import configo
+import configos
 
 
 def test_second_fine():
-    _ = configo.HV_SECOND(default=32)
+    _ = configos.HV_SECOND(default=32)
 
 
 def test_second_failure():
-    with pytest.raises(configo.InvalidHolyValue):
-        _ = configo.HV_SECOND(default=-32)
-    with pytest.raises(configo.InvalidHolyValue):
-        _ = configo.HV_SECOND(default=16.0)
+    with pytest.raises(configos.InvalidHolyValue):
+        _ = configos.HV_SECOND(default=-32)
+    with pytest.raises(configos.InvalidHolyValue):
+        _ = configos.HV_SECOND(default=16.0)
 
 
 def test_api_prefix():
-    _ = configo.HV_API(default='/api/v0')
+    _ = configos.HV_API(default='/api/v0')
 
 
 def test_secret_key():
     value = 'iamimportant'
-    secret = configo.HV_SECRET(default=value)
+    secret = configos.HV_SECRET(default=value)
     assert isinstance(secret.value, bytes)
 
 
 def test_xb():
-    kb = configo.HV_KB(default=25)  # pylint:disable=C0103
+    kb = configos.HV_KB(default=25)  # pylint:disable=C0103
     assert kb == 25 * 1024
-    mb = configo.HV_MB(default=25)  # pylint:disable=C0103
+    mb = configos.HV_MB(default=25)  # pylint:disable=C0103
     assert mb == 25 * 1024 * 1024
-    gb = configo.HV_GB(default=25)  # pylint:disable=C0103
+    gb = configos.HV_GB(default=25)  # pylint:disable=C0103
     assert gb == 25 * 1024 * 1024 * 1024

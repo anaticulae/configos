@@ -7,12 +7,14 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-import configo
+import configos
 
 # first docstring
-FIRST = configo.HV()
+FIRST = configos.HV()
 
 # backward
-SECOND = configo.HV(default=100, limit=1000, datatype=configo.DataType.INT_PLUS)
+SECOND = configos.HV(default=100,
+                     limit=1000,
+                     datatype=configos.DataType.INT_PLUS)
 
-THIRD = configo.HV()
+THIRD = configos.HV()

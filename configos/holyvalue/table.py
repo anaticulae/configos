@@ -26,10 +26,10 @@ Support both lookup styles
 
 import utilo
 
-import configo.holyvalue.data
+import configos.holyvalue.data
 
 
-class HolyTable(configo.holyvalue.data.HolyMixin):
+class HolyTable(configos.holyvalue.data.HolyMixin):
 
     def __init__(
         self,
@@ -90,7 +90,7 @@ class HolyRate(HolyTable):
         ]
 
 
-class HolyList(configo.holyvalue.data.HolyMixin):
+class HolyList(configos.holyvalue.data.HolyMixin):
     """A HolyList is a list which can be configured by HolyValue-Mechanism.
 
     Therefore a live-configuration is possible.

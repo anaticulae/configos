@@ -17,10 +17,10 @@ import inspect
 
 import utilo
 
-import configo
-import configo.holyvalue
-import configo.holyvalue.collect
-import configo.holyvalue.data
+import configos
+import configos.holyvalue
+import configos.holyvalue.collect
+import configos.holyvalue.data
 
 NO_GROUP = 'NO_GROUP'
 
@@ -59,7 +59,7 @@ def holyvalue(
         # determine variable out of code
         levelup = inspect.stack(context=1)[1].code_context
         code = utilo.NEWLINE.join(levelup)
-        matched = utilo.search(configo.holyvalue.collect.PATTERN, code)
+        matched = utilo.search(configos.holyvalue.collect.PATTERN, code)
         name = str(matched['variable']).strip().upper()
     if group is None:
         # determine call package
@@ -72,15 +72,15 @@ def holyvalue(
             # is loaded later via dynamic code loader
             utilo.debug(f'could not determine holyvalue group: {parent}')
             group = NO_GROUP
-    if not configo.holyvalue.data.validate(default, datatype, default, limit):
+    if not configos.holyvalue.data.validate(default, datatype, default, limit):
         msg = f'invalid default/limit/datatype; name: {name}; group:{group} '
         msg += f'default: {default}; limit: {limit}; type: {datatype}'
-        raise configo.InvalidHolyValue(msg)
-    result = configo.HolyValue(name, group, datatype, default, limit)
+        raise configos.InvalidHolyValue(msg)
+    result = configos.HolyValue(name, group, datatype, default, limit)
     return result
 
 
-DataType = configo.holyvalue.data.DataType
+DataType = configos.holyvalue.data.DataType
 init = lambda datatype: functools.partial(holyvalue, datatype=datatype)
 HV = holyvalue  # pylint:disable=C0103
 

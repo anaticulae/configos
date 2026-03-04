@@ -14,9 +14,9 @@ import tokenize
 
 import utilo
 
-import configo.holyvalue.access
-import configo.holyvalue.data
-import configo.utils
+import configos.holyvalue.access
+import configos.holyvalue.data
+import configos.utils
 
 
 def generate(path: str, skips: callable = None) -> str:
@@ -57,7 +57,7 @@ def collect(path: str, skips: callable = None) -> dict:
 
 
 def dump_collected(collected, root):
-    signature = utilo.attributes(configo.holyvalue.access.holyvalue)
+    signature = utilo.attributes(configos.holyvalue.access.holyvalue)
     raw = []
     for package in sorted(collected.keys()):
         raw.append(f'[{root}.{package}]')
@@ -98,13 +98,13 @@ def holyvalue_from_file(path: str) -> dict:
         e.g. limit, variable, group etc.
     """
     commento = comments(utilo.file_read(path))
-    module = configo.utils.load_module(path)
+    module = configos.utils.load_module(path)
     if not module:
         utilo.error(f'could not load: {path}')
         return {}
     result = {}
     for key, value in vars(module).items():
-        if not isinstance(value, configo.holyvalue.data.HolyMixin):
+        if not isinstance(value, configos.holyvalue.data.HolyMixin):
             continue
         result[key] = {'comment': commento[key], **vars(value)}
     return result
@@ -114,8 +114,8 @@ PATTERN = r"""
     \b
     (?P<variable>[\w\d_]+)[ ]=[ ]
     (
-        configo\.HV[\w\d_]*?|
-        configo\.HolyTable|
+        configos\.HV[\w\d_]*?|
+        configos\.HolyTable|
     )
 """
 

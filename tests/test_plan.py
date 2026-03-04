@@ -9,7 +9,7 @@
 
 import utilo
 
-import configo.cli.plan
+import configos.cli.plan
 import tests.hvexample
 
 
@@ -17,5 +17,5 @@ def test_plan_create():
     """Ensure that hvexample is loaded to ensure that hv is loaded correctly."""
     path = utilo.path_parent(tests.hvexample.__file__)
     todo = [path]
-    plan = configo.cli.plan.create(todo)
+    plan = configos.cli.plan.create(todo)
     assert 'TESTS.HVEXAMPLE.SECOND' in plan

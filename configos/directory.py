@@ -14,7 +14,7 @@ global environment variables:
 + SHARED_TMP
 + SHARED_TODO
 
-Use `configo.export()` to change these variables.
+Use `configos.export()` to change these variables.
 """
 
 import os

@@ -7,8 +7,8 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-from configo import OneSideDINA4
-from configo import OneSideDINA5
+from configos import OneSideDINA4
+from configos import OneSideDINA5
 
 
 def test_configuration_access():

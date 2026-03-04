@@ -12,12 +12,12 @@
 
 # import utilotest
 
-# import configo
+# import configos
 
 # @utilotest.longrun
 # def test_generate_rawmaker():
 #     import rawmaker  # pylint:disable=C0415
 #     source = os.path.join(rawmaker.ROOT, 'rawmaker')
-#     generated = configo.generate(source)
+#     generated = configos.generate(source)
 #     assert '[rawmaker.' in generated
 #     assert 'DIFF_MAX = [' in generated

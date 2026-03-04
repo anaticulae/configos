@@ -15,7 +15,7 @@ import utilo
 def load_module(path: str):
     """\
     >>> load_module(__file__).__name__
-    'configo.utils'
+    'configos.utils'
     """
     item = utilo.file_name(path)
     parent = utilo.file_name(utilo.path_parent(path))

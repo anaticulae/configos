@@ -14,10 +14,10 @@ import pytest
 import utilo
 import utilotest
 
-import configo
-import configo.holyvalue
-import configo.holyvalue.data
-import configo.holyvalue.store
+import configos
+import configos.holyvalue
+import configos.holyvalue.data
+import configos.holyvalue.store
 import tests
 
 EXAMPLE = os.path.join(tests.TEST_DATA, 'examples')
@@ -27,12 +27,12 @@ FIRST_ONE = 'first_one'
 @pytest.fixture
 def default_one():
     """Init `DataBase` with `FIRST_ONE` example"""
-    configo.init(EXAMPLE)
-    configo.load(FIRST_ONE)
+    configos.init(EXAMPLE)
+    configos.load(FIRST_ONE)
 
 
 def test_holyvalue_load_databas():
-    parsed = configo.holyvalue.store.parse(
+    parsed = configos.holyvalue.store.parse(
         os.path.join(EXAMPLE, f'{FIRST_ONE}.hv'),
         FIRST_ONE,
     )
@@ -42,7 +42,7 @@ def test_holyvalue_load_databas():
 
 @pytest.mark.usefixtures('default_one')
 def test_holyvalue_hv():
-    distance = configo.HV(group='groupme.footer.header', name='DISTANCE')
+    distance = configos.HV(group='groupme.footer.header', name='DISTANCE')
     # No convertion is done, cause of not defining `datatype`
     assert distance == '50022', distance
 
@@ -57,8 +57,8 @@ def test_holyvalue_hv_group_from_module(mp):
 
     with mp.context() as context:
         context.setattr(inspect, 'getmodule', getmodule)
-        distance = configo.HV(
-            datatype=configo.holyvalue.data.DataType.INT_PLUS,
+        distance = configos.HV(
+            datatype=configos.holyvalue.data.DataType.INT_PLUS,
             limit=60000,
         )
 
@@ -70,7 +70,7 @@ def test_holyvalue_hv_use_default(capsys):
     inform developer about this."""
     default = 'Helm'
     with utilo.level_tmp(utilo.Level.DEBUG):
-        result = configo.HV(default=default).value
+        result = configos.HV(default=default).value
     assert result == default
     # ensure to log warning
     stdout = utilotest.stdout(capsys)
@@ -78,22 +78,22 @@ def test_holyvalue_hv_use_default(capsys):
 
 
 def test_holyvalue_hv_use_no_default():
-    with pytest.raises(configo.MissingHolyValue):
-        _ = configo.HV().value
+    with pytest.raises(configos.MissingHolyValue):
+        _ = configos.HV().value
 
 
 def test_holyvalue_invalid_variable():
     """Test that variable not exists"""
 
-    with pytest.raises(configo.MissingHolyValue):
-        _ = configo.HV(
+    with pytest.raises(configos.MissingHolyValue):
+        _ = configos.HV(
             group='groupme.footer.header',
             name='does_not_exists',
         ).value
 
     # use default value instead of throwing MissingHolyValue-Exception
     default = 100
-    got = configo.HV(
+    got = configos.HV(
         group='groupme.footer.header',
         name='does_not_exists',
         default=100,
@@ -102,11 +102,11 @@ def test_holyvalue_invalid_variable():
 
 
 @pytest.mark.usefixtures('default_one')
-@pytest.mark.parametrize('datatype', configo.NOMATH)
+@pytest.mark.parametrize('datatype', configos.NOMATH)
 def test_holyvalue_invalid_limit(datatype):
     """Test to determine variable out of module and variable assignment"""
-    with pytest.raises(configo.InvalidHolyValue):
-        _ = configo.HV(
+    with pytest.raises(configos.InvalidHolyValue):
+        _ = configos.HV(
             group='groupme.footer.header',
             name='distance',
             datatype=datatype,
@@ -116,7 +116,7 @@ def test_holyvalue_invalid_limit(datatype):
 
 def test_holyvalue_generate_configuration():
     """If this test fails, check holyvalue() signature and config generator"""
-    config = configo.generate(tests.HVEXAMPLE)
+    config = configos.generate(tests.HVEXAMPLE)
     assert config is not None
     assert len(config) > 200, 'no enough content'
 
@@ -134,58 +134,58 @@ def test_holyvalue_generate_configuration():
 def test_holyvalue_generate_and_load(td):
     path = td.tmpdir.join('config.hv')
     # create config
-    config = configo.generate(tests.HVEXAMPLE)
+    config = configos.generate(tests.HVEXAMPLE)
     utilo.file_create(path, config)
     # parse config
-    parsed = configo.holyvalue.store.parse(path, 'config')
+    parsed = configos.holyvalue.store.parse(path, 'config')
     assert parsed
 
 
 def test_holyvalue_evaluate_percent_plus():
-    with pytest.raises(configo.InvalidHolyValue):
-        _ = configo.HV(
+    with pytest.raises(configos.InvalidHolyValue):
+        _ = configos.HV(
             default=15,
             limit=10,
-            datatype=configo.DataType.PERCENT_PLUS,
+            datatype=configos.DataType.PERCENT_PLUS,
         )
 
 
 def test_holyvalue_less_verbose_api():
-    access = configo.HV_INT_PLUS(default=5)
+    access = configos.HV_INT_PLUS(default=5)
     assert access == 5
 
 
 def test_holyvalue_default_database():
-    hello = configo.HV_INT_PLUS(default=5)
+    hello = configos.HV_INT_PLUS(default=5)
     assert hello == 5
 
 
 def test_holyvalue_right_hand_evaluation_name_and_group():
-    abc = configo.HV(
+    abc = configos.HV(
         name='alpha',
         default=15,
         limit=120,
-        datatype=configo.DataType.PERCENT_PLUS,
+        datatype=configos.DataType.PERCENT_PLUS,
     )
     assert abc.name == 'alpha'
     assert abc.group == 'tests.test_holyvalue'
 
 
 def test_holyvalue_operation():
-    smaller = configo.HV(
+    smaller = configos.HV(
         default=5,
         name='smaller',
-        datatype=configo.DataType.INT,
+        datatype=configos.DataType.INT,
     )
-    value = configo.HV(
+    value = configos.HV(
         default=15,
         name='alpha',
-        datatype=configo.DataType.INT,
+        datatype=configos.DataType.INT,
     )
-    string = configo.HV(
+    string = configos.HV(
         default='string',
         name='alpha',
-        datatype=configo.DataType.STR,
+        datatype=configos.DataType.STR,
     )
     assert value + 15 == 30
     assert value + value == 30
@@ -221,13 +221,13 @@ def test_holyvalue_operation():
 
 
 def test_hv_ranged():
-    start = configo.HV_INT_PLUS(default=10)
-    end = configo.HV_INT_PLUS(default=20)
+    start = configos.HV_INT_PLUS(default=10)
+    end = configos.HV_INT_PLUS(default=20)
     assert len(utilo.rtuple(start, end)) == end - start
 
 
 def test_hv_slice():
     data = [1, 2, 3, 4, 5, 6, 7]
-    start = configo.HV_INT_PLUS(default=2)
+    start = configos.HV_INT_PLUS(default=2)
     selected = data[start:]
     assert selected == [3, 4, 5, 6, 7]

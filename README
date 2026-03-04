@@ -1,4 +1,4 @@
-# configo
+# configos
 
 Configo holds the configuration/parameterization of the different tools of
 `kiwi` project. This includes environment variables and python implementation.

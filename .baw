@@ -1,6 +1,6 @@
 [project]
-short = configo
-name = configo
+short = configos
+name = configos
 
 [release]
 fail_on_finding = true

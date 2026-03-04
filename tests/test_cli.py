@@ -37,7 +37,7 @@ def test_cli_result_show(mp):
 
 # @utilotest.longrun
 # def test_cli_create_run_show(td, mp):
-#     root = configo.ROOT
+#     root = configos.ROOT
 #     plan = utilo.forward_slash(str(td.tmpdir.join('plan.hv')))
 #     with utilo.capture_stdout() as buffer:
 #         tests.run(

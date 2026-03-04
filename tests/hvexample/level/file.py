@@ -7,8 +7,8 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-import configo
+import configos
 
 # I am an
 # example docstring
-CONFIGURATION = configo.HV(name='Helmut', limit=1000)
+CONFIGURATION = configos.HV(name='Helmut', limit=1000)

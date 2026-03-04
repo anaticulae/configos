@@ -9,8 +9,8 @@
 
 import utilo
 
-import configo.cli.plan
-import configo.cli.result
+import configos.cli.plan
+import configos.cli.result
 
 
 def evaluate(
@@ -21,18 +21,18 @@ def evaluate(
     cmd_test: str,
 ):  # pylint:disable=W0613
     if create:
-        plan = configo.cli.plan.create(create)
-        utilo.log(configo.cli.plan.dump(plan))
+        plan = configos.cli.plan.create(create)
+        utilo.log(configos.cli.plan.dump(plan))
     if run:
         if cmd_test is None:
             cmd_test = 'baw test -n1'
-        configo.cli.plan.run(
+        configos.cli.plan.run(
             run,
             reduce=reduce,
             cmd_test=cmd_test,
         )
     if show:
-        configo.cli.result.show(show)
+        configos.cli.result.show(show)
 
 
 def add_option(parser):

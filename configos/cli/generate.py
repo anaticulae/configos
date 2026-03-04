@@ -9,7 +9,7 @@
 
 import utilo
 
-import configo
+import configos
 
 
 def evaluate(inpath: list, noskip=False) -> int:
@@ -25,7 +25,7 @@ def evaluate(inpath: list, noskip=False) -> int:
             return utilo.FAILURE
     done = False
     for item in inpath:
-        collected = configo.generate(item, skips=skip)
+        collected = configos.generate(item, skips=skip)
         if not collected:
             continue
         utilo.print_banner(text=item, symbol='#')

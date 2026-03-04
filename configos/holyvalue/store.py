@@ -13,9 +13,9 @@ import os
 
 import utilo
 
-import configo.exception
-import configo.holyvalue
-import configo.holyvalue.data
+import configos.exception
+import configos.holyvalue
+import configos.holyvalue.data
 
 DATABASE = None
 
@@ -32,7 +32,7 @@ class DataBase:
             current(str): name of default dataset
         """
         if not current:
-            current = configo.holyvalue.data.DataSet()
+            current = configos.holyvalue.data.DataSet()
         self.path = path
         self.current = current
 
@@ -60,7 +60,7 @@ class DataBase:
             if default is not None:
                 default_warning()
                 return default
-            raise configo.exception.MissingHolyValue(f'invalid group: {group}')
+            raise configos.exception.MissingHolyValue(f'invalid group: {group}')
         # determine hv-name
         variable = variable.upper()
         _var = _group.data.get(variable.upper(), None)
@@ -69,7 +69,7 @@ class DataBase:
                 default_warning()
                 return default
             msg = f'invalid variable: {group}:{variable}'
-            raise configo.exception.MissingHolyValue(msg)
+            raise configos.exception.MissingHolyValue(msg)
         return _var.value
 
 
@@ -79,15 +79,15 @@ def parse(path, name: str = None) -> 'DataSet':
     parser = configparser.ConfigParser()
     parser.read_string(raw)
     # prepare data
-    dataset = configo.holyvalue.data.DataSet(name=name)
+    dataset = configos.holyvalue.data.DataSet(name=name)
     for groupname, groupdata in parser.items():
         if groupname == 'DEFAULT':
             continue
         groupname = groupname.lower()
-        group = configo.holyvalue.data.Group(name=groupname)
+        group = configos.holyvalue.data.Group(name=groupname)
         for datakey, data in groupdata.items():
             datakey = datakey.upper()
-            datum = configo.holyvalue.data.Datum(name=datakey, value=data)
+            datum = configos.holyvalue.data.Datum(name=datakey, value=data)
             group.data[datakey] = datum  # pylint:disable=E1137
         dataset.data[groupname] = group  # pylint:disable=E1137
     return dataset

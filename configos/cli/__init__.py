@@ -11,9 +11,9 @@ import sys
 
 import utilo
 
-import configo
-import configo.cli.generate
-import configo.cli.optimization
+import configos
+import configos.cli.generate
+import configos.cli.optimization
 
 
 @utilo.saveme
@@ -30,8 +30,8 @@ def main():
 
 def runner():
     runme = (
-        ('generate', configo.cli.generate),
-        ('optimize', configo.cli.optimization),
+        ('generate', configos.cli.generate),
+        ('optimize', configos.cli.optimization),
     )
     return runme
 
@@ -83,8 +83,8 @@ def create_parser():
             verboseflag=True,
             waitingflag=False,
         ),
-        prog=configo.PROCESS,
-        version=configo.__version__,
+        prog=configos.PROCESS,
+        version=configos.__version__,
     )
-    configo.cli.optimization.add_option(result)
+    configos.cli.optimization.add_option(result)
     return result

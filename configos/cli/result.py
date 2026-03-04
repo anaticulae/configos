@@ -13,14 +13,14 @@ import os
 
 import utilo
 
-import configo
+import configos
 
 
 def show(result):
     single = result[0]
     parsed, header, size = parse_result(single)
     rendered = render_table(list(parsed.values()), size, header=header)
-    with utilo.make_tmpdir(root=configo.ROOT) as output:
+    with utilo.make_tmpdir(root=configos.ROOT) as output:
         outpath = os.path.join(output, 'index.html')
         utilo.file_create(outpath, rendered)
         testrun = utilo.testing()

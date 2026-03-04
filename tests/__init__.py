@@ -10,10 +10,10 @@
 import utilo
 import utilotest
 
-import configo
+import configos
 
-TEST_DATA = utilo.join(configo.ROOT, 'tests')
+TEST_DATA = utilo.join(configos.ROOT, 'tests')
 HVEXAMPLE = utilo.join(TEST_DATA, 'hvexample', exist=True)
 RESULT = utilo.join(TEST_DATA, 'examples/result', exist=True)
 
-run, fail = utilotest.create_cli_runner(configo)
+run, fail = utilotest.create_cli_runner(configos)

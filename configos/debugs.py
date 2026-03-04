@@ -9,14 +9,14 @@
 
 import utilo
 
-import configo
+import configos
 
 DEBUG = 'KIWI_DEBUG'
 
 
 def debug() -> bool:
     try:
-        current = configo.env(DEBUG)
+        current = configos.env(DEBUG)
     except KeyError:
         return False
     result = utilo.str2bool(current)
@@ -24,8 +24,8 @@ def debug() -> bool:
 
 
 def debug_set():
-    configo.env_set(DEBUG, 'True')
+    configos.env_set(DEBUG, 'True')
 
 
 def debug_unset():
-    configo.env_set(DEBUG, 'False')
+    configos.env_set(DEBUG, 'False')

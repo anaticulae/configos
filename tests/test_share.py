@@ -11,8 +11,8 @@ import os
 
 import pytest
 
-import configo
-import configo.directory
+import configos
+import configos.directory
 
 
 def test_missing_environment(mp):
@@ -23,29 +23,29 @@ def test_missing_environment(mp):
         context.setattr(os, 'environ', {})
 
         with pytest.raises(SystemExit):
-            configo.check_startup()
+            configos.check_startup()
 
         with pytest.raises(SystemExit):
-            configo.todo()
+            configos.todo()
 
         with pytest.raises(SystemExit):
-            configo.ready()
+            configos.ready()
 
 
 def test_wrong_todo(mp):
     with mp.context() as context:
         context.setattr(
             os, 'environ', {
-                configo.directory.TODO: 'ThisPathDoesNotExist',
-                configo.directory.READY: 'ThisPathDoesNotExist',
-                configo.directory.COMMON: 'ThisPathDoesNotExist',
+                configos.directory.TODO: 'ThisPathDoesNotExist',
+                configos.directory.READY: 'ThisPathDoesNotExist',
+                configos.directory.COMMON: 'ThisPathDoesNotExist',
             })
 
         with pytest.raises(SystemExit):
-            configo.todo(check=True)
+            configos.todo(check=True)
 
         with pytest.raises(SystemExit):
-            configo.ready(check=True)
+            configos.ready(check=True)
 
 
 def test_startup(td, mp):
@@ -59,12 +59,12 @@ def test_startup(td, mp):
     with mp.context() as context:
         context.setattr(
             os, 'environ', {
-                configo.directory.TODO: todo,
-                configo.directory.READY: ready,
-                configo.directory.TMP: tmp,
-                configo.directory.COMMON: root
+                configos.directory.TODO: todo,
+                configos.directory.READY: ready,
+                configos.directory.TMP: tmp,
+                configos.directory.COMMON: root
             })
-        configo.check_startup()
+        configos.check_startup()
 
 
 def test_export_import(tmpdir, mp):
@@ -79,8 +79,8 @@ def test_export_import(tmpdir, mp):
         for item in (todo, ready, common):
             os.makedirs(item)
 
-        configo.export(common, todo, ready)
-        common_, todo_, ready_, = configo.environment(True)
+        configos.export(common, todo, ready)
+        common_, todo_, ready_, = configos.environment(True)
 
         assert todo_ == todo
         assert ready_ == ready
@@ -94,7 +94,7 @@ def test_without_folder_configuration(mp):
         context.setattr(os, 'environ', {})
 
         with pytest.raises(SystemExit):
-            configo.environment()
+            configos.environment()
 
 
 def test_with_wrong_folder_configuration(mp):
@@ -111,4 +111,4 @@ def test_with_wrong_folder_configuration(mp):
             })
 
         with pytest.raises(SystemExit):
-            configo.environment(check=True)
+            configos.environment(check=True)

@@ -7,12 +7,12 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-import configo
+import configos
 
 
 def test_debug_set_unset():
-    assert not configo.debug()
-    configo.debug_set()
-    assert configo.debug()
-    configo.debug_unset()
-    assert not configo.debug()
+    assert not configos.debug()
+    configos.debug_set()
+    assert configos.debug()
+    configos.debug_unset()
+    assert not configos.debug()

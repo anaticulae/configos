@@ -7,6 +7,6 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-import configo
+import configos
 
-LEVEL_UP = configo.HV()
+LEVEL_UP = configos.HV()

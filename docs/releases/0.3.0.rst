@@ -24,22 +24,22 @@ Usage
 
 .. code-block:: python
 
-    import configo
-    MAX_USER_COUNT = configo.HOLY('MAX_USER_COUNT', INT_PLUS, limit=100)
+    import configos
+    MAX_USER_COUNT = configos.HOLY('MAX_USER_COUNT', INT_PLUS, limit=100)
 
 .. code-block:: python
 
     # set configuration base
-    configo.init('/c/project/configuration')
+    configos.init('/c/project/configuration')
 
 .. code-block:: python
 
-    configo.load('groupme_minimal_v1.1.1')
+    configos.load('groupme_minimal_v1.1.1')
 
 .. code-block:: python
 
-    configo.validate('groupme_minimal_v1.1.1')
-    configo.validate_all()
+    configos.validate('groupme_minimal_v1.1.1')
+    configos.validate_all()
 
 Configuration
 ~~~~~~~~~~~~~
@@ -58,9 +58,9 @@ Generation
 
 .. code-block:: python
 
-    configo.generate()
-    configo.generate('groupme_minimal_v1.1.1')
+    configos.generate()
+    configos.generate('groupme_minimal_v1.1.1')
 
 .. code-block:: python
 
-    configo.list()
+    configos.list()

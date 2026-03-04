@@ -11,13 +11,13 @@ import os
 
 from pytest import raises
 
-from configo import package_address
-from configo import package_configuration
-from configo.server import HELPY_EXT_DIRECT
-from configo.server import HELPY_EXT_PORT
-from configo.server import HELPY_INT_DIRECT
-from configo.server import HELPY_INT_PORT
-from configo.server import HELPY_URL
+from configos import package_address
+from configos import package_configuration
+from configos.server import HELPY_EXT_DIRECT
+from configos.server import HELPY_EXT_PORT
+from configos.server import HELPY_INT_DIRECT
+from configos.server import HELPY_INT_PORT
+from configos.server import HELPY_URL
 
 
 def test_missing_environment(mp):

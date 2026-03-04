@@ -10,7 +10,7 @@
 import pytest
 import utilo
 
-import configo
+import configos
 import tests
 
 
@@ -18,14 +18,14 @@ def test_cloud_config(td):
     program = 'markers'
     source = tests.TEST_DATA
     holyconfig = td.tmpdir.join('config.hv')
-    utilo.run(f'configo --generate -i {source} --noskip >> config.hv')
-    configo.cloud_set(program, holyconfig)
-    configo.cloud_lookup(program)
-    holypath = configo.env(configo.holyname(program))
+    utilo.run(f'configos --generate -i {source} --noskip >> config.hv')
+    configos.cloud_set(program, holyconfig)
+    configos.cloud_lookup(program)
+    holypath = configos.env(configos.holyname(program))
     assert holypath
     assert holypath == holyconfig
     # unload config
-    configo.cloud_unset(program)
+    configos.cloud_unset(program)
     with pytest.raises(KeyError):
         # config was unloaded
-        configo.env(configo.holyname(program))
+        configos.env(configos.holyname(program))

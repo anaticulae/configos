@@ -10,23 +10,23 @@ HolyValue
 
   .. code-block:: python
 
-    configo.holyvalue.DATABASE = configo.holyvalue.DataBase(
+    configos.holyvalue.DATABASE = configos.holyvalue.DataBase(
         __file__,
-        current=configo.holyvalue.DataSet(),
+        current=configos.holyvalue.DataSet(),
     )
 
 * [x] make code less verbose, covert;
 
   .. code-block:: python
 
-    MAX_FOOTERHEADER_AREA_COUNT = configo.HV(
+    MAX_FOOTERHEADER_AREA_COUNT = configos.HV(
         default=5,
-        datatype=configo.DataType.INT_PLUS,
+        datatype=configos.DataType.INT_PLUS,
     )
 
   .. code-block:: python
 
-    MAX_FOOTERHEADER_AREA_COUNT = configo.HV_INT_PLUS(default=5)
+    MAX_FOOTERHEADER_AREA_COUNT = configos.HV_INT_PLUS(default=5)
 
 * [x] think about evaluating the limits on runtime, if not pytest for example
   will not start, or returnvalue of executables will be ?ambigous?.
@@ -38,18 +38,18 @@ Fix
 
   .. code-block:: python
 
-    HEADER_MAX_SIZE = configo.HV(
+    HEADER_MAX_SIZE = configos.HV(
         default=15,
         limit=10,
-        datatype=configo.DataType.PERCENT_PLUS,
+        datatype=configos.DataType.PERCENT_PLUS,
     )
 
 * [x] fix to detect auto generated name
 
   .. code-block:: python
 
-    configo.HV(
+    configos.HV(
         default=15,
         limit=120,
-        datatype=configo.DataType.PERCENT_PLUS,
+        datatype=configos.DataType.PERCENT_PLUS,
     )
