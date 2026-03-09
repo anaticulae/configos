@@ -6,7 +6,6 @@ CURDIR := $(CURDIR)
 NAME = configos
 IMAGE := $(NAME):$(VERSION)
 
-
 docker-build:
 	docker build -t $(IMAGE) .
 

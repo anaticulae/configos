@@ -7,6 +7,23 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-FROM ghcr.io/anaticulae/baw:0b21f1b
+FROM ghcr.io/anaticulae/baw:0b21f1b-test
+
+WORKDIR /var/install
+
+COPY requirements.dev\
+     requirements.txt\
+     .
+
+RUN pip install -vvv\
+    -r requirements.dev\
+    -r requirements.txt\
+    &&\
+    baw sync all
+
+WORKDIR /var/workdir
+COPY . /var/workdir
+
+RUN python setup.py install
 
 ENTRYPOINT ["sh", "-c"]

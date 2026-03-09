@@ -8,8 +8,6 @@
 # be prosecuted under federal law. Its content is company confidential.
 #==============================================================================
 
-import os
-
 import utilo
 
 PACKAGES = [
