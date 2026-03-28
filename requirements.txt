@@ -7,4 +7,4 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-utilo>=2.106.2,<3.0.0
+utilo>=2.106.3,<3.0.0
