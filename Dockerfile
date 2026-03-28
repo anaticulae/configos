@@ -7,6 +7,6 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-FROM ghcr.io/anaticulae/baw:78058ef
+FROM ghcr.io/anaticulae/baw:0b21f1b
 
 ENTRYPOINT ["sh", "-c"]
