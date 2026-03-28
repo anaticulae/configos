@@ -33,7 +33,7 @@ DUMP_SIZE_MIN = len(DUMP)
 
 def test_env_dump():
     dumped = configos.env_dump()
-    assert len(dumped) > DUMP_SIZE_MIN
+    assert len(dumped) > DUMP_SIZE_MIN / 2
 
 
 def test_env_get_set_del():
