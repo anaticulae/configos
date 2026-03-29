@@ -31,10 +31,10 @@ docker-doctest: docker-build
 	docker run -v $(CURDIR):/var/workdir $(IMAGE) "baw test docs"
 
 docker-fasttest: docker-build
-	docker run -v $(CURDIR):/var/workdir $(IMAGE) "baw test fast"
+	docker run -v $(CURDIR):/var/workdir $(IMAGE) "baw test fast -n1"
 
 docker-longtest: docker-build
-	docker run -v $(CURDIR):/var/workdir $(IMAGE) "baw test long"
+	docker run -v $(CURDIR):/var/workdir $(IMAGE) "baw test long -n1"
 
 docker-alltest: docker-build
 	docker run -v $(CURDIR):/var/workdir $(IMAGE) "baw test all -n1"
