@@ -9,21 +9,19 @@
 
 FROM ghcr.io/anaticulae/baw:0b21f1b-test
 
+COPY /requirements.txt\
+     /requirements.dev\
+        /var/install/
+
 WORKDIR /var/install
 
-COPY requirements.dev\
-     requirements.txt\
-     .
+RUN pip install --upgrade pip &&\
+    pip install -r requirements.txt &&\
+    pip install -r requirements.dev
 
-RUN pip install -vvv\
-    -r requirements.dev\
-    -r requirements.txt\
-    &&\
-    baw sync all
+COPY . /var/install
 
-WORKDIR /var/workdir
-COPY . /var/workdir
-
-RUN python setup.py install
+# TODO: Remove no-build later
+RUN pip install . --no-build-isolation
 
 ENTRYPOINT ["sh", "-c"]
