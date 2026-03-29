@@ -15,9 +15,10 @@ COPY /requirements.txt\
 
 WORKDIR /var/install
 
-RUN pip install --upgrade pip &&\
-    pip install -r requirements.txt &&\
-    pip install -r requirements.dev
+COPY pyproject.toml .
+
+#RUN pip install .[dev]
+RUN pip install .
 
 COPY . /var/install
 
