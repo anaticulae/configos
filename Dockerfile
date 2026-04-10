@@ -7,22 +7,19 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-FROM ghcr.io/anaticulae/baw:0b21f1b-test
-
-COPY /requirements.txt\
-     /requirements.dev\
-        /var/install/
+FROM ghcr.io/anaticulae/baw:447bf27
 
 WORKDIR /var/install
 
 COPY pyproject.toml .
 
-#RUN pip install .[dev]
+# RUN pip install .[dev]
 RUN pip install .
 
 COPY . /var/install
 
-# TODO: Remove no-build later
-RUN pip install . --no-build-isolation
+RUN pip install .
+
+WORKDIR /var/workdir
 
 ENTRYPOINT ["sh", "-c"]
