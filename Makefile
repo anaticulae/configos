@@ -5,21 +5,18 @@ CURDIR := $(CURDIR)
 
 NAME = configos
 IMAGE := $(NAME):$(VERSION)
-IMAGE_BASE_NAME := ghcr.io/anaticulae/$(NAME)
-IMAGE_TEST_NAME := ghcr.io/anaticulae/$(NAME)-test
+IMAGE_BASE_NAME := ghcr.io/anaticulae/$(IMAGE)
+IMAGE_TEST_NAME := ghcr.io/anaticulae/$(IMAGE)-test
 
 docker-build:
-	docker build -t $(IMAGE) .
+	docker build -t $(IMAGE_BASE_NAME) .
 
 # --progress=plain
 docker-build-test:
-	docker build -f env/test/Dockerfile -t $(IMAGE_TEST_NAME) .
+	docker build -f Dockerfile -t $(IMAGE_TEST_NAME) .
 
 docker-build-base:
-	docker build -f env/base/Dockerfile -t $(IMAGE_BASE_NAME) .
-
-docker-upload:
-	docker push $(IMAGE)
+	docker build -f Dockerfile -t $(IMAGE_BASE_NAME) .
 
 docker-upload-test:
 	docker push $(IMAGE_TEST_NAME)
@@ -28,21 +25,21 @@ docker-upload-base:
 	docker push $(IMAGE_BASE_NAME)
 
 docker-doctest: docker-build
-	docker run -v $(CURDIR):/var/workdir $(IMAGE) "baw test docs"
+	docker run -v $(CURDIR):/var/workdir $(IMAGE_BASE_NAME) "baw test docs"
 
 docker-fasttest: docker-build
-	docker run -v $(CURDIR):/var/workdir $(IMAGE) "baw test fast -n1"
+	docker run -v $(CURDIR):/var/workdir $(IMAGE_BASE_NAME) "baw test fast"
 
 docker-longtest: docker-build
-	docker run -v $(CURDIR):/var/workdir $(IMAGE) "baw test long -n1"
+	docker run -v $(CURDIR):/var/workdir $(IMAGE_BASE_NAME) "baw test long"
 
 docker-alltest: docker-build
-	docker run -v $(CURDIR):/var/workdir $(IMAGE) "baw test all -n1"
+	docker run -v $(CURDIR):/var/workdir $(IMAGE_BASE_NAME) "baw test all"
 
 docker-lint: docker-build
-	docker run -v $(CURDIR):/var/workdir $(IMAGE) "baw lint all"
+	docker run -v $(CURDIR):/var/workdir $(IMAGE_BASE_NAME) "baw lint all"
 
 docker-release: docker-build
 	docker run -v $(CURDIR):/var/workdir\
-			-e GH_TOKEN=$(GH_TOKEN) $(IMAGE)\
-			"baw release --no_test --no_linter"
+			-e GH_TOKEN=$(GH_TOKEN) $(IMAGE_BASE_NAME)\
+			"baw release --no_test --no_linter --no_sync"
