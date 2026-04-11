@@ -1,6 +1,19 @@
 # CHANGELOG
 
 
+## v1.0.4 (2026-04-11)
+
+### Bug Fixes
+
+- **make**: Add missing rule
+  ([`76d9c87`](https://github.com/anaticulae/configos/commit/76d9c879a2d368fddefb6ce58870b304aedbe560))
+
+### Chores
+
+- **init**: Determine version dynamically
+  ([`18b71c0`](https://github.com/anaticulae/configos/commit/18b71c09e0df5a4d19495d9dd0b1df80925f3ca9))
+
+
 ## v1.0.3 (2026-04-11)
 
 ### Bug Fixes
