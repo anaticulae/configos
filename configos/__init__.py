@@ -7,7 +7,10 @@
 # be prosecuted under federal law. Its content is company confidential.
 #==============================================================================
 
+import importlib.metadata
 import os
+
+__version__ = importlib.metadata.version('configos')
 
 # Public API:
 # Cache
@@ -89,8 +92,6 @@ from configos.holyvalue.table import HolyTable
 # Server
 from configos.server import package_address
 from configos.server import package_configuration
-
-__version__ = '1.0.1'
 
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
 PROCESS = 'configos'
