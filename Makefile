@@ -18,6 +18,9 @@ docker-build-test:
 docker-build-base:
 	docker build -f Dockerfile -t $(IMAGE_BASE_NAME) .
 
+docker-upload:
+	docker push $(IMAGE_BASE_NAME)
+
 docker-upload-test:
 	docker push $(IMAGE_TEST_NAME)
 
