@@ -102,7 +102,7 @@ def test_holyvalue_invalid_variable():
 
 
 @pytest.mark.usefixtures('default_one')
-@pytest.mark.parametrize('datatype', configos.NOMATH)
+@pytest.mark.parametrize('datatype', sorted(configos.NOMATH, key=lambda x: x.name)) # yapf:disable
 def test_holyvalue_invalid_limit(datatype):
     """Test to determine variable out of module and variable assignment"""
     with pytest.raises(configos.InvalidHolyValue):
