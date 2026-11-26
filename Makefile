@@ -6,23 +6,15 @@ CURDIR := $(CURDIR)
 NAME = configos
 IMAGE := $(NAME):$(VERSION)
 IMAGE_BASE_NAME := ghcr.io/anaticulae/$(IMAGE)
-IMAGE_TEST_NAME := ghcr.io/anaticulae/$(IMAGE)-test
 
 docker-build:
 	docker build -t $(IMAGE_BASE_NAME) .
-
-# --progress=plain
-docker-build-test:
-	docker build -f Dockerfile -t $(IMAGE_TEST_NAME) .
 
 docker-build-base:
 	docker build -f Dockerfile -t $(IMAGE_BASE_NAME) .
 
 docker-upload:
 	docker push $(IMAGE_BASE_NAME)
-
-docker-upload-test:
-	docker push $(IMAGE_TEST_NAME)
 
 docker-upload-base:
 	docker push $(IMAGE_BASE_NAME)
