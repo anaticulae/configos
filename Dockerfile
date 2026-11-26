@@ -7,13 +7,13 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-FROM ghcr.io/anaticulae/baw:447bf27
+FROM ghcr.io/anaticulae/baw:v1.90.4
 
 WORKDIR /var/install
 
 COPY pyproject.toml .
 
-# RUN pip install .[dev]
+RUN pip install .[dev]
 RUN pip install .
 
 COPY . /var/install
