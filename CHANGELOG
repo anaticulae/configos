@@ -1,6 +1,39 @@
 # CHANGELOG
 
 
+## v1.1.0 (2026-11-26)
+
+### Chores
+
+- **docker**: Upgrade docker base images
+  ([`c8edbd4`](https://github.com/anaticulae/configos/commit/c8edbd4bdd9152ba76f65e08179ce5309ef394ce))
+
+- **make**: Remove unused method
+  ([`a3a4bfd`](https://github.com/anaticulae/configos/commit/a3a4bfd28bec4ab406c32d9de8047f24746688cc))
+
+- **make**: Upgrade concept
+  ([`f2f0846`](https://github.com/anaticulae/configos/commit/f2f08465ad5646b3a8205845b325c97f90a5940a))
+
+- **pyproject**: Enable testing
+  ([`15fe7e7`](https://github.com/anaticulae/configos/commit/15fe7e7a1901258d97d9dfa38bd915c4fd3e43ce))
+
+- **pyproject**: Release on every commit
+  ([`2f79955`](https://github.com/anaticulae/configos/commit/2f79955bbf57e474bdef809297de954ac7103fe6))
+
+- **requirements**: Upgrade pyproject.toml
+  ([`7fef51f`](https://github.com/anaticulae/configos/commit/7fef51f5810ce5b960518784c22a6755d477c787))
+
+### Code Style
+
+- **github**: Format code
+  ([`f2d185c`](https://github.com/anaticulae/configos/commit/f2d185c4259f1be60aa845bae0a91d239dca4a2a))
+
+### Features
+
+- **dir**: Add parameter
+  ([`4db8ee2`](https://github.com/anaticulae/configos/commit/4db8ee27ecd7a9c7595e3524549725311c21da2f))
+
+
 ## v1.0.4 (2026-04-11)
 
 ### Bug Fixes
