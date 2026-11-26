@@ -84,11 +84,13 @@ def tmp(check: bool = False) -> str:
     return _path_from_env(TMP, check=check)
 
 
-def export(common: str, todo: str, ready: str):  # pylint:disable=W0621
+def export(common: str, todo: str, ready: str, tmp: str | None = None):  # pylint:disable=W0621
     """Set environment variables"""
     os.environ[COMMON] = str(common)
     os.environ[TODO] = str(todo)
     os.environ[READY] = str(ready)
+    if tmp:
+        os.environ[TMP] = str(tmp)
 
 
 def environment(check: bool = False):
